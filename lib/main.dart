@@ -1,90 +1,93 @@
-// ignore_for_file: prefer_const_constructors, depend_on_referenced_packages, unused_import
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-
-import 'package:firebase_core/firebase_core.dart';
+import 'package:com.example.wheel_of_life/payment.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
-import 'package:com.example.wheel_of_life/models/colorpalletemodel.dart';
-import 'package:com.example.wheel_of_life/view/authview/signup.dart';
-import 'package:com.example.wheel_of_life/view/colorpannel/colorslistpage.dart';
-import 'package:com.example.wheel_of_life/view/colorpannel/createpalette.dart';
-import 'package:com.example.wheel_of_life/view/colorpannel/detailmandela.dart';
-import 'package:com.example.wheel_of_life/view/colorpannel/imagetexture.dart';
-import 'package:com.example.wheel_of_life/view/colorpannel/selectmandelas.dart';
-import 'package:com.example.wheel_of_life/view/createpannel/drawpage.dart';
-import 'package:com.example.wheel_of_life/view/plans/showmainpage.dart';
-import 'package:com.example.wheel_of_life/view/plans/showplans.dart';
-import 'package:com.example.wheel_of_life/view/plans/stripepayment.dart';
-import 'package:com.example.wheel_of_life/view/purchasedDashboard.dart';
-import 'package:com.example.wheel_of_life/view/splash.dart';
-import 'package:com.example.wheel_of_life/widgets/create.dart';
-import 'package:com.example.wheel_of_life/view/profile/profileview.dart';
-import 'package:com.example.wheel_of_life/view/settings/settingsscreen.dart';
-import 'package:com.example.wheel_of_life/view/authview/login.dart';
-import 'package:com.example.wheel_of_life/view/colorpannel/animal.dart';
-import 'package:com.example.wheel_of_life/view/colorpannel/viewmandelas.dart';
-import 'package:com.example.wheel_of_life/view/dashboard.dart';
-import 'package:com.example.wheel_of_life/widgets/my3.dart';
-import 'package:responsive_framework/breakpoint.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
-import 'checkscreen.dart';
-import 'controllers/authenticationmodels.dart';
-import 'firebase_options.dart';
-import 'my.dart';
-import 'my2.dart';
-import 'package:stripe_android/stripe_android.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import '/Authentication/forgot_password.dart';
+import '/Quiz%20Functionality/Quiz/family_quiz.dart';
+import '/Quiz%20Functionality/Quiz/health_quiz.dart';
+import '/Quiz%20Functionality/Quiz/home_quiz.dart';
+import '/Quiz%20Functionality/Quiz/love_quiz.dart';
+import '/Quiz%20Functionality/Quiz/money_quiz.dart';
+import '/Quiz%20Functionality/Quiz/p_growth_quiz.dart';
+import '/Quiz%20Functionality/Quiz/work_quiz.dart';
+import '/Quiz%20Functionality/quiz_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import '/Screens/home_screen.dart';
+import '/Screens/onboard_screen.dart';
+import '/Screens/stripe_payment.dart';
+import '/Screens/youtube_screen.dart';
+import 'Authentication/login_screen.dart';
+import 'Quiz Functionality/Quiz/baseline_quiz.dart';
+import 'Quiz Functionality/Quiz/free_quiz.dart';
+import 'Screens/email.dart';
+import 'Screens/report.dart';
+import 'l10n/l10n.dart';
 
-import 'subscription_screen.dart';
-
-void main() async {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  Stripe.publishableKey =
-      'pk_test_51N6W5EGatw2HfTd6c60FZQm1vK3PkiPhvTHXHsEyxwoRSTqD5n0wI5ygeIyQc9CLPlxrw5W3Bh1ANzNK1FochHAP00V7eHWlsg';
-
-//  await Stripe.instance.applySettings();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  ).then((value) => Get.put(() => AuthRepo()));
-  // .then((value) => print("connected " + value.options.asMap.toString()))
-  // .catchError((e) => print(e.toString()));
+  Stripe.publishableKey = "pk_test_51N3ozXKuYtdF845ofkT3mnJPklviwqoYWXmh4rBRta7f4ULTStn7H5FPUizInnktKg2yDp2YdeiU9liipwYjv8hj00OyAY8oAp"; 
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  @override
+  State<MyApp> createState() => _MyAppState();
+  static void setLocale(BuildContext context, Locale locale){
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(locale);
+  }
+}
 
-  // This widget is the root of your application.
+class _MyAppState extends State<MyApp> {
+   Locale _locale = const Locale("en");
+   setLocale(Locale newLocale){
+    setState(() {
+      _locale = newLocale;
+    });
+   }
+  
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
-      ),
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        iconTheme: IconThemeData(
-          color: Colors.blue,
-          size: 24.0,
-        ),
+        fontFamily: GoogleFonts.poppins().fontFamily,
+        primarySwatch: Colors.purple,
       ),
-      home: FirebaseAuth.instance.currentUser != null
-          ? StripePayment3()
-          : SplashScreen(),
-      // routes: {PalletScreen.routeName: (ctx) => PalletScreen()},
+      home: FirebaseAuth.instance.currentUser != null? const Onboard() : LoginScreen(),
+      supportedLocales: L10n.all,
+      locale: _locale,
+      // localizationsDelegates: const [
+      //   AppLocalizations.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate
+      // ],
+      routes: {
+        logQuiz.routeName : (ctx) => const logQuiz(),
+        LoginScreen.routeName : (ctx) => LoginScreen(),
+        VideoScreen.routeName : (ctx) => VideoScreen(),
+        DetailPage.routeName : (ctx) => const DetailPage(),
+        BaseLineQuiz.routeName : (ctx) => const BaseLineQuiz(),
+        ForgotPassword.routeName : (ctx) => ForgotPassword(),
+        EmailSend.routeName : (ctx) => EmailSend(),
+        StripePayment.routeName : (ctx) => const StripePayment(),
+        Onboard.routeName : (ctx) => const Onboard(),
+        HealthQuiz.routeName : (ctx) => const HealthQuiz(),
+        PersonalQuiz.routeName : (ctx) => const PersonalQuiz(),
+        HomeQuiz.routeName : (ctx) => const HomeQuiz(),
+        FamilyQuiz.routeName : (ctx) => const FamilyQuiz(),
+        LoveQuiz.routeName: (ctx) => const LoveQuiz(),
+        FreeQuiz.routeName : (ctx) => const FreeQuiz(),
+        WorkQuiz.routeName : (ctx) => const WorkQuiz(),
+        MoneyQuiz.routeName : (ctx) => const MoneyQuiz(),
+        HomeScreen.routeName : (ctx) => const HomeScreen(),
+        StripePayment3.routeName : (ctx) => const StripePayment3()
+      },
     );
   }
 }

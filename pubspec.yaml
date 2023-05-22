@@ -35,23 +35,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  get: ^4.6.5
-  cloud_firestore: ^4.5.1
-  image_picker: ^0.8.7+3
-  fluttertoast: ^8.2.1
+  firebase_core: ^2.10.0
+  firebase_auth: ^4.4.2
+  cloud_firestore: ^4.5.2
   google_sign_in: ^6.1.0
-  flutter_colorpicker: ^1.0.3
-  flutter_hooks: ^0.18.5+1
-  file_saver: ^0.1.1
-  font_awesome_flutter: ^10.2.1
-  url_launcher: ^6.1.6
-  universal_html: ^2.0.8
-  file_picker: ^5.2.2
-  flutter_facebook_auth: ^5.0.10
-  image_gallery_saver: ^1.7.1
-  merge_images: ^2.0.0-nullsafety
-  image: ^4.0.17
-  responsive_framework: ^1.0.0
+  intl: ^0.18.1
+  google_fonts: ^4.0.4
+  dots_indicator: ^2.1.0
+  percent_indicator: ^4.2.3
+  pdf: ^3.10.1
+  printing: ^5.10.3
+  graphic: ^2.1.0
+  http: ^0.13.6
+  animated_splash_screen: ^1.3.0
+  #flutter_stripe: ^9.2.0
+  mailer: ^6.0.1
+  flutter_stripe: ^9.2.0
 
 dev_dependencies:
   flutter_test:
@@ -63,15 +62,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  firebase_auth: ^4.4.1
-  flutter_svg: ^1.1.1+1
-  firebase_storage: ^11.1.0
-  open_file: ^3.3.1
-  path_provider: ^2.0.14
-  image_painter: ^0.5.0
-  flutter_stripe: ^9.2.0
-  flutter_dotenv: ^5.0.2
-  http: ^0.13.6
+  youtube_player_flutter: ^8.1.2
+  visibility_detector: ^0.4.0+2
+  numberpicker: ^2.1.2
+  firebase_storage: ^11.1.2
+  flutter_svg: ^2.0.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -82,12 +77,11 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+  generate: true
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/art/
-    - assets/textures/
     - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
