@@ -110,7 +110,7 @@ class _StripePaymentState extends State<StripePayment3> {
                   await makePayment();
                   print("hohoho");
                 },
-                child: Text("Pay"))
+                child: Text("Pays"))
           ]),
     );
   }

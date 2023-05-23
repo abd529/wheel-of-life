@@ -24,31 +24,33 @@ import 'Screens/email.dart';
 import 'Screens/report.dart';
 import 'l10n/l10n.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Stripe.publishableKey = "pk_test_51N3ozXKuYtdF845ofkT3mnJPklviwqoYWXmh4rBRta7f4ULTStn7H5FPUizInnktKg2yDp2YdeiU9liipwYjv8hj00OyAY8oAp"; 
+  Stripe.publishableKey =
+      "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
   await Firebase.initializeApp();
   runApp(MyApp());
 }
+
 class MyApp extends StatefulWidget {
   MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
-  static void setLocale(BuildContext context, Locale locale){
+  static void setLocale(BuildContext context, Locale locale) {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
     state?.setLocale(locale);
   }
 }
 
 class _MyAppState extends State<MyApp> {
-   Locale _locale = const Locale("en");
-   setLocale(Locale newLocale){
+  Locale _locale = const Locale("en");
+  setLocale(Locale newLocale) {
     setState(() {
       _locale = newLocale;
     });
-   }
-  
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,7 +60,9 @@ class _MyAppState extends State<MyApp> {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: Colors.purple,
       ),
-      home: FirebaseAuth.instance.currentUser != null? const Onboard() : LoginScreen(),
+      home: FirebaseAuth.instance.currentUser != null
+          ? HomeScreen22()
+          : LoginScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
       // localizationsDelegates: const [
@@ -68,25 +72,25 @@ class _MyAppState extends State<MyApp> {
       //   GlobalWidgetsLocalizations.delegate
       // ],
       routes: {
-        logQuiz.routeName : (ctx) => const logQuiz(),
-        LoginScreen.routeName : (ctx) => LoginScreen(),
-        VideoScreen.routeName : (ctx) => VideoScreen(),
-        DetailPage.routeName : (ctx) => const DetailPage(),
-        BaseLineQuiz.routeName : (ctx) => const BaseLineQuiz(),
-        ForgotPassword.routeName : (ctx) => ForgotPassword(),
-        EmailSend.routeName : (ctx) => EmailSend(),
-        StripePayment.routeName : (ctx) => const StripePayment(),
-        Onboard.routeName : (ctx) => const Onboard(),
-        HealthQuiz.routeName : (ctx) => const HealthQuiz(),
-        PersonalQuiz.routeName : (ctx) => const PersonalQuiz(),
-        HomeQuiz.routeName : (ctx) => const HomeQuiz(),
-        FamilyQuiz.routeName : (ctx) => const FamilyQuiz(),
+        logQuiz.routeName: (ctx) => const logQuiz(),
+        LoginScreen.routeName: (ctx) => LoginScreen(),
+        VideoScreen.routeName: (ctx) => VideoScreen(),
+        DetailPage.routeName: (ctx) => const DetailPage(),
+        BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
+        ForgotPassword.routeName: (ctx) => ForgotPassword(),
+        EmailSend.routeName: (ctx) => EmailSend(),
+        StripePayment.routeName: (ctx) => const StripePayment(),
+        Onboard.routeName: (ctx) => const Onboard(),
+        HealthQuiz.routeName: (ctx) => const HealthQuiz(),
+        PersonalQuiz.routeName: (ctx) => const PersonalQuiz(),
+        HomeQuiz.routeName: (ctx) => const HomeQuiz(),
+        FamilyQuiz.routeName: (ctx) => const FamilyQuiz(),
         LoveQuiz.routeName: (ctx) => const LoveQuiz(),
-        FreeQuiz.routeName : (ctx) => const FreeQuiz(),
-        WorkQuiz.routeName : (ctx) => const WorkQuiz(),
-        MoneyQuiz.routeName : (ctx) => const MoneyQuiz(),
-        HomeScreen.routeName : (ctx) => const HomeScreen(),
-        StripePayment3.routeName : (ctx) => const StripePayment3()
+        FreeQuiz.routeName: (ctx) => const FreeQuiz(),
+        WorkQuiz.routeName: (ctx) => const WorkQuiz(),
+        MoneyQuiz.routeName: (ctx) => const MoneyQuiz(),
+        HomeScreen.routeName: (ctx) => const HomeScreen(),
+        StripePayment3.routeName: (ctx) => const StripePayment3()
       },
     );
   }

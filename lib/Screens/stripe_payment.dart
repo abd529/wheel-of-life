@@ -43,14 +43,14 @@ class _StripePaymentState extends State<StripePayment> {
     }
   }
 
-  void  displayPaymentSheet() async {
+  void displayPaymentSheet() async {
     print("test 4 passed");
     try {
       print("test 5 passed");
       await Stripe.instance.presentPaymentSheet().then((newValue) {
         print("test 6 passed");
         // payFee();
-         paymentIntentData = null;
+        paymentIntentData = null;
       }).onError((error, stackTrace) {
         if (kDebugMode) {
           print('Exception/DISPLAYPAYMENTSHEET==> $error $stackTrace');
@@ -61,7 +61,9 @@ class _StripePaymentState extends State<StripePayment> {
       if (kDebugMode) {
         print(e);
       }
-      showDialog(context: context, builder: (_)=>const AlertDialog(content: Text("Cancelled")));
+      showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(content: Text("Cancelled")));
     } catch (e) {
       if (kDebugMode) {
         print('$e');
@@ -69,10 +71,11 @@ class _StripePaymentState extends State<StripePayment> {
     }
   }
 
-  Future<bool> makePayment()async{
+  Future<bool> makePayment() async {
     print("test 1 passed");
     try {
-      paymentIntentData = await createPaymentIntent("200","USD"); //json.decode(response.body);
+      paymentIntentData =
+          await createPaymentIntent("200", "USD"); //json.decode(response.body);
       print("test 2 passed");
       await Stripe.instance
           .initPaymentSheet(
@@ -82,7 +85,7 @@ class _StripePaymentState extends State<StripePayment> {
                   style: ThemeMode.dark,
                   merchantDisplayName: 'ANNIE'))
           .then((value) {});
-      print("test 3 passed");    
+      print("test 3 passed");
       displayPaymentSheet();
       print("test 8 passed");
       return true;
@@ -90,30 +93,157 @@ class _StripePaymentState extends State<StripePayment> {
       if (kDebugMode) {
         print(s);
       }
-     return false;
+      return false;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-        Text("Stripe Payment"),
-        ElevatedButton(onPressed: ()async{
-        print("hehhe");
-        await makePayment();
-        print("hohoho");
-        }, child: Text("Pay"))
-      ]),
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text("Stripe Payment"),
+            ElevatedButton(
+                onPressed: () async {
+                  print("hehhe");
+                  await makePayment();
+                  print("hohoho");
+                },
+                child: Text("Pay"))
+          ]),
     );
   }
 }
 
+class HomeScreen22 extends StatefulWidget {
+  final String money = "20";
 
+  @override
+  State<HomeScreen22> createState() => _HomeScreen22State();
+}
+
+class _HomeScreen22State extends State<HomeScreen22> {
+  Map<String, dynamic>? paymentIntentData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        title: const Text('PAYMENT METHOD (STRIPE)'),
+        centerTitle: true,
+        toolbarHeight: 80,
+      ),
+      body: Center(
+          child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.deepPurple,
+          minimumSize: const Size(250, 50),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
+        child: const Text(
+          'STRIPE PAYMENT',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        onPressed: () async {
+          await makePayment();
+        },
+      )),
+    );
+  }
+
+  payFee() {
+    try {
+      //if you want to upload data to any database do it here
+    } catch (e) {
+      // exception while uploading data
+    }
+  }
+
+  Future<bool> makePayment() async {
+    try {
+      paymentIntentData = await createPaymentIntent(
+          widget.money, 'USD'); //json.decode(response.body);
+      await Stripe.instance
+          .initPaymentSheet(
+              paymentSheetParameters: SetupPaymentSheetParameters(
+                  paymentIntentClientSecret:
+                      paymentIntentData!['client_secret'],
+                  style: ThemeMode.dark,
+                  merchantDisplayName: 'ANNIE'))
+          .then((value) {});
+      displayPaymentSheet();
+      return true;
+    } catch (e, s) {
+      if (kDebugMode) {
+        print(s);
+      }
+      return false;
+    }
+  }
+
+  displayPaymentSheet() async {
+    try {
+      await Stripe.instance.presentPaymentSheet().then((newValue) {
+        payFee();
+
+        paymentIntentData = null;
+      }).onError((error, stackTrace) {
+        if (kDebugMode) {
+          print('Exception/DISPLAYPAYMENTSHEET==> $error $stackTrace');
+        }
+      });
+    } on StripeException catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+      showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(
+                content: Text("Cancelled "),
+              ));
+    } catch (e) {
+      if (kDebugMode) {
+        print('$e');
+      }
+    }
+  }
+
+  createPaymentIntent(String amount, String currency) async {
+    try {
+      Map<String, dynamic> body = {
+        'amount': calculateAmount(amount),
+        'currency': currency,
+        'payment_method_types[]': 'card'
+      };
+      var response = await http.post(
+          Uri.parse('https://api.stripe.com/v1/payment_intents'),
+          body: body,
+          headers: {
+            'Authorization':
+                'Bearer sk_test_51IPZIqK66jUbxaJOVIfelFruzEKB9rkzOoj4ltAyadnuQdv4cjAJgpEXonyX3Pi56DxJtMjRZBHgsI2Z9jCtENVH00hAfXREsc',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          });
+      return jsonDecode(response.body);
+    } catch (err) {
+      if (kDebugMode) {
+        print('err charging user: ${err.toString()}');
+      }
+    }
+  }
+
+  calculateAmount(String amount) {
+    final a = (int.parse(amount)) * 100;
+    return a.toString();
+  }
+}
 
 
 
