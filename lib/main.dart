@@ -61,16 +61,16 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.purple,
       ),
       home: FirebaseAuth.instance.currentUser != null
-          ? HomeScreen22()
+          ? Onboard()
           : LoginScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
-      // localizationsDelegates: const [
-      //   AppLocalizations.delegate,
-      //   GlobalMaterialLocalizations.delegate,
-      //   GlobalCupertinoLocalizations.delegate,
-      //   GlobalWidgetsLocalizations.delegate
-      // ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
       routes: {
         logQuiz.routeName: (ctx) => const logQuiz(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
