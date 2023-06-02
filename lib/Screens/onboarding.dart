@@ -1,169 +1,200 @@
-// ignore_for_file: library_private_types_in_public_api
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '/Authentication/signup_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../Models/onboarding_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:wheel_of_life/Authentication/login_screen.dart';
+import 'package:wheel_of_life/Quiz%20Functionality/Quiz/family_quiz.dart';
+import 'package:wheel_of_life/Quiz%20Functionality/Quiz/love_quiz.dart';
+import 'package:wheel_of_life/Screens/email.dart';
+import 'package:wheel_of_life/Screens/home_screen.dart';
+import 'package:wheel_of_life/Screens/report.dart';
+import 'package:wheel_of_life/Screens/stripe_payment.dart';
+import 'package:wheel_of_life/Screens/translated_youtube.dart';
 
-class Onboarding extends StatefulWidget {
-  const Onboarding({super.key});
+import '../Quiz Functionality/Quiz/baseline_quiz.dart';
+import '../Quiz Functionality/Quiz/free_quiz.dart';
+import '../Quiz Functionality/Quiz/health_quiz.dart';
+import '../Quiz Functionality/Quiz/home_quiz.dart';
+import '../Quiz Functionality/Quiz/money_quiz.dart';
+import '../Quiz Functionality/Quiz/p_growth_quiz.dart';
+import '../Quiz Functionality/Quiz/work_quiz.dart';
+import '../main.dart';
+
+
+class Onboard extends StatefulWidget {
+  static const routeName = "onboard";
+  const Onboard({super.key});
 
   @override
-  _OnboardingState createState() => _OnboardingState();
+  State<Onboard> createState() => _OnboardState();
 }
 
-class _OnboardingState extends State<Onboarding> {
-  int currentIndex = 0;
-  late PageController _controller;
+class _OnboardState extends State<Onboard> {
+  String email = "";
+  String fName = "";
+  String lName = "";
+  int num = 0;
+  String videoId = "R0T-CDZbWUQ";
+  String videoFren = "eM87_FC3OvA";
+  String videoSpa = "p520iOvkMd4";
+  String videoPor = "Ijy2nR6Cl3I";
+  String videoEng = "R0T-CDZbWUQ";
+  String videoChi = "Ga7S_dnG5rQ";
+  final userId = FirebaseAuth.instance.currentUser!.uid;
+  
 
-  @override
-  void initState() {
-    _controller = PageController(initialPage: 0);
-    super.initState();
+  getInfo() async{
+      var collection = FirebaseFirestore.instance.collection('UsersData');
+      var docSnapshot = await collection.doc(userId).get();
+      if (docSnapshot.exists) {
+      Map<String, dynamic>? data = docSnapshot.data();
+      setState(() {
+        email = data?["Email"];
+        fName = data?["First Name"];
+        lName = data?["Last Name"];
+      });
+      }
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  changeLocale(value){
+   MyApp.setLocale(context,Locale(value));
+   if(value == "es"){
+    setState(() {
+      videoId = videoSpa;
+    });
+   }
+   if(value == "pt"){
+    setState(() {
+      videoId = videoPor;
+    });
+   }
+   if(value == "fr"){
+    setState(() {
+      videoId = videoFren;
+    });
+   }
+   if(value == "en"){
+    setState(() {
+      videoId = videoEng;
+    });
+   }
+  //  if(value == "it"){
+  //   setState(() {
+  //     videoId = videoIta;
+  //   });
+  //  }
+   if(value == "zh"){
+    setState(() {
+      videoId = videoChi;
+    });
+   }
   }
-
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-             child: SvgPicture.asset(
-              "assets/logo.svg",
-              width: 85,
-              height: 85,
-             ),
-            ),
-            Expanded(
-              child: PageView.builder(
-                controller: _controller,
-                itemCount: contents.length,
-                onPageChanged: (int index) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
-                itemBuilder: (_, i) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        contents[i].image,
-                        height: 300,
-                      ),
-                      Text(
-                        contents[i].title,
-                        style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                            fontSize: 38,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 100,
-                        width: 300,
-                        child: Text(
-                          contents[i].discription,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.raleway(
-                            textStyle: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Color.fromARGB(255, 105, 105, 105),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
+     if (num == 0) {
+      WidgetsBinding.instance
+          .addPostFrameCallback((_) => getInfo());
+      num++;
+    }
+    String lang =  Localizations.localeOf(context).toString();
+    print(lang);
+    return  Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children:  [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 30,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      contents.length,
-                      (index) => buildDot(index, context),
-                    ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  height: 53,
-                  margin: const EdgeInsets.only(top: 40, bottom: 45, right: 30),
-                  width: 53,
-                  child: TextButton(
-                    onPressed: () {
-                      if (currentIndex == contents.length - 1) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => SignupScreen(),
-                          ),
-                        );
-                      }
-                      _controller.nextPage(
-                        duration: const Duration(milliseconds: 120),
-                        curve: Curves.bounceIn,
-                      );
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    child: Stack(
-                      children: const <Widget>[
-                        Align(
-                          alignment: Alignment(0, 0),
-                          child: Icon(
-                            Icons.arrow_forward_sharp,
-                            size: 36,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                const Text("Espanol"),
+                Radio(value: "es", groupValue: lang, onChanged: changeLocale),
               ],
             ),
+            Row(
+              children: [
+                const Text("Portuguese"),
+                Radio(value: "pt", groupValue: lang, onChanged: changeLocale),
+              ],
+            ),
+             Row(
+              children: [
+                const Text("Francias"),
+                Radio(value: "fr", groupValue: lang, onChanged: changeLocale),
+              ],
+            ),
+             Row(
+              children: [
+                const Text("English"),
+                Radio(value: "en", groupValue: lang, onChanged: changeLocale),
+              ],
+            ),
+             Row(
+              children: [
+                const Text("Italiano"),
+                Radio(value: "it", groupValue: lang, onChanged: changeLocale),
+              ],
+            ),
+            Row(
+              children: [
+                const Text("中文的"),
+                Radio(value: "zh", groupValue: lang, onChanged: changeLocale),
+              ],
+            ),
+            Text("The current language is ${AppLocalizations.of(context)!.language}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            const SizedBox(height: 80,),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(DetailPage.routeName);
+            }, child: const Text("Report Screen")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(BaseLineQuiz.routeName);
+            }, child: const Text("Base Line Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(HealthQuiz.routeName);
+            }, child: const Text("Health Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(PersonalQuiz.routeName);
+            }, child: const Text("Personal Growth Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(HomeQuiz.routeName);
+            }, child: const Text("Home Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(FamilyQuiz.routeName);
+            }, child: const Text("Family & Friends Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(LoveQuiz.routeName);
+            }, child: const Text("Love Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(FreeQuiz.routeName);
+            }, child: const Text("Free Time Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(WorkQuiz.routeName);
+            }, child: const Text("Work Quiz")),
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(MoneyQuiz.routeName);
+            }, child: const Text("Money Quiz")),
+            ElevatedButton(onPressed: ()async{
+               await FirebaseAuth.instance.signOut();
+               Navigator.of(context).pushNamed(EmailSend.routeName);
+            }, child: const Text("Email Send")),
+            ElevatedButton(onPressed: ()async{
+               Navigator.of(context).pushNamed(HomeScreen.routeName);
+            }, child: const Text("Home")),
+            ElevatedButton(onPressed: ()async{
+               Navigator.of(context).pushNamed(StripePayment.routeName);
+            }, child: const Text("Stripe")),
+            ElevatedButton(onPressed: ()async{
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => TranslatedVideo(videoId: videoId),));
+            }, child: const Text("Translated")),
+            ElevatedButton(onPressed: ()async{
+               await FirebaseAuth.instance.signOut();
+               Navigator.of(context).pushNamed(LoginScreen.routeName);
+            }, child: const Text("Log out")),
           ],
-        ),
-      ),
-    );
-  }
-
-  Container buildDot(int index, BuildContext context) {
-    return Container(
-      height: 10,
-      width: currentIndex == index ? 25 : 10,
-      margin: const EdgeInsets.only(right: 15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).primaryColor,
+        ),),
       ),
     );
   }
