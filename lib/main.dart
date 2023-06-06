@@ -65,16 +65,15 @@ class _MyAppState extends State<MyApp> {
           : LoginScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
-      ],
+      // localizationsDelegates: const [
+      //   AppLocalizations.delegate,
+      //   GlobalMaterialLocalizations.delegate,
+      //   GlobalCupertinoLocalizations.delegate,
+      //   GlobalWidgetsLocalizations.delegate
+      // ],
       routes: {
         logQuiz.routeName: (ctx) => const logQuiz(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
-        VideoScreen.routeName: (ctx) => VideoScreen(),
         DetailPage.routeName: (ctx) => const DetailPage(),
         BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
         ForgotPassword.routeName: (ctx) => ForgotPassword(),

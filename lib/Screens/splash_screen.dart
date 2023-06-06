@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedSplashScreen(
-        nextScreen: const Onboarding(),
+        nextScreen: const Onboard(),
         splash: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [

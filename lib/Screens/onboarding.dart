@@ -1,25 +1,25 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:com.example.wheel_of_life/Screens/stripe_payment.dart';
+import 'package:com.example.wheel_of_life/Screens/youtube_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:wheel_of_life/Authentication/login_screen.dart';
-import 'package:wheel_of_life/Quiz%20Functionality/Quiz/family_quiz.dart';
-import 'package:wheel_of_life/Quiz%20Functionality/Quiz/love_quiz.dart';
-import 'package:wheel_of_life/Screens/email.dart';
-import 'package:wheel_of_life/Screens/home_screen.dart';
-import 'package:wheel_of_life/Screens/report.dart';
-import 'package:wheel_of_life/Screens/stripe_payment.dart';
-import 'package:wheel_of_life/Screens/translated_youtube.dart';
 
+
+import '../Authentication/login_screen.dart';
 import '../Quiz Functionality/Quiz/baseline_quiz.dart';
+import '../Quiz Functionality/Quiz/family_quiz.dart';
 import '../Quiz Functionality/Quiz/free_quiz.dart';
 import '../Quiz Functionality/Quiz/health_quiz.dart';
 import '../Quiz Functionality/Quiz/home_quiz.dart';
+import '../Quiz Functionality/Quiz/love_quiz.dart';
 import '../Quiz Functionality/Quiz/money_quiz.dart';
 import '../Quiz Functionality/Quiz/p_growth_quiz.dart';
 import '../Quiz Functionality/Quiz/work_quiz.dart';
 import '../main.dart';
+import 'email.dart';
+import 'home_screen.dart';
 
 
 class Onboard extends StatefulWidget {
@@ -146,9 +146,6 @@ class _OnboardState extends State<Onboard> {
             ),
             Text("The current language is ${AppLocalizations.of(context)!.language}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
             const SizedBox(height: 80,),
-            ElevatedButton(onPressed: (){
-              Navigator.of(context).pushNamed(DetailPage.routeName);
-            }, child: const Text("Report Screen")),
             ElevatedButton(onPressed: (){
               Navigator.of(context).pushNamed(BaseLineQuiz.routeName);
             }, child: const Text("Base Line Quiz")),
