@@ -2,6 +2,7 @@ import 'package:com.example.wheel_of_life/payment.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import '/Authentication/forgot_password.dart';
 import '/Quiz%20Functionality/Quiz/family_quiz.dart';
 import '/Quiz%20Functionality/Quiz/health_quiz.dart';
@@ -14,15 +15,17 @@ import '/Quiz%20Functionality/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import '/Screens/home_screen.dart';
-import '/Screens/onboard_screen.dart';
 import '/Screens/stripe_payment.dart';
 import '/Screens/youtube_screen.dart';
 import 'Authentication/login_screen.dart';
 import 'Quiz Functionality/Quiz/baseline_quiz.dart';
 import 'Quiz Functionality/Quiz/free_quiz.dart';
 import 'Screens/email.dart';
+import 'Screens/onboard_screen.dart';
 import 'Screens/report.dart';
+import 'Utilities/testingscreen.dart';
 import 'l10n/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,19 +64,20 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.purple,
       ),
       home: FirebaseAuth.instance.currentUser != null
-          ? Onboard()
+          ? StripeBalanceScreen()
           : LoginScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
-      // localizationsDelegates: const [
-      //   AppLocalizations.delegate,
-      //   GlobalMaterialLocalizations.delegate,
-      //   GlobalCupertinoLocalizations.delegate,
-      //   GlobalWidgetsLocalizations.delegate
-      // ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
       routes: {
         logQuiz.routeName: (ctx) => const logQuiz(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
+        //VideoScreen.routeName: (ctx) => VideoScreen(),
         DetailPage.routeName: (ctx) => const DetailPage(),
         BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
         ForgotPassword.routeName: (ctx) => ForgotPassword(),
