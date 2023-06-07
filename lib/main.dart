@@ -1,4 +1,3 @@
-import 'package:com.example.wheel_of_life/payment.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +15,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import '/Screens/home_screen.dart';
 import '/Screens/stripe_payment.dart';
-import '/Screens/youtube_screen.dart';
 import 'Authentication/login_screen.dart';
 import 'Quiz Functionality/Quiz/baseline_quiz.dart';
 import 'Quiz Functionality/Quiz/free_quiz.dart';
 import 'Screens/email.dart';
 import 'Screens/onboard_screen.dart';
 import 'Screens/report.dart';
-import 'Utilities/testingscreen.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'Screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.purple,
       ),
       home: FirebaseAuth.instance.currentUser != null
-          ? StripeBalanceScreen()
+          ? SplashScreen()
           : LoginScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
@@ -93,7 +91,6 @@ class _MyAppState extends State<MyApp> {
         WorkQuiz.routeName: (ctx) => const WorkQuiz(),
         MoneyQuiz.routeName: (ctx) => const MoneyQuiz(),
         HomeScreen.routeName: (ctx) => const HomeScreen(),
-        StripePayment3.routeName: (ctx) => const StripePayment3()
       },
     );
   }

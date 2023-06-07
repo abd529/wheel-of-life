@@ -79,6 +79,16 @@ class _OnboardState extends State<Onboard> {
         videoId = videoEng;
       });
     }
+    if (value == "it") {
+      setState(() {
+        videoId = videoITA;
+      });
+    }
+    if (value == "zh") {
+      setState(() {
+        videoId = videoChi;
+      });
+    }
   }
 
   @override

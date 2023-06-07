@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:com.example.wheel_of_life/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -19,16 +20,24 @@ class TranslatedVideo extends StatelessWidget {
       ),
     );
     return Scaffold(
-      body: Container(
-                  color: Colors.lightBlue[200],
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: YoutubePlayer(
-                      controller: controller,
-                      showVideoProgressIndicator: true,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+                      color: Colors.lightBlue[200],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: YoutubePlayer(
+                          controller: controller,
+                          showVideoProgressIndicator: true,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                    ElevatedButton(onPressed: (){
+                      Navigator.of(context).pushNamed(HomeScreen.routeName);
+                    }, child: Text("Next"))
+        ],
+      ),
     );
   }
 }
