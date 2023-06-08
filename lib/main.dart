@@ -1,5 +1,6 @@
 import 'package:com.example.wheel_of_life/Authentication/signup_screen.dart';
 import 'package:com.example.wheel_of_life/Screens/lanugage_screen.dart';
+import 'package:com.example.wheel_of_life/Screens/verify_email.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,9 @@ import '/Screens/stripe_payment.dart';
 import 'Authentication/login_screen.dart';
 import 'Quiz Functionality/Quiz/baseline_quiz.dart';
 import 'Quiz Functionality/Quiz/free_quiz.dart';
+import 'Screens/coach_filter.dart';
 import 'Screens/email.dart';
+import 'Screens/free_report.dart';
 import 'Screens/onboard_screen.dart';
 import 'Screens/report.dart';
 import 'Screens/test_pay.dart';
@@ -67,7 +70,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.purple,
       ),
       home: FirebaseAuth.instance.currentUser != null
-          ? HomeScreen()
+          ? const HomeScreen()
           : const SplashScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
@@ -97,7 +100,10 @@ class _MyAppState extends State<MyApp> {
         MoneyQuiz.routeName: (ctx) => const MoneyQuiz(),
         HomeScreen.routeName: (ctx) => const HomeScreen(),
         LanguageScreen.routeName: (ctx) => const LanguageScreen(),
-        SignupScreen.routeName: (ctx) => SignupScreen()
+        SignupScreen.routeName: (ctx) => SignupScreen(),
+        FreeReport.routeName: (ctx) => const FreeReport(),
+        CoachFilter.routeName: (ctx) => const CoachFilter(),
+        VerifyEmail.routeName: (ctx) => VerifyEmail(),
       },
     );
   }

@@ -42,20 +42,20 @@ class _OnboardState extends State<Onboard> {
   String fName = "";
   String lName = "";
   int num = 0;
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+  //final userId = FirebaseAuth.instance.currentUser!.uid;
 
-  getInfo() async {
-    var collection = FirebaseFirestore.instance.collection('UsersData');
-    var docSnapshot = await collection.doc(userId).get();
-    if (docSnapshot.exists) {
-      Map<String, dynamic>? data = docSnapshot.data();
-      setState(() {
-        email = data?["Email"];
-        fName = data?["First Name"];
-        lName = data?["Last Name"];
-      });
-    }
-  }
+  // getInfo() async {
+  //   var collection = FirebaseFirestore.instance.collection('UsersData');
+  //   var docSnapshot = await collection.doc(userId).get();
+  //   if (docSnapshot.exists) {
+  //     Map<String, dynamic>? data = docSnapshot.data();
+  //     setState(() {
+  //       email = data?["Email"];
+  //       fName = data?["First Name"];
+  //       lName = data?["Last Name"];
+  //     });
+  //   }
+  // }
 
   changeLocale(value) {
     MyApp.setLocale(context, Locale(value));
@@ -93,10 +93,10 @@ class _OnboardState extends State<Onboard> {
 
   @override
   Widget build(BuildContext context) {
-    if (num == 0) {
-      WidgetsBinding.instance.addPostFrameCallback((_) => getInfo());
-      num++;
-    }
+    // if (num == 0) {
+    //   WidgetsBinding.instance.addPostFrameCallback((_) => getInfo());
+    //   num++;
+    // }
     String lang = Localizations.localeOf(context).toString();
     print(lang);
     return Scaffold(
