@@ -10,6 +10,7 @@ import '../Models/register_VM.dart';
 import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
+  static const routeName = "sign-up";
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }

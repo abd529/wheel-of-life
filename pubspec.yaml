@@ -40,7 +40,7 @@ dependencies:
   firebase_core: ^2.10.0
   firebase_auth: ^4.4.2
   cloud_firestore: ^4.5.2
-  google_sign_in: ^6.1.0
+  google_sign_in: ^6.1.4
   intl: ^0.18.0
   google_fonts: ^4.0.4
   dots_indicator: ^2.1.0
@@ -69,6 +69,8 @@ dev_dependencies:
   numberpicker: ^2.1.2
   firebase_storage: ^11.1.2
   flutter_svg: ^2.0.5
+  flutter_dotenv: ^5.1.0
+  flutter_email_sender: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,6 +1,9 @@
+import 'package:com.example.wheel_of_life/Authentication/signup_screen.dart';
+import 'package:com.example.wheel_of_life/Screens/lanugage_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '/Authentication/forgot_password.dart';
 import '/Quiz%20Functionality/Quiz/family_quiz.dart';
@@ -21,6 +24,7 @@ import 'Quiz Functionality/Quiz/free_quiz.dart';
 import 'Screens/email.dart';
 import 'Screens/onboard_screen.dart';
 import 'Screens/report.dart';
+import 'Screens/test_pay.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'Screens/splash_screen.dart';
@@ -30,6 +34,7 @@ void main() async {
   Stripe.publishableKey =
       "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
   await Firebase.initializeApp();
+  await dotenv.load(fileName: "assets/.env");
   runApp(MyApp());
 }
 
@@ -62,8 +67,8 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.purple,
       ),
       home: FirebaseAuth.instance.currentUser != null
-          ? SplashScreen()
-          : LoginScreen(),
+          ? HomeScreen()
+          : const SplashScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
       localizationsDelegates: const [
@@ -91,6 +96,8 @@ class _MyAppState extends State<MyApp> {
         WorkQuiz.routeName: (ctx) => const WorkQuiz(),
         MoneyQuiz.routeName: (ctx) => const MoneyQuiz(),
         HomeScreen.routeName: (ctx) => const HomeScreen(),
+        LanguageScreen.routeName: (ctx) => const LanguageScreen(),
+        SignupScreen.routeName: (ctx) => SignupScreen()
       },
     );
   }

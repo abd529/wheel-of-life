@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../Screens/home_screen.dart';
 import '/Authentication/forgot_password.dart';
 import '/Authentication/signup_screen.dart';
 import '/Screens/onboard_screen.dart';
@@ -121,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                            bool isLoggedIn = await _loginVM.login(_emailController.text, _passwordController.text);
                            if(isLoggedIn){
-                             Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const Onboard()),(Route<dynamic> route) => false);
+                             Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const HomeScreen()),(Route<dynamic> route) => false);
                            }
                         }
                       },

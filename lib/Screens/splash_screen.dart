@@ -11,12 +11,10 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: AnimatedSplashScreen(
         nextScreen: const Onboard(),
-        splash: Row(
+        splash: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.circle_outlined, size: 35,),
-            Text("Wheel of life"),
-            Icon(Icons.circle_outlined, size: 35,),
+          children: [
+            Text("Wheel of life", style: TextStyle(fontSize: 36)),
           ],
         ),
       ),

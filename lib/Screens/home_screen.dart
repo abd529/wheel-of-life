@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '/Authentication/login_screen.dart';
 import '/Quiz%20Functionality/Quiz/baseline_quiz.dart';
+import 'package:com.example.wheel_of_life/Screens/lanugage_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               leading: const Icon(Icons.language),
               title: const Text(' Language'),
               onTap: () {
-                Navigator.of(context).pushNamed("");
+                Navigator.of(context).pushNamed(LanguageScreen.routeName);
               },
             ),
             ListTile(

@@ -1,10 +1,14 @@
 
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, use_build_context_synchronously
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+
+import '../Authentication/google_signin_api.dart';
 
 class EmailSend extends StatelessWidget {
   static const routeName = "email-send";
@@ -12,14 +16,16 @@ class EmailSend extends StatelessWidget {
   late Future<int> statusCode ;
 
   void sendEmail(String recipientEmail, String messageMail, BuildContext context)async{
+    final user = await GoogleAuthApi.signIn();
     String userName = "abdullahayaz529@gmail.com";
     String password = "lxivqayisxdamtfd";
-    final smtpServer = gmail(userName, password);
+    String token = "";
+    final smtpServer = gmailSaslXoauth2(userName, token);
     final message = Message()..from=Address(userName,"Mail Service")..recipients.add(recipientEmail)..subject = "Mail"..text = "Message: $messageMail";
     try{
       await send(message, smtpServer);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: FittedBox(
+        const SnackBar(content: FittedBox(
           child: Text("Email send good"),
         ))
       );
@@ -28,6 +34,11 @@ class EmailSend extends StatelessWidget {
         print(e.toString());
       }
     }
+  }
+
+  signIn(){
+    final _googleSignIn = GoogleSignIn();
+    Future<GoogleSignInAccount?> login() =>_googleSignIn.signIn();
   }
 
   // Future<int> sendEmail(String name, String subject ,String email, String message)async{
@@ -60,6 +71,9 @@ class EmailSend extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Center(child: Text("hehe"),),
+          ElevatedButton(onPressed: ()async{
+           await GoogleAuthApi.signIn();
+          }, child: const Text("sign in")),
           ElevatedButton(onPressed: (){
             sendEmail("abdullahayaz529@gmail.com","heyyyyy", context);
           }, child: const Text("send email"))

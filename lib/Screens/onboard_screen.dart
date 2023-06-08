@@ -100,118 +100,132 @@ class _OnboardState extends State<Onboard> {
     String lang = Localizations.localeOf(context).toString();
     print(lang);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 80,
-                ),
-                Row(
-                  children: [
-                    const Text("Espanol"),
-                    Radio(
-                        value: "es", groupValue: lang, onChanged: changeLocale),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Text("Portuguese"),
-                    Radio(
-                        value: "pt", groupValue: lang, onChanged: changeLocale),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Text("Francias"),
-                    Radio(
-                        value: "fr", groupValue: lang, onChanged: changeLocale),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Text("English"),
-                    Radio(
-                        value: "en", groupValue: lang, onChanged: changeLocale),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Text("Italiano"),
-                    Radio(
-                        value: "it", groupValue: lang, onChanged: changeLocale),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Text("中文的"),
-                    Radio(
-                        value: "zh", groupValue: lang, onChanged: changeLocale),
-                  ],
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => TranslatedVideo(
-                                videoId: videoId,
-                              )));
-                    },
-                    child: const Text("Next")),
-                // Text("The current language is ${AppLocalizations.of(context)!.language}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                // const SizedBox(height: 80,),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(DetailPage.routeName);
-                // }, child: const Text("Report Screen")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(BaseLineQuiz.routeName);
-                // }, child: const Text("Base Line Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(HealthQuiz.routeName);
-                // }, child: const Text("Health Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(PersonalQuiz.routeName);
-                // }, child: const Text("Personal Growth Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(HomeQuiz.routeName);
-                // }, child: const Text("Home Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(FamilyQuiz.routeName);
-                // }, child: const Text("Family & Friends Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(LoveQuiz.routeName);
-                // }, child: const Text("Love Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(FreeQuiz.routeName);
-                // }, child: const Text("Free Time Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(WorkQuiz.routeName);
-                // }, child: const Text("Work Quiz")),
-                // ElevatedButton(onPressed: (){
-                //   Navigator.of(context).pushNamed(MoneyQuiz.routeName);
-                // }, child: const Text("Money Quiz")),
-                // ElevatedButton(onPressed: ()async{
-                //    await FirebaseAuth.instance.signOut();
-                //    Navigator.of(context).pushNamed(EmailSend.routeName);
-                // }, child: const Text("Email Send")),
-                // ElevatedButton(onPressed: ()async{
-                //    Navigator.of(context).pushNamed(HomeScreen.routeName);
-                // }, child: const Text("Home")),
-                // ElevatedButton(onPressed: ()async{
-                //    Navigator.of(context).pushNamed(StripePayment.routeName);
-                // }, child: const Text("Stripe")),
-                // ElevatedButton(onPressed: ()async{
-                //    Navigator.of(context).pushNamed(StripePayment3.routeName);
-                // }, child: const Text("Pay")),
-                // ElevatedButton(onPressed: ()async{
-                //    await FirebaseAuth.instance.signOut();
-                //    Navigator.of(context).pushNamed(LoginScreen.routeName);
-                // }, child: const Text("Log out")),
-              ],
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 80,
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text("Choose Your Language", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)),
+              const SizedBox(height: 50,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Espanol", style: TextStyle(fontSize: 16)),
+                  Radio(
+                      value: "es", groupValue: lang, onChanged: changeLocale),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Portuguese", style: TextStyle(fontSize: 16)),
+                  Radio(
+                      value: "pt", groupValue: lang, onChanged: changeLocale),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Francias", style: TextStyle(fontSize: 16)),
+                  Radio(
+                      value: "fr", groupValue: lang, onChanged: changeLocale),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("English", style: TextStyle(fontSize: 16)),
+                  Radio(
+                      value: "en", groupValue: lang, onChanged: changeLocale),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Italiano", style: TextStyle(fontSize: 16)),
+                  Radio(
+                      value: "it", groupValue: lang, onChanged: changeLocale),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("中文的", style: TextStyle(fontSize: 16)),
+                  Radio(
+                      value: "zh", groupValue: lang, onChanged: changeLocale),
+                ],
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => TranslatedVideo(
+                              videoId: videoId,
+                            )));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),
+                    ),
+                  child: const Text("Next")),
+              // Text("The current language is ${AppLocalizations.of(context)!.language}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              // const SizedBox(height: 80,),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(DetailPage.routeName);
+              // }, child: const Text("Report Screen")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(BaseLineQuiz.routeName);
+              // }, child: const Text("Base Line Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(HealthQuiz.routeName);
+              // }, child: const Text("Health Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(PersonalQuiz.routeName);
+              // }, child: const Text("Personal Growth Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(HomeQuiz.routeName);
+              // }, child: const Text("Home Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(FamilyQuiz.routeName);
+              // }, child: const Text("Family & Friends Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(LoveQuiz.routeName);
+              // }, child: const Text("Love Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(FreeQuiz.routeName);
+              // }, child: const Text("Free Time Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(WorkQuiz.routeName);
+              // }, child: const Text("Work Quiz")),
+              // ElevatedButton(onPressed: (){
+              //   Navigator.of(context).pushNamed(MoneyQuiz.routeName);
+              // }, child: const Text("Money Quiz")),
+              // ElevatedButton(onPressed: ()async{
+              //    await FirebaseAuth.instance.signOut();
+              //    Navigator.of(context).pushNamed(EmailSend.routeName);
+              // }, child: const Text("Email Send")),
+              // ElevatedButton(onPressed: ()async{
+              //    Navigator.of(context).pushNamed(HomeScreen.routeName);
+              // }, child: const Text("Home")),
+              // ElevatedButton(onPressed: ()async{
+              //    Navigator.of(context).pushNamed(StripePayment.routeName);
+              // }, child: const Text("Stripe")),
+              // ElevatedButton(onPressed: ()async{
+              //    Navigator.of(context).pushNamed(StripePayment3.routeName);
+              // }, child: const Text("Pay")),
+              // ElevatedButton(onPressed: ()async{
+              //    await FirebaseAuth.instance.signOut();
+              //    Navigator.of(context).pushNamed(LoginScreen.routeName);
+              // }, child: const Text("Log out")),
+            ],
           ),
         ),
       ),
