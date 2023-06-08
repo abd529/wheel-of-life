@@ -38,7 +38,7 @@ class TranslatedVideo extends StatelessWidget {
                     ),
                     const SizedBox(height: 50,),
                     ElevatedButton(onPressed: (){
-                      Navigator.of(context).pushNamed(SignupScreen.routeName);
+                      Navigator.of(context).pushNamed(HomeScreen.routeName);
                     },
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),

@@ -78,9 +78,7 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
               Align(
                 alignment: Alignment.center,
                 child: Text(Questions[index],textAlign: TextAlign.center ,style: const TextStyle(fontSize: 18),)),
-                Positioned(
-                    bottom: 0,
-                    child:index<=7? Image.asset(images[index], height: size.height/2.3,width: size.width/1):SizedBox(height:20),), 
+                index<=7? Image.asset(images[index], height: size.height/2.3,width: size.width/1):SizedBox(height:20), 
                 const  SizedBox(height: 30,),
               index>7? const SizedBox(height: 20,): NumberPicker(
                 itemCount: 3,

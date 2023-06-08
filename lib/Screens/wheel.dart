@@ -199,8 +199,8 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                         borderRadius: BorderRadius.circular(50)
                      ) ),
                     onPressed: ()async{
-                      //await makePayment(1.99, "");
-                      Navigator.of(context).pushNamed(VerifyEmail.routeName);
+                      await makePayment(1.99, VerifyEmail.routeName);
+                     // Navigator.of(context).pushNamed(VerifyEmail.routeName);
                     }, child: const Text("Get email for \$1.99")),
                   const SizedBox(height: 30),
                   const Text("Get email and get contacted with certified coach", textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
