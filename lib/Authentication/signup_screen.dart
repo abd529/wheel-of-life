@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '/Screens/home_screen.dart';
 import '/Screens/onboard_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,6 +27,7 @@ class _SignupScreenState extends State<SignupScreen> {
   bool obsCheck1 = false;
   bool obsCheck2 = false;
   final RegisterViewModel _registerVM = RegisterViewModel();
+  String errMsg = "";
 
   @override
   void dispose() {
@@ -37,6 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -49,10 +52,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: <Widget>[
                    Column(
                       children: [
-                        SvgPicture.asset(
-                         "assets/logo.svg",
-                         width: 85,
-                         height: 85,
+                        Image.asset(
+                         "assets/logo.png",
+                          width: size.width/1.6,
+                          height: size.height/5,
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),
@@ -150,9 +154,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       setState(() {
                         obsCheck1 =!obsCheck1;
                       });
-                    }, icon: Icon( obsCheck1? Icons.visibility_off : Icons.visibility))
+                    }, icon: Icon( obsCheck1? Icons.visibility : Icons.visibility_off))
                     ),
-                    obscureText: obsCheck1,
+                    obscureText: !obsCheck1,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter a password';
@@ -179,9 +183,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       setState(() {
                         obsCheck2 =!obsCheck2;
                       });
-                    }, icon: Icon( obsCheck2? Icons.visibility_off : Icons.visibility))
+                    }, icon: Icon( obsCheck2? Icons.visibility : Icons.visibility_off))
                     ),
-                    obscureText: obsCheck2,
+                    obscureText: !obsCheck2,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please confirm your password';
@@ -192,7 +196,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 16.0),
+                  Text(errMsg, style: const TextStyle(color: Colors.red)),
+                  const SizedBox(height: 10.0),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                     child: ElevatedButton(
@@ -208,17 +213,21 @@ class _SignupScreenState extends State<SignupScreen> {
                           if (isRegistered) {
                             var userId = FirebaseAuth.instance.currentUser!.uid;
                             await FirebaseFirestore.instance.collection("UsersData").doc(userId).set({"First Name":_fNameController.text.trim(), "Last Name":_lNameController.text.trim(),"Email":_emailController.text.trim()});
-                            Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const Onboard()),
+                            Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const HomeScreen()),
                                 (Route<dynamic> route) => false);
+                         }else{
+                           setState(() {
+                          _isSigningUp = false;  
+                          errMsg = _registerVM.message;
+                          });
                          }
                         }
                       },
-                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-                          shape: RoundedRectangleBorder( //to set border radius to button
-                    borderRadius: BorderRadius.circular(50)
-                              ),
-                      ),
+                      style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),),
                       child: _isSigningUp
                         ? const CircularProgressIndicator()
                         : const Text('Sign Up'),

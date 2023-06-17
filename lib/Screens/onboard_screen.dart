@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:com.example.wheel_of_life/Screens/youtube_screen.dart';
-import 'package:com.example.wheel_of_life/Utilities/youtube_widget.dart';
+import 'package:com.ezeelogix.truenorth/Screens/youtube_screen.dart';
+import 'package:com.ezeelogix.truenorth/Utilities/youtube_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../payment.dart';
@@ -97,6 +97,7 @@ class _OnboardState extends State<Onboard> {
     //   WidgetsBinding.instance.addPostFrameCallback((_) => getInfo());
     //   num++;
     // }
+    Size size = MediaQuery.of(context).size;
     String lang = Localizations.localeOf(context).toString();
     print(lang);
     return Scaffold(
@@ -107,8 +108,8 @@ class _OnboardState extends State<Onboard> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 80,
+              SizedBox(
+                height: size.height/15,
               ),
               const Align(
                 alignment: Alignment.centerLeft,
@@ -170,12 +171,13 @@ class _OnboardState extends State<Onboard> {
                             )));
                   },
                   style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+                      padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
                         shape: RoundedRectangleBorder( //to set border radius to button
                   borderRadius: BorderRadius.circular(50)
                             ),
                     ),
                   child: const Text("Next")),
+                  
               // Text("The current language is ${AppLocalizations.of(context)!.language}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               // const SizedBox(height: 80,),
               // ElevatedButton(onPressed: (){

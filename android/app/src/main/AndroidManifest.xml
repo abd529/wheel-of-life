@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mandeladrawing">
+    package="com.ezeelogix.truenorth">
    <application
-        android:label="Wheel of Life"
+        android:label="True North"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -2,9 +2,9 @@
 
 import 'dart:convert';
 
-import 'package:com.example.wheel_of_life/Screens/coach_filter.dart';
-import 'package:com.example.wheel_of_life/Screens/free_report.dart';
-import 'package:com.example.wheel_of_life/Screens/verify_email.dart';
+import 'package:com.ezeelogix.truenorth/Screens/coach_filter.dart';
+import 'package:com.ezeelogix.truenorth/Screens/free_report.dart';
+import 'package:com.ezeelogix.truenorth/Screens/verify_email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import 'package:graphic/graphic.dart';
@@ -193,25 +193,23 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                   const SizedBox(height: 10),
                   ElevatedButton(
                      style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                            padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
-                              shape: RoundedRectangleBorder( //to set border radius to button
-                        borderRadius: BorderRadius.circular(50)
-                     ) ),
+                      padding: EdgeInsets.fromLTRB(size.width/6, size.height/40, size.width/6, size.height/40),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),),
                     onPressed: ()async{
-                      await makePayment(1.99, VerifyEmail.routeName);
-                     // Navigator.of(context).pushNamed(VerifyEmail.routeName);
+                      //await makePayment(1.99, VerifyEmail.routeName);
+                      Navigator.of(context).pushNamed(VerifyEmail.routeName);
                     }, child: const Text("Get email for \$1.99")),
                   const SizedBox(height: 30),
                   const Text("Get email and get contacted with certified coach", textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
                   const SizedBox(height: 10),
                   ElevatedButton(
                      style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                            padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
-                              shape: RoundedRectangleBorder( //to set border radius to button
-                        borderRadius: BorderRadius.circular(50)
-                     ) ),
+                      padding: EdgeInsets.fromLTRB(size.width/6, size.height/40, size.width/6, size.height/40),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),),
                     onPressed: ()async{
                       //await makePayment(2.99,"");
                       Navigator.of(context).pushNamed(CoachFilter.routeName);
@@ -221,11 +219,10 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                   const SizedBox(height: 10),
                   ElevatedButton(
                      style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                            padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
-                              shape: RoundedRectangleBorder( //to set border radius to button
-                        borderRadius: BorderRadius.circular(50)
-                     ) ),
+                      padding: EdgeInsets.fromLTRB(size.width/6, size.height/40, size.width/6, size.height/40),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),),
                     onPressed: (){
                       Navigator.of(context).pushNamed(FreeReport.routeName);
                     }, child: const Text("Send email to me and my coach ")),  

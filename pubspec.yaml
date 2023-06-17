@@ -1,4 +1,4 @@
-name: com.example.wheel_of_life
+name: com.ezeelogix.truenorth
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -53,6 +53,9 @@ dependencies:
   #flutter_stripe: ^9.2.0
   mailer: ^6.0.1
   flutter_stripe: ^9.2.0
+  responsive_framework: ^1.0.0
+  easy_splash_screen: ^1.0.4
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:

@@ -25,6 +25,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -35,11 +36,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           BackButton(),
-                          SvgPicture.asset(
-                           "assets/logo.svg",
-                           width: 85,
-                           height: 85,
-                          ),
+                          Image.asset(
+                         "assets/logo.png",
+                          width: size.width/1.6,
+                          height: size.height/5,
+                          fit: BoxFit.cover,
+                        ),
                           const SizedBox(width: 50,)
                         ],
                       ),
@@ -90,11 +92,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                            }
                         },
                          style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.fromLTRB(0,20,0,20),
-                            shape: RoundedRectangleBorder( //to set border radius to button
-                      borderRadius: BorderRadius.circular(50)
-                                ),
-                        ),
+                      padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),),
                         child: _emailSent
                           ? const CircularProgressIndicator()
                           : const Text('Reset Password'),

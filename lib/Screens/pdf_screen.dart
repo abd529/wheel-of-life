@@ -23,7 +23,7 @@ class PDFScreen extends StatelessWidget {
   Future<void> createPdf(BuildContext context) async {
     Size size = MediaQuery.of(context).size;
     // Future<Uint8List> pdfImage()async{
-    final ByteData bytes = await rootBundle.load('assets/logo1.png');
+    final ByteData bytes = await rootBundle.load('assets/logo.png');
     final Uint8List byteList = bytes.buffer.asUint8List();
     //   return byteList;
     // }
@@ -2033,8 +2033,8 @@ class PDFScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      "assets/logo.svg",
+                    Image.asset(
+                      "assets/logo.png",
                       width: 85,
                       height: 85,
                     ),

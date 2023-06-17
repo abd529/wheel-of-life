@@ -1,10 +1,10 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
-project(com.example.wheel_of_life LANGUAGES CXX)
+project(com.ezeelogix.truenorth LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "com.example.wheel_of_life")
+set(BINARY_NAME "com.ezeelogix.truenorth")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

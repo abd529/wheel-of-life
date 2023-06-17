@@ -1,4 +1,4 @@
-# com.example.wheel_of_life
+# com.ezeelogix.truenorth
 
 A new Flutter project.
 

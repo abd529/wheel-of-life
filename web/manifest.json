@@ -1,6 +1,6 @@
 {
-    "name": "com.example.wheel_of_life",
-    "short_name": "com.example.wheel_of_life",
+    "name": "com.ezeelogix.truenorth",
+    "short_name": "com.ezeelogix.truenorth",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

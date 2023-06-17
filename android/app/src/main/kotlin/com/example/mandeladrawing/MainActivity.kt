@@ -1,4 +1,4 @@
-package com.example.mandeladrawing
+package com.ezeelogix.truenorth
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity

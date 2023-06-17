@@ -253,7 +253,6 @@ class _DetailPageState extends State<DetailPage> {
               builder: (context) => PDFScreen(),
             ),
           );
-          // rootBundle.
         },
         child: const Icon(Icons.picture_as_pdf),
       ),
@@ -266,14 +265,13 @@ class _DetailPageState extends State<DetailPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const BackButton(),
-                  Center(
-                    child: SvgPicture.asset(
-                                 "assets/logo.svg",
-                                 width: 85,
-                                 height: 85,
-                                ),
-                  ),
-                  SizedBox(width: size.width/6,)
+                  Image.asset(
+                         "assets/logo.png",
+                          width: size.width/1.8,
+                          height: size.height/8,
+                          fit: BoxFit.cover,
+                        ),
+                  SizedBox(width: size.width/10,)
                 ],
               ),
               Padding(
@@ -1130,31 +1128,40 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 ),
-              ElevatedButton(onPressed: () async {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (_) => WheelOfLife(adjustData: [
-          {"type": "BaseLine", "index": "Health", "value": baseQ1},
-          {"type": "BaseLine", "index": "Personal Growth", "value": baseQ2},
-          {"type": "BaseLine", "index": "Home", "value": baseQ3},
-          {"type": "BaseLine", "index": "Family & Friends", "value": baseQ4},
-          {"type": "BaseLine", "index": "Love", "value": baseQ5},
-          {"type": "BaseLine", "index": "Free Time", "value": baseQ6},
-          {"type": "BaseLine", "index": "Work", "value": baseQ7},
-          {"type": "BaseLine", "index": "Money", "value": baseQ8},
-              
-          {"type": "Results", "index": "Health", "value": healthAvg.toInt()},
-          {"type": "Results", "index": "Personal Growth", "value": personalAvg.toInt()},
-          {"type": "Results", "index": "Home", "value": homeAvg.toInt()},
-          {"type": "Results", "index": "Family & Friends", "value": famAvg.toInt()},
-          {"type": "Results", "index": "Love", "value": loveAvg.toInt()},
-          {"type": "Results", "index": "Free Time", "value": freeAvg.toInt()},
-          {"type": "Results", "index": "Work", "value": workAvg.toInt()},
-          {"type": "Results", "index": "Money", "value": moneyAvg.toInt()},
-              ]),
-                                      ));
-                                }, child: const Text("See Wheel of life"))             
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: ElevatedButton(onPressed: () async {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => WheelOfLife(adjustData: [
+                        {"type": "BaseLine", "index": "Health", "value": baseQ1},
+                        {"type": "BaseLine", "index": "Personal Growth", "value": baseQ2},
+                        {"type": "BaseLine", "index": "Home", "value": baseQ3},
+                        {"type": "BaseLine", "index": "Family & Friends", "value": baseQ4},
+                        {"type": "BaseLine", "index": "Love", "value": baseQ5},
+                        {"type": "BaseLine", "index": "Free Time", "value": baseQ6},
+                        {"type": "BaseLine", "index": "Work", "value": baseQ7},
+                        {"type": "BaseLine", "index": "Money", "value": baseQ8},
+                
+                        {"type": "Results", "index": "Health", "value": healthAvg.toInt()},
+                        {"type": "Results", "index": "Personal Growth", "value": personalAvg.toInt()},
+                        {"type": "Results", "index": "Home", "value": homeAvg.toInt()},
+                        {"type": "Results", "index": "Family & Friends", "value": famAvg.toInt()},
+                        {"type": "Results", "index": "Love", "value": loveAvg.toInt()},
+                        {"type": "Results", "index": "Free Time", "value": freeAvg.toInt()},
+                        {"type": "Results", "index": "Work", "value": workAvg.toInt()},
+                        {"type": "Results", "index": "Money", "value": moneyAvg.toInt()},
+                ]),
+                                        ));
+                                  }, 
+                                  style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
+                          shape: RoundedRectangleBorder( //to set border radius to button
+                    borderRadius: BorderRadius.circular(50)
+                              ),),
+                                  child: const Text("See Wheel of life")),
+              )             
              ],
           ),
         ),

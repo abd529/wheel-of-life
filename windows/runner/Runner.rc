@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "com.example.wheel_of_life" "\0"
+            VALUE "FileDescription", "com.ezeelogix.truenorth" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "com.example.wheel_of_life" "\0"
+            VALUE "InternalName", "com.ezeelogix.truenorth" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "com.example.wheel_of_life.exe" "\0"
-            VALUE "ProductName", "com.example.wheel_of_life" "\0"
+            VALUE "OriginalFilename", "com.ezeelogix.truenorth.exe" "\0"
+            VALUE "ProductName", "com.ezeelogix.truenorth" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

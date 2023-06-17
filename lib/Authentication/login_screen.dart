@@ -1,11 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../Screens/home_screen.dart';
 import '/Authentication/forgot_password.dart';
 import '/Authentication/signup_screen.dart';
-import '/Screens/onboard_screen.dart';
 
 import '../Models/login_VM.dart';
 
@@ -21,7 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoggingIn = false;
-    final LoginViewModel _loginVM = LoginViewModel();
+  final LoginViewModel _loginVM = LoginViewModel();
+  String errMsg = "";
 
   @override
   void dispose() {
@@ -32,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -44,10 +44,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: <Widget>[
                     Column(
                       children: [
-                        SvgPicture.asset(
-                         "assets/logo.svg",
-                         width: 85,
-                         height: 85,
+                        Image.asset(
+                         "assets/logo.png",
+                          width: size.width/1.6,
+                          height: size.height/5,
+                          fit: BoxFit.cover,
                         ),
                       ],
                     ),
@@ -106,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
+                  Text(errMsg, style: const TextStyle(color: Colors.red)),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: TextButton(child: Text("Forgot Password?"),onPressed: (){
@@ -123,15 +125,19 @@ class _LoginScreenState extends State<LoginScreen> {
                            bool isLoggedIn = await _loginVM.login(_emailController.text, _passwordController.text);
                            if(isLoggedIn){
                              Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const HomeScreen()),(Route<dynamic> route) => false);
-                           }
+                           }else{
+                           setState(() {
+                          _isLoggingIn = false;  
+                          errMsg = _loginVM.message;
+                          });
+                         }
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
-                          shape: RoundedRectangleBorder( //to set border radius to button
-                    borderRadius: BorderRadius.circular(50)
-                              ),
-                      ),
+                      padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),),
                       child: _isLoggingIn
                         ? const CircularProgressIndicator()
                         : const Text('Sign In'),  

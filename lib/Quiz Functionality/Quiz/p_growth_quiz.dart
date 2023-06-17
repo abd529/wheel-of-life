@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -50,114 +52,132 @@ class _PersonalQuizState extends State<PersonalQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Container(
-            width: double.infinity,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const BackButton(),
-                          Center(
-                            child: SvgPicture.asset(
-                              "assets/logo.svg",
-                              width: 85,
-                              height: 85,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 50,
-                          )
-                        ]),
-                  ),
-                  const SizedBox(height: 50),
-                  Container(
-                    color: Colors.purple.withOpacity(0.3),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Section",
-                          style: TextStyle(fontSize: 18),
+                        const BackButton(),
+                        Image.asset(
+                       "assets/logo.png",
+                        width: size.width/1.8,
+                        height: size.height/8,
+                        fit: BoxFit.cover,
+                      ),
+                        const SizedBox(
+                          width: 50,
                         )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Personal Growth",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10),
+                      ]),
+                ),
+                  ],
+                ),
+                //                const SizedBox(height: 50),
+                Column(children: [
                   Container(
-                    color: Colors.purple.withOpacity(0.3),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Subject: ",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        index <= 7
-                            ? Text(
-                                topic[index],
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              )
-                            : const SizedBox(
-                                height: 20,
-                              )
-                      ],
-                    ),
+                  color: Colors.deepPurple.withOpacity(0.3),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Section",
+                        style: TextStyle(fontSize: 18),
+                      )
+                    ],
                   ),
-                  const SizedBox(
-                    height: 50,
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Personal Growth",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  color: Colors.deepPurple.withOpacity(0.3),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Subject: ",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      index <= 7
+                          ? Text(
+                              topic[index],
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            )
+                          : const SizedBox(
+                              height: 20,
+                            )
+                    ],
                   ),
-                  Align(
+                ),
+                ],),
+                
+                // const SizedBox(
+                //   height: 50,
+                // ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
                       alignment: Alignment.center,
                       child: Text(
                         Questions[index],
                         textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 18),
                       )),
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  index > 7
-                      ? const SizedBox(
-                          height: 20,
-                        )
-                      : NumberPicker(
-                          itemCount: 3,
-                          selectedTextStyle: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textStyle: const TextStyle(
-                              fontSize: 18, color: Colors.deepPurple),
-                          axis: Axis.horizontal,
-                          decoration: BoxDecoration(
-                              border: Border.all(),
-                              shape: BoxShape.circle,
-                              color: Colors.purple.withOpacity(0.4)),
-                          value: _currentValue,
-                          minValue: 1,
-                          maxValue: 10,
-                          onChanged: (value) {
-                            setState(() => _currentValue = value);
-                          },
+                    ),
+                  ],
+                ),
+                // const SizedBox(
+                //   height: 80,
+                // ),
+                Column(
+                  children: [
+                    index > 7
+                    ? const SizedBox(
+                        height: 20,
+                      )
+                    : NumberPicker(
+                        itemCount: 3,
+                        selectedTextStyle: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Row(
+                        textStyle: const TextStyle(
+                            fontSize: 18, color: Colors.deepPurple),
+                        axis: Axis.horizontal,
+                        decoration: BoxDecoration(
+                            border: Border.all(),
+                            shape: BoxShape.circle,
+                            color: Colors.deepPurple.withOpacity(0.4)),
+                        value: _currentValue,
+                        minValue: 1,
+                        maxValue: 10,
+                        onChanged: (value) {
+                          setState(() => _currentValue = value);
+                        },
+                      ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      Row(
                     mainAxisAlignment: index <= 7
                         ? MainAxisAlignment.spaceAround
                         : MainAxisAlignment.center,
@@ -170,19 +190,17 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(40, 20, 40, 20),
+                                  padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                                   shape: RoundedRectangleBorder(
                                       //to set border radius to button
                                       borderRadius: BorderRadius.circular(50))),
                               child: const Text("Previous"))
-                          : SizedBox(
+                          : const SizedBox(
                               height: 10,
                             ),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              padding:
-                                  const EdgeInsets.fromLTRB(50, 20, 50, 20),
+                              padding:EdgeInsets.fromLTRB(size.width/6.5, size.height/40, size.width/6.5, size.height/40),
                               shape: RoundedRectangleBorder(
                                   //to set border radius to button
                                   borderRadius: BorderRadius.circular(50))),
@@ -294,22 +312,23 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                             });
                           },
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.purple.withOpacity(0.3),
-                              padding:
-                                  const EdgeInsets.fromLTRB(40, 20, 40, 20),
+                              backgroundColor: Colors.deepPurple.withOpacity(0.3),
+                              padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                               shape: RoundedRectangleBorder(
                                   //to set border radius to button
                                   borderRadius: BorderRadius.circular(50))),
                           child: const Text(
                             "Skip",
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(color: Colors.white),
                           ),
                         )
-                      : SizedBox(
+                      : const SizedBox(
                           height: 20,
                         )
-                ]),
-          ),
+                    ],
+                  ),
+                )
+              ]),
         ),
       ),
     );

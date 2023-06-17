@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:com.example.wheel_of_life/Authentication/signup_screen.dart';
-import 'package:com.example.wheel_of_life/Screens/home_screen.dart';
+import 'package:com.ezeelogix.truenorth/Authentication/signup_screen.dart';
+import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -13,6 +13,7 @@ class TranslatedVideo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     final YoutubePlayerController controller = YoutubePlayerController(
       initialVideoId: videoId,
       flags: const YoutubePlayerFlags(
@@ -41,11 +42,10 @@ class TranslatedVideo extends StatelessWidget {
                       Navigator.of(context).pushNamed(SignupScreen.routeName);
                     },
                     style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
-                          shape: RoundedRectangleBorder( //to set border radius to button
-                    borderRadius: BorderRadius.circular(50)
-                              ),
-                      ),
+                      padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
+                        shape: RoundedRectangleBorder( //to set border radius to button
+                  borderRadius: BorderRadius.circular(50)
+                            ),),
                      child: const Text("Next"))
         ],
       ),

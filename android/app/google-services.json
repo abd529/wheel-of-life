@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "818184051603",
-    "project_id": "wheel-of-life-aed14",
-    "storage_bucket": "wheel-of-life-aed14.appspot.com"
+    "project_number": "935100860958",
+    "project_id": "true-north-e8232",
+    "storage_bucket": "true-north-e8232.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:818184051603:android:187532b6c06348b7966666",
+        "mobilesdk_app_id": "1:935100860958:android:a6c1a0bc614f091fd83c0f",
         "android_client_info": {
-          "package_name": "com.example.wheel_of_life"
+          "package_name": "com.ezeelogix.truenorth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "818184051603-i6d77jopecedr6668nbuc66vvrbptbkm.apps.googleusercontent.com",
+          "client_id": "935100860958-5thkbgsojuc4tvtrc1jpcdci9enl4roc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAwLZxHYx-baCNzcoZpEn5I62a7KjdHUXs"
+          "current_key": "AIzaSyCkeptdkvqPWMyLxYaDG2qrCi_y2qtldQU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "818184051603-i6d77jopecedr6668nbuc66vvrbptbkm.apps.googleusercontent.com",
+              "client_id": "935100860958-5thkbgsojuc4tvtrc1jpcdci9enl4roc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "935100860958-4r5s1i7a3vafv8tc9maso8fmr6lqqtvu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ezeelogix.truenorth"
+              }
             }
           ]
         }

@@ -50,36 +50,41 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children:[
-              Padding(
-                padding: const EdgeInsets.all(8),
+              Column(children: [
+                Padding(
+                padding: EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                  const BackButton(),
-                   Center(
-                      child: 
-                      SvgPicture.asset(
-                                   "assets/logo.svg",
-                                   width: size.width/5,
-                                   height:size.width/5,
-                                  ),
-                    ),
-                    const SizedBox(width: 50,)
+                  BackButton(),
+                  //index<=7? Text(topic[index], style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),):const SizedBox(height: 20,),
+                   Image.asset(
+                         "assets/logo.png",
+                          width: size.width/1.8,
+                          height: size.height/8,
+                          fit: BoxFit.cover,
+                        ),
+                    SizedBox(width: size.width/8,)
                 ]),
                 ),
-                const SizedBox(height:20),
-               index<=7? Text(topic[index], style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),):SizedBox(height: 20,),
-              Align(
-                alignment: Alignment.center,
-                child: Text(Questions[index],textAlign: TextAlign.center ,style: const TextStyle(fontSize: 18),)),
-                index<=7? Image.asset(images[index], height: size.height/2.3,width: size.width/1):SizedBox(height:20), 
-                const  SizedBox(height: 30,),
+              ],),
+              Column(
+                children: [
+                  index<=7? Text(topic[index], style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),):const SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(Questions[index],textAlign: TextAlign.center ,style: const TextStyle(fontSize: 18),)),
+              ),
+                index<=7? Image.asset(images[index], height: size.height/3.5,width: size.width/1):const SizedBox(height:20), 
+                SizedBox(height: size.height/70,),
               index>7? const SizedBox(height: 20,): NumberPicker(
                 itemCount: 3,
               selectedTextStyle: const TextStyle(fontSize: 24,fontWeight: FontWeight.bold, ),
@@ -88,104 +93,113 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
               decoration: BoxDecoration(
                 border: Border.all(),
                 shape: BoxShape.circle,
-                color: Colors.purple.withOpacity(0.4)
+                color: Colors.deepPurple.withOpacity(0.4)
               ),
               value:_currentValue,
               minValue: 1,
               maxValue: 10,
               onChanged: (value) { setState(()=> _currentValue = value);},),
-              const SizedBox(height: 40,),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.fromLTRB(85, 20, 85, 20),
-                          shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)
-                 ) ),
-                onPressed: (){
-                if(index<=7){
-                  if(index==0){
-                    setState(() {
-                    BaseAns1 = _currentValue;
-                    print("the ans to Q1 is $BaseAns1");
-                    _currentValue = 5;
-                    index++; 
-                    });
-                  }
-                  else if(index==1){
-                    setState(() {
-                    BaseAns2 = _currentValue;
-                    print("the ans to Q2 is $BaseAns2");
-                    _currentValue = 5;
-                    index++; 
-                    });
-                  }
-                  else if(index==2){
-                    setState(() {
-                    BaseAns3 = _currentValue;
-                    print("the ans to Q3 is $BaseAns3");
-                    _currentValue = 5;
-                    index++;
-                      
-                    }); 
-                  }
-                  else if(index==3){
-                    setState(() {
-                    BaseAns4 = _currentValue;
-                    print("the ans to Q4 is $BaseAns4");
-                    _currentValue = 5;
-                    index++; 
-                    });
-                  }
-                  else if(index==4){
-                    setState(() {
-                    BaseAns5 = _currentValue;
-                    print("the ans to Q5 is $BaseAns5");
-                    _currentValue = 5;
-                    index++; 
-                    });
-                  }
-                  else if(index==5){
-                    setState(() {BaseAns6 = _currentValue;
-                    print("the ans to Q6 is $BaseAns6");
-                    _currentValue = 5;
-                    index++;
-                    });
+              SizedBox(height: size.height/50,),
+                ],
+              ),
+              Column(
+                children: [
+                  Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(size.width/4, size.height/50, size.width/4, size.height/50),
+                            shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)
+                                ),),
+                  onPressed: (){
+                  if(index<=7){
+                    if(index==0){
+                      setState(() {
+                      BaseAns1 = _currentValue;
+                      print("the ans to Q1 is $BaseAns1");
+                      _currentValue = 5;
+                      index++; 
+                      });
                     }
-                  else if(index==6){
-                    setState(() {
-                    BaseAns7 = _currentValue;
-                    print("the ans to Q7 is $BaseAns7");
-                    _currentValue = 5;
-                    index++; 
-                    });
+                    else if(index==1){
+                      setState(() {
+                      BaseAns2 = _currentValue;
+                      print("the ans to Q2 is $BaseAns2");
+                      _currentValue = 5;
+                      index++; 
+                      });
+                    }
+                    else if(index==2){
+                      setState(() {
+                      BaseAns3 = _currentValue;
+                      print("the ans to Q3 is $BaseAns3");
+                      _currentValue = 5;
+                      index++;
+                        
+                      }); 
+                    }
+                    else if(index==3){
+                      setState(() {
+                      BaseAns4 = _currentValue;
+                      print("the ans to Q4 is $BaseAns4");
+                      _currentValue = 5;
+                      index++; 
+                      });
+                    }
+                    else if(index==4){
+                      setState(() {
+                      BaseAns5 = _currentValue;
+                      print("the ans to Q5 is $BaseAns5");
+                      _currentValue = 5;
+                      index++; 
+                      });
+                    }
+                    else if(index==5){
+                      setState(() {BaseAns6 = _currentValue;
+                      print("the ans to Q6 is $BaseAns6");
+                      _currentValue = 5;
+                      index++;
+                      });
+                      }
+                    else if(index==6){
+                      setState(() {
+                      BaseAns7 = _currentValue;
+                      print("the ans to Q7 is $BaseAns7");
+                      _currentValue = 5;
+                      index++; 
+                      });
+                    }
+                    else if(index==7){
+                      setState(() {
+                      BaseAns8 = _currentValue;
+                      print("the ans to Q8 is $BaseAns8");
+                      _currentValue = 5;
+                      index++; 
+                      });
+                    }
                   }
-                  else if(index==7){
-                    setState(() {
-                    BaseAns8 = _currentValue;
-                    print("the ans to Q8 is $BaseAns8");
-                    _currentValue = 5;
-                    index++; 
-                    });
+                  else{
+                    FirebaseFirestore.instance
+                          .collection("User Answers") 
+                          .doc(userId).collection("Base Line").doc(userId).set({
+                        "Q1": BaseAns1,
+                        "Q2": BaseAns2,
+                        "Q3": BaseAns3,
+                        "Q4": BaseAns4,
+                        "Q5": BaseAns5,
+                        "Q6": BaseAns6,
+                        "Q7": BaseAns7,
+                        "Q8": BaseAns8,
+                      });
+                    print("Data Stored and UserId is $userId");
+                    Navigator.of(context).pushNamed(HealthQuiz.routeName);
+                    
                   }
-                }
-                else{
-                  FirebaseFirestore.instance
-            .collection("User Answers") 
-            .doc(userId).collection("Base Line").doc(userId).set({
-          "Q1": BaseAns1,
-          "Q2": BaseAns2,
-          "Q3": BaseAns3,
-          "Q4": BaseAns4,
-          "Q5": BaseAns5,
-          "Q6": BaseAns6,
-          "Q7": BaseAns7,
-          "Q8": BaseAns8,
-        });
-                  print("Data Stored and UserId is $userId");
-                  Navigator.of(context).pushNamed(HealthQuiz.routeName);
-      
-                }
-              }, child:  index<=7? const Text("Next"):const Text("Move to Detailed Questions", textAlign: TextAlign.center,) )
+                }, child:  index<=7? const Text("Next"):const Text("Move to Detailed Questions", textAlign: TextAlign.center,) ),
+              )
+                ],
+              )
               
               ]),
         ),

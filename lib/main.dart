@@ -1,9 +1,10 @@
-import 'package:com.example.wheel_of_life/Authentication/signup_screen.dart';
-import 'package:com.example.wheel_of_life/Screens/lanugage_screen.dart';
-import 'package:com.example.wheel_of_life/Screens/verify_email.dart';
+import './Authentication/signup_screen.dart';
+import './Screens/lanugage_screen.dart';
+import './Screens/verify_email.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '/Authentication/forgot_password.dart';
@@ -27,7 +28,6 @@ import 'Screens/email.dart';
 import 'Screens/free_report.dart';
 import 'Screens/onboard_screen.dart';
 import 'Screens/report.dart';
-import 'Screens/test_pay.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'Screens/splash_screen.dart';
@@ -64,10 +64,19 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+       builder: (context, child) => ResponsiveBreakpoints.builder(
+        child: child!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 800, name: TABLET),
+          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+        ],
+      ),
+      title: "True North",
       theme: ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.deepPurple,
       ),
       home: FirebaseAuth.instance.currentUser != null
           ? const HomeScreen()
