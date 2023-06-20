@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '../Utilities/table_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,10 +9,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:pdf/widgets.dart' as pdfWidgets;
 
+
 class PDFScreen extends StatelessWidget {
   final String name = "abd";
-  PDFScreen({super.key});
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+  final String userId;
+  PDFScreen({super.key, required this.userId});
+  
   List topics = const ['Topic 1', 'Topic 2', 'Topic 3'];
   List questions = const [
     'Question 1',
@@ -20,7 +23,7 @@ class PDFScreen extends StatelessWidget {
   ]; // Replace with your questions
   List answers = const ['Answer 1', 'Answer 2', 'Answer 3'];
 
-  Future<void> createPdf(BuildContext context) async {
+  Future<void> createPdf(String uid,BuildContext context) async {
     Size size = MediaQuery.of(context).size;
     // Future<Uint8List> pdfImage()async{
     final ByteData bytes = await rootBundle.load('assets/logo.png');
@@ -310,12 +313,12 @@ class PDFScreen extends StatelessWidget {
                             children: [
                               pdfWidgets.Text(
                                 "Mood",
-                                style: pdfWidgets.TextStyle(),
+                                style: const pdfWidgets.TextStyle(),
                               ),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
                                 "Is there anything that alters my psychological state?",
-                                style: pdfWidgets.TextStyle(),
+                                style: const pdfWidgets.TextStyle(),
                                 softWrap: true,
                                 textAlign: pdfWidgets.TextAlign.center,
                               )),
@@ -1999,13 +2002,13 @@ class PDFScreen extends StatelessWidget {
               ),
             ]));
     final pdfBytes = await pdf.save();
-    uploadPdfToFirebaseStorage(userId, pdfBytes);
+    uploadPdfToFirebaseStorage(uid, pdfBytes);
     // Save pdfBytes to Firebase Cloud Storage
   }
 
   Future<void> uploadPdfToFirebaseStorage(
       String fileName, List<int> pdfBytes) async {
-    final ref = FirebaseStorage.instance.ref().child(userId);
+    final ref = FirebaseStorage.instance.ref().child(fileName);
     await ref.putData(Uint8List.fromList(pdfBytes));
     // PDF file is now saved to Firebase Cloud Storage
   }
@@ -2024,7 +2027,7 @@ class PDFScreen extends StatelessWidget {
                   Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 ElevatedButton(
                     onPressed: () {
-                      createPdf(context);
+                      createPdf(userId,context);
                     },
                     child: const Text("Generate PDF")),
                 ElevatedButton(
@@ -2041,7 +2044,7 @@ class PDFScreen extends StatelessWidget {
                     const SizedBox(
                       width: 20,
                     ),
-                    Column(
+                    const Column(
                       children: [
                         Text(
                           "True North",
@@ -2059,7 +2062,7 @@ class PDFScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
+                const Row(
                   children: [
                     Text(
                       "Name: ",
@@ -2072,7 +2075,7 @@ class PDFScreen extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                Column(
+                const Column(
                   children: [
                     Row(
                       children: [
@@ -2229,7 +2232,7 @@ class PDFScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -2246,7 +2249,7 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -2270,7 +2273,7 @@ class PDFScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
@@ -2295,7 +2298,7 @@ class PDFScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
@@ -2320,7 +2323,7 @@ class PDFScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
@@ -2345,7 +2348,7 @@ class PDFScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
@@ -2371,7 +2374,7 @@ class PDFScreen extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 10),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(

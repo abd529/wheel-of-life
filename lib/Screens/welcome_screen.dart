@@ -44,7 +44,7 @@ class _WelcomeState extends State<Welcome> {
                          "assets/logo.png",
                           width: size.width/1.8,
                           height: size.height/8,
-                          fit: BoxFit.cover,
+                          //fit: BoxFit.cover,
                         ),
             ),
             Expanded(

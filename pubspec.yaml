@@ -56,6 +56,9 @@ dependencies:
   responsive_framework: ^1.0.0
   easy_splash_screen: ^1.0.4
   url_launcher: ^6.1.11
+  uuid: ^3.0.4
+  provider: ^6.0.5
+  blur: ^3.1.0
 
 dev_dependencies:
   flutter_test:

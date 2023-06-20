@@ -2,8 +2,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:responsive_framework/responsive_breakpoints.dart';
 import '/Authentication/login_screen.dart';
 import '/Quiz%20Functionality/Quiz/baseline_quiz.dart';
 import '../Screens/lanugage_screen.dart';
@@ -11,7 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "home-screen";
-  const HomeScreen({super.key});
+  final String uid;
+  const HomeScreen({super.key, required this.uid});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -85,77 +84,68 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //padding: const EdgeInsets.all(0),
-          children: [
-            Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: size.height / 5,
-                  decoration: const BoxDecoration(
-                    color: Colors.deepPurple,
-                  ), //BoxDecoration
-                  child: Image.asset(
-                    "assets/logo.png",
-                    width: size.width / 1.8,
-                    height: size.height / 8,
-                    fit: BoxFit.contain,
+       drawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //padding: const EdgeInsets.all(0),
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: size.height/5,
+                    decoration: const BoxDecoration(
+                  color: Colors.deepPurple,
+                ), //BoxDecoration
+                child: Image.asset(
+                           "assets/logo.png",
+                            width: size.width/1.8,
+                            height: size.height/8,
+                           // fit: BoxFit.contain,
+                          ),
                   ),
+              ListTile(
+                leading: const Icon(Icons.language),
+                title: const Text(' Language'),
+                onTap: () {
+                  Navigator.of(context).pushNamed(LanguageScreen.routeName);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text('LogOut'),
+                onTap: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => LoginScreen(),
+                      ),
+                      (Route<dynamic> route) => false);
+                },
+              ),
+                ],
+              ),
+              
+            Column(children: [
+              TextButton(onPressed: (){
+                launchUrl(url);
+              }, child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Powered by ", style: TextStyle(color: Colors.grey),),
+                    Text("EzeeLogix", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),),
+                  ],
                 ),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: const Text(' Language'),
-                  onTap: () {
-                    Navigator.of(context).pushNamed(LanguageScreen.routeName);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.logout),
-                  title: const Text('LogOut'),
-                  onTap: () async {
-                    await FirebaseAuth.instance.signOut();
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => LoginScreen(),
-                        ),
-                        (Route<dynamic> route) => false);
-                  },
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                TextButton(
-                  onPressed: () {
-                    launchUrl(url);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Powered by ",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        Text(
-                          "EzeeLogix",
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            )
-          ],
+              ),)
+            ],)          
+            ],
+          ),
         ),
+
       ),
       body: SafeArea(
           child: SizedBox(
@@ -194,11 +184,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "assets/logo.png",
-                        width: size.width / 1.8,
-                        height: size.height / 8,
-                        fit: BoxFit.cover,
-                      ),
+                         "assets/logo.png",
+                          width: size.width/1.8,
+                          height: size.height/8,
+                          //fit: BoxFit.cover,
+                        ),
                     ],
                   ),
                   //SizedBox(height: size.height/10,),
@@ -256,6 +246,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           textAlign: TextAlign.justify,
                         ),
                       ),
+                      // ElevatedButton(onPressed: (){
+                      
+                      //   print(widget.uid);
+                      // }, child: const Text("uid"))
                       //SizedBox(height: size.height/30,),
                     ],
                   ),
@@ -266,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(BaseLineQuiz.routeName);
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => BaseLineQuiz(userId: widget.uid),));
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.fromLTRB(size.width / 4,

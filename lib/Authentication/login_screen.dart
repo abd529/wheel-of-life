@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../Screens/home_screen.dart';
 import '/Authentication/forgot_password.dart';
@@ -124,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                            bool isLoggedIn = await _loginVM.login(_emailController.text, _passwordController.text);
                            if(isLoggedIn){
-                             Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const HomeScreen()),(Route<dynamic> route) => false);
+                             Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const SplashScreen()),(Route<dynamic> route) => false);
                            }else{
                            setState(() {
                           _isLoggingIn = false;  

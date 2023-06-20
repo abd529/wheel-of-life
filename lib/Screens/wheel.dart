@@ -7,6 +7,7 @@ import 'package:com.ezeelogix.truenorth/Screens/free_report.dart';
 import 'package:com.ezeelogix.truenorth/Screens/verify_email.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
+import 'package:blur/blur.dart';
 import 'package:graphic/graphic.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -130,70 +131,78 @@ class _WheelOfLifeState extends State<WheelOfLife> {
               child: Column(
                 children: [
                   const Text("Your Wheel of life", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                  Card(
-                    child: Image.asset(
-                         "assets/dummy_graph.jpg",
-                          width: size.width/1.8,
-                          height: size.height/8,
-                          fit: BoxFit.cover,
-                        ), 
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     Container(
-                    //   margin: const EdgeInsets.only(top: 10),
-                    //   width: size.width-30,
-                    //   height: 300,
-                    //   child:
-                    //    Chart(
-                    //     data: widget.adjustData,
-                    //     variables: {
-                    //       'index': Variable(
-                    //         accessor: (Map map) => map['index'].toString(),
-                    //       ),
-                    //       'type': Variable(
-                    //         accessor: (Map map) => map['type'] as String,
-                    //       ),
-                    //       'value': Variable(
-                    //         accessor: (Map map) => map['value'] as num,
-                    //       ),
-                    //     },
-                    //     marks: [
-                    //       LineMark(
-                    //         position:
-                    //             Varset('index') * Varset('value') / Varset('type'),
-                    //         shape: ShapeEncode(value: BasicLineShape(loop: true)),
-                    //         color: ColorEncode(
-                    //             variable: 'type', values: Defaults.colors10),
-                    //       )
-                    //     ],
-                    //     coord: PolarCoord(),
-                    //     axes: [
-                    //       Defaults.circularAxis,
-                    //       Defaults.radialAxis,
-                    //     ],
-                    //     selections: {
-                    //       'touchMove': PointSelection(
-                    //         on: {
-                    //           GestureType.scaleUpdate,
-                    //           GestureType.tapDown,
-                    //           GestureType.longPressMoveUpdate
-                    //         },
-                    //         dim: Dim.x,
-                    //         variable: 'index',
-                    //       )
-                    //     },
-                    //     tooltip: TooltipGuide(
-                    //       anchor: (_) => Offset.zero,
-                    //       align: Alignment.bottomRight,
-                    //       multiTuples: true,
-                    //       variables: ['type', 'value'],
-                    //     ),
-                    //     crosshair: CrosshairGuide(followPointer: [false, true]),
-                    //   ),
-                    // ),
-                    //   ],
-                    // ),
+                  SizedBox(
+                    width: 400,
+                    height: 300,
+                    child: Card(
+                      child: 
+                      Image.asset(
+                           "assets/dummy_graph.jpg",
+                            width: size.width/1.8,
+                            height: size.height/8,
+                            //fit: BoxFit.cover,
+                          ), 
+                      // Blur(
+                      //   blur: 5,
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       Container(
+                      //     margin: const EdgeInsets.only(top: 10),
+                      //     width: size.width-30,
+                      //     height: 300,
+                      //     child:
+                      //      Chart(
+                      //       data: widget.adjustData,
+                      //       variables: {
+                      //         'index': Variable(
+                      //           accessor: (Map map) => map['index'].toString(),
+                      //         ),
+                      //         'type': Variable(
+                      //           accessor: (Map map) => map['type'] as String,
+                      //         ),
+                      //         'value': Variable(
+                      //           accessor: (Map map) => map['value'] as num,
+                      //         ),
+                      //       },
+                      //       marks: [
+                      //         LineMark(
+                      //           position:
+                      //               Varset('index') * Varset('value') / Varset('type'),
+                      //           shape: ShapeEncode(value: BasicLineShape(loop: true)),
+                      //           color: ColorEncode(
+                      //               variable: 'type', values: Defaults.colors10),
+                      //         )
+                      //       ],
+                      //       coord: PolarCoord(),
+                      //       axes: [
+                      //         Defaults.circularAxis,
+                      //         Defaults.radialAxis,
+                      //       ],
+                      //       selections: {
+                      //         'touchMove': PointSelection(
+                      //           on: {
+                      //             GestureType.scaleUpdate,
+                      //             GestureType.tapDown,
+                      //             GestureType.longPressMoveUpdate
+                      //           },
+                      //           dim: Dim.x,
+                      //           variable: 'index',
+                      //         )
+                      //       },
+                      //       tooltip: TooltipGuide(
+                      //         anchor: (_) => Offset.zero,
+                      //         align: Alignment.bottomRight,
+                      //         multiTuples: true,
+                      //         variables: ['type', 'value'],
+                      //       ),
+                      //       crosshair: CrosshairGuide(followPointer: [false, true]),
+                      //     ),
+                      //   ),
+                      //     ],
+                      //   ),
+                      // ),
+                    ),
                   ),
                   const Text("Do you want us to email the result to you for only \$1.99", textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
                   const SizedBox(height: 10),

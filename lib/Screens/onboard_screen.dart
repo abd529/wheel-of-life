@@ -3,6 +3,7 @@ import 'package:com.ezeelogix.truenorth/Screens/youtube_screen.dart';
 import 'package:com.ezeelogix.truenorth/Utilities/youtube_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import '../payment.dart';
 import '/Authentication/login_screen.dart';
 import '/Quiz%20Functionality/Quiz/family_quiz.dart';
@@ -42,7 +43,8 @@ class _OnboardState extends State<Onboard> {
   String fName = "";
   String lName = "";
   int num = 0;
-  //final userId = FirebaseAuth.instance.currentUser!.uid;
+  var uuid = Uuid();
+
 
   // getInfo() async {
   //   var collection = FirebaseFirestore.instance.collection('UsersData');
@@ -93,6 +95,7 @@ class _OnboardState extends State<Onboard> {
 
   @override
   Widget build(BuildContext context) {
+    String userId = uuid.v4();
     // if (num == 0) {
     //   WidgetsBinding.instance.addPostFrameCallback((_) => getInfo());
     //   num++;

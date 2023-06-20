@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '/Screens/home_screen.dart';
@@ -211,9 +212,8 @@ class _SignupScreenState extends State<SignupScreen> {
                            isRegistered = await _registerVM.register(_emailController.text.trim(),
                                 _passwordController.text.trim(), _fNameController.text.trim(), _lNameController.text.trim());
                           if (isRegistered) {
-                            var userId = FirebaseAuth.instance.currentUser!.uid;
-                            await FirebaseFirestore.instance.collection("UsersData").doc(userId).set({"First Name":_fNameController.text.trim(), "Last Name":_lNameController.text.trim(),"Email":_emailController.text.trim()});
-                            Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const HomeScreen()),
+                            await FirebaseFirestore.instance.collection("UsersData").doc("userId").set({"First Name":_fNameController.text.trim(), "Last Name":_lNameController.text.trim(),"Email":_emailController.text.trim()});
+                            Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => SplashScreen()),
                                 (Route<dynamic> route) => false);
                          }else{
                            setState(() {

@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/Quiz/home_quiz.dart';
 import '/Screens/onboard_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PersonalQuiz extends StatefulWidget {
   static const routeName = "my-personal-quiz";
-  const PersonalQuiz({super.key});
+  final String userId;
+  const PersonalQuiz({super.key, required this.userId});
 
   @override
   State<PersonalQuiz> createState() => _PersonalQuizState();
@@ -48,7 +50,7 @@ class _PersonalQuizState extends State<PersonalQuiz> {
   int ans6 = 0;
   int ans7 = 0;
   int ans8 = 0;
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +75,7 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                        "assets/logo.png",
                         width: size.width/1.8,
                         height: size.height/8,
-                        fit: BoxFit.cover,
+                        //fit: BoxFit.cover,
                       ),
                         const SizedBox(
                           width: 50,
@@ -268,9 +270,9 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                             } else {
                               FirebaseFirestore.instance
                                   .collection("User Answers")
-                                  .doc(userId)
+                                  .doc(widget.userId)
                                   .collection("Personal Growth")
-                                  .doc(userId)
+                                  .doc(widget.userId)
                                   .set({
                                 "Q1": ans1,
                                 "Q2": ans2,
@@ -290,9 +292,8 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                                         ans8) /
                                     8
                               });
-                              print("Data Stored and UserId is $userId");
-                              Navigator.of(context)
-                                  .pushNamed(HomeQuiz.routeName);
+                              print("Data Stored and UserId is ${widget.userId}");
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeQuiz(userId: widget.userId),));
                             }
                           },
                           child: index <= 7

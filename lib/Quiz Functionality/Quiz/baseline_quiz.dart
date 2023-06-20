@@ -13,7 +13,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class BaseLineQuiz extends StatefulWidget {
   static const routeName = "my-BaseLinequiz";
-  const BaseLineQuiz({super.key});
+  final String userId;
+  const BaseLineQuiz({super.key, required this.userId});
 
   @override
   State<BaseLineQuiz> createState() => _BaseLineQuizState();
@@ -43,7 +44,7 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
   int BaseAns6 = 0;
   int BaseAns7 = 0;
   int BaseAns8 = 0;
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,7 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
                          "assets/logo.png",
                           width: size.width/1.8,
                           height: size.height/8,
-                          fit: BoxFit.cover,
+                          //fit: BoxFit.cover,
                         ),
                     SizedBox(width: size.width/8,)
                 ]),
@@ -182,7 +183,7 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
                   else{
                     FirebaseFirestore.instance
                           .collection("User Answers") 
-                          .doc(userId).collection("Base Line").doc(userId).set({
+                          .doc(widget.userId).collection("Base Line").doc(widget.userId).set({
                         "Q1": BaseAns1,
                         "Q2": BaseAns2,
                         "Q3": BaseAns3,
@@ -192,12 +193,15 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
                         "Q7": BaseAns7,
                         "Q8": BaseAns8,
                       });
-                    print("Data Stored and UserId is $userId");
-                    Navigator.of(context).pushNamed(HealthQuiz.routeName);
+                    print("Data Stored and UserId is ${widget.userId}");
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HealthQuiz(userId: widget.userId),));
                     
                   }
                 }, child:  index<=7? const Text("Next"):const Text("Move to Detailed Questions", textAlign: TextAlign.center,) ),
-              )
+              ),
+              // ElevatedButton(onPressed: (){
+              //   print(widget.userId);
+              // }, child: Text("uid") )
                 ],
               )
               
