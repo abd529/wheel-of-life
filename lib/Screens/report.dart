@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '/Screens/pdf_screen.dart';
 import '/Screens/wheel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,8 +11,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class DetailPage extends StatefulWidget {
   static const routeName = "report-page";
+  final String userId;
   const DetailPage({
-    Key? key,
+    Key? key, required this.userId,
   }) : super(key: key);
 
   @override
@@ -28,6 +30,7 @@ class _DetailPageState extends State<DetailPage> {
   int baseQ6 = 0;
   int baseQ7 = 0;
   int baseQ8 = 0;
+  double baseAvg = 0.0;
 
   int healthQ1 = 0;
   int healthQ2 = 0;
@@ -104,10 +107,10 @@ class _DetailPageState extends State<DetailPage> {
 
 
   var adjustData = [];
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+  
   void getInfo()async{
       var collection = FirebaseFirestore.instance.collection('User Answers');
-      var docSnapshot = await collection.doc(userId).collection("Base Line").doc(userId).get();
+      var docSnapshot = await collection.doc(widget.userId).collection("Base Line").doc(widget.userId).get();
       if (docSnapshot.exists) {
       Map<String, dynamic>? data = docSnapshot.data();
       setState(() {
@@ -119,9 +122,10 @@ class _DetailPageState extends State<DetailPage> {
         baseQ6 = data?["Q6"];
         baseQ7 = data?["Q7"];
         baseQ8 = data?["Q8"];
+        baseAvg = (baseQ1+baseQ2+baseQ3+baseQ4+baseQ5+baseQ6+baseQ7+baseQ8)/8;
       });
       }
-      var docSnapshot2 = await collection.doc(userId).collection("Health").doc(userId).get();
+      var docSnapshot2 = await collection.doc(widget.userId).collection("Health").doc(widget.userId).get();
       if (docSnapshot2.exists){
        Map<String, dynamic>? data = docSnapshot2.data();
       setState(() {
@@ -134,7 +138,7 @@ class _DetailPageState extends State<DetailPage> {
         healthAvg = data?["Average"];
       });
       }
-      var docSnapshot3 = await collection.doc(userId).collection("Personal Growth").doc(userId).get();
+      var docSnapshot3 = await collection.doc(widget.userId).collection("Personal Growth").doc(widget.userId).get();
       if (docSnapshot3.exists){
        Map<String, dynamic>? data = docSnapshot3.data();
       setState(() {
@@ -149,7 +153,7 @@ class _DetailPageState extends State<DetailPage> {
         personalAvg = data?["Average"];
       });
       }
-      var docSnapshot4 = await collection.doc(userId).collection("Home").doc(userId).get();
+      var docSnapshot4 = await collection.doc(widget.userId).collection("Home").doc(widget.userId).get();
       if (docSnapshot4.exists){
        Map<String, dynamic>? data = docSnapshot4.data();
       setState(() {
@@ -162,7 +166,7 @@ class _DetailPageState extends State<DetailPage> {
         homeAvg = data?["Average"];
       });
       }
-      var docSnapshot5 = await collection.doc(userId).collection("Family").doc(userId).get();
+      var docSnapshot5 = await collection.doc(widget.userId).collection("Family").doc(widget.userId).get();
       if (docSnapshot5.exists){
        Map<String, dynamic>? data = docSnapshot5.data();
       setState(() {
@@ -176,7 +180,7 @@ class _DetailPageState extends State<DetailPage> {
         famAvg = data?["Average"];
       });
       }
-      var docSnapshot6 = await collection.doc(userId).collection("Love").doc(userId).get();
+      var docSnapshot6 = await collection.doc(widget.userId).collection("Love").doc(widget.userId).get();
       if (docSnapshot6.exists){
        Map<String, dynamic>? data = docSnapshot6.data();
       setState(() {
@@ -191,7 +195,7 @@ class _DetailPageState extends State<DetailPage> {
         loveAvg = data?["Average"];
       });
       }
-      var docSnapshot7 = await collection.doc(userId).collection("Free Time").doc(userId).get();
+      var docSnapshot7 = await collection.doc(widget.userId).collection("Free Time").doc(widget.userId).get();
       if (docSnapshot7.exists){
        Map<String, dynamic>? data = docSnapshot7.data();
       setState(() {
@@ -204,7 +208,7 @@ class _DetailPageState extends State<DetailPage> {
         freeAvg = data?["Average"];
       });
       }
-      var docSnapshot8 = await collection.doc(userId).collection("Work").doc(userId).get();
+      var docSnapshot8 = await collection.doc(widget.userId).collection("Work").doc(widget.userId).get();
       if (docSnapshot8.exists){
        Map<String, dynamic>? data = docSnapshot8.data();
       setState(() {
@@ -219,7 +223,7 @@ class _DetailPageState extends State<DetailPage> {
         workAvg = data?["Average"];
       });
       }
-      var docSnapshot9 = await collection.doc(userId).collection("Money").doc(userId).get();
+      var docSnapshot9 = await collection.doc(widget.userId).collection("Money").doc(widget.userId).get();
       if (docSnapshot9.exists){
        Map<String, dynamic>? data = docSnapshot9.data();
       setState(() {
@@ -246,16 +250,16 @@ class _DetailPageState extends State<DetailPage> {
     }
     
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => PDFScreen(),
-            ),
-          );
-        },
-        child: const Icon(Icons.picture_as_pdf),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.of(context).push(
+      //       MaterialPageRoute(
+      //         builder: (context) => PDFScreen(userId: widget.userId),
+      //       ),
+      //     );
+      //   },
+      //   child: const Icon(Icons.picture_as_pdf),
+      // ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -269,7 +273,7 @@ class _DetailPageState extends State<DetailPage> {
                          "assets/logo.png",
                           width: size.width/1.8,
                           height: size.height/8,
-                          fit: BoxFit.cover,
+                          //fit: BoxFit.cover,
                         ),
                   SizedBox(width: size.width/10,)
                 ],
@@ -354,6 +358,16 @@ class _DetailPageState extends State<DetailPage> {
                             ),
                           ],
                         )),
+                        DefaultTextStyle.merge(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                             const Text("Average"),
+                             Text(
+                              baseAvg.toStringAsFixed(1).toString(),
+                            ),
+                          ],
+                        )),
                     ],
                   ),
                 ),
@@ -434,7 +448,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              healthAvg.toString(),
+                               healthAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -539,7 +553,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              personalAvg.toString(),
+                              personalAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -624,7 +638,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              homeAvg.toString(),
+                              homeAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -719,7 +733,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              famAvg.toString(),
+                              famAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -824,7 +838,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              loveAvg.toString(),
+                              loveAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -909,7 +923,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              freeAvg.toString(),
+                              freeAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -1014,7 +1028,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              workAvg.toString(),
+                              workAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -1119,7 +1133,7 @@ class _DetailPageState extends State<DetailPage> {
                           children: [
                              const Text("Average"),
                              Text(
-                              moneyAvg.toString(),
+                              moneyAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
                         )),
@@ -1160,7 +1174,7 @@ class _DetailPageState extends State<DetailPage> {
                           shape: RoundedRectangleBorder( //to set border radius to button
                     borderRadius: BorderRadius.circular(50)
                               ),),
-                                  child: const Text("See Wheel of life")),
+                                  child: const Text("See Report")),
               )             
              ],
           ),

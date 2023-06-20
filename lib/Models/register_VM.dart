@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class RegisterViewModel extends ChangeNotifier {
   String message = "";
-  //var userId = FirebaseAuth.instance.currentUser!.uid;
+  //var userId = uuid.v4();
 
   Future<bool> register(
       String email, String password, String fName, String lName) async {

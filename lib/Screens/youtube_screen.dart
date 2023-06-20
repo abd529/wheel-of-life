@@ -37,9 +37,11 @@ class TranslatedVideo extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 50,),
+                    const SizedBox(height: 25,),
+                    const Text("Welcome to True North! We are excited to help you determine what is essential for you and those areas that require you to concentrate on to get the most out of your life. So let's start the journey.", textAlign: TextAlign.center,),
+                    const SizedBox(height: 25,),
                     ElevatedButton(onPressed: (){
-                      Navigator.of(context).pushNamed(SignupScreen.routeName);
+                      Navigator.of(context).pushNamed(HomeScreen.routeName);
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),

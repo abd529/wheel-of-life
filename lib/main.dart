@@ -1,3 +1,6 @@
+import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
+
 import './Authentication/signup_screen.dart';
 import './Screens/lanugage_screen.dart';
 import './Screens/verify_email.dart';
@@ -8,13 +11,6 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '/Authentication/forgot_password.dart';
-import '/Quiz%20Functionality/Quiz/family_quiz.dart';
-import '/Quiz%20Functionality/Quiz/health_quiz.dart';
-import '/Quiz%20Functionality/Quiz/home_quiz.dart';
-import '/Quiz%20Functionality/Quiz/love_quiz.dart';
-import '/Quiz%20Functionality/Quiz/money_quiz.dart';
-import '/Quiz%20Functionality/Quiz/p_growth_quiz.dart';
-import '/Quiz%20Functionality/Quiz/work_quiz.dart';
 import '/Quiz%20Functionality/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
@@ -42,7 +38,8 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  final String uid;
+  MyApp({super.key, required this.uid});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -62,6 +59,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
        builder: (context, child) => ResponsiveBreakpoints.builder(
@@ -96,21 +94,21 @@ class _MyAppState extends State<MyApp> {
         logQuiz.routeName: (ctx) => const logQuiz(),
         LoginScreen.routeName: (ctx) => LoginScreen(),
         //VideoScreen.routeName: (ctx) => VideoScreen(),
-        DetailPage.routeName: (ctx) => const DetailPage(),
-        BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
+        //DetailPage.routeName: (ctx) => const DetailPage(),
+        // BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
         ForgotPassword.routeName: (ctx) => ForgotPassword(),
         EmailSend.routeName: (ctx) => EmailSend(),
        // StripePayment.routeName: (ctx) => const StripePayment(),
         Onboard.routeName: (ctx) => const Onboard(),
-        HealthQuiz.routeName: (ctx) => const HealthQuiz(),
-        PersonalQuiz.routeName: (ctx) => const PersonalQuiz(),
-        HomeQuiz.routeName: (ctx) => const HomeQuiz(),
-        FamilyQuiz.routeName: (ctx) => const FamilyQuiz(),
-        LoveQuiz.routeName: (ctx) => const LoveQuiz(),
-        FreeQuiz.routeName: (ctx) => const FreeQuiz(),
-        WorkQuiz.routeName: (ctx) => const WorkQuiz(),
-        MoneyQuiz.routeName: (ctx) => const MoneyQuiz(),
-        HomeScreen.routeName: (ctx) => const HomeScreen(),
+        // HealthQuiz.routeName: (ctx) => const HealthQuiz(),
+        // PersonalQuiz.routeName: (ctx) => const PersonalQuiz(),
+        // HomeQuiz.routeName: (ctx) => const HomeQuiz(),
+        // FamilyQuiz.routeName: (ctx) => const FamilyQuiz(),
+        // LoveQuiz.routeName: (ctx) => const LoveQuiz(),
+        // FreeQuiz.routeName: (ctx) => const FreeQuiz(),
+        // WorkQuiz.routeName: (ctx) => const WorkQuiz(),
+        // MoneyQuiz.routeName: (ctx) => const MoneyQuiz(),
+        HomeScreen.routeName: (ctx) =>HomeScreen(uid: widget.uid,),
         LanguageScreen.routeName: (ctx) => const LanguageScreen(),
         SignupScreen.routeName: (ctx) => SignupScreen(),
         FreeReport.routeName: (ctx) => const FreeReport(),

@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:uuid/uuid.dart';
 import '/Screens/onboard_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '/Screens/report.dart';
 
 class MoneyQuiz extends StatefulWidget {
   static const routeName = "my-money-quiz";
-  const MoneyQuiz({super.key});
+  final String userId;
+  const MoneyQuiz({super.key, required this.userId});
 
   @override
   State<MoneyQuiz> createState() => _MoneyQuizState();
@@ -46,7 +48,7 @@ class _MoneyQuizState extends State<MoneyQuiz> {
   int ans6 = 0;
   int ans7 = 0;
   int ans8 = 0;
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +73,7 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                        "assets/logo.png",
                         width: size.width/1.8,
                         height: size.height/8,
-                        fit: BoxFit.cover,
+                        //fit: BoxFit.cover,
                       ),
                         const SizedBox(
                           width: 50,
@@ -267,9 +269,9 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                             } else {
                               FirebaseFirestore.instance
                                   .collection("User Answers")
-                                  .doc(userId)
+                                  .doc(widget.userId)
                                   .collection("Money")
-                                  .doc(userId)
+                                  .doc(widget.userId)
                                   .set({
                                 "Q1": ans1,
                                 "Q2": ans2,
@@ -289,9 +291,8 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                                         ans8) /
                                     8
                               });
-                              print("Data Stored and UserId is $userId");
-                              Navigator.of(context)
-                                  .pushNamed(DetailPage.routeName);
+                              print("Data Stored and UserId is ${widget.userId}");
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailPage(userId: widget.userId),));
                             }
                           },
                           child: index <= 7
