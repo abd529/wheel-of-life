@@ -1175,7 +1175,10 @@ class _DetailPageState extends State<DetailPage> {
                     borderRadius: BorderRadius.circular(50)
                               ),),
                                   child: const Text("See Report")),
-              )             
+              ),
+              ElevatedButton(onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => WheelOfLife() , ));
+                }, child: Text("lwjdnejdm") )
              ],
           ),
         ),

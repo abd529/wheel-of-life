@@ -29,12 +29,13 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'Screens/splash_screen.dart';
 
 void main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   // Stripe.publishableKey =
   //     "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
-  //await Firebase.initializeApp();
-  //await dotenv.load(fileName: "assets/.env");
-  runApp(MyApp());
+  await Firebase.initializeApp();
+  await dotenv.load(fileName: "assets/.env");
+  var uid = Uuid().v4();
+  runApp(MyApp(uid: uid,));
 }
 
 class MyApp extends StatefulWidget {
@@ -77,9 +78,8 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.deepPurple,
       ),
       home: 
-      // FirebaseAuth.instance.currentUser != null
-      //     ? 
-      //     const HomeScreen()
+      //     FirebaseAuth.instance.currentUser != null
+      //     ? const HomeScreen()
       //     : 
           const SplashScreen(),
       supportedLocales: L10n.all,
