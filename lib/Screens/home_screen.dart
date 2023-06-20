@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                          Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("True North", style: TextStyle(fontSize: title, color: Colors.deepPurple ,fontWeight: FontWeight.bold),textAlign: TextAlign.left,)),
+                      child: Text("True Northh", style: TextStyle(fontSize: title, color: Colors.deepPurple ,fontWeight: FontWeight.bold),textAlign: TextAlign.left,)),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text("Welcome to true north", style: TextStyle(fontSize: title-9),),
