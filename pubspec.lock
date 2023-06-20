@@ -291,14 +291,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_stripe:
-    dependency: "direct main"
-    description:
-      name: flutter_stripe
-      sha256: "51c3ab5f7a705d864d719eb13882abbb3964c4f61983a13af6dc56607537b1e4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.2.0"
   flutter_svg:
     dependency: "direct dev"
     description:
@@ -317,14 +309,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  freezed_annotation:
-    dependency: transitive
-    description:
-      name: freezed_annotation
-      sha256: aeac15850ef1b38ee368d4c53ba9a847e900bb2c53a4db3f6881cbb3cb684338
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -425,10 +409,10 @@ packages:
     dependency: "direct main"
     description:
       name: intl
-      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      sha256: a3715e3bc90294e971cb7dc063fbf3cd9ee0ebf8604ffeafabd9e6f16abbdbe6
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.1"
+    version: "0.18.0"
   js:
     dependency: transitive
     description:
@@ -437,14 +421,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
-  json_annotation:
-    dependency: transitive
-    description:
-      name: json_annotation
-      sha256: b10a7b2ff83d83c777edba3c6a0f97045ddadd56c944e1a23a3fdf43a1bf4467
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.8.1"
   lints:
     dependency: transitive
     description:
@@ -481,10 +457,10 @@ packages:
     dependency: transitive
     description:
       name: material_color_utilities
-      sha256: "9528f2f296073ff54cb9fee677df673ace1218163c3bc7628093e7eed5203d41"
+      sha256: d92141dc6fe1dad30722f9aa826c7fbc896d021d792f80678280601aff8cf724
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0"
+    version: "0.2.0"
   meta:
     dependency: transitive
     description:
@@ -694,10 +670,10 @@ packages:
     dependency: transitive
     description:
       name: source_span
-      sha256: "53e943d4206a5e30df338fd4c6e7a077e02254531b138a15aec3bd143c1a8b3c"
+      sha256: dd904f795d4b4f3b870833847c461801f6750a9fa8e61ea5ac53f9422b31f250
       url: "https://pub.dev"
     source: hosted
-    version: "1.10.0"
+    version: "1.9.1"
   stack_trace:
     dependency: transitive
     description:
@@ -722,30 +698,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  stripe_android:
-    dependency: transitive
-    description:
-      name: stripe_android
-      sha256: "89c6c9a9e6fbe6eea4b15b6c0eb012490155c37a6b4298851f77987fde4fee43"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.2.0"
-  stripe_ios:
-    dependency: transitive
-    description:
-      name: stripe_ios
-      sha256: "74f4871c2f5bc6585057f4311be98b6fcdde5b2b14069c7b556163d032a7521f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.2.0"
-  stripe_platform_interface:
-    dependency: transitive
-    description:
-      name: stripe_platform_interface
-      sha256: c1e90deb6e9939181f0fbc39b4f81c2e640b1b9fe4b3586ff84af7e8c46df2e4
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.2.0"
   term_glyph:
     dependency: transitive
     description:
@@ -758,10 +710,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-      sha256: daadc9baabec998b062c9091525aa95786508b1c48e9c30f1f891b8bf6ff2e64
+      sha256: eb6ac1540b26de412b3403a163d919ba86f6a973fe6cc50ae3541b80092fdcfb
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.2"
+    version: "0.5.1"
   typed_data:
     dependency: transitive
     description:

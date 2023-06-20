@@ -17,7 +17,7 @@ import '/Quiz%20Functionality/Quiz/p_growth_quiz.dart';
 import '/Quiz%20Functionality/Quiz/work_quiz.dart';
 import '/Quiz%20Functionality/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
 import '/Screens/home_screen.dart';
 import '/Screens/stripe_payment.dart';
 import 'Authentication/login_screen.dart';
@@ -34,8 +34,8 @@ import 'Screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Stripe.publishableKey =
-      "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
+  // Stripe.publishableKey =
+  //     "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
   await Firebase.initializeApp();
   await dotenv.load(fileName: "assets/.env");
   runApp(MyApp());
@@ -97,7 +97,7 @@ class _MyAppState extends State<MyApp> {
         BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
         ForgotPassword.routeName: (ctx) => ForgotPassword(),
         EmailSend.routeName: (ctx) => EmailSend(),
-        StripePayment.routeName: (ctx) => const StripePayment(),
+       // StripePayment.routeName: (ctx) => const StripePayment(),
         Onboard.routeName: (ctx) => const Onboard(),
         HealthQuiz.routeName: (ctx) => const HealthQuiz(),
         PersonalQuiz.routeName: (ctx) => const PersonalQuiz(),
