@@ -23,7 +23,7 @@ class _HealthQuizState extends State<HealthQuiz> {
     "Q3: When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
     "Q4: Do I have any disease that affects my physical state?",
     "Q5: The resting time, food, sport and more, are they adequate?",
-    "Q6: The resting time, food, sport and more, are they adequate?",
+    "Q6: If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
     "Health Questions are completed",
   ];
   List<String> topic = [
@@ -183,7 +183,9 @@ class _HealthQuizState extends State<HealthQuiz> {
                           ? ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  index--;
+                                  if(index>=1){
+                                    index--;
+                                  }
                                 });
                               },
                               style: ElevatedButton.styleFrom(

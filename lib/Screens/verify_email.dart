@@ -18,6 +18,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
   TextEditingController code = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: 
       SingleChildScrollView(
@@ -25,10 +26,12 @@ class _VerifyEmailState extends State<VerifyEmail> {
         SizedBox(width: double.infinity,
         child: Column(
           children: [
-            SizedBox(
-              height: 100,
-              width: 100,
-              child: SvgPicture.asset("assets/logo.svg")),
+            Image.asset(
+                         "assets/logo.png",
+                          width: size.width/1.5,
+                          height: size.height/4.5,
+                          fit: BoxFit.contain,
+                        ),
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(

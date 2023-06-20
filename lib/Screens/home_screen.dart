@@ -39,11 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     double fontSize;
     double title;
-    double heading;
     // if (screenHeight < 320) {
     //   fontSize = 13.0;
     //   title = 20;
@@ -137,7 +136,13 @@ class _HomeScreenState extends State<HomeScreen> {
               launchUrl(url);
             }, child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Powered by EzeeLogix", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Powered by ", style: TextStyle(color: Colors.grey),),
+                  Text("EzeeLogix", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),),
+                ],
+              ),
             ),)
           ],)          
           ],
@@ -150,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: size.height/2.5,
+              height: size.height/3,
               decoration: BoxDecoration(
                 color: Colors.deepPurple.withOpacity(0.1),
                  borderRadius: const BorderRadius.only(
@@ -193,10 +198,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                          Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Your text here", style: TextStyle(fontSize: title, color: Colors.deepPurple ,fontWeight: FontWeight.bold),textAlign: TextAlign.left,)),
+                      child: Text("True North", style: TextStyle(fontSize: title, color: Colors.deepPurple ,fontWeight: FontWeight.bold),textAlign: TextAlign.left,)),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Text("Your text here", style: TextStyle(fontSize: title-9),),
+                        child: Text("Welcome to true north", style: TextStyle(fontSize: title-9),),
                       ),
                       SizedBox(height: size.height/40,),
                       ],
@@ -211,11 +216,11 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  const Text("True North", style: TextStyle(fontSize: 20),),
+                 // const Text("True North", style: TextStyle(fontSize: 20),),
               //SizedBox(height: size.height/60,),
                Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
+                padding: const EdgeInsets.all(4.0),
+                child: Text("You'll be presented with questions in different areas. You will respond to each one according to the following scale:\n\n1-3: Dissatisfaction \n4-6: Nessacary work needed \n7-8: Good, still room for improvement \n9-10: No Modification is needed \n\nUltimately you'll see your wheel of life and the recommended areas to concentrate on \nYou'll be presented with Baseline questions first. You may respond to that as you may feel today, without much introseption", 
                 softWrap: true,
                 style: TextStyle(
                   fontSize:fontSize 

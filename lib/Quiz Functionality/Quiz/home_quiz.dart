@@ -184,7 +184,9 @@ class _HomeQuizState extends State<HomeQuiz> {
                           ? ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  index--;
+                                  if(index>=1){
+                                    index--;
+                                  }
                                 });
                               },
                               style: ElevatedButton.styleFrom(

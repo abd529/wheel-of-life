@@ -19,6 +19,7 @@ class _FreeReportState extends State<FreeReport> {
   TextEditingController code = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: 
       SingleChildScrollView(
@@ -27,9 +28,9 @@ class _FreeReportState extends State<FreeReport> {
         child: Column(
           children: [
             SizedBox(
-              height: 100,
-              width: 100,
-              child: SvgPicture.asset("assets/logo.svg")),
+              child: Image.asset("assets/logo.png",
+              fit: BoxFit.cover,
+              width: size.width/2,height: size.height/8,)),
                Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(

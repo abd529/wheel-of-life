@@ -184,7 +184,9 @@ class _LoveQuizState extends State<LoveQuiz> {
                           ? ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  index--;
+                                  if(index>=1){
+                                    index--;
+                                  }
                                 });
                               },
                               style: ElevatedButton.styleFrom(

@@ -186,7 +186,9 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                           ? ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  index--;
+                                  if(index>=1){
+                                    index--;
+                                  }
                                 });
                               },
                               style: ElevatedButton.styleFrom(

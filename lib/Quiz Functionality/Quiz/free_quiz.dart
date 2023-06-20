@@ -186,7 +186,9 @@ class _FreeQuizState extends State<FreeQuiz> {
                           ? ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  index--;
+                                  if(index>=1){
+                                    index--;
+                                  }
                                 });
                               },
                               style: ElevatedButton.styleFrom(
