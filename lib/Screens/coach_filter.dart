@@ -1,3 +1,4 @@
+import 'package:com.ezeelogix.truenorth/Screens/verify_email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -176,7 +177,9 @@ class _CoachFilterState extends State<CoachFilter> {
                       
                         const SizedBox(height: 30,),
                         ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => VerifyEmail(),));
+                          },
                           style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
                             shape: RoundedRectangleBorder( //to set border radius to button

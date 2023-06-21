@@ -28,7 +28,7 @@ void main() async {
   //     "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
   await Firebase.initializeApp();
   //await dotenv.load(fileName: "assets/.env");
-  var uid = Uuid().v4();
+  var uid = const Uuid().v4();
   runApp(MyApp(
     uid: uid,
   ));
@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
           //     ?
           //     const HomeScreen()
           //     :
-          SplashScreen(),
+          const SplashScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
       localizationsDelegates: const [
@@ -111,7 +111,7 @@ class _MyAppState extends State<MyApp> {
         SignupScreen.routeName: (ctx) => SignupScreen(),
         FreeReport.routeName: (ctx) => const FreeReport(),
         CoachFilter.routeName: (ctx) => const CoachFilter(),
-        VerifyEmail.routeName: (ctx) => VerifyEmail(),
+        VerifyEmail.routeName: (ctx) => const VerifyEmail(),
       },
     );
   }

@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 
 
 class FreeReport extends StatefulWidget {
@@ -17,6 +20,33 @@ class _FreeReportState extends State<FreeReport> {
   TextEditingController email = TextEditingController();
   TextEditingController confirmEmail = TextEditingController();
   TextEditingController code = TextEditingController();
+  void sendEmail(
+      String recipientEmail, String messageMail, BuildContext context) async {
+    String userName2 = "gesconvsgar@ezeelogix.com";
+    String password2 = "ges23@conv";
+    final smtpServer2 = SmtpServer("smtp.titan.email",
+        username: "gesconvsgar@ezeelogix.com",
+        password: "ges23@conv",
+        port: 465,
+        ssl: true);
+    final message = Message()
+      ..from = Address(userName2, "Mail Service")
+      ..recipients.add(recipientEmail)
+      ..subject = "Mail"
+      ..text = "Message: $messageMail";
+    try {
+      await send(message, smtpServer2);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: FittedBox(
+        child: Text("Email send good"),
+      )));
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -166,7 +196,9 @@ class _FreeReportState extends State<FreeReport> {
                         ),
                         ElevatedButton(
                           onPressed: (){
-                            if(_formKey.currentState!.validate()){}
+                            if(_formKey.currentState!.validate()){
+                              sendEmail(email.text, "heyyyyy", context);
+                            }
                           }, 
                           style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.fromLTRB(100, 20, 100, 20),

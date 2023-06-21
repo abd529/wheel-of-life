@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'dart:typed_data';
+import 'package:com.ezeelogix.truenorth/Screens/wheel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -2339,38 +2340,38 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Mood",
                   "Is there anything that alters my psychological state?",
-                  "1"
+                  healthQ1.toString()
                   ),
                 tableRow(
                   "Psychological state",
                   "Do I carry out activities that move me away from a state of tension, nerves, stress, etc.?",
-                  "1"
+                  healthQ2.toString()
                   ),
                 tableRow(
                   "Personal care",
                   "When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
-                  "1"
+                  healthQ3.toString()
                   ),
                 tableRow(
                   "Physical state",
                   "Do I have any disease that affects my physical state?",
-                  "1"
+                  healthQ4.toString()
                   ),
                 tableRow(
                   "Habits",
                   "The resting time, food, sport and more, are they adequate?",
-                  "1"
+                  healthQ5.toString()
                   ),
                 tableRow(
                   "Measures",
                   "If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
-                  "1"
+                  healthQ6.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  healthAvg.toString()
                   ),
                   ],
                 ),
@@ -2404,48 +2405,48 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Society",
                   "Do I feel useful to society, do I contribute to the development of my society?",
-                  "1"
+                  personalQ1.toString()
                   ),
                 tableRow(
                   "Current projects",
                   "Am I comfortable with my personal growth plans and projects?",
-                  "1"
+                  personalQ2.toString()
                   ),
                 tableRow(
                   "Future projects",
                   "Do my projects to futures satisfy the perspectives I have to grow?",
-                  "1"
+                  personalQ3.toString()
                   ),
                 tableRow(
                   "Spirituality",
                   "Do I feel good with my spirituality and cultivation constantly?",
-                  "1"
+                  personalQ4.toString()
                   ),
                 tableRow(
                   "Self-esteem",
                   "Do I give true value to my life and my affections?",
-                  "1"
+                  personalQ5.toString()
                   ),
                 tableRow(
                   "Attitudes",
                   "Do I face life in a planned, applied manner and have a will to improve?",
-                  "1"
+                  personalQ6.toString()
                   ),
                   tableRow(
                   "Skills",
                   "How many skills can I say that I have to do everything that I propose?",
-                  "1"
+                  personalQ7.toString()
                   ), 
                   tableRow(
                   "Studies",
                   "Am I satisfied with my professional training and I try to move forward?",
-                  "1"
+                  personalQ8.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  personalAvg.toString()
                   ),
                   ],
                 ),
@@ -2479,38 +2480,38 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Country",
                   "Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
-                  "1"
+                  homeQ1.toString()
                   ),
                 tableRow(
                   "City",
                   "Do I feel comfortable in the city in which I live and agree with the services it offers?",
-                  "1"
+                  homeQ2.toString()
                   ),
                 tableRow(
                   "District",
                   "Do I like my neighbors and their culture of coexistence?",
-                  "1"
+                  homeQ3.toString()
                   ),
                 tableRow(
                   "Home",
                   "The house where I live satisfies me, has enough space and comfort that I need?",
-                  "1"
+                  homeQ4.toString()
                   ),
                 tableRow(
                   "Coexistence",
                   "Am I comfortable with the people with whom I share my home?",
-                  "1"
+                  homeQ5.toString()
                   ),
                 tableRow(
                   "Home care",
                   "How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
-                  "1"
+                  homeQ6.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  homeAvg.toString()
                   ),
                   ],
                 ),
@@ -2544,43 +2545,43 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Provision",
                   "Do I feel satisfied with the ability I have to find and communicate with new friends or family?",
-                  "1"
+                  famQ1.toString()
                   ),
                 tableRow(
                   "Mother",
                   "Am I satisfied with the relationship I have with my mother?",
-                  "1"
+                  famQ2.toString()
                   ),
                 tableRow(
                   "Father",
                   "Am I satisfied with the relationship I have with my father?",
-                  "1"
+                  famQ3.toString()
                   ),
                 tableRow(
                   "Children",
                   "Am I satisfied with the relationship I have with my children? If I don't have them and I love them, do I do actions to have them?",
-                  "1"
+                  famQ4.toString()
                   ),
                 tableRow(
                   "Close relatives",
                   "How do I feel in my relationships with close relatives: brothers, grandparents, cousins, uncles, etc.?",
-                  "1"
+                  famQ5.toString()
                   ),
                 tableRow(
                   "Friends",
                   "I feel satisfied with the friends I have, do I really have them when I need them and support me?",
-                  "1"
+                  famQ6.toString()
                   ),
                   tableRow(
                   "Known",
                   "Am I comfortable with the acquaintances I have?",
-                  "1"
+                  famQ7.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  famAvg.toString()
                   ),
                   ],
                 ),
@@ -2614,48 +2615,48 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Ability \nto love",
                   "May I give myself to my relationships?",
-                  "1"
+                  loveQ1.toString()
                   ),
                 tableRow(
                   "Number \nof \nrelationships",
                   "Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
-                  "1"
+                  loveQ2.toString()
                   ),
                 tableRow(
                   "Duration",
                   "Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
-                  "1"
+                  loveQ3.toString()
                   ),
                 tableRow(
                   "Communication",
                   "Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
-                  "1"
+                  loveQ4.toString()
                   ),
                 tableRow(
                   "Coexistence",
                   "Do we distribute home tasks?",
-                  "1"
+                  loveQ5.toString()
                   ),
                 tableRow(
                   "Fidelity",
                   "Am I faithful in my relationships, and I have the confidence that my partner is the same?",
-                  "1"
+                  loveQ6.toString()
                   ),
                   tableRow(
                   "Sexual passion",
                   "Do I have sexual relations with my partner and it attracts me physically?",
-                  "1"
+                  loveQ7.toString()
                   ), 
                   tableRow(
                   "Emotional Passion",
                   "Do I feel really loved and positively value all the mental and emotional part of my partner?",
-                  "1"
+                  loveQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  loveAvg.toString()
                   ),
                   ],
                 ),
@@ -2689,48 +2690,38 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Leisure",
                   "Do I have enough leisure time, or do I think it should have more?",
-                  "1"
+                  freeQ1.toString()
                   ),
                 tableRow(
                   "Quality time",
                   "Do I feel that I take advantage of the time I have and take advantage of my leisure?",
-                  "1"
+                  freeQ2.toString()
                   ),
                 tableRow(
                   "Fun",
                   "May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
-                  "1"
+                  freeQ3.toString()
                   ),
                 tableRow(
                   "Variety",
                   "What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
-                  "1"
+                  freeQ4.toString()
                   ),
                 tableRow(
                   "Tastes",
                   "Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
-                  "1"
+                  freeQ5.toString()
                   ),
                 tableRow(
                   "Participatory",
                   "How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
-                  "1"
+                  freeQ6.toString()
                   ),
-                  tableRow(
-                  "Sexual passion",
-                  "Do I have sexual relations with my partner and it attracts me physically?",
-                  "1"
-                  ), 
-                  tableRow(
-                  "Emotional Passion",
-                  "Do I feel really loved and positively value all the mental and emotional part of my partner?",
-                  "1"
-                  ),  
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  freeAvg.toString(),
                   ),
                   ],
                 ),
@@ -2764,48 +2755,48 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Working capacity",
                   "I feel satisfied with my performance in the work environment and I really want to work on what I do?",
-                  "1"
+                  workQ1.toString()
                   ),
                 tableRow(
                   "Functions",
                   "Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
-                  "1"
+                  workQ2.toString()
                   ),
                 tableRow(
                   "Company",
                   "Do I feel comfortable in my company and she respects my values?",
-                  "1"
+                  workQ3.toString()
                   ),
                 tableRow(
                   "Boss",
                   "Am I satisfied with my boss or me in my role as a boss?",
-                  "1"
+                  workQ4.toString()
                   ),
                 tableRow(
                   "Companions",
                   "Do I feel that we form a good team with my teammates?",
-                  "1"
+                  workQ5.toString()
                   ),
                 tableRow(
                   "Collaborators",
                   "Do I feel satisfied with the work of my collaborators and we form a good team?",
-                  "1"
+                  workQ6.toString()
                   ),
                   tableRow(
                   "Recognition",
                   "Am I recognized in my work, I feel that the work I do is valued?",
-                  "1"
+                  workQ7.toString()
                   ), 
                   tableRow(
                   "Remuneration",
                   "Do I feel satisfied with the economic income and other remuneration that my work gives me?",
-                  "1"
+                  workQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  workAvg.toString()
                   ),
                   ],
                 ),
@@ -2839,54 +2830,86 @@ class PDFScreen extends StatelessWidget {
                 tableRow(
                   "Belongings",
                   "How do I feel about the belongings I have? Can I satisfy everything I have?",
-                  "1"
+                  moneyQ1.toString()
                   ),
                 tableRow(
                   "Guarantees",
                   "Do I have guarantees that support me financially and I feel sufficient guarantees?",
-                  "1"
+                  moneyQ2.toString()
                   ),
                 tableRow(
                   "Income",
                   "Am I satisfied with the income I have today and are enough to have the standard of living?",
-                  "1"
+                  moneyQ3.toString()
                   ),
                 tableRow(
                   "Future income",
                   "Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
-                  "1"
+                  moneyQ4.toString()
                   ),
                 tableRow(
                   "Bills",
                   "How do I feel about the level of expenses I have. Expenditure above my possibilities?",
-                  "1"
+                  moneyQ5.toString()
                   ),
                 tableRow(
                   "Future expenses",
                   "Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
-                  "1"
+                  moneyQ6.toString()
                   ),
                   tableRow(
                   "Debts",
                   "Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
-                  "1"
+                  moneyQ7.toString()
                   ), 
                   tableRow(
                   "Saving",
                   "I keep some money for bad times, and I'm happy with my savings?",
-                  "1"
+                  moneyQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(
                   "Average",
                   "",
-                  "1"
+                  moneyAvg.toString()
                   ),
                   ],
                 ),
-                const SizedBox(
-                  height: 150,
-                ),
+                Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: ElevatedButton(onPressed: () async {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => WheelOfLife(adjustData: [
+                        {"type": "BaseLine", "index": "Health", "value": baseQ1},
+                        {"type": "BaseLine", "index": "Personal Growth", "value": baseQ2},
+                        {"type": "BaseLine", "index": "Home", "value": baseQ3},
+                        {"type": "BaseLine", "index": "Family & Friends", "value": baseQ4},
+                        {"type": "BaseLine", "index": "Love", "value": baseQ5},
+                        {"type": "BaseLine", "index": "Free Time", "value": baseQ6},
+                        {"type": "BaseLine", "index": "Work", "value": baseQ7},
+                        {"type": "BaseLine", "index": "Money", "value": baseQ8},
+                
+                        {"type": "Results", "index": "Health", "value": healthAvg.toInt()},
+                        {"type": "Results", "index": "Personal Growth", "value": personalAvg.toInt()},
+                        {"type": "Results", "index": "Home", "value": homeAvg.toInt()},
+                        {"type": "Results", "index": "Family & Friends", "value": famAvg.toInt()},
+                        {"type": "Results", "index": "Love", "value": loveAvg.toInt()},
+                        {"type": "Results", "index": "Free Time", "value": freeAvg.toInt()},
+                        {"type": "Results", "index": "Work", "value": workAvg.toInt()},
+                        {"type": "Results", "index": "Money", "value": moneyAvg.toInt()},
+                ]),
+                                        ));
+                                  }, 
+                                  style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
+                          shape: RoundedRectangleBorder( //to set border radius to button
+                    borderRadius: BorderRadius.circular(50)
+                              ),),
+                                  child: const Text("Send Email")),
+              ),
+              const Text("Get detailed report and wheel of your life on your email", textAlign: TextAlign.center,style:TextStyle(fontWeight: FontWeight.bold))
                 //     CustomTable(
                 // // Replace with your topic names
                 // // Replace with your answers
