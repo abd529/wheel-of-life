@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
@@ -16,14 +17,21 @@ class EmailSend extends StatelessWidget {
   late Future<int> statusCode ;
 
   void sendEmail(String recipientEmail, String messageMail, BuildContext context)async{
-    final user = await GoogleAuthApi.signIn();
+    //final user = await GoogleAuthApi.signIn();
     String userName = "abdullahayaz529@gmail.com";
+    String userName2 = "gesconvsgar@ezeelogix.com";
     String password = "lxivqayisxdamtfd";
+    String password2 = "ges23@conv";
     String token = "";
-    final smtpServer = gmailSaslXoauth2(userName, token);
+    final smtpServer2 = SmtpServer("smtp.titan.email",
+      username: "gesconvsgar@ezeelogix.com",
+      password: "ges23@conv",
+      port: 465,
+      ssl: true);
+    final smtpServer = gmailSaslXoauth2(userName, password);
     final message = Message()..from=Address(userName,"Mail Service")..recipients.add(recipientEmail)..subject = "Mail"..text = "Message: $messageMail";
     try{
-      await send(message, smtpServer);
+      await send(message, smtpServer2);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: FittedBox(
           child: Text("Email send good"),

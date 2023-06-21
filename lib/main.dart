@@ -1,10 +1,8 @@
-import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 import './Authentication/signup_screen.dart';
 import './Screens/lanugage_screen.dart';
 import './Screens/verify_email.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -15,18 +13,14 @@ import '/Quiz%20Functionality/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import '/Screens/home_screen.dart';
-import '/Screens/stripe_payment.dart';
 import 'Authentication/login_screen.dart';
-import 'Quiz Functionality/Quiz/baseline_quiz.dart';
-import 'Quiz Functionality/Quiz/free_quiz.dart';
 import 'Screens/coach_filter.dart';
 import 'Screens/email.dart';
 import 'Screens/free_report.dart';
 import 'Screens/onboard_screen.dart';
-import 'Screens/report.dart';
+import 'Screens/splash_screen.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'Screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -78,10 +72,11 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.deepPurple,
       ),
       home: 
-      //     FirebaseAuth.instance.currentUser != null
-      //     ? const HomeScreen()
+      // FirebaseAuth.instance.currentUser != null
+      //     ? 
+      //     const HomeScreen()
       //     : 
-          const SplashScreen(),
+       SplashScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
       localizationsDelegates: const [
