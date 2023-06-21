@@ -27,9 +27,11 @@ void main() async {
   // Stripe.publishableKey =
   //     "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
   await Firebase.initializeApp();
-  await dotenv.load(fileName: "assets/.env");
+  //await dotenv.load(fileName: "assets/.env");
   var uid = Uuid().v4();
-  runApp(MyApp(uid: uid,));
+  runApp(MyApp(
+    uid: uid,
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -54,10 +56,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-       builder: (context, child) => ResponsiveBreakpoints.builder(
+      builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,
         breakpoints: [
           const Breakpoint(start: 0, end: 450, name: MOBILE),
@@ -71,12 +72,12 @@ class _MyAppState extends State<MyApp> {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: Colors.deepPurple,
       ),
-      home: 
-      // FirebaseAuth.instance.currentUser != null
-      //     ? 
-      //     const HomeScreen()
-      //     : 
-       SplashScreen(),
+      home:
+          // FirebaseAuth.instance.currentUser != null
+          //     ?
+          //     const HomeScreen()
+          //     :
+          SplashScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
       localizationsDelegates: const [
@@ -93,7 +94,7 @@ class _MyAppState extends State<MyApp> {
         // BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
         ForgotPassword.routeName: (ctx) => ForgotPassword(),
         EmailSend.routeName: (ctx) => EmailSend(),
-       // StripePayment.routeName: (ctx) => const StripePayment(),
+        // StripePayment.routeName: (ctx) => const StripePayment(),
         Onboard.routeName: (ctx) => const Onboard(),
         // HealthQuiz.routeName: (ctx) => const HealthQuiz(),
         // PersonalQuiz.routeName: (ctx) => const PersonalQuiz(),
@@ -103,7 +104,9 @@ class _MyAppState extends State<MyApp> {
         // FreeQuiz.routeName: (ctx) => const FreeQuiz(),
         // WorkQuiz.routeName: (ctx) => const WorkQuiz(),
         // MoneyQuiz.routeName: (ctx) => const MoneyQuiz(),
-        HomeScreen.routeName: (ctx) =>HomeScreen(uid: widget.uid,),
+        HomeScreen.routeName: (ctx) => HomeScreen(
+              uid: widget.uid,
+            ),
         LanguageScreen.routeName: (ctx) => const LanguageScreen(),
         SignupScreen.routeName: (ctx) => SignupScreen(),
         FreeReport.routeName: (ctx) => const FreeReport(),

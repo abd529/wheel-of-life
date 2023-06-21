@@ -1,4 +1,3 @@
-
 // ignore_for_file: must_be_immutable, use_build_context_synchronously
 
 import 'package:flutter/foundation.dart';
@@ -13,10 +12,11 @@ import '../Authentication/google_signin_api.dart';
 
 class EmailSend extends StatelessWidget {
   static const routeName = "email-send";
-   EmailSend({super.key});
-  late Future<int> statusCode ;
+  EmailSend({super.key});
+  late Future<int> statusCode;
 
-  void sendEmail(String recipientEmail, String messageMail, BuildContext context)async{
+  void sendEmail(
+      String recipientEmail, String messageMail, BuildContext context) async {
     //final user = await GoogleAuthApi.signIn();
     String userName = "abdullahayaz529@gmail.com";
     String userName2 = "gesconvsgar@ezeelogix.com";
@@ -24,29 +24,32 @@ class EmailSend extends StatelessWidget {
     String password2 = "ges23@conv";
     String token = "";
     final smtpServer2 = SmtpServer("smtp.titan.email",
-      username: "gesconvsgar@ezeelogix.com",
-      password: "ges23@conv",
-      port: 465,
-      ssl: true);
+        username: "gesconvsgar@ezeelogix.com",
+        password: "ges23@conv",
+        port: 465,
+        ssl: true);
     final smtpServer = gmailSaslXoauth2(userName, password);
-    final message = Message()..from=Address(userName,"Mail Service")..recipients.add(recipientEmail)..subject = "Mail"..text = "Message: $messageMail";
-    try{
+    final message = Message()
+      ..from = Address(userName2, "Mail Service")
+      ..recipients.add(recipientEmail)
+      ..subject = "Mail"
+      ..text = "Message: $messageMail";
+    try {
       await send(message, smtpServer2);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: FittedBox(
-          child: Text("Email send good"),
-        ))
-      );
-    }catch(e){
-      if(kDebugMode){
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: FittedBox(
+        child: Text("Email send good"),
+      )));
+    } catch (e) {
+      if (kDebugMode) {
         print(e.toString());
       }
     }
   }
 
-  signIn(){
+  signIn() {
     final _googleSignIn = GoogleSignIn();
-    Future<GoogleSignInAccount?> login() =>_googleSignIn.signIn();
+    Future<GoogleSignInAccount?> login() => _googleSignIn.signIn();
   }
 
   // Future<int> sendEmail(String name, String subject ,String email, String message)async{
@@ -71,20 +74,26 @@ class EmailSend extends StatelessWidget {
   //     );
   //     return response.statusCode;
   // }
-      
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Center(child: Text("hehe"),),
-          ElevatedButton(onPressed: ()async{
-           await GoogleAuthApi.signIn();
-          }, child: const Text("sign in")),
-          ElevatedButton(onPressed: (){
-            sendEmail("abdullahayaz529@gmail.com","heyyyyy", context);
-          }, child: const Text("send email"))
+          const Center(
+            child: Text("hehe"),
+          ),
+          ElevatedButton(
+              onPressed: () async {
+                await GoogleAuthApi.signIn();
+              },
+              child: const Text("sign in")),
+          ElevatedButton(
+              onPressed: () {
+                sendEmail("abdullahayaz529@gmail.com", "heyyyyy", context);
+              },
+              child: const Text("send email"))
         ],
       ),
     );
