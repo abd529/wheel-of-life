@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../Authentication/signup_screen.dart';
 import '../Models/onboarding_model.dart';
 import 'onboard_screen.dart';
 

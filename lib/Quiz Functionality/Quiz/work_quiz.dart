@@ -1,11 +1,10 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/Quiz/money_quiz.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class WorkQuiz extends StatefulWidget {
   static const routeName = "my-work-quiz";
@@ -17,17 +16,17 @@ class WorkQuiz extends StatefulWidget {
 }
 
 class _WorkQuizState extends State<WorkQuiz> {
-  List<String> Questions = [
-    "Q1: I feel satisfied with my performance in the work environment and I really want to work on what I do?",
-    "Q2: Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
-    "Q3: Do I feel comfortable in my company and she respects my values?",
-    "Q4: Am I satisfied with my boss or me in my role as a boss?",
-    "Q5: Do I feel that we form a good team with my teammates?",
-    "Q6: Do I feel satisfied with the work of my collaborators and we form a good team?",
-    "Q7: Am I recognized in my work, I feel that the work I do is valued?",
-    "Q8: Do I feel satisfied with the economic income and other remuneration that my work gives me?",
-    "Work questions are completed",
-  ];
+  // List<String> Questions = [
+  //   "Q1: I feel satisfied with my performance in the work environment and I really want to work on what I do?",
+  //   "Q2: Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
+  //   "Q3: Do I feel comfortable in my company and she respects my values?",
+  //   "Q4: Am I satisfied with my boss or me in my role as a boss?",
+  //   "Q5: Do I feel that we form a good team with my teammates?",
+  //   "Q6: Do I feel satisfied with the work of my collaborators and we form a good team?",
+  //   "Q7: Am I recognized in my work, I feel that the work I do is valued?",
+  //   "Q8: Do I feel satisfied with the economic income and other remuneration that my work gives me?",
+  //   "Work questions are completed",
+  // ];
   List<String> topic = [
     "Working capacity",
     "Functions",
@@ -52,6 +51,17 @@ class _WorkQuizState extends State<WorkQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    (AppLocalizations.of(context)!.workQone),
+    (AppLocalizations.of(context)!.workQtwo),
+    (AppLocalizations.of(context)!.workQthree),
+    (AppLocalizations.of(context)!.workQfour),
+    (AppLocalizations.of(context)!.workQfive),
+    (AppLocalizations.of(context)!.workQsix),
+    (AppLocalizations.of(context)!.workQseven),
+    (AppLocalizations.of(context)!.workQeight),
+    AppLocalizations.of(context)!.questionsCompleted,
+    ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -96,9 +106,9 @@ class _WorkQuizState extends State<WorkQuiz> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Work",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Text(
+                AppLocalizations.of(context)!.work,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -197,7 +207,7 @@ class _WorkQuizState extends State<WorkQuiz> {
                                   padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50))),
-                              child: const Text("Previous"))
+                              child: Text(AppLocalizations.of(context)!.previous))
                           : const SizedBox(
                               height: 10,
                             ),
@@ -296,8 +306,10 @@ class _WorkQuizState extends State<WorkQuiz> {
                             }
                           },
                           child: index <= 7
-                              ? const Text("Next")
-                              : const Text("Move to next section")),
+                              ? Text(AppLocalizations.of(context)!.next)
+                              : SizedBox(
+                                width: 250,
+                                child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),
                   const SizedBox(
@@ -319,9 +331,9 @@ class _WorkQuizState extends State<WorkQuiz> {
                               shape: RoundedRectangleBorder(
                                   //to set border radius to button
                                   borderRadius: BorderRadius.circular(50))),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(color: Colors.white),
+                          child: Text(
+                            AppLocalizations.of(context)!.skip,
+                            style:const TextStyle(color: Colors.white),
                           ),
                         )
                       : const SizedBox(

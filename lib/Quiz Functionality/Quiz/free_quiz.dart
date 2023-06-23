@@ -1,13 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/Quiz/work_quiz.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FreeQuiz extends StatefulWidget {
   static const routeName = "my-free-quiz";
@@ -19,15 +16,15 @@ class FreeQuiz extends StatefulWidget {
 }
 
 class _FreeQuizState extends State<FreeQuiz> {
-  List<String> Questions = [
-    "Q1: Do I have enough leisure time, or do I think it should have more?",
-    "Q2: Do I feel that I take advantage of the time I have and take advantage of my leisure?",
-    "Q3: May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
-    "Q4: What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
-    "Q5: Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
-    "Q6: How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
-    "Free Time questions are completed",
-  ];
+  // List<String> Questions = [
+  //   "Q1: Do I have enough leisure time, or do I think it should have more?",
+  //   "Q2: Do I feel that I take advantage of the time I have and take advantage of my leisure?",
+  //   "Q3: May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
+  //   "Q4: What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
+  //   "Q5: Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
+  //   "Q6: How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
+  //   "Free Time questions are completed",
+  // ];
   List<String> topic = [
     "Leisure",
     "Quality Time",
@@ -50,6 +47,15 @@ class _FreeQuizState extends State<FreeQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    (AppLocalizations.of(context)!.freeQone),
+    (AppLocalizations.of(context)!.freeQtwo),
+    (AppLocalizations.of(context)!.freeQthree),
+    (AppLocalizations.of(context)!.freeQfour),
+    (AppLocalizations.of(context)!.freeQfive),
+    (AppLocalizations.of(context)!.freeQsix),
+    AppLocalizations.of(context)!.questionsCompleted,
+    ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -96,9 +102,9 @@ class _FreeQuizState extends State<FreeQuiz> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Free Time",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Text(
+                AppLocalizations.of(context)!.freeTime,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -198,7 +204,7 @@ class _FreeQuizState extends State<FreeQuiz> {
                                   shape: RoundedRectangleBorder(
                                       //to set border radius to button
                                       borderRadius: BorderRadius.circular(50))),
-                              child: const Text("Previous"))
+                              child: Text(AppLocalizations.of(context)!.previous,))
                           : const SizedBox(
                               height: 10,
                             ),
@@ -276,8 +282,10 @@ class _FreeQuizState extends State<FreeQuiz> {
                             }
                           },
                           child: index <= 5
-                              ? const Text("Next")
-                              : const Text("Move to next section")),
+                              ? Text(AppLocalizations.of(context)!.next)
+                              : SizedBox(
+                                width: 250,
+                                child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),
                   const SizedBox(
@@ -298,9 +306,9 @@ class _FreeQuizState extends State<FreeQuiz> {
                               padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50))),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(color: Colors.white),
+                          child: Text(
+                            AppLocalizations.of(context)!.skip,
+                            style:const TextStyle(color: Colors.white),
                           ),
                         )
                       : const SizedBox(

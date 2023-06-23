@@ -1,26 +1,30 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
-
-import 'dart:convert';
-
-import 'package:com.ezeelogix.truenorth/Screens/coach_filter.dart';
-import 'package:com.ezeelogix.truenorth/Screens/free_report.dart';
-import 'package:com.ezeelogix.truenorth/Screens/verify_email.dart';
-import 'package:flutter/material.dart';
-// import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
+// ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages
 import 'package:blur/blur.dart';
-import 'package:graphic/graphic.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:convert';
+import 'dart:ui' as ui;
+import '../Screens/coach_filter.dart';
+import '../Screens/free_report.dart';
+import '../Screens/verify_email.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:graphic/graphic.dart';
 import 'package:http/http.dart' as http;
 
 class WheelOfLife extends StatefulWidget {
   final adjustData;
-  const WheelOfLife({super.key, this.adjustData});
+  final String userId;
+  const WheelOfLife({super.key, this.adjustData, required this.userId});
 
   @override
   State<WheelOfLife> createState() => _WheelOfLifeState();
 }
 
 class _WheelOfLifeState extends State<WheelOfLife> {
+  final GlobalKey globalKey = GlobalKey();
   Map<String, dynamic>? paymentIntent;
   Future<void> makePayment(double amount, String route) async {
     // try {
@@ -118,6 +122,37 @@ class _WheelOfLifeState extends State<WheelOfLife> {
     final calculatedAmout = (int.parse(amount)) * 100;
     return calculatedAmout.toString();
   }
+  
+  Future<String> captureWidget() async {
+
+  final RenderRepaintBoundary boundary = globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+
+  final ui.Image image = await boundary.toImage();
+  
+  final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+  
+  final Uint8List pngBytes = byteData!.buffer.asUint8List();
+
+  final ref = FirebaseStorage.instance.ref().child("${widget.userId}image");
+    await ref.putData(Uint8List.fromList(pngBytes));
+    String downloadUrl = await ref.getDownloadURL();
+    print("linkkkkkkkkkk $downloadUrl");
+    return downloadUrl;
+}
+
+Future<String> fetchFileUrl(String fileName) async {
+
+  // Create a reference to the file
+  Reference fileRef = FirebaseStorage.instance.ref().child(fileName);
+
+  // Get the download URL for the file
+  String downloadUrl = await fileRef.getDownloadURL();
+
+  return downloadUrl;
+}
+String fileUrl = "";
+String imgUrl = "";
+
 
   @override
   Widget build(BuildContext context) {
@@ -130,81 +165,87 @@ class _WheelOfLifeState extends State<WheelOfLife> {
               padding: const EdgeInsets.all(05),
               child: Column(
                 children: [
-                  const Text("Your Wheel of life", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  Text(AppLocalizations.of(context)!.yourReport, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  // ElevatedButton(onPressed: (){
+                  //   captureWidget();
+                  // }, child: const Text("post wheel")),
                   SizedBox(
                     width: 400,
                     height: 300,
                     child: Card(
                       child: 
-                      Image.asset(
-                           "assets/dummy_graph.jpg",
-                            width: size.width/1.8,
-                            height: size.height/8,
-                            //fit: BoxFit.cover,
-                          ), 
-                      // Blur(
-                      //   blur: 5,
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: [
-                      //       Container(
-                      //     margin: const EdgeInsets.only(top: 10),
-                      //     width: size.width-30,
-                      //     height: 300,
-                      //     child:
-                      //      Chart(
-                      //       data: widget.adjustData,
-                      //       variables: {
-                      //         'index': Variable(
-                      //           accessor: (Map map) => map['index'].toString(),
-                      //         ),
-                      //         'type': Variable(
-                      //           accessor: (Map map) => map['type'] as String,
-                      //         ),
-                      //         'value': Variable(
-                      //           accessor: (Map map) => map['value'] as num,
-                      //         ),
-                      //       },
-                      //       marks: [
-                      //         LineMark(
-                      //           position:
-                      //               Varset('index') * Varset('value') / Varset('type'),
-                      //           shape: ShapeEncode(value: BasicLineShape(loop: true)),
-                      //           color: ColorEncode(
-                      //               variable: 'type', values: Defaults.colors10),
-                      //         )
-                      //       ],
-                      //       coord: PolarCoord(),
-                      //       axes: [
-                      //         Defaults.circularAxis,
-                      //         Defaults.radialAxis,
-                      //       ],
-                      //       selections: {
-                      //         'touchMove': PointSelection(
-                      //           on: {
-                      //             GestureType.scaleUpdate,
-                      //             GestureType.tapDown,
-                      //             GestureType.longPressMoveUpdate
-                      //           },
-                      //           dim: Dim.x,
-                      //           variable: 'index',
-                      //         )
-                      //       },
-                      //       tooltip: TooltipGuide(
-                      //         anchor: (_) => Offset.zero,
-                      //         align: Alignment.bottomRight,
-                      //         multiTuples: true,
-                      //         variables: ['type', 'value'],
-                      //       ),
-                      //       crosshair: CrosshairGuide(followPointer: [false, true]),
-                      //     ),
-                      //   ),
-                      //     ],
-                      //   ),
-                      // ),
+                      // Image.asset(
+                      //      "assets/dummy_graph.jpg",
+                      //       width: size.width/1.8,
+                      //       height: size.height/8,
+                      //       //fit: BoxFit.cover,
+                      //     ), 
+                      Blur(
+                        blur: 2.5,
+                        child: RepaintBoundary(
+                          key: globalKey,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                            margin: const EdgeInsets.only(top: 10),
+                            width: size.width-30,
+                            height: 300,
+                            child:
+                             Chart(
+                              data: widget.adjustData,
+                              variables: {
+                                'index': Variable(
+                                  accessor: (Map map) => map['index'].toString(),
+                                ),
+                                'type': Variable(
+                                  accessor: (Map map) => map['type'] as String,
+                                ),
+                                'value': Variable(
+                                  accessor: (Map map) => map['value'] as num,
+                                ),
+                              },
+                              marks: [
+                                LineMark(
+                                  position:
+                                      Varset('index') * Varset('value') / Varset('type'),
+                                  shape: ShapeEncode(value: BasicLineShape(loop: true)),
+                                  color: ColorEncode(
+                                      variable: 'type', values: Defaults.colors10),
+                                )
+                              ],
+                              coord: PolarCoord(),
+                              axes: [
+                                Defaults.circularAxis,
+                                Defaults.radialAxis,
+                              ],
+                              selections: {
+                                'touchMove': PointSelection(
+                                  on: {
+                                    GestureType.scaleUpdate,
+                                    GestureType.tapDown,
+                                    GestureType.longPressMoveUpdate
+                                  },
+                                  dim: Dim.x,
+                                  variable: 'index',
+                                )
+                              },
+                              tooltip: TooltipGuide(
+                                anchor: (_) => Offset.zero,
+                                align: Alignment.bottomRight,
+                                multiTuples: true,
+                                variables: ['type', 'value'],
+                              ),
+                              crosshair: CrosshairGuide(followPointer: [false, true]),
+                            ),
+                          ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  const Text("Do you want us to email the result to you for only \$1.99", textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
+                  Text(AppLocalizations.of(context)!.packageone, textAlign: TextAlign.center, style: const TextStyle(fontSize: 16),),
                   const SizedBox(height: 10),
                   ElevatedButton(
                      style: ElevatedButton.styleFrom(
@@ -214,10 +255,13 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                             ),),
                     onPressed: ()async{
                       //await makePayment(1.99, VerifyEmail.routeName);
-                      Navigator.of(context).pushNamed(VerifyEmail.routeName);
-                    }, child: const Text("Get email for \$1.99")),
+                      fileUrl = await fetchFileUrl(widget.userId);
+                      imgUrl = await captureWidget();
+                      print('URLzzz: $fileUrl $imgUrl');
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => VerifyEmail(fileUrl: fileUrl,imgUrl: imgUrl),));
+                    }, child: Text(AppLocalizations.of(context)!.packageOneButton, textAlign: TextAlign.center,)),
                   const SizedBox(height: 30),
-                  const Text("Get email and get contacted with certified coach", textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
+                  Text(AppLocalizations.of(context)!.packagetwo, textAlign: TextAlign.center, style: const TextStyle(fontSize: 16),),
                   const SizedBox(height: 10),
                   ElevatedButton(
                      style: ElevatedButton.styleFrom(
@@ -227,10 +271,13 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                             ),),
                     onPressed: ()async{
                       //await makePayment(2.99,"");
-                      Navigator.of(context).pushNamed(CoachFilter.routeName);
-                    }, child: const Text("Get email & Coach for \$2.99")),
+                      fileUrl = await fetchFileUrl(widget.userId);
+                      imgUrl = await captureWidget();
+                      print('URLzzz: $fileUrl $imgUrl');
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => CoachFilter(fileUrl: fileUrl,imgUrl: imgUrl),));
+                    }, child: Text(AppLocalizations.of(context)!.packageTwoButton, textAlign: TextAlign.center,)),
                   const SizedBox(height: 30),
-                  const Text("Send me and my coach an email for free", textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),
+                  Text(AppLocalizations.of(context)!.packagethree, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18),),
                   const SizedBox(height: 10),
                   ElevatedButton(
                      style: ElevatedButton.styleFrom(
@@ -238,9 +285,12 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                         shape: RoundedRectangleBorder( //to set border radius to button
                   borderRadius: BorderRadius.circular(50)
                             ),),
-                    onPressed: (){
-                      Navigator.of(context).pushNamed(FreeReport.routeName);
-                    }, child: const Text("Send email to me and my coach ")),  
+                    onPressed: ()async{
+                      fileUrl = await fetchFileUrl(widget.userId);
+                      imgUrl = await captureWidget();
+                      print('URLzzz: $fileUrl $imgUrl');
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => FreeReport(fileUrl: fileUrl,imgUrl: imgUrl),));
+                    }, child: Text(AppLocalizations.of(context)!.packageThreeButton, textAlign: TextAlign.center,)),  
                 ],
               ),
             ),

@@ -2,7 +2,6 @@ import 'package:uuid/uuid.dart';
 
 import './Authentication/signup_screen.dart';
 import './Screens/lanugage_screen.dart';
-import './Screens/verify_email.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -14,9 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import '/Screens/home_screen.dart';
 import 'Authentication/login_screen.dart';
-import 'Screens/coach_filter.dart';
 import 'Screens/email.dart';
-import 'Screens/free_report.dart';
 import 'Screens/onboard_screen.dart';
 import 'Screens/splash_screen.dart';
 import 'l10n/l10n.dart';
@@ -109,9 +106,6 @@ class _MyAppState extends State<MyApp> {
             ),
         LanguageScreen.routeName: (ctx) => const LanguageScreen(),
         SignupScreen.routeName: (ctx) => SignupScreen(),
-        FreeReport.routeName: (ctx) => const FreeReport(),
-        CoachFilter.routeName: (ctx) => const CoachFilter(),
-        VerifyEmail.routeName: (ctx) => const VerifyEmail(),
       },
     );
   }

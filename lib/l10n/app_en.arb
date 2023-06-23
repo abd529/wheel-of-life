@@ -1,3 +1,327 @@
 {
-    "language":"English"
+  "@@locale": "en",
+
+  "languageName": "English",
+  "@languageName": {},
+
+  "whatIsTrueNorth": "What is True North",
+  "@whatIsTrueNorth": {},
+
+  "next": "Next",
+  "@next": {},
+
+  "intro": "Welcome to True North! We are excited to help you determine what is essential for you and those areas that require you to concentrate on to get the most out of your life. So let's start the journey.",
+  "@intro": {},
+
+  "trueNorth": "True North",
+  "@trueNorth": {},
+
+  "welcome": "Welcome to True North",
+  "@welcome": {},
+
+  "homeDescription": "You'll be presented with questions in different areas. You will respond to each one according to the following scale  1 to3 Dissatisfaction 4 to 6 Nessacary work needed 7 to 8 Good, still room for improvement 9 to 10 No Modification is needed Ultimately you'll see your wheel of life and the recommended areas to concentrate on You'll be presented with Baseline questions first. You may respond to that as you may feel today, without much introseption",
+  "@homeDescription": {},
+
+  "start": "Start",
+  "@Start": {},
+
+  "language": "language",
+  "@language": {},
+
+  "health": "Health",
+  "@Health": {},
+
+  "personalG": "personal Growth",
+  "@personalG": {},
+
+  "home": "Home",
+  "@home": {},
+
+  "famFriends": "Family & Friends",
+  "@famFriends": {},
+
+  "love": "Love",
+  "@love": {},
+
+  "freeTime": "Free Time",
+  "@freeTime": {},
+
+  "work": "Work",
+  "@work": {},
+
+  "money": "Money",
+  "@money": {},
+
+  "baseLineQuestion": "How do you feel you are in this area?",
+  "@baseLineQuestion": {},
+
+  "baslineCompleted": "Baseline questions are completed",
+  "@baslineCompleted": {},
+
+  "moveToDetailedQuestions": "Move to Detailed Questions",
+  "@MoveToDetailedQuestions": {},
+
+  "section": "Section",
+  "@section": {},
+
+  "subject": "Subject",
+  "@subject": {},
+
+  "previous": "Previous",
+  "@previous": {},
+
+  "skip": "Skip",
+  "@skip": {},
+
+  "healthQone": "Q1: Is there anything that alters my psychological state?",
+  "@healthQone": {},
+
+  "healthQtwo": "Q2: Do I carry out activities that move me away from a state of tension, nerves, stress, etc.?",
+  "@healthQtwo": {},
+
+  "healthQthree": "Q3: When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
+  "@healthQthree": {},
+
+  "healthQfour": "Q4: Do I have any disease that affects my physical state?",
+  "@healthQfour": {},
+
+  "healthQfive": "Q5: The resting time, food, sport and more, are they adequate?",
+  "@healthQfive": {},
+
+  "healthQsix": "Q6: If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
+  "@healthQsix": {},
+
+  "questionsCompleted": "Questions are completed",
+  "@questionsCompleted": {},
+
+  "moveToNext": "Move to next section",
+  "@moveToNext": {},
+
+  "personalQone": "Q1: Do I feel useful to society, do I contribute to the development of my society?",
+  "@personalQone": {},
+
+  "personalQtwo": "Q2: Am I comfortable with my personal growth plans and projects?",
+  "@personalQtwo": {},
+
+  "personalQthree": "Q3: Do my projects to futures satisfy the perspectives I have to grow?",
+  "@personalQthree": {},
+
+  "personalQfour": "Q4: Do I feel good with my spirituality and cultivation constantly?",
+  "@personalQfour": {},
+
+  "personalQfive": "Q5: Do I give true value to my life and my affections?",
+  "@personalQfive": {},
+
+  "personalQsix": "Q6: Do I face life in a planned, applied manner and have a will to improve?",
+  "@personalQsix": {},
+
+  "personalQseven": "Q7: How many skills can I say that I have to do everything that I propose?",
+  "@personalQseven": {},
+
+  "personalQeight": "Q8: Am I satisfied with my professional training and I try to move forward?",
+  "@personalQeight": {},
+
+  "homeQone": "Q1: Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
+  "@homeQone": {},
+
+  "homeQtwo": "Q2: Do I feel comfortable in the city in which I live and agree with the services it offers?",
+  "@homeQtwo": {},
+
+  "homeQthree": "Q3: Do I like my neighbors and their culture of coexistence?",
+  "@homeQthree": {},
+
+  "homeQfour": "Q4: The house where I live satisfies me, has enough space and comfort that I need?",
+  "@homeQfour": {},
+
+  "homeQfive": "Q5: Am I comfortable with the people with whom I share my home?",
+  "@homeQfive": {},
+
+  "homeQsix": "Q6: How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
+  "@homeQsix": {},
+
+  "famQone": "Q1: Do I feel satisfied with the ability I have to find and communicate with new friends or family?",
+  "@famQone": {},
+
+  "famQtwo": "Q2: Am I satisfied with the relationship I have with my mother?",
+  "@famQtwo": {},
+
+  "famQthree": "Q3: Am I satisfied with the relationship I have with my father?",
+  "@famQthree": {},
+
+  "famQfour": "Q4: Am I satisfied with the relationship I have with my children? If I don't have them and I love them, do I do actions to have them?",
+  "@famQfour": {},
+
+  "famQfive": "Q5: How do I feel in my relationships with close relatives: brothers, grandparents, cousins, uncles, etc.?",
+  "@famQfive": {},
+
+  "famQsix": "Q6: I feel satisfied with the friends I have, do I really have them when I need them and support me?",
+  "@famQsix": {},
+
+  "famQseven": "Q7: Am I comfortable with the acquaintances I have?",
+  "@famQseven": {},
+
+  "loveQone": "Q1: May I give myself to my relationships",
+  "@loveQone": {},
+
+  "loveQtwo": "Q2: Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
+  "@loveQtwo": {},
+
+  "loveQthree": "Q3: Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
+  "@loveQthree": {},
+
+  "loveQfour": "Q4: Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
+  "@loveQfour": {},
+
+  "loveQfive": "Q5: Do we distribute home tasks?",
+  "@loveQfive": {},
+
+  "loveQsix": "Q6: Am I faithful in my relationships, and I have the confidence that my partner is the same?",
+  "@loveQsix": {},
+
+  "loveQseven": "Q7: Do I have sexual relations with my partner and it attracts me physically?",
+  "@loveQseven": {},
+
+  "loveQeight": "Q8: Do I feel really loved and positively value all the mental and emotional part of my partner?",
+  "@loveQeight": {},
+
+  "freeQone": "Q1: Do I have enough leisure time, or do I think it should have more?",
+  "@freeQone": {},
+
+  "freeQtwo": "Q2: Do I feel that I take advantage of the time I have and take advantage of my leisure?",
+  "@freeQtwo": {},
+
+  "freeQthree": "Q3: May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
+  "@freeQthree": {},
+
+  "freeQfour": "Q4: What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
+  "@freeQfour": {},
+
+  "freeQfive": "Q5: Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
+  "@freeQfive": {},
+
+  "freeQsix": "Q6: How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
+  "@freeQsix": {},
+
+  "workQone": "Q1: I feel satisfied with my performance in the work environment and I really want to work on what I do?",
+  "@workQone": {},
+
+  "workQtwo": "Q2: Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
+  "@workQtwo": {},
+
+  "workQthree": "Q3: Do I feel comfortable in my company and she respects my values?",
+  "@workQthree": {},
+
+  "workQfour": "Q4: Am I satisfied with my boss or me in my role as a boss?",
+  "@workQfour": {},
+
+  "workQfive": "Q5: Do I feel that we form a good team with my teammates?",
+  "@workQfive": {},
+
+  "workQsix": "Q6: Do I feel satisfied with the work of my collaborators and we form a good team?",
+  "@workQsix": {},
+
+  "workQseven": "Q7: Am I recognized in my work, I feel that the work I do is valued?",
+  "@workQseven": {},
+
+  "workQeight": "Q8: Do I feel satisfied with the economic income and other remuneration that my work gives me?",
+  "@workQeight": {},
+
+  "moneyQone": "Q1: How do I feel about the belongings I have? Can I satisfy everything I have?",
+  "@moneyQone": {},
+
+  "moneyQtwo": "Q2: Do I have guarantees that support me financially and I feel sufficient guarantees?",
+  "@moneyQtwo": {},
+
+  "moneyQthree": "Q3: Am I satisfied with the income I have today and are enough to have the standard of living?",
+  "@moneyQthree": {},
+
+  "moneyQfour": "Q4: Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
+  "@moneyQfour": {},
+
+  "moneyQfive": "Q5: How do I feel about the level of expenses I have. Expenditure above my possibilities?",
+  "@moneyQfive": {},
+
+  "moneyQsix": "Q6: Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
+  "@moneyQsix": {},
+
+  "moneyQseven": "Q7: Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
+  "@moneyQseven": {},
+
+  "moneyQeight": "Q8: I keep some money for bad times, and I'm happy with my savings?",
+  "@moneyQeight": {},
+
+  "avg": "Avergae",
+  "@avg": {},
+
+  "qNA": "Question Answers",
+  "@qNA": {},
+
+  "seeReport": "See Report",
+  "@seeReport": {},
+
+  "sendEmail": "Send Email",
+  "@sendEmail": {},
+
+  "yourReport": "Your Report",
+  "@yourReport": {},
+
+  "packageone": "Do you want us to email the result report to you for only $1.99 ?",
+  "@packageone": {},
+
+  "packageOneButton": "Get email for $1.99",
+  "@packageOneButton": {},
+
+  "packagetwo": "Do you want to the result report along with a certified coach ?",
+  "@packagetwo": {},
+
+  "packageTwoButton": "Get email and Certified Coach for $2.99",
+  "@packageTwoButton": {},
+
+  "packagethree": "Do you want us to send your result report to you and your Coach for free?",
+  "@packagethree": {},
+
+  "packageThreeButton": "Send email to me and my coach for free",
+  "@packageThreeButton": {},
+
+  "coachFilter": "Coach Filter",
+  "@coachFilter": {},
+
+  "filter": "Filter your required coach",
+  "@filter": {},
+
+  "verifyEmail": "Verify Email",
+  "@verifyEmail": {},
+
+  "fullName": "Full Name",
+  "@fullName": {},
+
+  "number": "Phone Number",
+  "@number": {},
+
+  "email": "Email",
+  "@email": {},
+
+  "freeReport": "FreeReport",
+  "@freeReport": {},
+
+  "freeReportDescription": "A free report will be sent to you and your professional coach",
+  "@freeReportDescription": {},
+
+  "confirmEmail": "Confirm Email",
+  "@confirmEmail": {},
+
+  "code": "Code",
+  "@code": {},
+
+  "needCode": "Don't have a free code?",
+  "@needCode": {},
+
+  "contact": "Contact Us",
+  "@contact": {},
+
+  "codeDetail": "The code will be given by the coach to it's clients and it will allow users to get the result for free and also will send the results to email associated with the coach",
+  "@codeDetail": {},
+
+  "getFreeReport": "Get your free result report",
+  "@getFreeReport": {}
 }

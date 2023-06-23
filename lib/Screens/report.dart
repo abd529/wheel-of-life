@@ -1,12 +1,8 @@
 // ignore_for_file: use_build_context_synchronously, depend_on_referenced_packages
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '/Screens/pdf_screen.dart';
-import '/Screens/wheel.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 
 class DetailPage extends StatefulWidget {
@@ -283,8 +279,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Baseline Question Answers',
+                      Text(
+                        'Baseline ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -362,7 +358,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
+                             Text(AppLocalizations.of(context)!.avg),
                              Text(
                               baseAvg.toStringAsFixed(1).toString(),
                             ),
@@ -377,8 +373,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Health Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.health} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -446,7 +442,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
+                            Text(AppLocalizations.of(context)!.avg),
                              Text(
                                healthAvg.toStringAsFixed(1).toString(),
                             ),
@@ -462,8 +458,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Personal Growth Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.personalG} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -551,8 +547,8 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
-                             Text(
+                            Text(AppLocalizations.of(context)!.avg),
+                            Text(
                               personalAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
@@ -567,8 +563,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Home Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.home} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -636,8 +632,8 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
-                             Text(
+                            Text(AppLocalizations.of(context)!.avg),
+                            Text(
                               homeAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
@@ -652,8 +648,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Family & Friends Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.famFriends} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -731,8 +727,8 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
-                             Text(
+                            Text(AppLocalizations.of(context)!.avg),
+                            Text(
                               famAvg.toStringAsFixed(1).toString(),
                             ),
                           ],
@@ -747,8 +743,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Love Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.love} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -836,7 +832,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
+                             Text(AppLocalizations.of(context)!.avg),
                              Text(
                               loveAvg.toStringAsFixed(1).toString(),
                             ),
@@ -852,8 +848,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Free Time Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.freeTime} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -921,7 +917,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
+                             Text(AppLocalizations.of(context)!.avg),
                              Text(
                               freeAvg.toStringAsFixed(1).toString(),
                             ),
@@ -937,8 +933,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Work Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.work} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -1026,7 +1022,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
+                             Text(AppLocalizations.of(context)!.avg),
                              Text(
                               workAvg.toStringAsFixed(1).toString(),
                             ),
@@ -1042,8 +1038,8 @@ class _DetailPageState extends State<DetailPage> {
                 child: Card(
                   child: Column(
                     children: [
-                      const Text(
-                        'Money Question Answers',
+                      Text(
+                        '${AppLocalizations.of(context)!.money} ${AppLocalizations.of(context)!.qNA}',
                       ),
                       const SizedBox(height: 10,),
                       DefaultTextStyle.merge(
@@ -1131,7 +1127,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                             const Text("Average"),
+                             Text(AppLocalizations.of(context)!.avg),
                              Text(
                               moneyAvg.toStringAsFixed(1).toString(),
                             ),
@@ -1142,91 +1138,94 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 ),
-              ElevatedButton(onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => PDFScreen(
-                  userId: widget.userId,
-                  baseQ1: baseQ1,
-                  baseQ2: baseQ2,
-                  baseQ3:baseQ3,
-                  baseQ4:baseQ4,
-                  baseQ5:baseQ5,
-                  baseQ6:baseQ6,
-                  baseQ7:baseQ7,
-                  baseQ8:baseQ8,
-                  healthQ1:healthQ1,
-                  healthQ2:healthQ2,
-                  healthQ3:healthQ3,
-                  healthQ4:healthQ4,
-                  healthQ5:healthQ5,
-                  healthQ6:healthQ6,
-                  healthAvg: healthAvg,
-                  personalQ1:personalQ1,
-                  personalQ2:personalQ2,
-                  personalQ3:personalQ3,
-                  personalQ4:personalQ4,
-                  personalQ5:personalQ5,
-                  personalQ6:personalQ6,
-                  personalQ7:personalQ7,
-                  personalQ8:personalQ8,
-                  personalAvg: personalAvg,
-                  famQ1:famQ2,
-                  famQ2:famQ2,
-                  famQ3:famQ3,
-                  famQ4:famQ4,
-                  famQ5:famQ5,
-                  famQ6:famQ6,
-                  famQ7:famQ7,
-                  famAvg: famAvg,
-                  homeQ1:homeQ1,
-                  homeQ2:homeQ2,
-                  homeQ3:homeQ3,
-                  homeQ4:homeQ4,
-                  homeQ5:homeQ5,
-                  homeQ6:homeQ6,
-                  homeAvg: homeAvg,
-                  freeQ1:freeQ1,
-                  freeQ2:freeQ2,
-                  freeQ3:freeQ3,
-                  freeQ4:freeQ4,
-                  freeQ5:freeQ5,
-                  freeQ6:freeQ6,
-                  freeAvg: freeAvg,
-                  loveQ1:loveQ1,
-                  loveQ2:loveQ2,
-                  loveQ3:loveQ3,
-                  loveQ4:loveQ4,
-                  loveQ5:loveQ5,
-                  loveQ6:loveQ6,
-                  loveQ7:loveQ7,
-                  loveQ8:loveQ8,
-                  loveAvg: loveAvg,
-                  workQ1: workQ1,
-                  workQ2:workQ2,
-                  workQ3:workQ3,
-                  workQ4:workQ4,
-                  workQ5:workQ5,
-                  workQ6:workQ6,
-                  workQ7:workQ7,
-                  workQ8:workQ8,
-                  workAvg: workAvg,
-                  moneyQ1: moneyQ1,
-                  moneyQ2:moneyQ2,
-                  moneyQ3:moneyQ3,
-                  moneyQ4:moneyQ4,
-                  moneyQ5:moneyQ5,
-                  moneyQ6:moneyQ6,
-                  moneyQ7:moneyQ7,
-                  moneyQ8: moneyQ8,
-                  moneyAvg: moneyAvg,
-                  ),
-                  ));
-                }, 
-                style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
-                          shape: RoundedRectangleBorder( //to set border radius to button
-                    borderRadius: BorderRadius.circular(50)
-                              ),),
-                child: const Text("See Report") )
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => PDFScreen(
+                    userId: widget.userId,
+                    baseQ1: baseQ1,
+                    baseQ2: baseQ2,
+                    baseQ3:baseQ3,
+                    baseQ4:baseQ4,
+                    baseQ5:baseQ5,
+                    baseQ6:baseQ6,
+                    baseQ7:baseQ7,
+                    baseQ8:baseQ8,
+                    healthQ1:healthQ1,
+                    healthQ2:healthQ2,
+                    healthQ3:healthQ3,
+                    healthQ4:healthQ4,
+                    healthQ5:healthQ5,
+                    healthQ6:healthQ6,
+                    healthAvg: healthAvg,
+                    personalQ1:personalQ1,
+                    personalQ2:personalQ2,
+                    personalQ3:personalQ3,
+                    personalQ4:personalQ4,
+                    personalQ5:personalQ5,
+                    personalQ6:personalQ6,
+                    personalQ7:personalQ7,
+                    personalQ8:personalQ8,
+                    personalAvg: personalAvg,
+                    famQ1:famQ2,
+                    famQ2:famQ2,
+                    famQ3:famQ3,
+                    famQ4:famQ4,
+                    famQ5:famQ5,
+                    famQ6:famQ6,
+                    famQ7:famQ7,
+                    famAvg: famAvg,
+                    homeQ1:homeQ1,
+                    homeQ2:homeQ2,
+                    homeQ3:homeQ3,
+                    homeQ4:homeQ4,
+                    homeQ5:homeQ5,
+                    homeQ6:homeQ6,
+                    homeAvg: homeAvg,
+                    freeQ1:freeQ1,
+                    freeQ2:freeQ2,
+                    freeQ3:freeQ3,
+                    freeQ4:freeQ4,
+                    freeQ5:freeQ5,
+                    freeQ6:freeQ6,
+                    freeAvg: freeAvg,
+                    loveQ1:loveQ1,
+                    loveQ2:loveQ2,
+                    loveQ3:loveQ3,
+                    loveQ4:loveQ4,
+                    loveQ5:loveQ5,
+                    loveQ6:loveQ6,
+                    loveQ7:loveQ7,
+                    loveQ8:loveQ8,
+                    loveAvg: loveAvg,
+                    workQ1: workQ1,
+                    workQ2:workQ2,
+                    workQ3:workQ3,
+                    workQ4:workQ4,
+                    workQ5:workQ5,
+                    workQ6:workQ6,
+                    workQ7:workQ7,
+                    workQ8:workQ8,
+                    workAvg: workAvg,
+                    moneyQ1: moneyQ1,
+                    moneyQ2:moneyQ2,
+                    moneyQ3:moneyQ3,
+                    moneyQ4:moneyQ4,
+                    moneyQ5:moneyQ5,
+                    moneyQ6:moneyQ6,
+                    moneyQ7:moneyQ7,
+                    moneyQ8: moneyQ8,
+                    moneyAvg: moneyAvg,
+                    ),
+                    ));
+                  }, 
+                  style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),
+                            shape: RoundedRectangleBorder( //to set border radius to button
+                      borderRadius: BorderRadius.circular(50)
+                                ),),
+                  child: Text(AppLocalizations.of(context)!.seeReport) ),
+              )
              ],
           ),
         ),

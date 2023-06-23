@@ -2,12 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/Quiz/home_quiz.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class PersonalQuiz extends StatefulWidget {
   static const routeName = "my-personal-quiz";
@@ -19,17 +16,17 @@ class PersonalQuiz extends StatefulWidget {
 }
 
 class _PersonalQuizState extends State<PersonalQuiz> {
-  List<String> Questions = [
-    "Q1: Do I feel useful to society, do I contribute to the development of my society?",
-    "Q2: Am I comfortable with my personal growth plans and projects?",
-    "Q3: Do my projects to futures satisfy the perspectives I have to grow?",
-    "Q4: Do I feel good with my spirituality and cultivation constantly?",
-    "Q5: Do I give true value to my life and my affections?",
-    "Q6: Do I face life in a planned, applied manner and have a will to improve?",
-    "Q7: How many skills can I say that I have to do everything that I propose?",
-    "Q8: Am I satisfied with my professional training and I try to move forward?",
-    "Personal Growth Questions are completed",
-  ];
+  // List<String> Questions = [
+  //   "Q1: Do I feel useful to society, do I contribute to the development of my society?",
+  //   "Q2: Am I comfortable with my personal growth plans and projects?",
+  //   "Q3: Do my projects to futures satisfy the perspectives I have to grow?",
+  //   "Q4: Do I feel good with my spirituality and cultivation constantly?",
+  //   "Q5: Do I give true value to my life and my affections?",
+  //   "Q6: Do I face life in a planned, applied manner and have a will to improve?",
+  //   "Q7: How many skills can I say that I have to do everything that I propose?",
+  //   "Q8: Am I satisfied with my professional training and I try to move forward?",
+  //   "Personal Growth Questions are completed",
+  // ];
   List<String> topic = [
     "Society",
     "Current projects",
@@ -54,6 +51,17 @@ class _PersonalQuizState extends State<PersonalQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    (AppLocalizations.of(context)!.personalQone),
+    (AppLocalizations.of(context)!.personalQtwo),
+    (AppLocalizations.of(context)!.personalQthree),
+    (AppLocalizations.of(context)!.personalQfour),
+    (AppLocalizations.of(context)!.personalQfive),
+    (AppLocalizations.of(context)!.personalQsix),
+    (AppLocalizations.of(context)!.personalQseven),
+    (AppLocalizations.of(context)!.personalQeight),
+    AppLocalizations.of(context)!.questionsCompleted,
+    ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -99,9 +107,9 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Personal Growth",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Text(
+                  AppLocalizations.of(context)!.personalG,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -198,7 +206,7 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                                   shape: RoundedRectangleBorder(
                                       //to set border radius to button
                                       borderRadius: BorderRadius.circular(50))),
-                              child: const Text("Previous"))
+                              child: Text(AppLocalizations.of(context)!.previous,))
                           : const SizedBox(
                               height: 10,
                             ),
@@ -297,8 +305,10 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                             }
                           },
                           child: index <= 7
-                              ? const Text("Next")
-                              : const Text("Move to next section")),
+                              ? Text(AppLocalizations.of(context)!.next,)
+                              : SizedBox(
+                                width: 250,
+                                child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))) ,
                     ],
                   ),
                   const SizedBox(
@@ -320,9 +330,9 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                               shape: RoundedRectangleBorder(
                                   //to set border radius to button
                                   borderRadius: BorderRadius.circular(50))),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(color: Colors.white),
+                          child: Text(
+                            AppLocalizations.of(context)!.skip,
+                            style: const TextStyle(color: Colors.white),
                           ),
                         )
                       : const SizedBox(

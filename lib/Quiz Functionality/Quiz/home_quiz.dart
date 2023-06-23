@@ -1,13 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/Quiz/family_quiz.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeQuiz extends StatefulWidget {
   static const routeName = "my-home-quiz";
@@ -50,6 +47,15 @@ class _HomeQuizState extends State<HomeQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    (AppLocalizations.of(context)!.homeQone),
+    (AppLocalizations.of(context)!.homeQtwo),
+    (AppLocalizations.of(context)!.homeQthree),
+    (AppLocalizations.of(context)!.homeQfour),
+    (AppLocalizations.of(context)!.homeQfive),
+    (AppLocalizations.of(context)!.homeQsix),
+    AppLocalizations.of(context)!.questionsCompleted,
+    ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -95,9 +101,9 @@ class _HomeQuizState extends State<HomeQuiz> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Home",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Text(
+                  AppLocalizations.of(context)!.home,
+                  style:const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -122,9 +128,6 @@ class _HomeQuizState extends State<HomeQuiz> {
                   ),
                 ),
                 ],),
-                // const SizedBox(
-                //   height: 50,
-                // ),
                 Column(
                   children: [
                     Padding(
@@ -196,7 +199,7 @@ class _HomeQuizState extends State<HomeQuiz> {
                                   shape: RoundedRectangleBorder(
                                       //to set border radius to button
                                       borderRadius: BorderRadius.circular(50))),
-                              child: const Text("Previous"))
+                              child: Text(AppLocalizations.of(context)!.previous))
                           : const SizedBox(
                               height: 10,
                             ),
@@ -274,8 +277,10 @@ class _HomeQuizState extends State<HomeQuiz> {
                             }
                           },
                           child: index <= 5
-                              ? const Text("Next")
-                              : const Text("Move to next section")),
+                              ? Text(AppLocalizations.of(context)!.next)
+                              : SizedBox(
+                                width: 250,
+                                child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),
                   const SizedBox(
@@ -297,9 +302,9 @@ class _HomeQuizState extends State<HomeQuiz> {
                               shape: RoundedRectangleBorder(
                                   //to set border radius to button
                                   borderRadius: BorderRadius.circular(50))),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(color: Colors.white),
+                          child: Text(
+                            AppLocalizations.of(context)!.skip,
+                            style: const TextStyle(color: Colors.white),
                           ),
                         )
                       : const SizedBox(

@@ -59,6 +59,7 @@ dependencies:
   uuid: ^3.0.4
   provider: ^6.0.5
   blur: ^3.1.0
+  firebase_storage: ^11.2.3
 
 dev_dependencies:
   flutter_test:
@@ -73,7 +74,6 @@ dev_dependencies:
   youtube_player_flutter: ^8.1.2
   visibility_detector: ^0.4.0+2
   numberpicker: ^2.1.2
-  firebase_storage: ^11.1.2
   flutter_svg: ^2.0.5
   flutter_dotenv: ^5.1.0
   flutter_email_sender: ^6.0.0

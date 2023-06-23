@@ -1,7 +1,7 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, depend_on_referenced_packages
 
-import 'dart:typed_data';
 import 'package:com.ezeelogix.truenorth/Screens/wheel.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -150,52 +150,52 @@ class PDFScreen extends StatelessWidget {
                           pdfWidgets.Divider(
                             thickness: 2,
                           ),
-                          pdfWidgets.SizedBox(
-                            height: 20,
-                          ),
-                          pdfWidgets.Row(
-                            children: [
-                              pdfWidgets.Text(
-                                "Name: ",
-                                style: pdfWidgets.TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(name),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(
-                            height: 30,
-                          ),
-                          pdfWidgets.Column(
-                            children: [
-                              pdfWidgets.Row(
-                                children: [
-                                  pdfWidgets.Text(
-                                    "Coach: ",
-                                    style: pdfWidgets.TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: pdfWidgets.FontWeight.bold),
-                                  ),
-                                  pdfWidgets.Text("Atif Pervaiz"),
-                                ],
-                              ),
-                              pdfWidgets.Row(
-                                children: [
-                                  pdfWidgets.Text(
-                                    "Email: ",
-                                    style: pdfWidgets.TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: pdfWidgets.FontWeight.bold),
-                                  ),
-                                  pdfWidgets.Text(
-                                    "atif123@gmail.com",
-                                    softWrap: true,
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
+                          // pdfWidgets.SizedBox(
+                          //   height: 20,
+                          // ),
+                          // pdfWidgets.Row(
+                          //   children: [
+                          //     pdfWidgets.Text(
+                          //       "Name: ",
+                          //       style: pdfWidgets.TextStyle(
+                          //           fontSize: 14,
+                          //           fontWeight: pdfWidgets.FontWeight.bold),
+                          //     ),
+                          //     pdfWidgets.Text(name),
+                          //   ],
+                          // ),
+                          // pdfWidgets.SizedBox(
+                          //   height: 30,
+                          // ),
+                          // pdfWidgets.Column(
+                          //   children: [
+                          //     pdfWidgets.Row(
+                          //       children: [
+                          //         pdfWidgets.Text(
+                          //           "Coach: ",
+                          //           style: pdfWidgets.TextStyle(
+                          //               fontSize: 14,
+                          //               fontWeight: pdfWidgets.FontWeight.bold),
+                          //         ),
+                          //         pdfWidgets.Text("Atif Pervaiz"),
+                          //       ],
+                          //     ),
+                          //     pdfWidgets.Row(
+                          //       children: [
+                          //         pdfWidgets.Text(
+                          //           "Email: ",
+                          //           style: pdfWidgets.TextStyle(
+                          //               fontSize: 14,
+                          //               fontWeight: pdfWidgets.FontWeight.bold),
+                          //         ),
+                          //         pdfWidgets.Text(
+                          //           "atif123@gmail.com",
+                          //           softWrap: true,
+                          //         ),
+                          //       ],
+                          //     )
+                          //   ],
+                          // ),
                           pdfWidgets.SizedBox(
                             height: 20,
                           ),
@@ -2090,7 +2090,8 @@ class PDFScreen extends StatelessWidget {
       String fileName, List<int> pdfBytes) async {
     final ref = FirebaseStorage.instance.ref().child(fileName);
     await ref.putData(Uint8List.fromList(pdfBytes));
-    // PDF file is now saved to Firebase Cloud Storage
+    String downloadUrl = await ref.getDownloadURL();
+    print("linkkkkkkkkkk $downloadUrl");
   }
 
   @override
@@ -2323,10 +2324,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2337,38 +2338,38 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Mood",
                   "Is there anything that alters my psychological state?",
                   healthQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Psychological state",
                   "Do I carry out activities that move me away from a state of tension, nerves, stress, etc.?",
                   healthQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Personal care",
                   "When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
                   healthQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Physical state",
                   "Do I have any disease that affects my physical state?",
                   healthQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Habits",
                   "The resting time, food, sport and more, are they adequate?",
                   healthQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Measures",
                   "If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
                   healthQ6.toString()
                   ), 
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   healthAvg.toString()
@@ -2388,10 +2389,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2402,48 +2403,48 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Society",
                   "Do I feel useful to society, do I contribute to the development of my society?",
                   personalQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Current projects",
                   "Am I comfortable with my personal growth plans and projects?",
                   personalQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Future projects",
                   "Do my projects to futures satisfy the perspectives I have to grow?",
                   personalQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Spirituality",
                   "Do I feel good with my spirituality and cultivation constantly?",
                   personalQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Self-esteem",
                   "Do I give true value to my life and my affections?",
                   personalQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Attitudes",
                   "Do I face life in a planned, applied manner and have a will to improve?",
                   personalQ6.toString()
                   ),
-                  tableRow(
+                  tableRow(context,
                   "Skills",
                   "How many skills can I say that I have to do everything that I propose?",
                   personalQ7.toString()
                   ), 
-                  tableRow(
+                  tableRow(context,
                   "Studies",
                   "Am I satisfied with my professional training and I try to move forward?",
                   personalQ8.toString()
                   ), 
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   personalAvg.toString()
@@ -2463,10 +2464,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2477,38 +2478,38 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Country",
                   "Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
                   homeQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "City",
                   "Do I feel comfortable in the city in which I live and agree with the services it offers?",
                   homeQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "District",
                   "Do I like my neighbors and their culture of coexistence?",
                   homeQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Home",
                   "The house where I live satisfies me, has enough space and comfort that I need?",
                   homeQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Coexistence",
                   "Am I comfortable with the people with whom I share my home?",
                   homeQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Home care",
                   "How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
                   homeQ6.toString()
                   ), 
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   homeAvg.toString()
@@ -2528,10 +2529,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2542,43 +2543,43 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Provision",
                   "Do I feel satisfied with the ability I have to find and communicate with new friends or family?",
                   famQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Mother",
                   "Am I satisfied with the relationship I have with my mother?",
                   famQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Father",
                   "Am I satisfied with the relationship I have with my father?",
                   famQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Children",
                   "Am I satisfied with the relationship I have with my children? If I don't have them and I love them, do I do actions to have them?",
                   famQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Close relatives",
                   "How do I feel in my relationships with close relatives: brothers, grandparents, cousins, uncles, etc.?",
                   famQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Friends",
                   "I feel satisfied with the friends I have, do I really have them when I need them and support me?",
                   famQ6.toString()
                   ),
-                  tableRow(
+                  tableRow(context,
                   "Known",
                   "Am I comfortable with the acquaintances I have?",
                   famQ7.toString()
                   ),  
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   famAvg.toString()
@@ -2598,10 +2599,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2612,48 +2613,48 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Ability \nto love",
                   "May I give myself to my relationships?",
                   loveQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Number \nof \nrelationships",
                   "Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
                   loveQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Duration",
                   "Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
                   loveQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Communication",
                   "Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
                   loveQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Coexistence",
                   "Do we distribute home tasks?",
                   loveQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Fidelity",
                   "Am I faithful in my relationships, and I have the confidence that my partner is the same?",
                   loveQ6.toString()
                   ),
-                  tableRow(
+                  tableRow(context,
                   "Sexual passion",
                   "Do I have sexual relations with my partner and it attracts me physically?",
                   loveQ7.toString()
                   ), 
-                  tableRow(
+                  tableRow(context,
                   "Emotional Passion",
                   "Do I feel really loved and positively value all the mental and emotional part of my partner?",
                   loveQ8.toString()
                   ),  
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   loveAvg.toString()
@@ -2673,10 +2674,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2687,38 +2688,38 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Leisure",
                   "Do I have enough leisure time, or do I think it should have more?",
                   freeQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Quality time",
                   "Do I feel that I take advantage of the time I have and take advantage of my leisure?",
                   freeQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Fun",
                   "May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
                   freeQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Variety",
                   "What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
                   freeQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Tastes",
                   "Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
                   freeQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Participatory",
                   "How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
                   freeQ6.toString()
                   ),
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   freeAvg.toString(),
@@ -2738,10 +2739,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2752,48 +2753,48 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Working capacity",
                   "I feel satisfied with my performance in the work environment and I really want to work on what I do?",
                   workQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Functions",
                   "Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
                   workQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Company",
                   "Do I feel comfortable in my company and she respects my values?",
                   workQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Boss",
                   "Am I satisfied with my boss or me in my role as a boss?",
                   workQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Companions",
                   "Do I feel that we form a good team with my teammates?",
                   workQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Collaborators",
                   "Do I feel satisfied with the work of my collaborators and we form a good team?",
                   workQ6.toString()
                   ),
-                  tableRow(
+                  tableRow(context,
                   "Recognition",
                   "Am I recognized in my work, I feel that the work I do is valued?",
                   workQ7.toString()
                   ), 
-                  tableRow(
+                  tableRow(context,
                   "Remuneration",
                   "Do I feel satisfied with the economic income and other remuneration that my work gives me?",
                   workQ8.toString()
                   ),  
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   workAvg.toString()
@@ -2813,10 +2814,10 @@ class PDFScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Section",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    // Text(
+                    //   "Section",
+                    //   style: TextStyle(fontWeight: FontWeight.bold),
+                    // ),
                     Text(
                       "Question",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -2827,48 +2828,48 @@ class PDFScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                tableRow(
+                tableRow(context,
                   "Belongings",
                   "How do I feel about the belongings I have? Can I satisfy everything I have?",
                   moneyQ1.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Guarantees",
                   "Do I have guarantees that support me financially and I feel sufficient guarantees?",
                   moneyQ2.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Income",
                   "Am I satisfied with the income I have today and are enough to have the standard of living?",
                   moneyQ3.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Future income",
                   "Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
                   moneyQ4.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Bills",
                   "How do I feel about the level of expenses I have. Expenditure above my possibilities?",
                   moneyQ5.toString()
                   ),
-                tableRow(
+                tableRow(context,
                   "Future expenses",
                   "Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
                   moneyQ6.toString()
                   ),
-                  tableRow(
+                  tableRow(context,
                   "Debts",
                   "Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
                   moneyQ7.toString()
                   ), 
-                  tableRow(
+                  tableRow(context,
                   "Saving",
                   "I keep some money for bad times, and I'm happy with my savings?",
                   moneyQ8.toString()
                   ),  
                   const SizedBox(height: 10),
-                tableRow(
+                tableRow(context,
                   "Average",
                   "",
                   moneyAvg.toString()
@@ -2878,10 +2879,13 @@ class PDFScreen extends StatelessWidget {
                 Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: ElevatedButton(onPressed: () async {
+                  createPdf(userId, context);
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (_) => WheelOfLife(adjustData: [
+                                          builder: (_) => WheelOfLife( 
+                                          userId: userId ,
+                                          adjustData: [
                         {"type": "BaseLine", "index": "Health", "value": baseQ1},
                         {"type": "BaseLine", "index": "Personal Growth", "value": baseQ2},
                         {"type": "BaseLine", "index": "Home", "value": baseQ3},
@@ -2907,7 +2911,7 @@ class PDFScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder( //to set border radius to button
                     borderRadius: BorderRadius.circular(50)
                               ),),
-                                  child: const Text("Send Email")),
+                                  child: Text(AppLocalizations.of(context)!.sendEmail)),
               ),
               const Text("Get detailed report and wheel of your life on your email", textAlign: TextAlign.center,style:TextStyle(fontWeight: FontWeight.bold))
                 //     CustomTable(
@@ -2920,20 +2924,21 @@ class PDFScreen extends StatelessWidget {
     ));
   }
 
-  Row tableRow(String section, String question, String answer) {
+  Row tableRow(BuildContext context, String section, String question, String answer) {
     return  Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                  section  ,
-                    style: const TextStyle(),
-                  ),
-                  Expanded(
-                      child: Text(
+                  // Text(
+                  // section  ,
+                  //   style: const TextStyle(),
+                  // ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width-60,
+                    child: Text(
                     question,
                     style: const TextStyle(),
                     softWrap: true,
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.left,
                   )),
                   Padding(
                     padding: const EdgeInsets.all(4.0),

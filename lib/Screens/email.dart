@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
-import 'package:mailer/smtp_server/gmail.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
+// import 'package:mailer/smtp_server/gmail.dart';
 
 import '../Authentication/google_signin_api.dart';
 
@@ -18,17 +17,17 @@ class EmailSend extends StatelessWidget {
   void sendEmail(
       String recipientEmail, String messageMail, BuildContext context) async {
     //final user = await GoogleAuthApi.signIn();
-    String userName = "abdullahayaz529@gmail.com";
+   // String userName = "abdullahayaz529@gmail.com";
     String userName2 = "gesconvsgar@ezeelogix.com";
-    String password = "lxivqayisxdamtfd";
-    String password2 = "ges23@conv";
-    String token = "";
+    //String password = "lxivqayisxdamtfd";
+    // String password2 = "ges23@conv";
+    // String token = "";
     final smtpServer2 = SmtpServer("smtp.titan.email",
         username: "gesconvsgar@ezeelogix.com",
         password: "ges23@conv",
         port: 465,
         ssl: true);
-    final smtpServer = gmailSaslXoauth2(userName, password);
+    //final smtpServer = gmailSaslXoauth2(userName, password);
     final message = Message()
       ..from = Address(userName2, "Mail Service")
       ..recipients.add(recipientEmail)

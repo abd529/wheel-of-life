@@ -1,6 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:com.ezeelogix.truenorth/Authentication/signup_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -25,7 +25,7 @@ class TranslatedVideo extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("What is True North?", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+          Text(AppLocalizations.of(context)!.whatIsTrueNorth, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
                 const SizedBox(height: 50,),
           Container(
                       color: Colors.lightBlue[200],
@@ -38,7 +38,10 @@ class TranslatedVideo extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 25,),
-                    const Text("Welcome to True North! We are excited to help you determine what is essential for you and those areas that require you to concentrate on to get the most out of your life. So let's start the journey.", textAlign: TextAlign.center,),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(AppLocalizations.of(context)!.intro, textAlign: TextAlign.center,),
+                    ),
                     const SizedBox(height: 25,),
                     ElevatedButton(onPressed: (){
                       Navigator.of(context).pushNamed(HomeScreen.routeName);
@@ -48,7 +51,7 @@ class TranslatedVideo extends StatelessWidget {
                         shape: RoundedRectangleBorder( //to set border radius to button
                   borderRadius: BorderRadius.circular(50)
                             ),),
-                     child: const Text("Next"))
+                     child: Text(AppLocalizations.of(context)!.next))
         ],
       ),
     );

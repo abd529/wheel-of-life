@@ -1,11 +1,10 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/Quiz/free_quiz.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoveQuiz extends StatefulWidget {
   static const routeName = "my-love-quiz";
@@ -17,17 +16,17 @@ class LoveQuiz extends StatefulWidget {
 }
 
 class _LoveQuizState extends State<LoveQuiz> {
-  List<String> Questions = [
-    "Q1: May I give myself to my relationships",
-    "Q2: Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
-    "Q3: Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
-    "Q4: Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
-    "Q5: Do we distribute home tasks?",
-    "Q6: Am I faithful in my relationships, and I have the confidence that my partner is the same?",
-    "Q7: Do I have sexual relations with my partner and it attracts me physically?",
-    "Q8: Do I feel really loved and positively value all the mental and emotional part of my partner?",
-    "Love Questions are completed",
-  ];
+  // List<String> Questions = [
+  //   "Q1: May I give myself to my relationships",
+  //   "Q2: Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
+  //   "Q3: Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
+  //   "Q4: Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
+  //   "Q5: Do we distribute home tasks?",
+  //   "Q6: Am I faithful in my relationships, and I have the confidence that my partner is the same?",
+  //   "Q7: Do I have sexual relations with my partner and it attracts me physically?",
+  //   "Q8: Do I feel really loved and positively value all the mental and emotional part of my partner?",
+  //   "Love Questions are completed",
+  // ];
   List<String> topic = [
     "Ability to love",
     "Number of relationships",
@@ -52,6 +51,17 @@ class _LoveQuizState extends State<LoveQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    (AppLocalizations.of(context)!.loveQone),
+    (AppLocalizations.of(context)!.loveQtwo),
+    (AppLocalizations.of(context)!.loveQthree),
+    (AppLocalizations.of(context)!.loveQfour),
+    (AppLocalizations.of(context)!.loveQfive),
+    (AppLocalizations.of(context)!.loveQsix),
+    (AppLocalizations.of(context)!.loveQseven),
+    (AppLocalizations.of(context)!.loveQeight),
+    AppLocalizations.of(context)!.questionsCompleted,
+    ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -97,9 +107,9 @@ class _LoveQuizState extends State<LoveQuiz> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Love",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Text(
+                  AppLocalizations.of(context)!.love,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -195,7 +205,7 @@ class _LoveQuizState extends State<LoveQuiz> {
                                   padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50))),
-                              child: const Text("Previous"))
+                              child: Text(AppLocalizations.of(context)!.previous,))
                           : const SizedBox(
                               height: 10,
                             ),
@@ -294,8 +304,10 @@ class _LoveQuizState extends State<LoveQuiz> {
                             }
                           },
                           child: index <= 7
-                              ? const Text("Next")
-                              : const Text("Move to next section")),
+                              ? Text(AppLocalizations.of(context)!.next)
+                              : SizedBox(
+                                width: 250,
+                                child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),
                   const SizedBox(
@@ -317,9 +329,9 @@ class _LoveQuizState extends State<LoveQuiz> {
                               shape: RoundedRectangleBorder(
                                   //to set border radius to button
                                   borderRadius: BorderRadius.circular(50))),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(color: Colors.white),
+                          child: Text(
+                            AppLocalizations.of(context)!.skip,
+                            style:const TextStyle(color: Colors.white),
                           ),
                         )
                       : const SizedBox(

@@ -1,13 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/Quiz/p_growth_quiz.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HealthQuiz extends StatefulWidget {
   static const routeName = "my-health-quiz";
@@ -19,15 +16,6 @@ class HealthQuiz extends StatefulWidget {
 }
 
 class _HealthQuizState extends State<HealthQuiz> {
-  List<String> Questions = [
-    "Q1: Is there anything that alters my psychological state?",
-    "Q2: Do I carry out activities that move me away from a state of tension, nerves, stress, etc.?",
-    "Q3: When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
-    "Q4: Do I have any disease that affects my physical state?",
-    "Q5: The resting time, food, sport and more, are they adequate?",
-    "Q6: If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
-    "Health Questions are completed",
-  ];
   List<String> topic = [
     "Mood",
     "Psychological State",
@@ -50,6 +38,15 @@ class _HealthQuizState extends State<HealthQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    (AppLocalizations.of(context)!.healthQone),
+    (AppLocalizations.of(context)!.healthQtwo),
+    (AppLocalizations.of(context)!.healthQthree),
+    (AppLocalizations.of(context)!.healthQfour),
+    (AppLocalizations.of(context)!.healthQfive),
+    (AppLocalizations.of(context)!.healthQsix),
+    AppLocalizations.of(context)!.questionsCompleted,
+    ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -97,8 +94,8 @@ class _HealthQuizState extends State<HealthQuiz> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Health",
+                Text(
+                  AppLocalizations.of(context)!.health,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
@@ -195,7 +192,7 @@ class _HealthQuizState extends State<HealthQuiz> {
                                   shape: RoundedRectangleBorder(
                                       //to set border radius to button
                                       borderRadius: BorderRadius.circular(50))),
-                              child: const Text("Previous"))
+                              child: Text(AppLocalizations.of(context)!.previous,))
                           : const SizedBox(
                               height: 10,
                             ),
@@ -273,8 +270,10 @@ class _HealthQuizState extends State<HealthQuiz> {
                             }
                           },
                           child: index <= 5
-                              ? const Text("Next")
-                              : const Text("Move to Next Section")),
+                              ? Text(AppLocalizations.of(context)!.next,)
+                              : SizedBox(
+                                width: 250,
+                                child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),
                   const SizedBox(
@@ -295,9 +294,9 @@ class _HealthQuizState extends State<HealthQuiz> {
                               padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50))),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(color: Colors.white),
+                          child:Text(
+                            AppLocalizations.of(context)!.skip,
+                            style: const TextStyle(color: Colors.white),
                           ),
                         )
                       : const SizedBox(

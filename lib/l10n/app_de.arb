@@ -1,0 +1,327 @@
+{
+  "@@locale": "de",
+
+  "languageName": "Englisch",
+  "@languageName": {},
+
+  "whatIsTrueNorth": "Was ist wahr Norden wahr",
+  "@whatIsTrueNorth": {},
+
+  "next": "Nächste",
+  "@next": {},
+
+  "intro": "Willkommen bei True North! Wir freuen uns, Ihnen dabei zu helfen, zu bestimmen, was für Sie und die Bereiche, in denen Sie sich konzentrieren müssen, um das Beste aus Ihrem Leben herauszuholen. Beginnen wir die Reise.",
+  "@intro": {},
+
+  "trueNorth": "Wahrer Norden",
+  "@trueNorth": {},
+
+  "welcome": "Willkommen bei True North",
+  "@welcome": {},
+
+  "homeDescription": "In verschiedenen Bereichen werden Fragen präsentiert. Sie reagieren je nach der folgenden Skala 1-3= Unzufriedenheit 4-6= Nessacary-Arbeit benötigt 7-8= Gut, noch Verbesserungsraum 9-10= Es ist keine Änderung erforderlich Letztendlich sehen Sie Ihr Rad des Lebens und die empfohlenen Bereiche, auf die Sie sich konzentrieren können Sie werden zuerst mit Basisfragen präsentiert. Sie können darauf reagieren, wie Sie es heute mögen, ohne viel Introception",
+  "@homeDescription": {},
+
+  "start": "Start",
+  "@Start": {},
+
+  "language": "Sprache",
+  "@language": {},
+
+  "health": "Gesundheit",
+  "@Health": {},
+
+  "personalG": "persönliches Wachstum",
+  "@personalG": {},
+
+  "home": "Heim",
+  "@home": {},
+
+  "famFriends": "Freunde der Familie",
+  "@famFriends": {},
+
+  "love": "Liebe",
+  "@love": {},
+
+  "freeTime": "Freizeit",
+  "@freeTime": {},
+
+  "work": "Arbeiten",
+  "@work": {},
+
+  "money": "Geld",
+  "@money": {},
+
+  "baseLineQuestion": "Wie fühlst du dich in diesem Bereich?",
+  "@baseLineQuestion": {},
+
+  "baslineCompleted": "Basisfragen werden abgeschlossen",
+  "@baslineCompleted": {},
+
+  "moveToDetailedQuestions": "Wechseln Sie zu detaillierten Fragen",
+  "@MoveToDetailedQuestions": {},
+
+  "section": "Abschnitt",
+  "@section": {},
+
+  "subject": "Thema",
+  "@subject": {},
+
+  "previous": "Vorherige",
+  "@previous": {},
+
+  "skip": "Überspringen",
+  "@skip": {},
+
+  "healthQone": "F1: Gibt es etwas, das meinen psychologischen Zustand verändert?",
+  "@healthQone": {},
+
+  "healthQtwo": "F2: Fahre ich Aktivitäten durch, die mich von einem Zustand der Spannung, Nerven, Stress usw. wegbewegen?",
+  "@healthQtwo": {},
+
+  "healthQthree": "F3: Wenn ich entmutigt bin, übernehme ich Maßnahmen, mit denen ich sie angemessen und schnell wiedererlangen kann?",
+  "@healthQthree": {},
+
+  "healthQfour": "F4: Habe ich eine Krankheit, die meinen physischen Zustand beeinflusst?",
+  "@healthQfour": {},
+
+  "healthQfive": "F5: Die Ruhezeit, das Essen, der Sport und vieles mehr sind sie angemessen?",
+  "@healthQfive": {},
+
+  "healthQsix": "F6: Wenn ich meine körperliche Verfassung verliere, übernehme ich dann Maßnahmen, die es mir ermöglichen, sie zufriedenstellend wiederherzustellen?",
+  "@healthQsix": {},
+
+  "questionsCompleted": "Fragen werden abgeschlossen",
+  "@questionsCompleted": {},
+
+  "moveToNext": "Umgehen Sie zum nächsten Abschnitt",
+  "@moveToNext": {},
+
+  "personalQone": "F1: Fühle ich mich für die Gesellschaft nützlich, halte ich zur Entwicklung meiner Gesellschaft bei?",
+  "@personalQone": {},
+
+  "personalQtwo": "F2: Fühle ich mich mit meinen persönlichen Wachstumsplänen und -projekten wohl?",
+  "@personalQtwo": {},
+
+  "personalQthree": "F3: Befriedigen meine Projekte zur Zukunft die Perspektiven, die ich wachsen muss?",
+  "@personalQthree": {},
+
+  "personalQfour": "F4: Fühle ich mich ständig mit meiner Spiritualität und meiner Kultivierung gut?",
+  "@personalQfour": {},
+
+  "personalQfive": "F5: gebe ich meinem Leben und meiner Zuneigung wahrer Wert?",
+  "@personalQfive": {},
+
+  "personalQsix": "F6: Stehe ich auf geplante, angewandte Weise gegenüber und habe ein Willen, sich zu verbessern?",
+  "@personalQsix": {},
+
+  "personalQseven": "F7: Wie viele Fähigkeiten kann ich sagen, dass ich alles tun muss, was ich vorschlage?",
+  "@personalQseven": {},
+
+  "personalQeight": "F8: Bin ich mit meiner professionellen Ausbildung zufrieden und versuche, vorwärts zu gehen?",
+  "@personalQeight": {},
+
+  "homeQone": "F1: Bin ich in dem Land, in dem ich lebe, nach dem aktuellen politischen, sozialen und kulturellen Umfeld, in dem ich lebe, zufrieden?",
+  "@homeQone": {},
+
+  "homeQtwo": "F2: Fühle ich mich in der Stadt, in der ich lebe, und stimme den von ihnen angebotenen Diensten zu?",
+  "@homeQtwo": {},
+
+  "homeQthree": "F3: Mag ich meine Nachbarn und ihre Kultur des Koexistenz?",
+  "@homeQthree": {},
+
+  "homeQfour": "F4: Das Haus, in dem ich lebe, befriedigt mich, hat genug Platz und Komfort, den ich brauche?",
+  "@homeQfour": {},
+
+  "homeQfive": "F5: Fühle ich mich wohl mit den Menschen, mit denen ich mein Zuhause teile?",
+  "@homeQfive": {},
+
+  "homeQsix": "F6: Wie zufrieden bin ich mit dem Grad an Komfort, Sauberkeit und Fürsorge, die ich an mein Zuhause glaube?",
+  "@homeQsix": {},
+
+  "famQone": "F1: Fühle ich mich mit der Fähigkeit zufrieden, neue Freunde oder Familie zu finden und zu kommunizieren?",
+  "@famQone": {},
+
+  "famQtwo": "F2: Bin ich zufrieden mit der Beziehung, die ich zu meiner Mutter habe?",
+  "@famQtwo": {},
+
+  "famQthree": "F3: Bin ich zufrieden mit der Beziehung, die ich zu meinem Vater habe?",
+  "@famQthree": {},
+
+  "famQfour": "F4: Bin ich zufrieden mit der Beziehung, die ich zu meinen Kindern habe? Wenn ich sie nicht habe und sie liebe, mache ich dann Maßnahmen, um sie zu haben?",
+  "@famQfour": {},
+
+  "famQfive": "F5: Wie fühle ich mich in meinen Beziehungen zu nahen Verwandten: Brüder, Großeltern, Cousins, Onkel usw.?",
+  "@famQfive": {},
+
+  "famQsix": "F6: Ich fühle mich mit den Freunden zufrieden, die ich habe. Habe ich sie wirklich, wenn ich sie brauche und mich unterstütze?",
+  "@famQsix": {},
+
+  "famQseven": "F7: Fühle ich mich mit den Bekannten wohl, die ich habe?",
+  "@famQseven": {},
+
+  "loveQone": "Q1: Darf ich mich meinen Beziehungen geben",
+  "@loveQone": {},
+
+  "loveQtwo": "F2: Bin ich mit der Anzahl der sentimentalen Beziehungen zufrieden, die ich habe, oder möchte ich andere zusätzliche Beziehungen haben?",
+  "@loveQtwo": {},
+
+  "loveQthree": "F3: Bin ich zufrieden mit der Zeit, in der meine Beziehungen dauern, ich mache Dinge, um meinen Partner zu behalten und ihm Stabilität zu geben?",
+  "@loveQthree": {},
+
+  "loveQfour": "F4: verstehe ich meinen Partner gut und ich bin mit der Kommunikation und Koexistenz zufrieden?",
+  "@loveQfour": {},
+
+  "loveQfive": "F5: Verteilst wir Hausaufgaben?",
+  "@loveQfive": {},
+
+  "loveQsix": "F6: Bin ich in meinen Beziehungen treu und ich habe das Vertrauen, dass mein Partner der gleiche ist?",
+  "@loveQsix": {},
+
+  "loveQseven": "F7: Habe ich sexuelle Beziehungen zu meinem Partner und es zieht mich körperlich an?",
+  "@loveQseven": {},
+
+  "loveQeight": "F8: Fühle ich mich wirklich geliebt und schätze den mentalen und emotionalen Teil meines Partners positiv?",
+  "@loveQeight": {},
+
+  "freeQone": "F1: Habe ich genug Freizeit oder denke ich, dass es mehr haben sollte?",
+  "@freeQone": {},
+
+  "freeQtwo": "F2: Fühle ich, dass ich die Zeit nutze, die ich habe und meine Freizeit nutze?",
+  "@freeQtwo": {},
+
+  "freeQthree": "F3: Darf ich genug in meinen Freizeitzeiten haben oder fühle ich mich gelangweilt, und ich genieße es nicht?",
+  "@freeQthree": {},
+
+  "freeQfour": "F4: Welche anderen Aktivitäten machen wie Lesen, Kino, Fernsehen, Shows, Fotos, Studium usw.?",
+  "@freeQfour": {},
+
+  "freeQfive": "F5: Bin ich zufrieden, einen Sport zu machen, ein Hobby zu üben, z. B. Videospiele usw.?",
+  "@freeQfive": {},
+
+  "freeQsix": "F6: Wie schätze ich die Freizeit, in der ich mit anderen Leuten teilnehme, wie ein Treffen mit Freunden, Familie, Spielen usw.?",
+  "@freeQsix": {},
+
+  "workQone": "F1: Ich bin mit meiner Leistung in der Arbeitsumgebung zufrieden und möchte wirklich daran arbeiten, was ich tue?",
+  "@workQone": {},
+
+  "workQtwo": "F2: Bin ich mit den Funktionen, die ich ausreiche, zufrieden und entwickle Aufgaben, die im Unternehmen einen Mehrwert schaffen?",
+  "@workQtwo": {},
+
+  "workQthree": "F3: Fühle ich mich in meiner Firma wohl und sie respektiert meine Werte?",
+  "@workQthree": {},
+
+  "workQfour": "F4: Bin ich in meiner Rolle als Chef mit meinem Chef oder mir zufrieden?",
+  "@workQfour": {},
+
+  "workQfive": "F5: Fühle ich, dass wir mit meinen Teamkollegen ein gutes Team bilden?",
+  "@workQfive": {},
+
+  "workQsix": "F6: Fühle ich mich mit der Arbeit meiner Mitarbeiter zufrieden und wir bilden ein gutes Team?",
+  "@workQsix": {},
+
+  "workQseven": "F7: Bin ich in meiner Arbeit erkannt, ich habe das Gefühl, dass die Arbeit, die ich mache, geschätzt wird?",
+  "@workQseven": {},
+
+  "workQeight": "F8: Fühle ich mich mit dem wirtschaftlichen Einkommen und einer anderen Vergütung, die mir meine Arbeit gibt, zufrieden?",
+  "@workQeight": {},
+
+  "moneyQone": "F1: Wie fühle ich mich über die Sachen, die ich habe? Kann ich alles befriedigen, was ich habe?",
+  "@moneyQone": {},
+
+  "moneyQtwo": "F2: Habe ich garantiert, dass ich finanziell unterstützt wird und ich habe ausreichende Garantien?",
+  "@moneyQtwo": {},
+
+  "moneyQthree": "F3: Bin ich zufrieden mit dem Einkommen, das ich heute habe und genug, um den Lebensstandard zu haben?",
+  "@moneyQthree": {},
+
+  "moneyQfour": "F4: Bin ich mit dem Einkommen zufrieden, das ich in Zukunft haben werde, und meine Perspektive des Wirtschaftswachstums ist vielversprechend?",
+  "@moneyQfour": {},
+
+  "moneyQfive": "F5: Wie fühle ich mich über die Ausgaben, die ich habe? Ausgaben über meinen Möglichkeiten?",
+  "@moneyQfive": {},
+
+  "moneyQsix": "F6: Erwarte ich in Zukunft viele Ausgaben und ich bin der Meinung, dass ich meine zukünftigen Konten nicht abdecken kann?",
+  "@moneyQsix": {},
+
+  "moneyQseven": "F7: Bin ich zufrieden mit den Schulden, die ich habe? Oder fühle ich mich sehr überwältigt von wirtschaftlichen Verpflichtungen?",
+  "@moneyQseven": {},
+
+  "moneyQeight": "F8: Ich habe etwas Geld für schlechte Zeiten und bin mit meinen Ersparnissen zufrieden?",
+  "@moneyQeight": {},
+
+  "avg": "Avergae",
+  "@avg": {},
+
+  "qNA": "Frage Antworten",
+  "@qNA": {},
+
+  "seeReport": "Siehe Bericht",
+  "@seeReport": {},
+
+  "sendEmail": "E-Mail senden",
+  "@sendEmail": {},
+
+  "yourReport": "Ihr Bericht",
+  "@yourReport": {},
+
+  "packageone": "Möchten Sie, dass wir Ihnen den Ergebnisbericht für nur 1,99 US -Dollar per E -Mail senden?",
+  "@packageone": {},
+
+  "packageOneButton": "Holen Sie sich eine E -Mail für 1,99 US -Dollar",
+  "@packageOneButton": {},
+
+  "packagetwo": "Möchten Sie zusammen mit einem zertifizierten Trainer den Ergebnisbericht?",
+  "@packagetwo": {},
+
+  "packageTwoButton": "Holen Sie sich E -Mail und zertifizierte Coach für 2,99 US -Dollar",
+  "@packageTwoButton": {},
+
+  "packagethree": "Möchten Sie, dass wir Ihren Ergebnisbericht und Ihren Trainer kostenlos senden?",
+  "@packagethree": {},
+
+  "packageThreeButton": "Senden Sie mir und meinem Trainer kostenlos eine E -Mail an mich und meinen Trainer",
+  "@packageThreeButton": {},
+
+  "coachFilter": "Trainerfilter",
+  "@coachFilter": {},
+
+  "filter": "Filtern Sie Ihren erforderlichen Trainer",
+  "@filter": {},
+
+  "verifyEmail": "E-Mail bestätigen",
+  "@verifyEmail": {},
+
+  "fullName": "Vollständiger Name",
+  "@fullName": {},
+
+  "number": "Telefonnummer",
+  "@number": {},
+
+  "email": "Email",
+  "@email": {},
+
+  "freeReport": "Freieport",
+  "@freeReport": {},
+
+  "freeReportDescription": "Ein kostenloser Bericht wird an Sie und Ihren professionellen Trainer gesendet",
+  "@freeReportDescription": {},
+
+  "confirmEmail": "Bestätigungs-E-Mail",
+  "@confirmEmail": {},
+
+  "code": "Code",
+  "@code": {},
+
+  "needCode": "Sie haben keinen kostenlosen Code?",
+  "@needCode": {},
+
+  "contact": "Kontaktiere uns",
+  "@contact": {},
+
+  "codeDetail": "Der Code wird vom Coach an seine Kunden gegeben und ermöglicht es Benutzern, das Ergebnis kostenlos zu erhalten, und sendet die Ergebnisse an E -Mails, die mit dem Coach verbunden sind",
+  "@codeDetail": {},
+
+  "getFreeReport": "Holen Sie sich Ihren kostenlosen Ergebnisbericht",
+  "@getFreeReport": {}
+}

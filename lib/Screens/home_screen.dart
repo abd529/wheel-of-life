@@ -1,11 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '/Authentication/login_screen.dart';
 import '/Quiz%20Functionality/Quiz/baseline_quiz.dart';
 import '../Screens/lanugage_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "home-screen";
@@ -112,19 +112,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).pushNamed(LanguageScreen.routeName);
                 },
               ),
-              ListTile(
-                leading: const Icon(Icons.logout),
-                title: const Text('LogOut'),
-                onTap: () async {
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => LoginScreen(),
-                      ),
-                      (Route<dynamic> route) => false);
-                },
-              ),
+              // ListTile(
+              //   leading: const Icon(Icons.logout),
+              //   title: const Text('LogOut'),
+              //   onTap: () async {
+              //     await FirebaseAuth.instance.signOut();
+              //     Navigator.pushAndRemoveUntil(
+              //         context,
+              //         MaterialPageRoute(
+              //           builder: (_) => LoginScreen(),
+              //         ),
+              //         (Route<dynamic> route) => false);
+              //   },
+              // ),
                 ],
               ),
               
@@ -216,7 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Welcome to true north",
+                            AppLocalizations.of(context)!.welcome ,
                             style: TextStyle(fontSize: title - 9),
                           ),
                         ),
@@ -240,7 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
-                          "You'll be presented with questions in different areas. You will respond to each one according to the following scale:\n\n1-3: Dissatisfaction \n4-6: Nessacary work needed \n7-8: Good, still room for improvement \n9-10: No Modification is needed \n\nUltimately you'll see your wheel of life and the recommended areas to concentrate on \nYou'll be presented with Baseline questions first. You may respond to that as you may feel today, without much introseption",
+                          AppLocalizations.of(context)!.homeDescription,
                           softWrap: true,
                           style: TextStyle(fontSize: fontSize),
                           textAlign: TextAlign.justify,
@@ -269,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         //to set border radius to button
                         borderRadius: BorderRadius.circular(50)),
                   ),
-                  child: const Text("Start")),
+                  child: Text(AppLocalizations.of(context)!.start)),
             )
           ],
         ),

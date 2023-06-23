@@ -1,25 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:com.ezeelogix.truenorth/Screens/youtube_screen.dart';
-import 'package:com.ezeelogix.truenorth/Utilities/youtube_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
-import '../payment.dart';
-import '/Authentication/login_screen.dart';
-import '/Quiz%20Functionality/Quiz/family_quiz.dart';
-import '/Quiz%20Functionality/Quiz/love_quiz.dart';
-import '/Screens/email.dart';
-import '/Screens/home_screen.dart';
-import '/Screens/report.dart';
-import '/Screens/stripe_payment.dart';
 
-import '../Quiz Functionality/Quiz/baseline_quiz.dart';
-import '../Quiz Functionality/Quiz/free_quiz.dart';
-import '../Quiz Functionality/Quiz/health_quiz.dart';
-import '../Quiz Functionality/Quiz/home_quiz.dart';
-import '../Quiz Functionality/Quiz/money_quiz.dart';
-import '../Quiz Functionality/Quiz/p_growth_quiz.dart';
-import '../Quiz Functionality/Quiz/work_quiz.dart';
 import '../main.dart';
 
 class Onboard extends StatefulWidget {
@@ -43,7 +24,6 @@ class _OnboardState extends State<Onboard> {
   String fName = "";
   String lName = "";
   int num = 0;
-  var uuid = Uuid();
 
 
   // getInfo() async {
@@ -95,7 +75,7 @@ class _OnboardState extends State<Onboard> {
 
   @override
   Widget build(BuildContext context) {
-    String userId = uuid.v4();
+   
     // if (num == 0) {
     //   WidgetsBinding.instance.addPostFrameCallback((_) => getInfo());
     //   num++;
@@ -121,7 +101,7 @@ class _OnboardState extends State<Onboard> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Espanol", style: TextStyle(fontSize: 16)),
+                  const Text("Español", style: TextStyle(fontSize: 16)),
                   Radio(
                       value: "es", groupValue: lang, onChanged: changeLocale),
                 ],
@@ -164,6 +144,14 @@ class _OnboardState extends State<Onboard> {
                   const Text("中文的", style: TextStyle(fontSize: 16)),
                   Radio(
                       value: "zh", groupValue: lang, onChanged: changeLocale),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("German", style: TextStyle(fontSize: 16)),
+                  Radio(
+                      value: "de", groupValue: lang, onChanged: changeLocale),
                 ],
               ),
               ElevatedButton(

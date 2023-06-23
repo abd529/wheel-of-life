@@ -1,13 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import '/Quiz%20Functionality/Quiz/health_quiz.dart';
-import '/Screens/onboard_screen.dart';
-import '/Screens/report.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 
 
@@ -21,18 +18,8 @@ class BaseLineQuiz extends StatefulWidget {
 }
 
 class _BaseLineQuizState extends State<BaseLineQuiz> {
-  List<String> Questions = [
-    "Q1: How do you feel you are in this area ?",
-    "Q2: How do you feel you are in this area ?",
-    "Q3: How do you feel you are in this area ?",
-    "Q4: How do you feel you are in this area ?",
-    "Q5: How do you feel you are in this area ?",
-    "Q6: How do you feel you are in this area ?",
-    "Q7: How do you feel you are in this area ?",
-    "Q8: How do you feel you are in this area ?",
-    "Baseline Questions are completed!",
-    ];
-  List<String> topic = ["Health","Personal Growth","Home","Family & Friends","Love","Free Time", "Work", "Money",];
+  
+  
   List<String> images = ["assets/health.png","assets/personal growth.png","assets/home.png" ,"assets/family-friends.png","assets/love.png","assets/free-time.png","assets/work.png","assets/money.png" ];
   int index = 0;
   int _currentValue = 5;
@@ -48,6 +35,26 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    "Q1: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    "Q2: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    "Q3: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    "Q4: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    "Q5: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    "Q6: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    "Q7: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    "Q8: ${AppLocalizations.of(context)!.baseLineQuestion}",
+    AppLocalizations.of(context)!.baslineCompleted,
+    ];
+    List<String> topic = [
+      AppLocalizations.of(context)!.health,
+      AppLocalizations.of(context)!.personalG,
+      AppLocalizations.of(context)!.home,
+      AppLocalizations.of(context)!.famFriends,
+      AppLocalizations.of(context)!.love,
+      AppLocalizations.of(context)!.freeTime,
+      AppLocalizations.of(context)!.work,
+      AppLocalizations.of(context)!.money,];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -197,7 +204,7 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => HealthQuiz(userId: widget.userId),));
                     
                   }
-                }, child:  index<=7? const Text("Next"):const Text("Move to Detailed Questions", textAlign: TextAlign.center,) ),
+                }, child:  index<=7? Text(AppLocalizations.of(context)!.next):Text(AppLocalizations.of(context)!.moveToDetailedQuestions, textAlign: TextAlign.center,) ),
               ),
               // ElevatedButton(onPressed: (){
               //   print(widget.userId);

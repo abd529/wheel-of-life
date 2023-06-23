@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 
 class FreeReport extends StatefulWidget {
   static const routeName = "free-report";
-  const FreeReport({super.key});
+  final String fileUrl;
+  final String imgUrl;
+  const FreeReport({super.key, required this.fileUrl, required this.imgUrl});
 
   @override
   State<FreeReport> createState() => _FreeReportState();
@@ -20,10 +22,11 @@ class _FreeReportState extends State<FreeReport> {
   TextEditingController email = TextEditingController();
   TextEditingController confirmEmail = TextEditingController();
   TextEditingController code = TextEditingController();
+  
   void sendEmail(
       String recipientEmail, String messageMail, BuildContext context) async {
     String userName2 = "gesconvsgar@ezeelogix.com";
-    String password2 = "ges23@conv";
+    //String password2 = "ges23@conv";
     final smtpServer2 = SmtpServer("smtp.titan.email",
         username: "gesconvsgar@ezeelogix.com",
         password: "ges23@conv",
@@ -66,9 +69,9 @@ class _FreeReportState extends State<FreeReport> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children:   [
-                    const Align(
+                    Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Free Report", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)),
+                      child: Text(AppLocalizations.of(context)!.freeReport, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)),
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text("A free report will be sent to you and your professional coach")),
@@ -92,7 +95,7 @@ class _FreeReportState extends State<FreeReport> {
                               ),
                           ),
                                   child: const Icon(Icons.person)),
-                                hintText: " Your Name"
+                                hintText: " Your ${AppLocalizations.of(context)!.fullName}"
                               ),
                             ),
                             const SizedBox(height: 10,),
@@ -112,7 +115,7 @@ class _FreeReportState extends State<FreeReport> {
                               ),
                           ),
                                   child: const Icon(Icons.phone_android)),
-                                hintText: " Phone Number"
+                                hintText: " ${AppLocalizations.of(context)!.number}"
                               ),
                             ),
                             const SizedBox(height: 10,),
@@ -132,7 +135,7 @@ class _FreeReportState extends State<FreeReport> {
                               ),
                           ),
                                   child: const Icon(Icons.mail)),
-                                hintText: " Your Email"
+                                hintText: " Your ${AppLocalizations.of(context)!.email}"
                               ),
                             ),
                             const SizedBox(height: 10,),
@@ -152,7 +155,7 @@ class _FreeReportState extends State<FreeReport> {
                               ),
                           ),
                                   child: const Icon(Icons.mail)),
-                                hintText: " Confirm Email"
+                                hintText: " ${AppLocalizations.of(context)!.confirmEmail}"
                               ),
                             ),
                             const SizedBox(height: 10,),
@@ -188,7 +191,7 @@ class _FreeReportState extends State<FreeReport> {
                       borderRadius: BorderRadius.circular(50)
                                 ),
                         ),
-                           child: const Text("Contact Me") ),
+                           child: Text(AppLocalizations.of(context)!.contact) ),
                         
                         const SizedBox(height: 30,),
                         const Text("The Code will be given by the coach to its clients, and it will allow users to get the result for free and also will send the result to the email associated with the coach.",
@@ -197,16 +200,16 @@ class _FreeReportState extends State<FreeReport> {
                         ElevatedButton(
                           onPressed: (){
                             if(_formKey.currentState!.validate()){
-                              sendEmail(email.text, "heyyyyy", context);
+                              sendEmail(email.text, "This is your report ${widget.fileUrl} and this is your wheel of life ${widget.imgUrl}", context);
                             }
                           }, 
                           style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.fromLTRB(100, 20, 100, 20),
+                          padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
                             shape: RoundedRectangleBorder( //to set border radius to button
                       borderRadius: BorderRadius.circular(50)
                                 ),
                         ),
-                          child: Text("Get your free results") ),
+                          child: const Text("Get your free results") ),
                   ],
                 ),
               ),

@@ -1,12 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 
 class VerifyEmail extends StatefulWidget {
   static const routeName = "verify-name";
-  const VerifyEmail({super.key});
+  final String fileUrl;
+  final String imgUrl;
+  const VerifyEmail({super.key, required this.fileUrl, required this.imgUrl});
 
   @override
   State<VerifyEmail> createState() => _VerifyEmailState();
@@ -19,10 +22,11 @@ class _VerifyEmailState extends State<VerifyEmail> {
   TextEditingController email = TextEditingController();
   TextEditingController confirmEmail = TextEditingController();
   TextEditingController code = TextEditingController();
+  
   void sendEmail(
       String recipientEmail, String messageMail, BuildContext context) async {
     String userName2 = "gesconvsgar@ezeelogix.com";
-    String password2 = "ges23@conv";
+    //String password2 = "ges23@conv";
     final smtpServer2 = SmtpServer("smtp.titan.email",
         username: "gesconvsgar@ezeelogix.com",
         password: "ges23@conv",
@@ -67,11 +71,11 @@ class _VerifyEmailState extends State<VerifyEmail> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Align(
+                    Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Verify Email",
-                          style: TextStyle(
+                          AppLocalizations.of(context)!.verifyEmail,
+                          style: const TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         )),
                     const Align(
@@ -101,7 +105,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                                         ),
                                       ),
                                       child: const Icon(Icons.person)),
-                                  hintText: " Full Name"),
+                                  hintText: " ${AppLocalizations.of(context)!.fullName}"),
                             ),
                             const SizedBox(
                               height: 10,
@@ -123,7 +127,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                                         ),
                                       ),
                                       child: const Icon(Icons.phone_android)),
-                                  hintText: " Phone Number"),
+                                  hintText: " ${AppLocalizations.of(context)!.number}"),
                             ),
                             const SizedBox(
                               height: 10,
@@ -145,7 +149,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                                         ),
                                       ),
                                       child: const Icon(Icons.mail)),
-                                  hintText: " Your Email"),
+                                  hintText: " Your ${AppLocalizations.of(context)!.email}"),
                             ),
                             const SizedBox(
                               height: 10,
@@ -158,7 +162,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            sendEmail(email.text, "heyyyyy", context);
+                            sendEmail(email.text, "This is your detailed report ${widget.fileUrl} and this is your wheel of life ${widget.imgUrl}", context);
                           }
                         },
                         style: ElevatedButton.styleFrom(

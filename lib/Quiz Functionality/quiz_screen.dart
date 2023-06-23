@@ -1,10 +1,6 @@
 // ignore_for_file: camel_case_types, avoid_print
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
 import '/Quiz%20Functionality/progressbar.dart';
 import '/Quiz%20Functionality/quiz_design.dart';
 import '/Screens/onboard_screen.dart';

@@ -1,10 +1,9 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:uuid/uuid.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '/Screens/report.dart';
 
 class MoneyQuiz extends StatefulWidget {
@@ -17,17 +16,17 @@ class MoneyQuiz extends StatefulWidget {
 }
 
 class _MoneyQuizState extends State<MoneyQuiz> {
-  List<String> Questions = [
-    "Q1: How do I feel about the belongings I have? Can I satisfy everything I have?",
-    "Q2: Do I have guarantees that support me financially and I feel sufficient guarantees?",
-    "Q3: Am I satisfied with the income I have today and are enough to have the standard of living?",
-    "Q4: Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
-    "Q5: How do I feel about the level of expenses I have. Expenditure above my possibilities?",
-    "Q6: Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
-    "Q7: Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
-    "Q8: I keep some money for bad times, and I'm happy with my savings?",
-    "Money questions are completed ",
-  ];
+  // List<String> Questions = [
+  //   "Q1: How do I feel about the belongings I have? Can I satisfy everything I have?",
+  //   "Q2: Do I have guarantees that support me financially and I feel sufficient guarantees?",
+  //   "Q3: Am I satisfied with the income I have today and are enough to have the standard of living?",
+  //   "Q4: Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
+  //   "Q5: How do I feel about the level of expenses I have. Expenditure above my possibilities?",
+  //   "Q6: Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
+  //   "Q7: Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
+  //   "Q8: I keep some money for bad times, and I'm happy with my savings?",
+  //   "Money questions are completed ",
+  // ];
   List<String> topic = [
     "Belongings",
     "Guarantees",
@@ -52,6 +51,17 @@ class _MoneyQuizState extends State<MoneyQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> Questions = [
+    (AppLocalizations.of(context)!.moneyQone),
+    (AppLocalizations.of(context)!.moneyQtwo),
+    (AppLocalizations.of(context)!.moneyQthree),
+    (AppLocalizations.of(context)!.moneyQfour),
+    (AppLocalizations.of(context)!.moneyQfive),
+    (AppLocalizations.of(context)!.moneyQsix),
+    (AppLocalizations.of(context)!.moneyQseven),
+    (AppLocalizations.of(context)!.moneyQeight),
+    AppLocalizations.of(context)!.questionsCompleted,
+    ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -97,9 +107,9 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Money",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Text(
+                  AppLocalizations.of(context)!.money,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -197,7 +207,7 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                                   padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50))),
-                              child: const Text("Previous"))
+                              child:Text(AppLocalizations.of(context)!.previous))
                           : const SizedBox(
                               height: 10,
                             ),
@@ -296,8 +306,10 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                             }
                           },
                           child: index <= 7
-                              ? const Text("Next")
-                              : const Text("Move to next section")),
+                             ? Text(AppLocalizations.of(context)!.next)
+                              : SizedBox(
+                                width: 250,
+                                child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),
                   const SizedBox(
@@ -318,9 +330,9 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                               padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50))),
-                          child: const Text(
-                            "Skip",
-                            style: TextStyle(color: Colors.white),
+                          child:  Text(
+                            AppLocalizations.of(context)!.skip,
+                            style:const TextStyle(color: Colors.white),
                           ),
                         )
                       : const SizedBox(
