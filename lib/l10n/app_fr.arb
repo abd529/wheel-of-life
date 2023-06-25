@@ -1,327 +1,327 @@
 {
   "@@locale": "fr",
 
-  "languageName": "Inglés",
+  "languageName": "Anglais",
   "@languageName": {},
 
-  "whatIsTrueNorth": "¿Qué es verdadero Norte?",
+  "whatIsTrueNorth": "Qu'est-ce qui est vrai nord",
   "@whatIsTrueNorth": {},
 
-  "next": "Próximo",
+  "next": "Suivant",
   "@next": {},
 
-  "intro": "¡Bienvenido a True North! Estamos entusiasmados de ayudarlo a determinar qué es esencial para usted y aquellas áreas que requieren que se concentre para aprovechar al máximo su vida. Así que comencemos el viaje.",
+  "intro": "Bienvenue dans True North! Nous sommes ravis de vous aider à déterminer ce qui est essentiel pour vous et les domaines qui vous obligent à vous concentrer pour tirer le meilleur parti de votre vie. Alors commençons le voyage.",
   "@intro": {},
 
-  "trueNorth": "Norte verdadero",
+  "trueNorth": "Le vrai Nord",
   "@trueNorth": {},
 
-  "welcome": "Bienvenido a True North",
+  "welcome": "Bienvenue dans True North",
   "@welcome": {},
 
-  "homeDescription": "Se le presentarán preguntas en diferentes áreas. Responderá a cada uno de acuerdo con la siguiente escala 1-3= insatisfacción 4-6= Se necesita trabajo de Nessacario 7-8= Bien, todavía margen de mejora 9-10= no se necesita modificación En última instancia, verá su rueda de la vida y las áreas recomendadas para concentrarse en Primero se le presentará preguntas de referencia. Puede responder a eso como se sentirá hoy, sin mucho introducción",
+  "homeDescription": "Vous serez présenté avec des questions dans différents domaines. Vous répondez à chacun selon l'échelle suivante 1 à3 Insatisfaction 4 à 6 Nessacary Travail nécessaire 7 à 8 Bonne place pour l'amélioration 9 à 10 Concentrez-vous sur les questions de base avec des questions de référence. Vous pouvez répondre à cela comme vous pouvez le ressentir aujourd'hui, sans trop d'introstètes",
   "@homeDescription": {},
 
-  "start": "Comenzar",
-  "@Start": {},
+  "start": "Commencer",
+  "@start": {},
 
-  "language": "idioma",
+  "language": "langue",
   "@language": {},
 
-  "health": "Salud",
-  "@Health": {},
+  "health": "Santé",
+  "@health": {},
 
-  "personalG": "crecimiento personal",
+  "personalG": "croissance personnelle",
   "@personalG": {},
 
-  "home": "Hogar",
+  "home": "Maison",
   "@home": {},
 
-  "famFriends": "Amigos de la familia",
+  "famFriends": "Amis de la famille",
   "@famFriends": {},
 
-  "love": "Amar",
+  "love": "Aimer",
   "@love": {},
 
-  "freeTime": "Tiempo libre",
+  "freeTime": "Temps libre",
   "@freeTime": {},
 
-  "work": "Trabajar",
+  "work": "Travail",
   "@work": {},
 
-  "money": "Dinero",
+  "money": "Argent",
   "@money": {},
 
-  "baseLineQuestion": "¿Cómo sientes que estás en esta área?",
+  "baseLineQuestion": "Comment pensez-vous que vous êtes dans ce domaine?",
   "@baseLineQuestion": {},
 
-  "baslineCompleted": "Se completan las preguntas de línea de base",
+  "baslineCompleted": "Les questions de base sont remplies",
   "@baslineCompleted": {},
 
-  "moveToDetailedQuestions": "Pasar a preguntas detalladas",
-  "@MoveToDetailedQuestions": {},
+  "moveToDetailedQuestions": "Passer à des questions détaillées",
+  "@moveToDetailedQuestions": {},
 
-  "section": "Sección",
+  "section": "Section",
   "@section": {},
 
-  "subject": "Sujeto",
+  "subject": "Sujet",
   "@subject": {},
 
-  "previous": "Anterior",
+  "previous": "Précédent",
   "@previous": {},
 
-  "skip": "Saltar",
+  "skip": "Sauter",
   "@skip": {},
 
-  "healthQone": "P1: ¿Hay algo que altere mi estado psicológico?",
+  "healthQone": "Q1: Y a-t-il quelque chose qui modifie mon état psychologique?",
   "@healthQone": {},
 
-  "healthQtwo": "P2: ¿Llevo actividades que me alejen de un estado de tensión, nervios, estrés, etc.?",
+  "healthQtwo": "Q2: Dois-je mener des activités qui m'éloignent d'un état de tension, de nerfs, de stress, etc.?",
   "@healthQtwo": {},
 
-  "healthQthree": "P3: Cuando me desanimé, adopto medidas que me permitan recuperarlo de manera adecuada y rápida.",
+  "healthQthree": "Q3: Quand je suis découragé, j'adopte des mesures qui me permettent de le récupérer de manière adéquate et rapidement?",
   "@healthQthree": {},
 
-  "healthQfour": "P4: ¿Tengo alguna enfermedad que afecte mi estado físico?",
+  "healthQfour": "Q4: Ai-je une maladie qui affecte mon état physique?",
   "@healthQfour": {},
 
-  "healthQfive": "P5: El tiempo de descanso, la comida, el deporte y más, ¿son adecuados?",
+  "healthQfive": "Q5: Le temps de repos, la nourriture, le sport et plus encore, sont-ils adéquats?",
   "@healthQfive": {},
 
-  "healthQsix": "P6: Si pierdo mi condición física, ¿adopto medidas que me permitan recuperarla satisfactoriamente?",
+  "healthQsix": "Q6: Si je perds ma condition physique, est-ce que j'adopte des mesures qui me permettent de le récupérer de manière satisfaisante?",
   "@healthQsix": {},
 
-  "questionsCompleted": "Se completan las preguntas",
+  "questionsCompleted": "Les questions sont remplies",
   "@questionsCompleted": {},
 
-  "moveToNext": "Pase a la siguiente sección",
+  "moveToNext": "Passez à la section suivante",
   "@moveToNext": {},
 
-  "personalQone": "P1: ¿Me siento útil para la sociedad, ¿contribuyo al desarrollo de mi sociedad?",
+  "personalQone": "Q1: Est-ce que je me sens utile à la société, est-ce que je contribue au développement de ma société?",
   "@personalQone": {},
 
-  "personalQtwo": "P2: ¿Me siento cómodo con mis planes y proyectos de crecimiento personal?",
+  "personalQtwo": "Q2: Suis-je à l'aise avec mes plans et projets de croissance personnels?",
   "@personalQtwo": {},
 
-  "personalQthree": "P3: ¿Mis proyectos para futuros satisfacen las perspectivas que tengo que crecer?",
+  "personalQthree": "Q3: Mes projets à terme satisfont-ils aux perspectives que je dois développer?",
   "@personalQthree": {},
 
-  "personalQfour": "P4: ¿Me siento bien con mi espiritualidad y cultivo constantemente?",
+  "personalQfour": "Q4: Est-ce que je me sens bien avec ma spiritualité et ma culture constamment?",
   "@personalQfour": {},
 
-  "personalQfive": "P5: ¿Doy valor verdadero a mi vida y mis afectos?",
+  "personalQfive": "Q5: Est-ce que je donne une vraie valeur à ma vie et à mes affections?",
   "@personalQfive": {},
 
-  "personalQsix": "P6: ¿Me enfrento la vida de manera planificada y aplicada y tengo una voluntad de mejorar?",
+  "personalQsix": "Q6: Dois-je faire face à la vie d'une manière planifiée et appliquée et d'avoir une volonté d'améliorer?",
   "@personalQsix": {},
 
-  "personalQseven": "P7: ¿Cuántas habilidades puedo decir que tengo que hacer todo lo que propongo?",
+  "personalQseven": "Q7: Combien de compétences puis-je dire que je dois faire tout ce que je propose?",
   "@personalQseven": {},
 
-  "personalQeight": "P8: ¿Estoy satisfecho con mi capacitación profesional y trato de seguir adelante?",
+  "personalQeight": "Q8: Suis-je satisfait de ma formation professionnelle et j'essaie d'aller de l'avant?",
   "@personalQeight": {},
 
-  "homeQone": "P1: ¿Estoy satisfecho en el país en el que vivo, de acuerdo con la política actual, el entorno social y cultural donde vivo?",
+  "homeQone": "Q1: Suis-je satisfait dans le pays dans lequel je vis, selon la politique actuelle, l'environnement social et culturel où je vis?",
   "@homeQone": {},
 
-  "homeQtwo": "P2: ¿Me siento cómodo en la ciudad en la que vivo y estoy de acuerdo con los servicios que ofrece?",
+  "homeQtwo": "Q2: Est-ce que je me sens à l'aise dans la ville dans laquelle je vis et d'accord avec les services qu'il offre?",
   "@homeQtwo": {},
 
-  "homeQthree": "P3: ¿Me gustan mis vecinos y su cultura de coexistencia?",
+  "homeQthree": "Q3: Est-ce que j'aime mes voisins et leur culture de coexistence?",
   "@homeQthree": {},
 
-  "homeQfour": "P4: La casa donde vivo me satisface, ¿tiene suficiente espacio y comodidad que necesito?",
+  "homeQfour": "Q4: La maison où je vis me satisfait, a suffisamment d'espace et de confort dont j'ai besoin?",
   "@homeQfour": {},
 
-  "homeQfive": "P5: ¿Me siento cómodo con las personas con las que comparto mi hogar?",
+  "homeQfive": "Q5: Suis-je à l'aise avec les gens avec qui je partage ma maison?",
   "@homeQfive": {},
 
-  "homeQsix": "P6: ¿Qué tan satisfecho estoy con el grado de comodidad, limpieza y cuidado que creo en mi hogar?",
+  "homeQsix": "Q6: À quel point suis-je satisfait du degré de confort, de propreté et de soins que je crois à ma maison?",
   "@homeQsix": {},
 
-  "famQone": "P1: ¿Me siento satisfecho con la capacidad que tengo para encontrar y comunicarme con nuevos amigos o familiares?",
+  "famQone": "Q1: Est-ce que je me sens satisfait de la capacité que je dois trouver et communiquer avec de nouveaux amis ou de la famille?",
   "@famQone": {},
 
-  "famQtwo": "P2: ¿Estoy satisfecho con la relación que tengo con mi madre?",
+  "famQtwo": "Q2: Suis-je satisfait de la relation que j'ai avec ma mère?",
   "@famQtwo": {},
 
-  "famQthree": "P3: ¿Estoy satisfecho con la relación que tengo con mi padre?",
+  "famQthree": "Q3: Suis-je satisfait de la relation que j'ai avec mon père?",
   "@famQthree": {},
 
-  "famQfour": "P4: ¿Estoy satisfecho con la relación que tengo con mis hijos? Si no los tengo y los amo, ¿hago acciones para tenerlos?",
+  "famQfour": "Q4: Suis-je satisfait de la relation que j'ai avec mes enfants? Si je ne les ai pas et que je les aime, est-ce que je fais des actions pour les avoir?",
   "@famQfour": {},
 
-  "famQfive": "P5: ¿Cómo me siento en mis relaciones con parientes cercanos: hermanos, abuelos, primos, tíos, etc.?",
+  "famQfive": "Q5: Comment puis-je me sentir dans mes relations avec des parents proches: frères, grands-parents, cousins, oncles, etc.?",
   "@famQfive": {},
 
-  "famQsix": "P6: Me siento satisfecho con los amigos que tengo, ¿realmente los tengo cuando los necesito y me apoyo?",
+  "famQsix": "Q6: Je me sens satisfait des amis que j'ai, est-ce que je les ai vraiment quand j'en ai besoin et me soutiennent?",
   "@famQsix": {},
 
-  "famQseven": "P7: ¿Me siento cómodo con los conocidos que tengo?",
+  "famQseven": "Q7: Suis-je à l'aise avec les connaissances que j'ai?",
   "@famQseven": {},
 
-  "loveQone": "P1: ¿Puedo darme a mis relaciones?",
+  "loveQone": "Q1: Puis-je me donner à mes relations",
   "@loveQone": {},
 
-  "loveQtwo": "P2: ¿Estoy satisfecho con la cantidad de relaciones sentimentales que tengo, o me gustaría tener otras relaciones adicionales?",
+  "loveQtwo": "Q2: Suis-je satisfait du nombre de relations sentimentales que j'ai, ou j'aimerais avoir d'autres relations supplémentaires?",
   "@loveQtwo": {},
 
-  "loveQthree": "P3: ¿Estoy contento con el momento en que mis relaciones duran, hago cosas para mantener a mi pareja y darle estabilidad?",
+  "loveQthree": "Q3: Suis-je satisfait du moment où mes relations durent, je fais des choses pour garder mon partenaire et lui donner de la stabilité?",
   "@loveQthree": {},
 
-  "loveQfour": "P4: ¿Entiendo bien a mi pareja y estoy satisfecho con la comunicación y la coexistencia que tengo?",
+  "loveQfour": "Q4: Est-ce que je comprends bien mon partenaire, et je suis satisfait de la communication et de la coexistence que j'ai?",
   "@loveQfour": {},
 
-  "loveQfive": "P5: ¿Distribuimos las tareas del hogar?",
+  "loveQfive": "Q5: Distribuons-nous des tâches à domicile?",
   "@loveQfive": {},
 
-  "loveQsix": "P6: ¿Soy fiel en mis relaciones, y tengo la confianza de que mi pareja es la misma?",
+  "loveQsix": "Q6: Suis-je fidèle dans mes relations, et j'ai la confiance que mon partenaire est le même?",
   "@loveQsix": {},
 
-  "loveQseven": "P7: ¿Tengo relaciones sexuales con mi pareja y me atrae físicamente?",
+  "loveQseven": "Q7: Ai-je des relations sexuelles avec mon partenaire et cela m'attire physiquement?",
   "@loveQseven": {},
 
-  "loveQeight": "P8: ¿Me siento realmente amado y valora positivamente toda la parte mental y emocional de mi pareja?",
+  "loveQeight": "Q8: Est-ce que je me sens vraiment aimé et apprécie positivement toute la partie mentale et émotionnelle de mon partenaire?",
   "@loveQeight": {},
 
-  "freeQone": "P1: ¿Tengo suficiente tiempo de ocio, o creo que debería tener más?",
+  "freeQone": "Q1: Ai-je assez de temps libre, ou est-ce que je pense qu'il devrait en avoir plus?",
   "@freeQone": {},
 
-  "freeQtwo": "P2: ¿Siento que aprovecho el tiempo que tengo y aprovecho mi ocio?",
+  "freeQtwo": "Q2: Est-ce que je pense que je profite du temps que j'ai et que je profite de mes loisirs?",
   "@freeQtwo": {},
 
-  "freeQthree": "P3: ¿Puedo tener suficiente en mis tiempos de ocio o me siento aburrido, y no lo disfruto?",
+  "freeQthree": "Q3: Puis-je en avoir assez dans mes temps de loisirs ou je me sens ennuyé, et je ne l'apprécie pas?",
   "@freeQthree": {},
 
-  "freeQfour": "P4: ¿Qué otras actividades hacen, como lectura, cine, televisión, programas, ver fotos, estudio, etc.?",
+  "freeQfour": "Q4: Que font les autres activités, comme la lecture, le cinéma, la télévision, les émissions, les photos, les études, etc.?",
   "@freeQfour": {},
 
-  "freeQfive": "P5: ¿Estoy satisfecho de hacer un deporte, practicando un pasatiempo como jugar videojuegos, etc.?",
+  "freeQfive": "Q5: Suis-je satisfait de faire un sport, de pratiquer un passe-temps comme jouer à des jeux vidéo, etc.?",
   "@freeQfive": {},
 
-  "freeQsix": "P6: ¿Cómo valoro el ocio en el que participo con otras personas, como una reunión con amigos, familiares, juegos, etc.?",
+  "freeQsix": "Q6: Comment puis-je apprécier les loisirs dans lesquels je participe avec d'autres personnes, comme une réunion avec des amis, la famille, les jeux, etc.?",
   "@freeQsix": {},
 
-  "workQone": "P1: Me siento satisfecho con mi desempeño en el entorno de trabajo y realmente quiero trabajar en lo que hago.",
+  "workQone": "Q1: Je me sens satisfait de mes performances dans l'environnement de travail et je veux vraiment travailler sur ce que je fais?",
   "@workQone": {},
 
-  "workQtwo": "P2: ¿Estoy satisfecho con las funciones que realizo y estoy desarrollando tareas que generan valor en la empresa?",
+  "workQtwo": "Q2: Suis-je satisfait des fonctions que j'exécute, et je développe des tâches qui génèrent de la valeur dans l'entreprise?",
   "@workQtwo": {},
 
-  "workQthree": "P3: ¿Me siento cómodo en mi empresa y ella respeta mis valores?",
+  "workQthree": "Q3: Est-ce que je me sens à l'aise dans mon entreprise et elle respecte mes valeurs?",
   "@workQthree": {},
 
-  "workQfour": "P4: ¿Estoy satisfecho con mi jefe o yo en mi papel como jefe?",
+  "workQfour": "Q4: Suis-je satisfait de mon patron ou de moi dans mon rôle de patron?",
   "@workQfour": {},
 
-  "workQfive": "P5: ¿Siento que formamos un buen equipo con mis compañeros de equipo?",
+  "workQfive": "Q5: Est-ce que je pense que nous formons une bonne équipe avec mes coéquipiers?",
   "@workQfive": {},
 
-  "workQsix": "P6: ¿Me siento satisfecho con el trabajo de mis colaboradores y formamos un buen equipo?",
+  "workQsix": "Q6: Est-ce que je me sens satisfait du travail de mes collaborateurs et nous formons une bonne équipe?",
   "@workQsix": {},
 
-  "workQseven": "P7: ¿Estoy reconocido en mi trabajo, siento que el trabajo que hago es valorado?",
+  "workQseven": "Q7: Suis-je reconnu dans mon travail, je pense que le travail que je fais est valorisé?",
   "@workQseven": {},
 
-  "workQeight": "P8: ¿Me siento satisfecho con los ingresos económicos y otra remuneración que mi trabajo me da?",
+  "workQeight": "Q8: Est-ce que je me sens satisfait du revenu économique et des autres rémunérations que mon travail me donne?",
   "@workQeight": {},
 
-  "moneyQone": "P1: ¿Cómo me siento acerca de las pertenencias que tengo? ¿Puedo satisfacer todo lo que tengo?",
+  "moneyQone": "Q1: Que ressentez-je des effets personnels que j'ai? Puis-je satisfaire tout ce que j'ai?",
   "@moneyQone": {},
 
-  "moneyQtwo": "P2: ¿Tengo garantías que me apoyen financieramente y me siento suficientes garantías?",
+  "moneyQtwo": "Q2: Ai-je des garanties qui me soutiennent financièrement et je ressens des garanties suffisantes?",
   "@moneyQtwo": {},
 
-  "moneyQthree": "P3: ¿Estoy satisfecho con los ingresos que tengo hoy y son suficientes para tener el nivel de vida?",
+  "moneyQthree": "Q3: Suis-je satisfait des revenus que j'ai aujourd'hui et que je suis suffisant pour avoir le niveau de vie?",
   "@moneyQthree": {},
 
-  "moneyQfour": "P4: ¿Estoy satisfecho con los ingresos que tendré en el futuro, y mi perspectiva del crecimiento económico es prometedor?",
+  "moneyQfour": "Q4: Suis-je satisfait des revenus que j'aurai à l'avenir, et mon point de vue de la croissance économique est prometteur?",
   "@moneyQfour": {},
 
-  "moneyQfive": "P5: ¿Cómo me siento acerca del nivel de gastos que tengo? ¿Gasto por encima de mis posibilidades?",
+  "moneyQfive": "Q5: Comment je pense du niveau des dépenses que j'ai. Dépenses au-dessus de mes possibilités?",
   "@moneyQfive": {},
 
-  "moneyQsix": "P6: ¿Anticipo muchos gastos en el futuro y siento que no podré cubrir mis cuentas futuras?",
+  "moneyQsix": "Q6: Est-ce que je prévois de nombreuses dépenses à l'avenir et je pense que je ne pourrai pas couvrir mes futurs comptes?",
   "@moneyQsix": {},
 
-  "moneyQseven": "P7: ¿Estoy satisfecho con el nivel de deudas que tengo? ¿O me siento muy abrumado por los compromisos económicos?",
+  "moneyQseven": "Q7: Suis-je satisfait du niveau de dettes que j'ai? Ou est-ce que je me sens très submergé par des engagements économiques?",
   "@moneyQseven": {},
 
-  "moneyQeight": "P8: Mantengo algo de dinero para malos momentos, ¿y estoy contento con mis ahorros?",
+  "moneyQeight": "Q8: Je garde de l'argent pour les mauvais moments et je suis satisfait de mes économies?",
   "@moneyQeight": {},
 
-  "avg": "Avega",
+  "avg": "Avergae",
   "@avg": {},
 
-  "qNA": "Respuestas de la pregunta",
+  "qNA": "Question Answers",
   "@qNA": {},
 
-  "seeReport": "Ver informe",
+  "seeReport": "Voir le rapport",
   "@seeReport": {},
 
-  "sendEmail": "Enviar correo electrónico",
+  "sendEmail": "Envoyer un e-mail",
   "@sendEmail": {},
 
-  "yourReport": "Su informe",
+  "yourReport": "Votre rapport",
   "@yourReport": {},
 
-  "packageone": "¿Desea que le envíemos un correo electrónico por correo electrónico por solo $ 1.99?",
+  "packageone": "Voulez-vous que nous vous envoyions le rapport de résultat par e-mail pour seulement 1,99 $?",
   "@packageone": {},
 
-  "packageOneButton": "Recibe un correo electrónico por $ 1.99",
+  "packageOneButton": "Recevoir un e-mail pour 1,99 $",
   "@packageOneButton": {},
 
-  "packagetwo": "¿Quiere el informe de resultados junto con un entrenador certificado?",
+  "packagetwo": "Voulez-vous le rapport de résultat avec un coach certifié?",
   "@packagetwo": {},
 
-  "packageTwoButton": "Obtenga correo electrónico y entrenador certificado por $ 2.99",
+  "packageTwoButton": "Recevoir un e-mail et un coach certifié pour 2,99 $",
   "@packageTwoButton": {},
 
-  "packagethree": "¿Desea que le enviemos su informe de resultados a usted y a su entrenador de forma gratuita?",
+  "packagethree": "Voulez-vous que nous vous envoyions gratuitement votre rapport de résultat et votre coach?",
   "@packagethree": {},
 
-  "packageThreeButton": "Envíeme un correo electrónico a mí y a mi entrenador gratis",
+  "packageThreeButton": "Envoyez un e-mail à moi et à mon entraîneur gratuitement",
   "@packageThreeButton": {},
 
-  "coachFilter": "Filtro de entrenador",
+  "coachFilter": "Filtre à entraîneur",
   "@coachFilter": {},
 
-  "filter": "Filtra tu entrenador requerido",
+  "filter": "Filtrez votre coach requis",
   "@filter": {},
 
-  "verifyEmail": "Verificar correo electrónico",
+  "verifyEmail": "Vérifier les courriels",
   "@verifyEmail": {},
 
-  "fullName": "Nombre completo",
+  "fullName": "Nom et prénom",
   "@fullName": {},
 
-  "number": "Número de teléfono",
+  "number": "Numéro de téléphone",
   "@number": {},
 
-  "email": "Correo electrónico",
+  "email": "E-mail",
   "@email": {},
 
-  "freeReport": "Freereport",
+  "freeReport": "Libreport",
   "@freeReport": {},
 
-  "freeReportDescription": "Se le enviará un informe gratuito a usted y a su entrenador profesional.",
+  "freeReportDescription": "Un rapport gratuit vous sera envoyé et votre coach professionnel",
   "@freeReportDescription": {},
 
-  "confirmEmail": "Confirmar correo electrónico",
+  "confirmEmail": "Confirmez votre email",
   "@confirmEmail": {},
 
-  "code": "Código",
+  "code": "Code",
   "@code": {},
 
-  "needCode": "¿No tienes un código gratuito?",
+  "needCode": "Vous n'avez pas de code gratuit?",
   "@needCode": {},
 
-  "contact": "Contáctenos",
+  "contact": "Contactez-nous",
   "@contact": {},
 
-  "codeDetail": "El Código será dado por el entrenador a sus clientes y permitirá a los usuarios obtener el resultado de forma gratuita y también enviará los resultados al correo electrónico asociados con el entrenador.",
+  "codeDetail": "Le code sera donné par le coach à ses clients et permettra aux utilisateurs d'obtenir le résultat gratuitement et enverra également les résultats aux e-mails associés au coach",
   "@codeDetail": {},
 
-  "getFreeReport": "Obtenga su informe de resultados gratuitos",
+  "getFreeReport": "Obtenez votre rapport de résultat gratuit",
   "@getFreeReport": {}
 }

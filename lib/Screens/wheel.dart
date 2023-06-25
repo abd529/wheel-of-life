@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages
 import 'package:blur/blur.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import 'dart:convert';
 import 'dart:ui' as ui;
 import '../Screens/coach_filter.dart';
@@ -27,74 +28,74 @@ class _WheelOfLifeState extends State<WheelOfLife> {
   final GlobalKey globalKey = GlobalKey();
   Map<String, dynamic>? paymentIntent;
   Future<void> makePayment(double amount, String route) async {
-    // try {
-    //   paymentIntent = await createPaymentIntent(amount.toString(), 'USD');
+    try {
+      paymentIntent = await createPaymentIntent(amount.toString(), 'USD');
 
-    //   //STEP 2: Initialize Payment Sheet
-    //   await Stripe.instance
-    //       .initPaymentSheet(
-    //           paymentSheetParameters: SetupPaymentSheetParameters(
-    //               paymentIntentClientSecret: paymentIntent![
-    //                   'client_secret'], //Gotten from payment intent
-    //               style: ThemeMode.dark,
-    //               merchantDisplayName: 'Ikay'))
-    //       .then((value) {});
+      //STEP 2: Initialize Payment Sheet
+      await Stripe.instance
+          .initPaymentSheet(
+              paymentSheetParameters: SetupPaymentSheetParameters(
+                  paymentIntentClientSecret: paymentIntent![
+                      'client_secret'], //Gotten from payment intent
+                  style: ThemeMode.dark,
+                  merchantDisplayName: 'Ikay'))
+          .then((value) {});
 
-    //   //STEP 3: Display Payment sheet
-    //   displayPaymentSheet(route);
-    // } catch (err) {
-    //   throw Exception(err);
-    // }
+      //STEP 3: Display Payment sheet
+      displayPaymentSheet(route);
+    } catch (err) {
+      throw Exception(err);
+    }
   }
 
   void displayPaymentSheet(String route) async {
-    // try {
-    //   await Stripe.instance.presentPaymentSheet().then((value) {
-    //     showDialog(
-    //         context: context,
-    //         builder: (_) => AlertDialog(
-    //               content: Column(
-    //                 mainAxisSize: MainAxisSize.min,
-    //                 children: [
-    //                   Icon(
-    //                     Icons.check_circle,
-    //                     color: Colors.green,
-    //                     size: 100.0,
-    //                   ),
-    //                   ElevatedButton(onPressed: (){
-    //                     Navigator.of(context).pushNamed(route);
-    //                   }, child: Text("Next")),
-    //                   SizedBox(height: 10.0),
-    //                   Text("Payment Successful!"),
-    //                 ],
-    //               ),
-    //             ));
+    try {
+      await Stripe.instance.presentPaymentSheet().then((value) {
+        showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.check_circle,
+                        color: Colors.green,
+                        size: 100.0,
+                      ),
+                      ElevatedButton(onPressed: (){
+                        Navigator.of(context).pushNamed(route);
+                      }, child: Text("Next")),
+                      SizedBox(height: 10.0),
+                      Text("Payment Successful!"),
+                    ],
+                  ),
+                ));
 
-    //     paymentIntent = null;
-    //   }).onError((error, stackTrace) {
-    //     throw Exception(error);
-    //   });
-    // } on StripeException catch (e) {
-    //   print('Error is:---> $e');
-    //   AlertDialog(
-    //     content: Column(
-    //       mainAxisSize: MainAxisSize.min,
-    //       children: [
-    //         Row(
-    //           children: const [
-    //             Icon(
-    //               Icons.cancel,
-    //               color: Colors.red,
-    //             ),
-    //             Text("Payment Failed"),
-    //           ],
-    //         ),
-    //       ],
-    //     ),
-    //   );
-    // } catch (e) {
-    //   print('$e');
-    // }
+        paymentIntent = null;
+      }).onError((error, stackTrace) {
+        throw Exception(error);
+      });
+    } on StripeException catch (e) {
+      print('Error is:---> $e');
+      AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: const [
+                Icon(
+                  Icons.cancel,
+                  color: Colors.red,
+                ),
+                Text("Payment Failed"),
+              ],
+            ),
+          ],
+        ),
+      );
+    } catch (e) {
+      print('$e');
+    }
   }
   createPaymentIntent(String amount, String currency) async {
     try {

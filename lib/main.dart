@@ -10,7 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import '/Authentication/forgot_password.dart';
 import '/Quiz%20Functionality/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import '/Screens/home_screen.dart';
 import 'Authentication/login_screen.dart';
 import 'Screens/email.dart';
@@ -21,10 +21,10 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Stripe.publishableKey =
-  //     "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
+  Stripe.publishableKey =
+      "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
   await Firebase.initializeApp();
-  //await dotenv.load(fileName: "assets/.env");
+  await dotenv.load(fileName: "assets/.env");
   var uid = const Uuid().v4();
   runApp(MyApp(
     uid: uid,

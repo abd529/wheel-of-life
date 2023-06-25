@@ -4,324 +4,324 @@
   "languageName": "Inglés",
   "@languageName": {},
 
-  "whatIsTrueNorth": "¿Qué es verdadero Norte?",
+  "whatIsTrueNorth": "什么是真北",
   "@whatIsTrueNorth": {},
 
-  "next": "Próximo",
+  "next": "下一个",
   "@next": {},
 
-  "intro": "¡Bienvenido a True North! Estamos entusiasmados de ayudarlo a determinar qué es esencial para usted y aquellas áreas que requieren que se concentre para aprovechar al máximo su vida. Así que comencemos el viaje.",
+  "intro": "欢迎来到真北！我们很高兴能帮助您确定什么对您来说是必要的，以及哪些领域需要您集中精力才能充分利用您的生活。那么让我们开始旅程吧。",
   "@intro": {},
 
-  "trueNorth": "Norte verdadero",
+  "trueNorth": "True North",
   "@trueNorth": {},
 
-  "welcome": "Bienvenido a True North",
+  "welcome": "欢迎来到北方",
   "@welcome": {},
 
-  "homeDescription": "Se le presentarán preguntas en diferentes áreas. Responderá a cada uno de acuerdo con la siguiente escala 1-3= insatisfacción 4-6= Se necesita trabajo de Nessacario 7-8= Bien, todavía margen de mejora 9-10= no se necesita modificación En última instancia, verá su rueda de la vida y las áreas recomendadas para concentrarse en Primero se le presentará preguntas de referencia. Puede responder a eso como se sentirá hoy, sin mucho introducción",
+  "homeDescription": "您将收到不同领域的问题。您将根据以下等级对每一项进行回应 1 至 3 不满意 4 至 6 需要做必要的工作 7 至 8 良好，仍有改进空间 9 至 10 无需修改 最终您将看到您的生命之轮和推荐区域集中精力 您将首先遇到基线问题。你可能会按照你今天的感受做出反应，无需太多内省",
   "@homeDescription": {},
 
-  "start": "Comenzar",
+  "start": "开始",
   "@Start": {},
 
-  "language": "idioma",
+  "language": "语言",
   "@language": {},
 
-  "health": "Salud",
+  "health": "开始",
   "@Health": {},
 
-  "personalG": "crecimiento personal",
+  "personalG": "个人成长",
   "@personalG": {},
 
-  "home": "Hogar",
+  "home": "家",
   "@home": {},
 
-  "famFriends": "Amigos de la familia",
+  "famFriends": "家人和朋友",
   "@famFriends": {},
 
-  "love": "Amar",
+  "love": "爱",
   "@love": {},
 
-  "freeTime": "Tiempo libre",
+  "freeTime": "空闲时间",
   "@freeTime": {},
 
-  "work": "Trabajar",
+  "work": "工作",
   "@work": {},
 
-  "money": "Dinero",
+  "money": "钱",
   "@money": {},
 
-  "baseLineQuestion": "¿Cómo sientes que estás en esta área?",
+  "baseLineQuestion": "您觉得自己在这个领域怎么样？",
   "@baseLineQuestion": {},
 
-  "baslineCompleted": "Se completan las preguntas de línea de base",
+  "baslineCompleted": "基线问题已完成",
   "@baslineCompleted": {},
 
-  "moveToDetailedQuestions": "Pasar a preguntas detalladas",
+  "moveToDetailedQuestions": "转到详细问题",
   "@MoveToDetailedQuestions": {},
 
-  "section": "Sección",
+  "section": "部分",
   "@section": {},
 
-  "subject": "Sujeto",
+  "subject": "主题",
   "@subject": {},
 
-  "previous": "Anterior",
+  "previous": "以前的",
   "@previous": {},
 
-  "skip": "Saltar",
+  "skip": "跳过",
   "@skip": {},
 
-  "healthQone": "P1: ¿Hay algo que altere mi estado psicológico?",
+  "healthQone": "Q1：有什么事情可以改变我的心理状态吗？",
   "@healthQone": {},
 
-  "healthQtwo": "P2: ¿Llevo actividades que me alejen de un estado de tensión, nervios, estrés, etc.?",
+  "healthQtwo": "Q2：我是否进行了一些能让我摆脱紧张、神经、压力等状态的活动？",
   "@healthQtwo": {},
 
-  "healthQthree": "P3: Cuando me desanimé, adopto medidas que me permitan recuperarlo de manera adecuada y rápida.",
+  "healthQthree": "Q3：当我灰心丧气时，我采取的措施可以让我充分、快速地恢复过来吗？",
   "@healthQthree": {},
 
-  "healthQfour": "P4: ¿Tengo alguna enfermedad que afecte mi estado físico?",
+  "healthQfour": "Q4：我是否患有任何影响我身体状况的疾病？",
   "@healthQfour": {},
 
-  "healthQfive": "P5: El tiempo de descanso, la comida, el deporte y más, ¿son adecuados?",
+  "healthQfive": "Q5：休息时间、饮食、运动等是否充足？",
   "@healthQfive": {},
 
-  "healthQsix": "P6: Si pierdo mi condición física, ¿adopto medidas que me permitan recuperarla satisfactoriamente?",
+  "healthQsix": "Q6：如果我的身体状况出现问题，我是否会采取措施让我的身体状况得到满意的恢复？",
   "@healthQsix": {},
 
-  "questionsCompleted": "Se completan las preguntas",
+  "questionsCompleted": "问题已完成",
   "@questionsCompleted": {},
 
-  "moveToNext": "Pase a la siguiente sección",
+  "moveToNext": "移至下一部分",
   "@moveToNext": {},
 
-  "personalQone": "P1: ¿Me siento útil para la sociedad, ¿contribuyo al desarrollo de mi sociedad?",
+  "personalQone": "Q1：我觉得自己对社会有用吗？我对社会的发展有贡献吗？",
   "@personalQone": {},
 
-  "personalQtwo": "P2: ¿Me siento cómodo con mis planes y proyectos de crecimiento personal?",
+  "personalQtwo": "Q2：我对我的个人成长计划和项目感到满意吗？",
   "@personalQtwo": {},
 
-  "personalQthree": "P3: ¿Mis proyectos para futuros satisfacen las perspectivas que tengo que crecer?",
+  "personalQthree": "Q3：我的期货项目是否满足我的成长前景？",
   "@personalQthree": {},
 
-  "personalQfour": "P4: ¿Me siento bien con mi espiritualidad y cultivo constantemente?",
+  "personalQfour": "Q4：我的灵性和修行一直感觉良好吗？",
   "@personalQfour": {},
 
-  "personalQfive": "P5: ¿Doy valor verdadero a mi vida y mis afectos?",
+  "personalQfive": "Q5：我对我的生活和感情有真正的价值吗？",
   "@personalQfive": {},
 
-  "personalQsix": "P6: ¿Me enfrento la vida de manera planificada y aplicada y tengo una voluntad de mejorar?",
+  "personalQsix": "Q6：我是否有计划、有计划地面对生活并有改善的意愿？",
   "@personalQsix": {},
 
-  "personalQseven": "P7: ¿Cuántas habilidades puedo decir que tengo que hacer todo lo que propongo?",
+  "personalQseven": "Q7：我可以说有多少技能是我必须做的所有事情？",
   "@personalQseven": {},
 
-  "personalQeight": "P8: ¿Estoy satisfecho con mi capacitación profesional y trato de seguir adelante?",
+  "personalQeight": "Q8：我对自己的专业培训满意吗？我会努力前进吗？",
   "@personalQeight": {},
 
-  "homeQone": "P1: ¿Estoy satisfecho en el país en el que vivo, de acuerdo con la política actual, el entorno social y cultural donde vivo?",
+  "homeQone": "Q1：根据我所居住的国家目前的政策、社会文化环境，我对自己所居住的国家是否满意？",
   "@homeQone": {},
 
-  "homeQtwo": "P2: ¿Me siento cómodo en la ciudad en la que vivo y estoy de acuerdo con los servicios que ofrece?",
+  "homeQtwo": "Q2：我在所居住的城市感到舒适并同意它提供的服务吗？",
   "@homeQtwo": {},
 
-  "homeQthree": "P3: ¿Me gustan mis vecinos y su cultura de coexistencia?",
+  "homeQthree": "Q3：我喜欢我的邻居和他们的共存文化吗？",
   "@homeQthree": {},
 
-  "homeQfour": "P4: La casa donde vivo me satisface, ¿tiene suficiente espacio y comodidad que necesito?",
+  "homeQfour": "Q4：我住的房子让我满意，有足够的空间和舒适度吗？",
   "@homeQfour": {},
 
-  "homeQfive": "P5: ¿Me siento cómodo con las personas con las que comparto mi hogar?",
+  "homeQfive": "Q5：我对与我同住的人感到满意吗？",
   "@homeQfive": {},
 
-  "homeQsix": "P6: ¿Qué tan satisfecho estoy con el grado de comodidad, limpieza y cuidado que creo en mi hogar?",
+  "homeQsix": "Q6：我对我家的舒适度、清洁度和护理程度感到满意吗？",
   "@homeQsix": {},
 
-  "famQone": "P1: ¿Me siento satisfecho con la capacidad que tengo para encontrar y comunicarme con nuevos amigos o familiares?",
+  "famQone": "Q1：我对自己寻找新朋友或家人并与之沟通的能力感到满意吗？",
   "@famQone": {},
 
-  "famQtwo": "P2: ¿Estoy satisfecho con la relación que tengo con mi madre?",
+  "famQtwo": "Q2：我对我和妈妈的关系满意吗？",
   "@famQtwo": {},
 
-  "famQthree": "P3: ¿Estoy satisfecho con la relación que tengo con mi padre?",
+  "famQthree": "Q3：我对我和父亲的关系满意吗？",
   "@famQthree": {},
 
-  "famQfour": "P4: ¿Estoy satisfecho con la relación que tengo con mis hijos? Si no los tengo y los amo, ¿hago acciones para tenerlos?",
+  "famQfour": "Q4：我对与孩子的关系满意吗？如果我没有它们但我爱它们，我会采取行动来拥有它们吗？",
   "@famQfour": {},
 
-  "famQfive": "P5: ¿Cómo me siento en mis relaciones con parientes cercanos: hermanos, abuelos, primos, tíos, etc.?",
+  "famQfive": "Q5：我对与近亲（兄弟、祖父母、表兄弟姐妹、叔叔等）的关系有何感受？",
   "@famQfive": {},
 
-  "famQsix": "P6: Me siento satisfecho con los amigos que tengo, ¿realmente los tengo cuando los necesito y me apoyo?",
+  "famQsix": "Q6：我对我拥有的朋友感到满意，当我需要他们并支持我时，我真的有他们吗？",
   "@famQsix": {},
 
-  "famQseven": "P7: ¿Me siento cómodo con los conocidos que tengo?",
+  "famQseven": "Q7：我对我所认识的人感到满意吗？",
   "@famQseven": {},
 
-  "loveQone": "P1: ¿Puedo darme a mis relaciones?",
+  "loveQone": "Q1：我可以把自己奉献给我的人际关系吗",
   "@loveQone": {},
 
-  "loveQtwo": "P2: ¿Estoy satisfecho con la cantidad de relaciones sentimentales que tengo, o me gustaría tener otras relaciones adicionales?",
+  "loveQtwo": "Q2：我对自己拥有的感情关系的数量感到满意，还是我想要拥有其他额外的关系？",
   "@loveQtwo": {},
 
-  "loveQthree": "P3: ¿Estoy contento con el momento en que mis relaciones duran, hago cosas para mantener a mi pareja y darle estabilidad?",
+  "loveQthree": "Q3：我对我的关系持续的时间感到满意吗？我会做一些事情来保持我的伴侣并使其稳定吗？",
   "@loveQthree": {},
 
-  "loveQfour": "P4: ¿Entiendo bien a mi pareja y estoy satisfecho con la comunicación y la coexistencia que tengo?",
+  "loveQfour": "Q4：我是否很了解我的伴侣，我对我的沟通和共处感到满意吗？",
   "@loveQfour": {},
 
-  "loveQfive": "P5: ¿Distribuimos las tareas del hogar?",
+  "loveQfive": "Q5：我们会分配家庭任务吗？",
   "@loveQfive": {},
 
-  "loveQsix": "P6: ¿Soy fiel en mis relaciones, y tengo la confianza de que mi pareja es la misma?",
+  "loveQsix": "Q6：我对我的人际关系忠诚吗？我有信心我的伴侣也是如此吗？",
   "@loveQsix": {},
 
-  "loveQseven": "P7: ¿Tengo relaciones sexuales con mi pareja y me atrae físicamente?",
+  "loveQseven": "Q7：我和我的伴侣发生性关系并且它在身体上吸引了我吗？",
   "@loveQseven": {},
 
-  "loveQeight": "P8: ¿Me siento realmente amado y valora positivamente toda la parte mental y emocional de mi pareja?",
+  "loveQeight": "Q8：我是否感到真正被爱并积极重视伴侣的所有精神和情感部分？",
   "@loveQeight": {},
 
-  "freeQone": "P1: ¿Tengo suficiente tiempo de ocio, o creo que debería tener más?",
+  "freeQone": "Q1：我有足够的闲暇时间吗？还是我认为应该有更多的闲暇时间？",
   "@freeQone": {},
 
-  "freeQtwo": "P2: ¿Siento que aprovecho el tiempo que tengo y aprovecho mi ocio?",
+  "freeQtwo": "Q2：我觉得我利用了我拥有的时间，利用了我的闲暇吗？",
   "@freeQtwo": {},
 
-  "freeQthree": "P3: ¿Puedo tener suficiente en mis tiempos de ocio o me siento aburrido, y no lo disfruto?",
+  "freeQthree": "Q3：我的闲暇时间是否足够，或者我是否感到无聊、不喜欢？",
   "@freeQthree": {},
 
-  "freeQfour": "P4: ¿Qué otras actividades hacen, como lectura, cine, televisión, programas, ver fotos, estudio, etc.?",
+  "freeQfour": "Q4：还有哪些其他活动，比如读书、看电影、看电视、表演、看照片、学习等？",
   "@freeQfour": {},
 
-  "freeQfive": "P5: ¿Estoy satisfecho de hacer un deporte, practicando un pasatiempo como jugar videojuegos, etc.?",
+  "freeQfive": "Q5：我对做一项运动、培养一种爱好（例如玩电子游戏等）感到满意吗？",
   "@freeQfive": {},
 
-  "freeQsix": "P6: ¿Cómo valoro el ocio en el que participo con otras personas, como una reunión con amigos, familiares, juegos, etc.?",
+  "freeQsix": "Q6：我如何珍惜与他人一起参与的休闲活动，例如与朋友、家人的聚会、游戏等？",
   "@freeQsix": {},
 
-  "workQone": "P1: Me siento satisfecho con mi desempeño en el entorno de trabajo y realmente quiero trabajar en lo que hago.",
+  "workQone": "Q1：我对自己在工作环境中的表现感到满意，并且我真的很想继续我所做的事情吗？",
   "@workQone": {},
 
-  "workQtwo": "P2: ¿Estoy satisfecho con las funciones que realizo y estoy desarrollando tareas que generan valor en la empresa?",
+  "workQtwo": "Q2：我对自己所履行的职责是否满意，以及我正在开发的任务能够为公司创造价值吗？",
   "@workQtwo": {},
 
-  "workQthree": "P3: ¿Me siento cómodo en mi empresa y ella respeta mis valores?",
+  "workQthree": "Q3：我在公司里感觉舒服吗？她尊重我的价值观吗？",
   "@workQthree": {},
 
-  "workQfour": "P4: ¿Estoy satisfecho con mi jefe o yo en mi papel como jefe?",
+  "workQfour": "Q4：我对我的老板满意还是我对自己作为老板的角色满意？",
   "@workQfour": {},
 
-  "workQfive": "P5: ¿Siento que formamos un buen equipo con mis compañeros de equipo?",
+  "workQfive": "Q5：我觉得我们和队友是一个很好的团队吗？",
   "@workQfive": {},
 
-  "workQsix": "P6: ¿Me siento satisfecho con el trabajo de mis colaboradores y formamos un buen equipo?",
+  "workQsix": "Q6: 我对合作者的工作感到满意吗？我们组成了一个优秀的团队吗？",
   "@workQsix": {},
 
-  "workQseven": "P7: ¿Estoy reconocido en mi trabajo, siento que el trabajo que hago es valorado?",
+  "workQseven": "Q7：我的工作受到认可吗？我觉得我所做的工作受到重视吗？",
   "@workQseven": {},
 
-  "workQeight": "P8: ¿Me siento satisfecho con los ingresos económicos y otra remuneración que mi trabajo me da?",
+  "workQeight": "Q8：我对工作给我带来的经济收入和其他报酬是否满意？",
   "@workQeight": {},
 
-  "moneyQone": "P1: ¿Cómo me siento acerca de las pertenencias que tengo? ¿Puedo satisfacer todo lo que tengo?",
+  "moneyQone": "Q1：我对我所拥有的物品感觉如何？我能满足我所拥有的一切吗？",
   "@moneyQone": {},
 
-  "moneyQtwo": "P2: ¿Tengo garantías que me apoyen financieramente y me siento suficientes garantías?",
+  "moneyQtwo": "Q2：我是否有经济上的担保，并且我觉得有足够的担保？",
   "@moneyQtwo": {},
 
-  "moneyQthree": "P3: ¿Estoy satisfecho con los ingresos que tengo hoy y son suficientes para tener el nivel de vida?",
+  "moneyQthree": "Q3：我对现在的收入满意吗，足以维持生活水平吗？",
   "@moneyQthree": {},
 
-  "moneyQfour": "P4: ¿Estoy satisfecho con los ingresos que tendré en el futuro, y mi perspectiva del crecimiento económico es prometedor?",
+  "moneyQfour": "Q4：我对未来的收入满意吗？我对经济增长的看法是否乐观？",
   "@moneyQfour": {},
 
-  "moneyQfive": "P5: ¿Cómo me siento acerca del nivel de gastos que tengo? ¿Gasto por encima de mis posibilidades?",
+  "moneyQfive": "Q5：我对自己的开支水平有何看法？支出超出了我的能力？",
   "@moneyQfive": {},
 
-  "moneyQsix": "P6: ¿Anticipo muchos gastos en el futuro y siento que no podré cubrir mis cuentas futuras?",
+  "moneyQsix": "Q6: 我是否预计未来会有很多开支，并且我觉得我将无法支付我未来的账户？",
   "@moneyQsix": {},
 
-  "moneyQseven": "P7: ¿Estoy satisfecho con el nivel de deudas que tengo? ¿O me siento muy abrumado por los compromisos económicos?",
+  "moneyQseven": "Q7：我对自己的债务水平满意吗？或者我是否对经济承诺感到不知所措？",
   "@moneyQseven": {},
 
-  "moneyQeight": "P8: Mantengo algo de dinero para malos momentos, ¿y estoy contento con mis ahorros?",
+  "moneyQeight": "Q8：我存了一些钱以备不时之需，我对我的储蓄感到满意吗？",
   "@moneyQeight": {},
 
-  "avg": "Avega",
+  "avg": "平均的",
   "@avg": {},
 
-  "qNA": "Respuestas de la pregunta",
+  "qNA": "问题解答",
   "@qNA": {},
 
-  "seeReport": "Ver informe",
+  "seeReport": "检查报告",
   "@seeReport": {},
 
-  "sendEmail": "Enviar correo electrónico",
+  "sendEmail": "凭证电子邮件",
   "@sendEmail": {},
 
-  "yourReport": "Su informe",
+  "yourReport": "你的报告",
   "@yourReport": {},
 
-  "packageone": "¿Desea que le envíemos un correo electrónico por correo electrónico por solo $ 1.99?",
+  "packageone": "您是否希望我们以 1.99 美元的价格将结果报告通过电子邮件发送给您？",
   "@packageone": {},
 
-  "packageOneButton": "Recibe un correo electrónico por $ 1.99",
+  "packageOneButton": "只需 1.99 美元即可获取电子邮件",
   "@packageOneButton": {},
 
-  "packagetwo": "¿Quiere el informe de resultados junto con un entrenador certificado?",
+  "packagetwo": "您想要与经过认证的教练一起获得结果报告吗？",
   "@packagetwo": {},
 
-  "packageTwoButton": "Obtenga correo electrónico y entrenador certificado por $ 2.99",
+  "packageTwoButton": "只需 2.99 美元即可获取电子邮件和认证教练",
   "@packageTwoButton": {},
 
-  "packagethree": "¿Desea que le enviemos su informe de resultados a usted y a su entrenador de forma gratuita?",
+  "packagethree": "您希望我们免费将您的结果报告发送给您和您的教练吗？",
   "@packagethree": {},
 
-  "packageThreeButton": "Envíeme un correo electrónico a mí y a mi entrenador gratis",
+  "packageThreeButton": "免费发送电子邮件给我和我的教练",
   "@packageThreeButton": {},
 
-  "coachFilter": "Filtro de entrenador",
+  "coachFilter": "教练过滤器",
   "@coachFilter": {},
 
-  "filter": "Filtra tu entrenador requerido",
+  "filter": "筛选您需要的教练",
   "@filter": {},
 
-  "verifyEmail": "Verificar correo electrónico",
+  "verifyEmail": "验证邮件",
   "@verifyEmail": {},
 
-  "fullName": "Nombre completo",
+  "fullName": "全名",
   "@fullName": {},
 
-  "number": "Número de teléfono",
+  "number": "电话号码",
   "@number": {},
 
-  "email": "Correo electrónico",
+  "email": "电子邮件",
   "@email": {},
 
-  "freeReport": "Freereport",
+  "freeReport": "免费报告",
   "@freeReport": {},
 
-  "freeReportDescription": "Se le enviará un informe gratuito a usted y a su entrenador profesional.",
+  "freeReportDescription": "免费报告将发送给您和您的专业教练",
   "@freeReportDescription": {},
 
-  "confirmEmail": "Confirmar correo electrónico",
+  "confirmEmail": "确认电子邮件",
   "@confirmEmail": {},
 
-  "code": "Código",
+  "code": "代码",
   "@code": {},
 
-  "needCode": "¿No tienes un código gratuito?",
+  "needCode": "没有免费代码？",
   "@needCode": {},
 
-  "contact": "Contáctenos",
+  "contact": "联系我们",
   "@contact": {},
 
-  "codeDetail": "El Código será dado por el entrenador a sus clientes y permitirá a los usuarios obtener el resultado de forma gratuita y también enviará los resultados al correo electrónico asociados con el entrenador.",
+  "codeDetail": "该代码将由教练提供给其客户，用户可以免费获得结果，并将结果发送到与教练相关的电子邮件",
   "@codeDetail": {},
 
-  "getFreeReport": "Obtenga su informe de resultados gratuitos",
+  "getFreeReport": "获取免费结果报告",
   "@getFreeReport": {}
 }
