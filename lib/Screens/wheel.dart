@@ -88,74 +88,83 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                         //       height: size.height/8,
                         //       //fit: BoxFit.cover,
                         //     ),
-                        Blur(
+                        Stack(
+                          children: [
+                            Blur(
                       blur: 2.5,
                       child: RepaintBoundary(
-                        key: globalKey,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 10),
-                              width: size.width - 30,
-                              height: 300,
-                              child: Chart(
-                                data: widget.adjustData,
-                                variables: {
-                                  'index': Variable(
-                                    accessor: (Map map) =>
-                                        map['index'].toString(),
-                                  ),
-                                  'type': Variable(
-                                    accessor: (Map map) =>
-                                        map['type'] as String,
-                                  ),
-                                  'value': Variable(
-                                    accessor: (Map map) => map['value'] as num,
-                                  ),
-                                },
-                                marks: [
-                                  LineMark(
-                                    position: Varset('index') *
-                                        Varset('value') /
-                                        Varset('type'),
-                                    shape: ShapeEncode(
-                                        value: BasicLineShape(loop: true)),
-                                    color: ColorEncode(
-                                        variable: 'type',
-                                        values: Defaults.colors10),
-                                  )
-                                ],
-                                coord: PolarCoord(),
-                                axes: [
-                                  Defaults.circularAxis,
-                                  Defaults.radialAxis,
-                                ],
-                                selections: {
-                                  'touchMove': PointSelection(
-                                    on: {
-                                      GestureType.scaleUpdate,
-                                      GestureType.tapDown,
-                                      GestureType.longPressMoveUpdate
+                            key: globalKey,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(top: 10),
+                                  width: size.width - 30,
+                                  height: 300,
+                                  child: Chart(
+                                    data: widget.adjustData,
+                                    variables: {
+                                      'index': Variable(
+                                        accessor: (Map map) =>
+                                            map['index'].toString(),
+                                      ),
+                                      'type': Variable(
+                                        accessor: (Map map) =>
+                                            map['type'] as String,
+                                      ),
+                                      'value': Variable(
+                                        accessor: (Map map) => map['value'] as num,
+                                      ),
                                     },
-                                    dim: Dim.x,
-                                    variable: 'index',
-                                  )
-                                },
-                                tooltip: TooltipGuide(
-                                  anchor: (_) => Offset.zero,
-                                  align: Alignment.bottomRight,
-                                  multiTuples: true,
-                                  variables: ['type', 'value'],
+                                    marks: [
+                                      LineMark(
+                                        position: Varset('index') *
+                                            Varset('value') /
+                                            Varset('type'),
+                                        shape: ShapeEncode(
+                                            value: BasicLineShape(loop: true)),
+                                        color: ColorEncode(
+                                            variable: 'type',
+                                            values: Defaults.colors10),
+                                      )
+                                    ],
+                                    coord: PolarCoord(),
+                                    axes: [
+                                      Defaults.circularAxis,
+                                      Defaults.radialAxis,
+                                    ],
+                                    selections: {
+                                      'touchMove': PointSelection(
+                                        on: {
+                                          GestureType.scaleUpdate,
+                                          GestureType.tapDown,
+                                          GestureType.longPressMoveUpdate
+                                        },
+                                        dim: Dim.x,
+                                        variable: 'index',
+                                      )
+                                    },
+                                    tooltip: TooltipGuide(
+                                      anchor: (_) => Offset.zero,
+                                      align: Alignment.bottomRight,
+                                      multiTuples: true,
+                                      variables: ['type', 'value'],
+                                    ),
+                                    crosshair: CrosshairGuide(
+                                        followPointer: [false, true]),
+                                  ),
                                 ),
-                                crosshair: CrosshairGuide(
-                                    followPointer: [false, true]),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
                       ),
                     ),
+                    const Center(child: 
+                    Text("Please, know that this is only a sample of the Wheels of Life. To get your actual one, complete the information and we will send you the report with your actual Wheels of Life.", 
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
+                          ],
+                        ),
                   ),
                 ),
                 Text(

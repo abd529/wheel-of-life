@@ -35,7 +35,7 @@ class MyApp extends StatefulWidget {
   final String uid;
   MyApp({super.key, required this.uid});
 
-  @override
+  //@overriden 
   State<MyApp> createState() => _MyAppState();
   static void setLocale(BuildContext context, Locale locale) {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
