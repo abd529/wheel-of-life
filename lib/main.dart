@@ -18,6 +18,7 @@ import 'Screens/onboard_screen.dart';
 import 'Screens/splash_screen.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'Screens/stripe_payment.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,7 +75,7 @@ class _MyAppState extends State<MyApp> {
           //     ?
           //     const HomeScreen()
           //     :
-          const SplashScreen(),
+          const StripePayment3(),
       supportedLocales: L10n.all,
       locale: _locale,
       localizationsDelegates: const [

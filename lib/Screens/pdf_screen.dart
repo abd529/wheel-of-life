@@ -105,11 +105,6 @@ class PDFScreen extends StatelessWidget {
 
   Future<void> createPdf(String uid,BuildContext context) async {
     Size size = MediaQuery.of(context).size;
-    // Future<Uint8List> pdfImage()async{
-    final ByteData bytes = await rootBundle.load('assets/logo.png');
-    final Uint8List byteList = bytes.buffer.asUint8List();
-    //   return byteList;
-    // }
 
     final pdf = pdfWidgets.Document();
     pdf.addPage(pdfWidgets.MultiPage(
@@ -127,11 +122,11 @@ class PDFScreen extends StatelessWidget {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.center,
                             children: [
-                              pdfWidgets.Image(
-                                pdfWidgets.MemoryImage(byteList),
-                                width: 85,
-                                height: 85,
-                              ),
+                              // pdfWidgets.Image(
+                              //   pdfWidgets.MemoryImage(byteList),
+                              //   width: 85,
+                              //   height: 85,
+                              // ),
                               pdfWidgets.SizedBox(
                                 width: 20,
                               ),
