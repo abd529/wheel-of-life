@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
 import 'dart:convert';
 import 'dart:ui' as ui;
+import '../Models/stripservices.dart';
 import '../Screens/coach_filter.dart';
 import '../Screens/free_report.dart';
 import '../Screens/verify_email.dart';
@@ -89,10 +90,10 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                         //       //fit: BoxFit.cover,
                         //     ),
                         Stack(
-                          children: [
-                            Blur(
-                      blur: 2.5,
-                      child: RepaintBoundary(
+                      children: [
+                        Blur(
+                          blur: 2.5,
+                          child: RepaintBoundary(
                             key: globalKey,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,7 +114,8 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                                             map['type'] as String,
                                       ),
                                       'value': Variable(
-                                        accessor: (Map map) => map['value'] as num,
+                                        accessor: (Map map) =>
+                                            map['value'] as num,
                                       ),
                                     },
                                     marks: [
@@ -156,15 +158,16 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                                 ),
                               ],
                             ),
-                      ),
-                    ),
-                    const Center(child: 
-                    Text("Please, know that this is only a sample of the Wheels of Life. To get your actual one, complete the information and we will send you the report with your actual Wheels of Life.", 
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
-                          ],
+                          ),
                         ),
+                        const Center(
+                            child: Text(
+                          "Please, know that this is only a sample of the Wheels of Life. To get your actual one, complete the information and we will send you the report with your actual Wheels of Life.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                      ],
+                    ),
                   ),
                 ),
                 Text(
@@ -182,16 +185,30 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           borderRadius: BorderRadius.circular(50)),
                     ),
                     onPressed: () async {
-                      await makePayment(
-                        2.toString(),
-                      );
+                      var items = [
+                        {
+                          "productPrice": 1.99,
+                          "productName": "1.99 Package",
+                          "qty": 1,
+                        },
+                      ];
+                      await StripeService.stripePaymentCheckout(
+                          items, 500, context, mounted,
+                          onSuccess: (String token) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl),
+                        ));
+
+                        print("SUCCESS token:$token");
+                      }, onCancel: () {
+                        print("CANCEL");
+                      }, onError: (e) {
+                        print("ERROR ${e.toString()}");
+                      });
                       fileUrl = await fetchFileUrl(widget.userId);
                       imgUrl = await captureWidget();
                       print('URLzzz: $fileUrl $imgUrl');
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl),
-                      ));
                     },
                     child: Text(
                       AppLocalizations.of(context)!.packageOneButton,
@@ -213,7 +230,27 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           borderRadius: BorderRadius.circular(50)),
                     ),
                     onPressed: () async {
-                      await makePayment(3.toString());
+                      var items = [
+                        {
+                          "productPrice": 2.99,
+                          "productName": "2.99 Package",
+                          "qty": 1,
+                        },
+                      ];
+                      await StripeService.stripePaymentCheckout(
+                          items, 500, context, mounted,
+                          onSuccess: (String token) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl),
+                        ));
+
+                        print("SUCCESS token:$token");
+                      }, onCancel: () {
+                        print("CANCEL");
+                      }, onError: (e) {
+                        print("ERROR ${e.toString()}");
+                      });
                       fileUrl = await fetchFileUrl(widget.userId);
                       imgUrl = await captureWidget();
                       print('URLzzz: $fileUrl $imgUrl');

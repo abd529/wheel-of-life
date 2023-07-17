@@ -36,7 +36,7 @@ class MyApp extends StatefulWidget {
   final String uid;
   MyApp({super.key, required this.uid});
 
-  //@overriden 
+  //@overriden
   State<MyApp> createState() => _MyAppState();
   static void setLocale(BuildContext context, Locale locale) {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
@@ -70,12 +70,9 @@ class _MyAppState extends State<MyApp> {
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: Colors.deepPurple,
       ),
-      home:
-          // FirebaseAuth.instance.currentUser != null
-          //     ?
-          //     const HomeScreen()
-          //     :
-          const StripePayment3(),
+      home: SplashScreen(),
+
+      //const StripePayment3(),
       supportedLocales: L10n.all,
       locale: _locale,
       localizationsDelegates: const [
