@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:pdf/widgets.dart' as pdfWidgets;
 
+import '../Utilities/popup_loader.dart';
+
 
 class PDFScreen extends StatelessWidget {
   final String name = "abd";
@@ -104,8 +106,8 @@ class PDFScreen extends StatelessWidget {
   List answers = const ['Answer 1', 'Answer 2', 'Answer 3'];
 
   Future<void> createPdf(String uid,BuildContext context) async {
+    PopupLoader.show();
     Size size = MediaQuery.of(context).size;
-
     final pdf = pdfWidgets.Document();
     pdf.addPage(pdfWidgets.MultiPage(
         build: (context) => [
@@ -2079,6 +2081,7 @@ class PDFScreen extends StatelessWidget {
     final pdfBytes = await pdf.save();
     uploadPdfToFirebaseStorage(uid, pdfBytes);
     // Save pdfBytes to Firebase Cloud Storage
+    PopupLoader.hide();
   }
 
   Future<void> uploadPdfToFirebaseStorage(

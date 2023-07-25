@@ -323,5 +323,23 @@
   "@codeDetail": {},
 
   "getFreeReport": "Obtenez votre rapport de résultat gratuit",
-  "@getFreeReport": {}
+  "@getFreeReport": {},
+
+  "splashOneHeading": "Bienvenue chez True North",
+  "@splashOneHeading": {},
+
+  "splashOneDescription": "Commencez votre voyage de découverte de soi et de croissance personnelle avec True North. Répondez à des questions stimulantes pour débloquer des informations précieuses et trouver votre direction vers une vie plus significative",
+  "@splashOneDescription": {},
+
+  "splashTwoHeading": "Évaluez votre vie de manière globale",
+  "@splashTwoHeading": {},
+
+  "splashTwoDescription": "Évaluez votre vie de manière globale avec True North. Réfléchissez sur vos émotions, vos relations, votre carrière et votre développement personnel pour gagner en clarté et en équilibre dans votre vie",
+  "@splashTwoDescription": {},
+
+  "splashThreeHeading": "Cultivez le changement positif",
+  "@splashThreeHeading": {},
+
+  "splashThreeDescription": "Donnez-vous les moyens avec True North. Fixez-vous des objectifs réalistes, développez des habitudes positives et suivez vos progrès avec des recommandations personnalisées et des ressources abondantes pour une vie plus heureuse et épanouie",
+  "@splashThreeDescription": {}
 }

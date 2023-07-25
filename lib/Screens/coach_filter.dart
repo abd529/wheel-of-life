@@ -25,8 +25,8 @@ class _CoachFilterState extends State<CoachFilter> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: 
-      SingleChildScrollView(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
         child: SafeArea(child: 
         SizedBox(width: double.infinity,
         child: Column(
@@ -35,7 +35,7 @@ class _CoachFilterState extends State<CoachFilter> {
               child: Image.asset(
                 "assets/logo.png",
                 height: size.height/8,
-                width: size.width/2,
+                width: size.width/6,
                 fit: BoxFit.cover,)),
                Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -175,10 +175,7 @@ class _CoachFilterState extends State<CoachFilter> {
                 });
               },
             ),
-                      
-                      
-                      
-                        const SizedBox(height: 30,),
+                      const SizedBox(height: 30,),
                         ElevatedButton(
                           onPressed: (){
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => VerifyEmail(fileUrl:widget.fileUrl, imgUrl: widget.imgUrl,),));

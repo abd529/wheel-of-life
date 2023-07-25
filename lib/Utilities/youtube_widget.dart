@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
@@ -7,7 +9,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 class YoutubeVideo extends StatefulWidget {
   String youtubeUrl;
 
-  YoutubeVideo(this.youtubeUrl);
+  YoutubeVideo({super.key, required this.youtubeUrl});
 
   @override
   _YoutubeVideoState createState() => _YoutubeVideoState();

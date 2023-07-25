@@ -1,12 +1,14 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:com.ezeelogix.truenorth/Screens/youtube_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Models/onboarding_model.dart';
-import 'onboard_screen.dart';
 
 class Welcome extends StatefulWidget {
-  const Welcome({super.key});
+  final String videoId;
+  const Welcome({super.key, required this.videoId});
 
   @override
   _WelcomeState createState() => _WelcomeState();
@@ -31,20 +33,27 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    List<String> description = [
+      AppLocalizations.of(context)!.splashOneDescription,
+      AppLocalizations.of(context)!.splashTwoDescription,
+      AppLocalizations.of(context)!.splashThreeDescription,
+    ];
+    List<String> heading = [
+      AppLocalizations.of(context)!.splashOneHeading,
+      AppLocalizations.of(context)!.splashTwoHeading,
+      AppLocalizations.of(context)!.splashThreeHeading,
+    ];
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-             child: Image.asset(
-                         "assets/logo.png",
-                          width: size.width/1.8,
-                          height: size.height/8,
-                          //fit: BoxFit.cover,
-                        ),
-            ),
+            Image.asset(
+                        "assets/logo.png",
+                         width: size.width/1.8,
+                         height: size.height/8,
+                       ),
             Expanded(
               child: PageView.builder(
                 controller: _controller,
@@ -63,19 +72,18 @@ class _WelcomeState extends State<Welcome> {
                         height: 300,
                       ),
                       Text(
-                        contents[i].title,
+                        heading[i],
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
-                            fontSize: 38,
+                            fontSize: 25,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 100,
-                        width: 300,
+                        width: size.width-50,
                         child: Text(
-                          contents[i].discription,
+                          description[i],
                           textAlign: TextAlign.center,
                           style: GoogleFonts.raleway(
                             textStyle: const TextStyle(
@@ -121,9 +129,9 @@ class _WelcomeState extends State<Welcome> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => Onboard(),
-                          ),
-                        );
+                            builder: (_) => TranslatedVideo(
+                              videoId: widget.videoId,
+                            )));
                       }
                       _controller.nextPage(
                         duration: const Duration(milliseconds: 120),
@@ -136,8 +144,8 @@ class _WelcomeState extends State<Welcome> {
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
-                    child: Stack(
-                      children: const <Widget>[
+                    child: const Stack(
+                      children: <Widget>[
                         Align(
                           alignment: Alignment(0, 0),
                           child: Icon(

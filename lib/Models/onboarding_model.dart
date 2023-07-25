@@ -10,23 +10,17 @@ class OnbordingContent {
 List<OnbordingContent> contents = [
   OnbordingContent(
       image: 'assets/onboard1.jpg',
-      title: 'LEARN',
+      title: 'Welcome to True North',
       discription:
-          "Up-to-date information on climatic and atmospheric trends and their impacts "
-          "while offering tips, guidance & helping us learn, to make a difference that "
-          "matters."),
+          "Begin your journey of self-discovery and personal growth with True North. Answer thought-provoking questions to unlock valuable insights and find your direction towards a more meaningful life."),
   OnbordingContent(
       image: 'assets/onboard2.jpg',
-      title: 'GROW',
+      title: 'Assess Your Life Holistically',
       discription:
-          "A comprehensive suite of resources with an easy-to-navigate interface, and "
-          "cradle of horticulture opportunities that allow self growth and help keep our "
-          "planet clean and green."),
+          "Assess your life comprehensively with True North. Reflect on emotions, relationships, career, and personal development to gain clarity and balance in your life."),
   OnbordingContent(
       image: 'assets/onboard3.jpg',
-      title: 'EARN',
+      title: 'Cultivate Positive Change',
       discription:
-          "Best time to start learning and being activated about climate change. With the"
-          " app, you can earn vouchers and coupons to demonstrate your progress and "
-          "understanding of climate change."),
+          "Empower yourself with True North. Set realistic goals, build positive habits, and track your progress with tailored recommendations and abundant resources for a happier, fulfilled life."),
 ];

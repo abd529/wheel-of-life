@@ -1,10 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '/Authentication/email_sent.dart';
 import '/Models/forgot_password_VM.dart';
-import '/Screens/onboard_screen.dart';
 
 
 class ForgotPassword extends StatefulWidget {

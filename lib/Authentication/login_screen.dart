@@ -2,7 +2,6 @@
 
 import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import '../Screens/home_screen.dart';
 import '/Authentication/forgot_password.dart';
 import '/Authentication/signup_screen.dart';
 

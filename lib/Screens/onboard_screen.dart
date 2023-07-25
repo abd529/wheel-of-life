@@ -1,3 +1,4 @@
+import 'package:com.ezeelogix.truenorth/Screens/welcome_screen.dart';
 import 'package:com.ezeelogix.truenorth/Screens/youtube_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -157,9 +158,12 @@ class _OnboardState extends State<Onboard> {
               ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => TranslatedVideo(
-                              videoId: videoId,
-                            )));
+                      builder: (context) => Welcome(videoId: videoId),
+                      ));
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => TranslatedVideo(
+                    //           videoId: videoId,
+                    //         )));
                   },
                   style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),

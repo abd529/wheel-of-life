@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages
+// ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages, use_build_context_synchronously
 import 'package:blur/blur.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_stripe/flutter_stripe.dart' hide Card;
-import 'dart:convert';
 import 'dart:ui' as ui;
 import '../Models/stripservices.dart';
 import '../Screens/coach_filter.dart';
@@ -11,10 +9,10 @@ import '../Screens/verify_email.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:graphic/graphic.dart';
-import 'package:http/http.dart' as http;
+
+import '../Utilities/popup_loader.dart';
 
 class WheelOfLife extends StatefulWidget {
   final adjustData;
@@ -162,7 +160,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                         ),
                         const Center(
                             child: Text(
-                          "Please, know that this is only a sample of the Wheels of Life. To get your actual one, complete the information and we will send you the report with your actual Wheels of Life.",
+                          "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
                           textAlign: TextAlign.center,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )),
@@ -185,6 +183,11 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           borderRadius: BorderRadius.circular(50)),
                     ),
                     onPressed: () async {
+                      PopupLoader.show();
+                      fileUrl = await fetchFileUrl(widget.userId);
+                      imgUrl = await captureWidget();
+                      print('URLzzz: $fileUrl $imgUrl');
+                      PopupLoader.hide();
                       var items = [
                         {
                           "productPrice": 1.99,
@@ -199,16 +202,12 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           builder: (context) =>
                               VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl),
                         ));
-
                         print("SUCCESS token:$token");
                       }, onCancel: () {
                         print("CANCEL");
                       }, onError: (e) {
                         print("ERROR ${e.toString()}");
                       });
-                      fileUrl = await fetchFileUrl(widget.userId);
-                      imgUrl = await captureWidget();
-                      print('URLzzz: $fileUrl $imgUrl');
                     },
                     child: Text(
                       AppLocalizations.of(context)!.packageOneButton,
@@ -230,6 +229,11 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           borderRadius: BorderRadius.circular(50)),
                     ),
                     onPressed: () async {
+                      PopupLoader.show();
+                      fileUrl = await fetchFileUrl(widget.userId);
+                      imgUrl = await captureWidget();
+                      print('URLzzz: $fileUrl $imgUrl');
+                      PopupLoader.hide();
                       var items = [
                         {
                           "productPrice": 2.99,
@@ -242,7 +246,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           onSuccess: (String token) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl),
+                              CoachFilter(fileUrl: fileUrl, imgUrl: imgUrl),
                         ));
 
                         print("SUCCESS token:$token");
@@ -251,13 +255,6 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                       }, onError: (e) {
                         print("ERROR ${e.toString()}");
                       });
-                      fileUrl = await fetchFileUrl(widget.userId);
-                      imgUrl = await captureWidget();
-                      print('URLzzz: $fileUrl $imgUrl');
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            CoachFilter(fileUrl: fileUrl, imgUrl: imgUrl),
-                      ));
                     },
                     child: Text(
                       AppLocalizations.of(context)!.packageTwoButton,
@@ -279,9 +276,11 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           borderRadius: BorderRadius.circular(50)),
                     ),
                     onPressed: () async {
+                      PopupLoader.show();
                       fileUrl = await fetchFileUrl(widget.userId);
                       imgUrl = await captureWidget();
                       print('URLzzz: $fileUrl $imgUrl');
+                      PopupLoader.hide();
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
                             FreeReport(fileUrl: fileUrl, imgUrl: imgUrl),
@@ -301,17 +300,17 @@ class _WheelOfLifeState extends State<WheelOfLife> {
 
   Future<void> makePayment(String price) async {
     try {
-      paymentIntent = await createPaymentIntent(price, 'USD');
+    //  paymentIntent = await createPaymentIntent(price, 'USD');
 
       //STEP 2: Initialize Payment Sheet
-      await Stripe.instance
-          .initPaymentSheet(
-              paymentSheetParameters: SetupPaymentSheetParameters(
-                  paymentIntentClientSecret: paymentIntent![
-                      'client_secret'], //Gotten from payment intent
-                  style: ThemeMode.dark,
-                  merchantDisplayName: 'Ikay'))
-          .then((value) {});
+      // await Stripe.instance
+      //     .initPaymentSheet(
+      //         paymentSheetParameters: SetupPaymentSheetParameters(
+      //             paymentIntentClientSecret: paymentIntent![
+      //                 'client_secret'], //Gotten from payment intent
+      //             style: ThemeMode.dark,
+      //             merchantDisplayName: 'Ikay'))
+      //     .then((value) {});
 
       //STEP 3: Display Payment sheet
       displayPaymentSheet();
@@ -321,77 +320,78 @@ class _WheelOfLifeState extends State<WheelOfLife> {
   }
 
   displayPaymentSheet() async {
-    try {
-      await Stripe.instance.presentPaymentSheet().then((value) {
-        showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        Icons.check_circle,
-                        color: Colors.green,
-                        size: 100.0,
-                      ),
-                      SizedBox(height: 10.0),
-                      Text("Payment Successful!"),
-                    ],
-                  ),
-                ));
+   // try {
+      // await Stripe.instance.presentPaymentSheet().then((value) {
+      //   showDialog(
+      //       context: context,
+      //       builder: (_) => AlertDialog(
+      //             content: Column(
+      //               mainAxisSize: MainAxisSize.min,
+      //               children: [
+      //                 Icon(
+      //                   Icons.check_circle,
+      //                   color: Colors.green,
+      //                   size: 100.0,
+      //                 ),
+      //                 SizedBox(height: 10.0),
+      //                 Text("Payment Successful!"),
+      //               ],
+      //             ),
+      //           ));
 
-        paymentIntent = null;
-      }).onError((error, stackTrace) {
-        throw Exception(error);
-      });
-    } on StripeException catch (e) {
-      print('Error is:---> $e');
-      AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: const [
-                Icon(
-                  Icons.cancel,
-                  color: Colors.red,
-                ),
-                Text("Payment Failed"),
-              ],
-            ),
-          ],
-        ),
-      );
-    } catch (e) {
-      print('$e');
-    }
+  //       paymentIntent = null;
+  //     }).onError((error, stackTrace) {
+  //       throw Exception(error);
+  //     });
+  //   } on StripeException catch (e) {
+  //     print('Error is:---> $e');
+  //     AlertDialog(
+  //       content: Column(
+  //         mainAxisSize: MainAxisSize.min,
+  //         children: [
+  //           Row(
+  //             children: const [
+  //               Icon(
+  //                 Icons.cancel,
+  //                 color: Colors.red,
+  //               ),
+  //               Text("Payment Failed"),
+  //             ],
+  //           ),
+  //         ],
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     print('$e');
+  //   }
+  // }
+
+ // createPaymentIntent(String amount, String currency) async {
+  //   try {
+  //     //Request body
+  //     Map<String, dynamic> body = {
+  //       'amount': calculateAmount(amount),
+  //       'currency': currency,
+  //     };
+
+  //     //Make post request to Stripe
+  //     var response = await http.post(
+  //       Uri.parse('https://api.stripe.com/v1/payment_intents'),
+  //       headers: {
+  //         'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
+  //         'Content-Type': 'application/x-www-form-urlencoded'
+  //       },
+  //       body: body,
+  //     );
+  //     return json.decode(response.body);
+  //   } catch (err) {
+  //     throw Exception(err.toString());
+  //   }
+  // }
+
+  // calculateAmount(String amount) {
+  //   final calculatedAmout = (int.parse(amount)) * 100;
+  //   return calculatedAmout.toString();
+  // }}}}
   }
-
-  createPaymentIntent(String amount, String currency) async {
-    try {
-      //Request body
-      Map<String, dynamic> body = {
-        'amount': calculateAmount(amount),
-        'currency': currency,
-      };
-
-      //Make post request to Stripe
-      var response = await http.post(
-        Uri.parse('https://api.stripe.com/v1/payment_intents'),
-        headers: {
-          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: body,
-      );
-      return json.decode(response.body);
-    } catch (err) {
-      throw Exception(err.toString());
-    }
   }
-
-  calculateAmount(String amount) {
-    final calculatedAmout = (int.parse(amount)) * 100;
-    return calculatedAmout.toString();
-  }
-}

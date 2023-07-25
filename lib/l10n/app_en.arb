@@ -19,7 +19,7 @@
   "welcome": "Welcome to True North",
   "@welcome": {},
 
-  "homeDescription": "You'll be presented with questions in different areas. You will respond to each one according to the following scale  1 to3 Dissatisfaction 4 to 6 Nessacary work needed 7 to 8 Good, still room for improvement 9 to 10 No Modification is needed Ultimately you'll see your wheel of life and the recommended areas to concentrate on You'll be presented with Baseline questions first. You may respond to that as you may feel today, without much introseption",
+  "homeDescription": "You'll be presented with questions in different areas. You will respond to each one according to the following scale  1 to 3 Dissatisfaction 4 to 6 Nessacary work needed 7 to 8 Good, still room for improvement 9 to 10 No Modification is needed Ultimately you'll see your wheel of life and the recommended areas to concentrate on You'll be presented with Baseline questions first. You may respond to that as you may feel today, without much introseption",
   "@homeDescription": {},
 
   "start": "Start",
@@ -323,5 +323,23 @@
   "@codeDetail": {},
 
   "getFreeReport": "Get your free result report",
-  "@getFreeReport": {}
+  "@getFreeReport": {},
+
+  "splashOneHeading": "Welcome to True North",
+  "@splashOneHeading": {},
+
+  "splashOneDescription": "Begin your journey of self-discovery and personal growth with True North. Answer thought-provoking questions to unlock valuable insights and find your direction towards a more meaningful life",
+  "@splashOneDescription": {},
+
+  "splashTwoHeading": "Assess Your Life Holistically",
+  "@splashTwoHeading": {},
+
+  "splashTwoDescription": "Assess your life comprehensively with True North. Reflect on emotions, relationships, career, and personal development to gain clarity and balance in your life",
+  "@splashTwoDescription": {},
+
+  "splashThreeHeading": "Cultivate Positive Change",
+  "@splashThreeHeading": {},
+
+  "splashThreeDescription": "Empower yourself with True North. Set realistic goals, build positive habits, and track your progress with tailored recommendations and abundant resources for a happier, fulfilled life",
+  "@splashThreeDescription": {}
 }

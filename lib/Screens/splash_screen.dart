@@ -1,8 +1,9 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:com.ezeelogix.truenorth/Screens/welcome_screen.dart';
+import 'package:com.ezeelogix.truenorth/Screens/onboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
+
 
 
 class SplashScreen extends StatelessWidget {
@@ -28,7 +29,7 @@ class SplashScreen extends StatelessWidget {
       showLoader: true,
       loaderColor: Colors.deepPurple,
       loadingText: const Text("Loading"),
-      navigator: const Welcome(),
+      navigator: const Onboard(),
       durationInSeconds: 5,
     );
     // return Scaffold(

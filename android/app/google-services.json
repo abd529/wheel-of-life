@@ -7,7 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:935100860958:android:a6c1a0bc614f091fd83c0f",
+        "mobilesdk_app_id": "1:935100860958:android:120a1f70d466fdbcd83c0f",
         "android_client_info": {
           "package_name": "com.ezeelogix.truenorth"
         }
@@ -34,7 +34,7 @@
               "client_id": "935100860958-4r5s1i7a3vafv8tc9maso8fmr6lqqtvu.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.ezeelogix.truenorth"
+                "bundle_id": "com.example.com.ezeelogix.truenorth"
               }
             }
           ]

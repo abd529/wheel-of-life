@@ -7,8 +7,8 @@ class ForgotPasswordViewModel extends ChangeNotifier {
     bool emailSent = false;
 
     try {
-     final credits = FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-     emailSent= credits != null;
+     FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+     //emailSent= credits != null;
     } on FirebaseAuthException catch (e) {
       message = e.code;
       notifyListeners();

@@ -2,6 +2,7 @@
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../Utilities/popup_loader.dart';
 import '/Screens/pdf_screen.dart';
 
 
@@ -104,7 +105,8 @@ class _DetailPageState extends State<DetailPage> {
 
   var adjustData = [];
   
-  void getInfo()async{
+  Future<void> getInfo()async{
+      PopupLoader.show();
       var collection = FirebaseFirestore.instance.collection('User Answers');
       var docSnapshot = await collection.doc(widget.userId).collection("Base Line").doc(widget.userId).get();
       if (docSnapshot.exists) {
@@ -234,6 +236,7 @@ class _DetailPageState extends State<DetailPage> {
         moneyAvg = data?["Average"];
       });
       }
+    PopupLoader.hide();  
   }
 
   @override
@@ -241,21 +244,14 @@ class _DetailPageState extends State<DetailPage> {
     Size size = MediaQuery.of(context).size;
     if (check == 0) {
       WidgetsBinding.instance
-          .addPostFrameCallback((_) => getInfo());
+          .addPostFrameCallback((_) async{
+          
+          await getInfo();
+            });
       check++;
     }
     
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.of(context).push(
-      //       MaterialPageRoute(
-      //         builder: (context) => PDFScreen(userId: widget.userId),
-      //       ),
-      //     );
-      //   },
-      //   child: const Icon(Icons.picture_as_pdf),
-      // ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

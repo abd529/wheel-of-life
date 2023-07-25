@@ -323,5 +323,23 @@
   "@codeDetail": {},
 
   "getFreeReport": "获取免费结果报告",
-  "@getFreeReport": {}
+  "@getFreeReport": {},
+
+  "splashOneHeading": "欢迎来到True North",
+  "@splashOneHeading": {},
+
+  "splashOneDescription": "开始你的自我发现和个人成长之旅，与True North一同回答发人深省的问题，解锁宝贵的见解，找到通向更有意义生活的方向",
+  "@splashOneDescription": {},
+
+  "splashTwoHeading": "全面评估你的生活",
+  "@splashTwoHeading": {},
+
+  "splashTwoDescription": "与True North一同全面评估你的生活。反思情感，关系，职业和个人发展，获得生活中的清晰和平衡",
+  "@splashTwoDescription": {},
+
+  "splashThreeHeading": "培育积极变化",
+  "@splashThreeHeading": {},
+
+  "splashThreeDescription": "通过True North赋能自己。设定现实目标，建立积极习惯，并通过量身定制的建议和丰富的资源，追踪进展，过上更幸福，充实的生活",
+  "@splashThreeDescription": {}
 }

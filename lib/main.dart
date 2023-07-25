@@ -1,30 +1,31 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:uuid/uuid.dart';
 
 import './Authentication/signup_screen.dart';
 import './Screens/lanugage_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '/Authentication/forgot_password.dart';
 import '/Quiz%20Functionality/quiz_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import '/Screens/home_screen.dart';
 import 'Authentication/login_screen.dart';
 import 'Screens/email.dart';
 import 'Screens/onboard_screen.dart';
 import 'Screens/splash_screen.dart';
+import 'firebase_options.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'Screens/stripe_payment.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Stripe.publishableKey =
-      "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
-  await Firebase.initializeApp();
+  // Stripe.publishableKey =
+  //     "pk_test_51IPZIqK66jUbxaJOqYosJCBW8656t1FTX8ShRaze4nFOhuE2qtIndRqTyklIvaXyOir5otUDcfjei0E4kETP53sS00EUOIuOyf";
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await dotenv.load(fileName: "assets/.env");
   var uid = const Uuid().v4();
   runApp(MyApp(
@@ -56,23 +57,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
-      ),
+      builder: EasyLoading.init(),
       title: "True North",
       theme: ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
         primarySwatch: Colors.deepPurple,
       ),
-      home: SplashScreen(),
-
-      //const StripePayment3(),
+      home: const SplashScreen(),
       supportedLocales: L10n.all,
       locale: _locale,
       localizationsDelegates: const [

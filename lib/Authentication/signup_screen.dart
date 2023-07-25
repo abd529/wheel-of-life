@@ -2,11 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '/Screens/home_screen.dart';
-import '/Screens/onboard_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../Models/register_VM.dart';
 import 'login_screen.dart';
