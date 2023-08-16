@@ -296,7 +296,7 @@ class _FamilyQuizState extends State<FamilyQuiz> {
                           child: index <= 6
                               ? Text(AppLocalizations.of(context)!.next)
                               : SizedBox(
-                                width: 250,
+                                width: 220,
                                 child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),

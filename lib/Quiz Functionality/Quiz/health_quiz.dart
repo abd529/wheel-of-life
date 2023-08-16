@@ -272,7 +272,7 @@ class _HealthQuizState extends State<HealthQuiz> {
                           child: index <= 5
                               ? Text(AppLocalizations.of(context)!.next,)
                               : SizedBox(
-                                width: 250,
+                                width: 220,
                                 child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),

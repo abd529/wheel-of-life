@@ -1,3 +1,4 @@
+import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
@@ -9,7 +10,8 @@ class VerifyEmail extends StatefulWidget {
   static const routeName = "verify-name";
   final String fileUrl;
   final String imgUrl;
-  const VerifyEmail({super.key, required this.fileUrl, required this.imgUrl});
+  final String uid;
+  const VerifyEmail({super.key, required this.fileUrl, required this.imgUrl, required this.uid});
 
   @override
   State<VerifyEmail> createState() => _VerifyEmailState();
@@ -22,32 +24,58 @@ class _VerifyEmailState extends State<VerifyEmail> {
   TextEditingController email = TextEditingController();
   TextEditingController confirmEmail = TextEditingController();
   TextEditingController code = TextEditingController();
+  bool sent = false;
   
   void sendEmail(
-      String recipientEmail, String messageMail, BuildContext context) async {
+    String recipientEmail, String messageMail, BuildContext context) async {
+    setState(() {
+      sent = true;
+    });
     String userName2 = "gesconvsgar@ezeelogix.com";
-    //String password2 = "ges23@conv";
     final smtpServer2 = SmtpServer("smtp.titan.email",
         username: "gesconvsgar@ezeelogix.com",
         password: "ges23@conv",
         port: 465,
         ssl: true);
     final message = Message()
-      ..from = Address(userName2, "Mail Service")
+      ..from = Address(userName2, "True North")
       ..recipients.add(recipientEmail)
-      ..subject = "Mail"
+      ..subject = "Your wheel of life is here"
       ..text = "Message: $messageMail";
     try {
       await send(message, smtpServer2);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: FittedBox(
-        child: Text("Email send good"),
-      )));
+      dailogeBox();
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
       }
     }
+  }
+
+  void dailogeBox(){
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const AlertDialog(
+          title: Text('Email Sent Successfully'),
+          content: SizedBox(
+            height: 200,
+            child: Column(
+              children: [
+                 Text('Taking you back to home'),
+                 CircularProgressIndicator(),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+     Future.delayed(const Duration(seconds: 5), () {
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(uid: widget.uid) ,), (route) => false);
+    });
+    setState(() {
+      sent = false;
+    });
   }
 
   @override
@@ -172,12 +200,12 @@ class _VerifyEmailState extends State<VerifyEmail> {
                             //to set border radius to button
                             borderRadius: BorderRadius.circular(50)),
                       ),
-                      child: const Text("Send Me Report")),
+                      child:  sent? const CircularProgressIndicator(color: Colors.purple,) : const Text("Send Me Report")),
                   const SizedBox(
                     height: 30,
                   ),
                   const Text(
-                    "I’ll be contacted by a professional coach to give me my result of the Wheel of Life without any opbligation.",
+                    "I'll be contacted by a professional coach to give me my result of the Wheel of Life without any opbligation.",
                     textAlign: TextAlign.center,
                   ),
                 ],

@@ -8,7 +8,8 @@ class CoachFilter extends StatefulWidget {
   static const routeName = "coach filter";
   final String fileUrl;
   final String imgUrl;
-  const CoachFilter({super.key, required this.fileUrl, required this.imgUrl});
+  final String uid;
+  const CoachFilter({super.key, required this.fileUrl, required this.imgUrl, required this.uid});
 
   @override
   State<CoachFilter> createState() => _CoachFilterState();
@@ -178,7 +179,7 @@ class _CoachFilterState extends State<CoachFilter> {
                       const SizedBox(height: 30,),
                         ElevatedButton(
                           onPressed: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => VerifyEmail(fileUrl:widget.fileUrl, imgUrl: widget.imgUrl,),));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => VerifyEmail(fileUrl:widget.fileUrl, imgUrl: widget.imgUrl,uid: widget.uid),));
                           },
                           style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),

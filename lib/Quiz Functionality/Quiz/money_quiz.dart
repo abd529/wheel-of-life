@@ -308,7 +308,7 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                           child: index <= 7
                              ? Text(AppLocalizations.of(context)!.next)
                               : SizedBox(
-                                width: 250,
+                                width: 220,
                                 child: Text(AppLocalizations.of(context)!.moveToNext,softWrap: true,textAlign: TextAlign.center,))),
                     ],
                   ),

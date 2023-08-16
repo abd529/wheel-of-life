@@ -1,5 +1,4 @@
 import 'package:com.ezeelogix.truenorth/Screens/welcome_screen.dart';
-import 'package:com.ezeelogix.truenorth/Screens/youtube_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';

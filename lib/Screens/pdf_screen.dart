@@ -2370,7 +2370,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  healthAvg.toString()
+                  healthAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2445,7 +2445,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  personalAvg.toString()
+                  personalAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2510,7 +2510,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  homeAvg.toString()
+                  homeAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2580,7 +2580,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  famAvg.toString()
+                  famAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2655,7 +2655,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  loveAvg.toString()
+                  loveAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2720,7 +2720,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  freeAvg.toString(),
+                  freeAvg.toStringAsFixed(1),
                   ),
                   ],
                 ),
@@ -2795,7 +2795,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  workAvg.toString()
+                  workAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2870,7 +2870,7 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Average",
                   "",
-                  moneyAvg.toString()
+                  moneyAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),

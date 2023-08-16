@@ -29,9 +29,9 @@ class EmailSend extends StatelessWidget {
         ssl: true);
     //final smtpServer = gmailSaslXoauth2(userName, password);
     final message = Message()
-      ..from = Address(userName2, "Mail Service")
+      ..from = Address(userName2, "True North")
       ..recipients.add(recipientEmail)
-      ..subject = "Mail"
+      ..subject = "Your Wheel of life"
       ..text = "Message: $messageMail";
     try {
       await send(message, smtpServer2);

@@ -90,7 +90,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                         Stack(
                       children: [
                         Blur(
-                          blur: 2.5,
+                          blur: 1,
                           child: RepaintBoundary(
                             key: globalKey,
                             child: Row(
@@ -200,7 +200,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           onSuccess: (String token) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl),
+                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId),
                         ));
                         print("SUCCESS token:$token");
                       }, onCancel: () {
@@ -246,7 +246,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           onSuccess: (String token) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              CoachFilter(fileUrl: fileUrl, imgUrl: imgUrl),
+                              CoachFilter(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId),
                         ));
 
                         print("SUCCESS token:$token");
