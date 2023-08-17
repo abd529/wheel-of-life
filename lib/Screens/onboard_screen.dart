@@ -15,11 +15,11 @@ class _OnboardState extends State<Onboard> {
   String videoId = "1uhrwiKn0sw";
   String videoFren = "XxHBSviCLP0";
   String videoSpa = "yP4TfpkmmxA";
-  // https://youtu.be/pPr90LMH3kY
   String videoITA = "DUFWqmJm7Es";
   String videoPor = "TgPzMw09w2w";
   String videoEng = "1uhrwiKn0sw";
   String videoChi = "Zh9fDF5zqOQ";
+  String videoGer = "M-FoePRGd_U";
   String email = "";
   String fName = "";
   String lName = "";
@@ -69,6 +69,11 @@ class _OnboardState extends State<Onboard> {
     if (value == "zh") {
       setState(() {
         videoId = videoChi;
+      });
+    }
+    if (value == "de") {
+      setState(() {
+        videoId = videoGer;
       });
     }
   }

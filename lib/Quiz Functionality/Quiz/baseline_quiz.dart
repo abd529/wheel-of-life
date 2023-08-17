@@ -57,6 +57,7 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
       AppLocalizations.of(context)!.money,];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -133,7 +134,7 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
                       }, child: const Text("Previous")),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.fromLTRB(size.width/7, size.height/50, size.width/7, size.height/50),
+                              padding: EdgeInsets.fromLTRB(size.width/9, size.height/50, size.width/9, size.height/50),
                                 shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)
                                     ),),
@@ -218,7 +219,12 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
                             "Q8": BaseAns8,
                           });
                         print("Data Stored and UserId is ${widget.userId}");
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HealthQuiz(userId: widget.userId),));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => HealthQuiz(userId: widget.userId),))
+                        .then((value){
+                          setState(() {
+                            index = 0;
+                          });
+                        });
                         
                       }
                     }, child:  index<=7? Text(AppLocalizations.of(context)!.next):Text(AppLocalizations.of(context)!.moveToDetailedQuestions, textAlign: TextAlign.center,) ),

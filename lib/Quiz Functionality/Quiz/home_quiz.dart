@@ -16,15 +16,15 @@ class HomeQuiz extends StatefulWidget {
 }
 
 class _HomeQuizState extends State<HomeQuiz> {
-  List<String> Questions = [
-    "Q1: Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
-    "Q2: Do I feel comfortable in the city in which I live and agree with the services it offers?",
-    "Q3: Do I like my neighbors and their culture of coexistence?",
-    "Q4: The house where I live satisfies me, has enough space and comfort that I need?",
-    "Q5: Am I comfortable with the people with whom I share my home?",
-    "Q6: How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
-    "Home questions are completed",
-  ];
+  // List<String> Questions = [
+  //   "Q1: Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
+  //   "Q2: Do I feel comfortable in the city in which I live and agree with the services it offers?",
+  //   "Q3: Do I like my neighbors and their culture of coexistence?",
+  //   "Q4: The house where I live satisfies me, has enough space and comfort that I need?",
+  //   "Q5: Am I comfortable with the people with whom I share my home?",
+  //   "Q6: How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
+  //   "Home questions are completed",
+  // ];
   List<String> topic = [
     "Country",
     "City",
@@ -58,6 +58,7 @@ class _HomeQuizState extends State<HomeQuiz> {
     ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -273,7 +274,12 @@ class _HomeQuizState extends State<HomeQuiz> {
                                         6
                               });
                               print("Data Stored and UserId is ${widget.userId}");
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FamilyQuiz(userId: widget.userId),));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FamilyQuiz(userId: widget.userId),))
+                              .then((value){
+                          setState(() {
+                            index = 0;
+                          });
+                        });
                             }
                           },
                           child: index <= 5

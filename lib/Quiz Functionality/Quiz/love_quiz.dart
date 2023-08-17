@@ -64,6 +64,7 @@ class _LoveQuizState extends State<LoveQuiz> {
     ];
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -300,7 +301,12 @@ class _LoveQuizState extends State<LoveQuiz> {
                                     8
                               });
                               print("Data Stored and UserId is ${widget.userId}");
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FreeQuiz(userId: widget.userId),));
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => FreeQuiz(userId: widget.userId),))
+                              .then((value){
+                          setState(() {
+                            index = 0;
+                          });
+                        });
                             }
                           },
                           child: index <= 7

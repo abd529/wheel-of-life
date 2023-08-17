@@ -40,8 +40,8 @@ class _VerifyEmailState extends State<VerifyEmail> {
     final message = Message()
       ..from = Address(userName2, "True North")
       ..recipients.add(recipientEmail)
-      ..subject = "Your wheel of life is here"
-      ..text = "Message: $messageMail";
+      ..subject = "Next Steps on Your True North Journey"
+      ..text = messageMail;
     try {
       await send(message, smtpServer2);
       dailogeBox();
@@ -57,12 +57,13 @@ class _VerifyEmailState extends State<VerifyEmail> {
       context: context,
       builder: (BuildContext context) {
         return const AlertDialog(
-          title: Text('Email Sent Successfully'),
+          title: Text('Email Sent Successfully', style: TextStyle(fontSize: 18),),
           content: SizedBox(
-            height: 200,
+            height: 100,
             child: Column(
               children: [
                  Text('Taking you back to home'),
+                 SizedBox(height: 30,),
                  CircularProgressIndicator(),
               ],
             ),
@@ -71,7 +72,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
       },
     );
      Future.delayed(const Duration(seconds: 5), () {
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(uid: widget.uid) ,), (route) => false);
+      //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(uid: widget.uid) ,), (route) => false);
     });
     setState(() {
       sent = false;
@@ -102,7 +103,8 @@ class _VerifyEmailState extends State<VerifyEmail> {
                 children: [
                   Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: 
+                      Text(
                         AppLocalizations.of(context)!.verifyEmail,
                         style: const TextStyle(
                             fontSize: 22, fontWeight: FontWeight.bold),
@@ -126,14 +128,18 @@ class _VerifyEmailState extends State<VerifyEmail> {
                               return null;
                             },
                             decoration: InputDecoration(
-                                prefixIcon: Container(
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                            width: 1.0, color: Colors.black),
+                                prefixIcon: 
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Container(
+                                      decoration: const BoxDecoration(
+                                        border: Border(
+                                          right: BorderSide(
+                                              width: 1.0, color: Colors.black),
+                                        ),
                                       ),
-                                    ),
-                                    child: const Icon(Icons.person)),
+                                      child: const Icon(Icons.person)),
+                                ),
                                 hintText: " ${AppLocalizations.of(context)!.fullName}"),
                           ),
                           const SizedBox(
@@ -148,14 +154,17 @@ class _VerifyEmailState extends State<VerifyEmail> {
                               return null;
                             },
                             decoration: InputDecoration(
-                                prefixIcon: Container(
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                            width: 1.0, color: Colors.black),
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Container(
+                                      decoration: const BoxDecoration(
+                                        border: Border(
+                                          right: BorderSide(
+                                              width: 1.0, color: Colors.black),
+                                        ),
                                       ),
-                                    ),
-                                    child: const Icon(Icons.phone_android)),
+                                      child: const Icon(Icons.phone_android)),
+                                ),
                                 hintText: " ${AppLocalizations.of(context)!.number}"),
                           ),
                           const SizedBox(
@@ -170,14 +179,17 @@ class _VerifyEmailState extends State<VerifyEmail> {
                               return null;
                             },
                             decoration: InputDecoration(
-                                prefixIcon: Container(
-                                    decoration: const BoxDecoration(
-                                      border: Border(
-                                        right: BorderSide(
-                                            width: 1.0, color: Colors.black),
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Container(
+                                      decoration: const BoxDecoration(
+                                        border: Border(
+                                          right: BorderSide(
+                                              width: 1.0, color: Colors.black),
+                                        ),
                                       ),
-                                    ),
-                                    child: const Icon(Icons.mail)),
+                                      child: const Icon(Icons.mail)),
+                                ),
                                 hintText: " Your ${AppLocalizations.of(context)!.email}"),
                           ),
                           const SizedBox(
@@ -191,7 +203,22 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          sendEmail(email.text, "This is your detailed report ${widget.fileUrl} and this is your wheel of life ${widget.imgUrl}", context);
+                          sendEmail(email.text,
+                           """
+                           Dear ${name.text},\n
+                           Congratulations on taking the first step towards uncovering your True North! Your commitment to 
+                           self-discovery is truly commendable. To further assist and guide you on this transformative journey, 
+                           we recommend connecting with a professional coach. If you've chosen this path, rest assured thata skilled 
+                           coach will be in touch with you shortly to provide valuable insights and support.\n
+                           Thank you for placing your trust in us. We're here to help you every step of the way. Should you have 
+                           any questions or inquiries, please don't hesitate to reach out.\n
+                           You can find your report here: ${widget.fileUrl}\n
+                           Wishing you all the best as you continue your quest to find your True North.
+                           Warm regards,
+                           The True North Team
+                           www.DrJDKropman.com 
+                           """,
+                            context);
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -205,9 +232,12 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     height: 30,
                   ),
                   const Text(
-                    "I'll be contacted by a professional coach to give me my result of the Wheel of Life without any opbligation.",
+                    "You'll be contacted by a professional coach to give me my result of the Wheel of Life without any opbligation.",
                     textAlign: TextAlign.center,
                   ),
+                  // ElevatedButton(onPressed: (){
+                  //   dailogeBox();
+                  // }, child: const Text("testtt box"))
                 ],
               ),
             ),

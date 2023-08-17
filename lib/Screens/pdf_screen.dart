@@ -1,17 +1,21 @@
-// ignore_for_file: must_be_immutable, depend_on_referenced_packages
+// ignore_for_file: must_be_immutable, depend_on_referenced_packages, use_build_context_synchronously, avoid_unnecessary_containers
 
+import 'dart:ui';
+
+import 'package:blur/blur.dart';
 import 'package:com.ezeelogix.truenorth/Screens/wheel.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:graphic/graphic.dart';
 import 'package:pdf/widgets.dart' as pdfWidgets;
 
 import '../Utilities/popup_loader.dart';
 
 
-class PDFScreen extends StatelessWidget {
-  final String name = "abd";
+class PDFScreen extends StatefulWidget {
   final String userId;
   final int baseQ1 ;
   final int baseQ2 ;
@@ -21,8 +25,6 @@ class PDFScreen extends StatelessWidget {
   final int baseQ6 ;
   final int baseQ7 ;
   final int baseQ8 ;
-  double baseAvg =0.0;
-
   final int healthQ1 ;
   final int healthQ2 ;
   final int healthQ3 ;
@@ -97,15 +99,43 @@ class PDFScreen extends StatelessWidget {
   final double moneyAvg;
   PDFScreen({super.key, required this.userId, required this.baseQ1, required this.baseQ2, required this.baseQ3, required this.baseQ4, required this.baseQ5, required this.baseQ6, required this.baseQ7, required this.baseQ8, required this.healthQ1, required this.healthQ2, required this.healthQ3, required this.healthQ4, required this.healthQ5, required this.healthQ6, required this.personalQ1, required this.personalQ2, required this.personalQ3, required this.personalQ4, required this.personalQ5, required this.personalQ6, required this.personalQ7, required this.personalQ8, required this.homeQ1, required this.homeQ2, required this.homeQ3, required this.homeQ4, required this.homeQ5, required this.homeQ6, required this.famQ1, required this.famQ2, required this.famQ3, required this.famQ4, required this.famQ5, required this.famQ6, required this.famQ7, required this.loveQ1, required this.loveQ2, required this.loveQ3, required this.loveQ4, required this.loveQ5, required this.loveQ6, required this.loveQ7, required this.loveQ8, required this.freeQ1, required this.freeQ2, required this.freeQ3, required this.freeQ4, required this.freeQ5, required this.freeQ6, required this.workQ1, required this.workQ2, required this.workQ3, required this.workQ4, required this.workQ5, required this.workQ6, required this.workQ7, required this.workQ8, required this.moneyQ1, required this.moneyQ2, required this.moneyQ3, required this.moneyQ4, required this.moneyQ5, required this.moneyQ6, required this.moneyQ7, required this.moneyQ8, required this.healthAvg, required this.personalAvg, required this.homeAvg, required this.famAvg, required this.loveAvg, required this.freeAvg, required this.workAvg, required this.moneyAvg});
   
+  @override
+  State<PDFScreen> createState() => _PDFScreenState();
+}
+
+class _PDFScreenState extends State<PDFScreen> {
+  final GlobalKey _globalKey = GlobalKey();
+  double baseAvg =0.0;
+
   List topics = const ['Topic 1', 'Topic 2', 'Topic 3'];
+
   List questions = const [
     'Question 1',
     'Question 2',
     'Question 3'
-  ]; // Replace with your questions
+  ]; 
+ // Replace with your questions
   List answers = const ['Answer 1', 'Answer 2', 'Answer 3'];
+  
+  Future<Uint8List> getImageBytesFromAsset(String assetPath) async {
+  ByteData data = await rootBundle.load(assetPath);
+  return data.buffer.asUint8List();
+}
+  Future<Uint8List> getImageBytesFromRepaintBoundary(GlobalKey boundaryKey) async {
+  try {
+    RenderRepaintBoundary boundary = boundaryKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    var image = await boundary.toImage(pixelRatio: 1.0);
+    var byteData = await image.toByteData(format: ImageByteFormat.png);
+    return byteData!.buffer.asUint8List();
+  } catch (error) {
+    print("Error capturing image from RepaintBoundary: $error");
+    return Uint8List(0); // Return an empty Uint8List on error
+  }
+}
 
   Future<void> createPdf(String uid,BuildContext context) async {
+    Uint8List logoBytes = await getImageBytesFromAsset("assets/logo.png");
+    Uint8List graphBytes = await getImageBytesFromRepaintBoundary(_globalKey);
     PopupLoader.show();
     Size size = MediaQuery.of(context).size;
     final pdf = pdfWidgets.Document();
@@ -124,11 +154,11 @@ class PDFScreen extends StatelessWidget {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.center,
                             children: [
-                              // pdfWidgets.Image(
-                              //   pdfWidgets.MemoryImage(byteList),
-                              //   width: 85,
-                              //   height: 85,
-                              // ),
+                              pdfWidgets.Image(
+                                pdfWidgets.MemoryImage(logoBytes),
+                                width: 85,
+                                height: 85,
+                              ),
                               pdfWidgets.SizedBox(
                                 width: 20,
                               ),
@@ -201,7 +231,6 @@ class PDFScreen extends StatelessWidget {
                           pdfWidgets.SizedBox(
                             height: 30,
                           ),
-
                           pdfWidgets.Row(
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
@@ -940,7 +969,6 @@ class PDFScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-
                           pdfWidgets.SizedBox(height: 10),
                           pdfWidgets.Row(
                             mainAxisAlignment:
@@ -1454,9 +1482,7 @@ class PDFScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-
                           pdfWidgets.SizedBox(height: 10),
-
                           pdfWidgets.Row(
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
@@ -1643,9 +1669,7 @@ class PDFScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-
                           pdfWidgets.SizedBox(height: 10),
-
                           pdfWidgets.Row(
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
@@ -1723,7 +1747,6 @@ class PDFScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-
                           pdfWidgets.SizedBox(height: 10),
                           pdfWidgets.Row(
                             mainAxisAlignment:
@@ -1858,9 +1881,7 @@ class PDFScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-
                           pdfWidgets.SizedBox(height: 10),
-
                           pdfWidgets.Row(
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
@@ -1938,7 +1959,6 @@ class PDFScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-
                           pdfWidgets.SizedBox(height: 10),
                           pdfWidgets.Row(
                             mainAxisAlignment:
@@ -2069,12 +2089,14 @@ class PDFScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-
-                          //     pdfWidgets.CustomTable(
-                          // topics: const ['Topic 1', 'Topic 2', 'Topic 3'], // Replace with your topic names
-                          // questions: const ['Question 1', 'Question 2', 'Question 3'], // Replace with your questions
-                          // answers: const ['Answer 1', 'Answer 2', 'Answer 3'], // Replace with your answers
-                          //     ),
+                          pdfWidgets.SizedBox(height: 20),
+                          pdfWidgets.Text("Your Wheel of Life"),
+                          pdfWidgets.SizedBox(height: 5),
+                          pdfWidgets.Image(
+                                pdfWidgets.MemoryImage(graphBytes),
+                                width: 400,
+                                height: 300,
+                              ),
                         ])),
               ),
             ]));
@@ -2095,6 +2117,25 @@ class PDFScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final adjustData = [
+                        {"type": "BaseLine", "index": "Health", "value": widget.baseQ1},
+                        {"type": "BaseLine", "index": "Personal Growth", "value": widget.baseQ2},
+                        {"type": "BaseLine", "index": "Home", "value": widget.baseQ3},
+                        {"type": "BaseLine", "index": "Family & Friends", "value": widget.baseQ4},
+                        {"type": "BaseLine", "index": "Love", "value": widget.baseQ5},
+                        {"type": "BaseLine", "index": "Free Time", "value": widget.baseQ6},
+                        {"type": "BaseLine", "index": "Work", "value": widget.baseQ7},
+                        {"type": "BaseLine", "index": "Money", "value": widget.baseQ8},
+                
+                        {"type": "Results", "index": "Health", "value": widget.healthAvg.toInt()},
+                        {"type": "Results", "index": "Personal Growth", "value": widget.personalAvg.toInt()},
+                        {"type": "Results", "index": "Home", "value": widget.homeAvg.toInt()},
+                        {"type": "Results", "index": "Family & Friends", "value": widget.famAvg.toInt()},
+                        {"type": "Results", "index": "Love", "value": widget.loveAvg.toInt()},
+                        {"type": "Results", "index": "Free Time", "value": widget.freeAvg.toInt()},
+                        {"type": "Results", "index": "Work", "value": widget.workAvg.toInt()},
+                        {"type": "Results", "index": "Money", "value": widget.moneyAvg.toInt()},
+                ];
     return Scaffold(
         body: SingleChildScrollView(
       child: SafeArea(
@@ -2199,7 +2240,7 @@ class PDFScreen extends StatelessWidget {
                             "I am comfortable with my physical and mental health.",
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
-                    Text(baseQ1.toString())
+                    Text(widget.baseQ1.toString())
                   ],
                 ),
                 const SizedBox(height: 10),
@@ -2212,7 +2253,7 @@ class PDFScreen extends StatelessWidget {
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     Container(
-                      child: Text(baseQ2.toString())
+                      child: Text(widget.baseQ2.toString())
                     )
                   ],
                 ),
@@ -2226,7 +2267,7 @@ class PDFScreen extends StatelessWidget {
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     Container(
-                      child: Text(baseQ3.toString())
+                      child: Text(widget.baseQ3.toString())
                     )
                   ],
                 ),
@@ -2240,7 +2281,7 @@ class PDFScreen extends StatelessWidget {
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     Container(
-                      child: Text(baseQ4.toString())
+                      child: Text(widget.baseQ4.toString())
                     )
                   ],
                 ),
@@ -2254,7 +2295,7 @@ class PDFScreen extends StatelessWidget {
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     Container(
-                      child: Text(baseQ5.toString())
+                      child: Text(widget.baseQ5.toString())
                     )
                   ],
                 ),
@@ -2268,7 +2309,7 @@ class PDFScreen extends StatelessWidget {
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     Container(
-                      child: Text(baseQ6.toString())
+                      child: Text(widget.baseQ6.toString())
                     )
                   ],
                 ),
@@ -2282,7 +2323,7 @@ class PDFScreen extends StatelessWidget {
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     Container(
-                      child: Text(baseQ7.toString())
+                      child: Text(widget.baseQ7.toString())
                     )
                   ],
                 ),
@@ -2297,7 +2338,7 @@ class PDFScreen extends StatelessWidget {
                             softWrap: true,
                             style: TextStyle(fontWeight: FontWeight.bold))),
                     Container(
-                      child: Text(baseQ8.toString())
+                      child: Text(widget.baseQ8.toString())
                     )
                   ],
                 ),
@@ -2339,38 +2380,38 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Mood",
                   "Is there anything that alters my psychological state?",
-                  healthQ1.toString()
+                  widget.healthQ1.toString()
                   ),
                 tableRow(context,
                   "Psychological state",
                   "Do I carry out activities that move me away from a state of tension, nerves, stress, etc.?",
-                  healthQ2.toString()
+                  widget.healthQ2.toString()
                   ),
                 tableRow(context,
                   "Personal care",
                   "When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
-                  healthQ3.toString()
+                  widget.healthQ3.toString()
                   ),
                 tableRow(context,
                   "Physical state",
                   "Do I have any disease that affects my physical state?",
-                  healthQ4.toString()
+                  widget.healthQ4.toString()
                   ),
                 tableRow(context,
                   "Habits",
                   "The resting time, food, sport and more, are they adequate?",
-                  healthQ5.toString()
+                  widget.healthQ5.toString()
                   ),
                 tableRow(context,
                   "Measures",
                   "If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
-                  healthQ6.toString()
+                  widget.healthQ6.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  healthAvg.toStringAsFixed(1)
+                  widget.healthAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2404,48 +2445,48 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Society",
                   "Do I feel useful to society, do I contribute to the development of my society?",
-                  personalQ1.toString()
+                  widget.personalQ1.toString()
                   ),
                 tableRow(context,
                   "Current projects",
                   "Am I comfortable with my personal growth plans and projects?",
-                  personalQ2.toString()
+                  widget.personalQ2.toString()
                   ),
                 tableRow(context,
                   "Future projects",
                   "Do my projects to futures satisfy the perspectives I have to grow?",
-                  personalQ3.toString()
+                  widget.personalQ3.toString()
                   ),
                 tableRow(context,
                   "Spirituality",
                   "Do I feel good with my spirituality and cultivation constantly?",
-                  personalQ4.toString()
+                  widget.personalQ4.toString()
                   ),
                 tableRow(context,
                   "Self-esteem",
                   "Do I give true value to my life and my affections?",
-                  personalQ5.toString()
+                  widget.personalQ5.toString()
                   ),
                 tableRow(context,
                   "Attitudes",
                   "Do I face life in a planned, applied manner and have a will to improve?",
-                  personalQ6.toString()
+                  widget.personalQ6.toString()
                   ),
                   tableRow(context,
                   "Skills",
                   "How many skills can I say that I have to do everything that I propose?",
-                  personalQ7.toString()
+                  widget.personalQ7.toString()
                   ), 
                   tableRow(context,
                   "Studies",
                   "Am I satisfied with my professional training and I try to move forward?",
-                  personalQ8.toString()
+                  widget.personalQ8.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  personalAvg.toStringAsFixed(1)
+                  widget.personalAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2479,38 +2520,38 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Country",
                   "Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
-                  homeQ1.toString()
+                  widget.homeQ1.toString()
                   ),
                 tableRow(context,
                   "City",
                   "Do I feel comfortable in the city in which I live and agree with the services it offers?",
-                  homeQ2.toString()
+                  widget.homeQ2.toString()
                   ),
                 tableRow(context,
                   "District",
                   "Do I like my neighbors and their culture of coexistence?",
-                  homeQ3.toString()
+                  widget.homeQ3.toString()
                   ),
                 tableRow(context,
                   "Home",
                   "The house where I live satisfies me, has enough space and comfort that I need?",
-                  homeQ4.toString()
+                  widget.homeQ4.toString()
                   ),
                 tableRow(context,
                   "Coexistence",
                   "Am I comfortable with the people with whom I share my home?",
-                  homeQ5.toString()
+                  widget.homeQ5.toString()
                   ),
                 tableRow(context,
                   "Home care",
                   "How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
-                  homeQ6.toString()
+                  widget.homeQ6.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  homeAvg.toStringAsFixed(1)
+                  widget.homeAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2544,43 +2585,43 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Provision",
                   "Do I feel satisfied with the ability I have to find and communicate with new friends or family?",
-                  famQ1.toString()
+                  widget.famQ1.toString()
                   ),
                 tableRow(context,
                   "Mother",
                   "Am I satisfied with the relationship I have with my mother?",
-                  famQ2.toString()
+                  widget.famQ2.toString()
                   ),
                 tableRow(context,
                   "Father",
                   "Am I satisfied with the relationship I have with my father?",
-                  famQ3.toString()
+                  widget.famQ3.toString()
                   ),
                 tableRow(context,
                   "Children",
                   "Am I satisfied with the relationship I have with my children? If I don't have them and I love them, do I do actions to have them?",
-                  famQ4.toString()
+                  widget.famQ4.toString()
                   ),
                 tableRow(context,
                   "Close relatives",
                   "How do I feel in my relationships with close relatives: brothers, grandparents, cousins, uncles, etc.?",
-                  famQ5.toString()
+                  widget.famQ5.toString()
                   ),
                 tableRow(context,
                   "Friends",
                   "I feel satisfied with the friends I have, do I really have them when I need them and support me?",
-                  famQ6.toString()
+                  widget.famQ6.toString()
                   ),
                   tableRow(context,
                   "Known",
                   "Am I comfortable with the acquaintances I have?",
-                  famQ7.toString()
+                  widget.famQ7.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  famAvg.toStringAsFixed(1)
+                  widget.famAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2614,48 +2655,48 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Ability \nto love",
                   "May I give myself to my relationships?",
-                  loveQ1.toString()
+                  widget.loveQ1.toString()
                   ),
                 tableRow(context,
                   "Number \nof \nrelationships",
                   "Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
-                  loveQ2.toString()
+                  widget.loveQ2.toString()
                   ),
                 tableRow(context,
                   "Duration",
                   "Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
-                  loveQ3.toString()
+                  widget.loveQ3.toString()
                   ),
                 tableRow(context,
                   "Communication",
                   "Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
-                  loveQ4.toString()
+                  widget.loveQ4.toString()
                   ),
                 tableRow(context,
                   "Coexistence",
                   "Do we distribute home tasks?",
-                  loveQ5.toString()
+                  widget.loveQ5.toString()
                   ),
                 tableRow(context,
                   "Fidelity",
                   "Am I faithful in my relationships, and I have the confidence that my partner is the same?",
-                  loveQ6.toString()
+                  widget.loveQ6.toString()
                   ),
                   tableRow(context,
                   "Sexual passion",
                   "Do I have sexual relations with my partner and it attracts me physically?",
-                  loveQ7.toString()
+                  widget.loveQ7.toString()
                   ), 
                   tableRow(context,
                   "Emotional Passion",
                   "Do I feel really loved and positively value all the mental and emotional part of my partner?",
-                  loveQ8.toString()
+                  widget.loveQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  loveAvg.toStringAsFixed(1)
+                  widget.loveAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2689,38 +2730,38 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Leisure",
                   "Do I have enough leisure time, or do I think it should have more?",
-                  freeQ1.toString()
+                  widget.freeQ1.toString()
                   ),
                 tableRow(context,
                   "Quality time",
                   "Do I feel that I take advantage of the time I have and take advantage of my leisure?",
-                  freeQ2.toString()
+                  widget.freeQ2.toString()
                   ),
                 tableRow(context,
                   "Fun",
                   "May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
-                  freeQ3.toString()
+                  widget.freeQ3.toString()
                   ),
                 tableRow(context,
                   "Variety",
                   "What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
-                  freeQ4.toString()
+                  widget.freeQ4.toString()
                   ),
                 tableRow(context,
                   "Tastes",
                   "Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
-                  freeQ5.toString()
+                  widget.freeQ5.toString()
                   ),
                 tableRow(context,
                   "Participatory",
                   "How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
-                  freeQ6.toString()
+                  widget.freeQ6.toString()
                   ),
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  freeAvg.toStringAsFixed(1),
+                  widget.freeAvg.toStringAsFixed(1),
                   ),
                   ],
                 ),
@@ -2754,48 +2795,48 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Working capacity",
                   "I feel satisfied with my performance in the work environment and I really want to work on what I do?",
-                  workQ1.toString()
+                  widget.workQ1.toString()
                   ),
                 tableRow(context,
                   "Functions",
                   "Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
-                  workQ2.toString()
+                  widget.workQ2.toString()
                   ),
                 tableRow(context,
                   "Company",
                   "Do I feel comfortable in my company and she respects my values?",
-                  workQ3.toString()
+                  widget.workQ3.toString()
                   ),
                 tableRow(context,
                   "Boss",
                   "Am I satisfied with my boss or me in my role as a boss?",
-                  workQ4.toString()
+                  widget.workQ4.toString()
                   ),
                 tableRow(context,
                   "Companions",
                   "Do I feel that we form a good team with my teammates?",
-                  workQ5.toString()
+                  widget.workQ5.toString()
                   ),
                 tableRow(context,
                   "Collaborators",
                   "Do I feel satisfied with the work of my collaborators and we form a good team?",
-                  workQ6.toString()
+                  widget.workQ6.toString()
                   ),
                   tableRow(context,
                   "Recognition",
                   "Am I recognized in my work, I feel that the work I do is valued?",
-                  workQ7.toString()
+                  widget.workQ7.toString()
                   ), 
                   tableRow(context,
                   "Remuneration",
                   "Do I feel satisfied with the economic income and other remuneration that my work gives me?",
-                  workQ8.toString()
+                  widget.workQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  workAvg.toStringAsFixed(1)
+                  widget.workAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
@@ -2829,78 +2870,151 @@ class PDFScreen extends StatelessWidget {
                 tableRow(context,
                   "Belongings",
                   "How do I feel about the belongings I have? Can I satisfy everything I have?",
-                  moneyQ1.toString()
+                  widget.moneyQ1.toString()
                   ),
                 tableRow(context,
                   "Guarantees",
                   "Do I have guarantees that support me financially and I feel sufficient guarantees?",
-                  moneyQ2.toString()
+                  widget.moneyQ2.toString()
                   ),
                 tableRow(context,
                   "Income",
                   "Am I satisfied with the income I have today and are enough to have the standard of living?",
-                  moneyQ3.toString()
+                  widget.moneyQ3.toString()
                   ),
                 tableRow(context,
                   "Future income",
                   "Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
-                  moneyQ4.toString()
+                  widget.moneyQ4.toString()
                   ),
                 tableRow(context,
                   "Bills",
                   "How do I feel about the level of expenses I have. Expenditure above my possibilities?",
-                  moneyQ5.toString()
+                  widget.moneyQ5.toString()
                   ),
                 tableRow(context,
                   "Future expenses",
                   "Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
-                  moneyQ6.toString()
+                  widget.moneyQ6.toString()
                   ),
                   tableRow(context,
                   "Debts",
                   "Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
-                  moneyQ7.toString()
+                  widget.moneyQ7.toString()
                   ), 
                   tableRow(context,
                   "Saving",
                   "I keep some money for bad times, and I'm happy with my savings?",
-                  moneyQ8.toString()
+                  widget.moneyQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
                   "",
-                  moneyAvg.toStringAsFixed(1)
+                  widget.moneyAvg.toStringAsFixed(1)
                   ),
                   ],
                 ),
                 Padding(
+          padding: const EdgeInsets.all(05),
+          child: SizedBox(
+            width: 400,
+            height: 300,
+            child: RepaintBoundary(
+              key: _globalKey,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 10),
+                    width: size.width - 30,
+                    height: 300,
+                    child: Chart(
+                      data: adjustData,
+                      variables: {
+                        'index': Variable(
+                          accessor: (Map map) =>
+                              map['index'].toString(),
+                        ),
+                        'type': Variable(
+                          accessor: (Map map) =>
+                              map['type'] as String,
+                        ),
+                        'value': Variable(
+                          accessor: (Map map) =>
+                              map['value'] as num,
+                        ),
+                      },
+                      marks: [
+                        LineMark(
+                          position: Varset('index') *
+                              Varset('value') /
+                              Varset('type'),
+                          shape: ShapeEncode(
+                              value: BasicLineShape(loop: true)),
+                          color: ColorEncode(
+                              variable: 'type',
+                              values: Defaults.colors10),
+                        )
+                      ],
+                      coord: PolarCoord(),
+                      axes: [
+                        Defaults.circularAxis,
+                        Defaults.radialAxis,
+                      ],
+                      selections: {
+                        'touchMove': PointSelection(
+                          on: {
+                            GestureType.scaleUpdate,
+                            GestureType.tapDown,
+                            GestureType.longPressMoveUpdate
+                          },
+                          dim: Dim.x,
+                          variable: 'index',
+                        )
+                      },
+                      tooltip: TooltipGuide(
+                        anchor: (_) => Offset.zero,
+                        align: Alignment.bottomRight,
+                        multiTuples: true,
+                        variables: ['type', 'value'],
+                      ),
+                      crosshair: CrosshairGuide(
+                          followPointer: [false, true]),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+                Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: ElevatedButton(onPressed: () async {
-                  createPdf(userId, context);
+                  await createPdf(widget.userId, context);
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (_) => WheelOfLife( 
-                                          userId: userId ,
+                                          userId: widget.userId ,
                                           adjustData: [
-                        {"type": "BaseLine", "index": "Health", "value": baseQ1},
-                        {"type": "BaseLine", "index": "Personal Growth", "value": baseQ2},
-                        {"type": "BaseLine", "index": "Home", "value": baseQ3},
-                        {"type": "BaseLine", "index": "Family & Friends", "value": baseQ4},
-                        {"type": "BaseLine", "index": "Love", "value": baseQ5},
-                        {"type": "BaseLine", "index": "Free Time", "value": baseQ6},
-                        {"type": "BaseLine", "index": "Work", "value": baseQ7},
-                        {"type": "BaseLine", "index": "Money", "value": baseQ8},
+                        {"type": "BaseLine", "index": "Health", "value": widget.baseQ1},
+                        {"type": "BaseLine", "index": "Personal Growth", "value": widget.baseQ2},
+                        {"type": "BaseLine", "index": "Home", "value": widget.baseQ3},
+                        {"type": "BaseLine", "index": "Family & Friends", "value": widget.baseQ4},
+                        {"type": "BaseLine", "index": "Love", "value": widget.baseQ5},
+                        {"type": "BaseLine", "index": "Free Time", "value": widget.baseQ6},
+                        {"type": "BaseLine", "index": "Work", "value": widget.baseQ7},
+                        {"type": "BaseLine", "index": "Money", "value": widget.baseQ8},
                 
-                        {"type": "Results", "index": "Health", "value": healthAvg.toInt()},
-                        {"type": "Results", "index": "Personal Growth", "value": personalAvg.toInt()},
-                        {"type": "Results", "index": "Home", "value": homeAvg.toInt()},
-                        {"type": "Results", "index": "Family & Friends", "value": famAvg.toInt()},
-                        {"type": "Results", "index": "Love", "value": loveAvg.toInt()},
-                        {"type": "Results", "index": "Free Time", "value": freeAvg.toInt()},
-                        {"type": "Results", "index": "Work", "value": workAvg.toInt()},
-                        {"type": "Results", "index": "Money", "value": moneyAvg.toInt()},
+                        {"type": "Results", "index": "Health", "value": widget.healthAvg.toInt()},
+                        {"type": "Results", "index": "Personal Growth", "value": widget.personalAvg.toInt()},
+                        {"type": "Results", "index": "Home", "value": widget.homeAvg.toInt()},
+                        {"type": "Results", "index": "Family & Friends", "value": widget.famAvg.toInt()},
+                        {"type": "Results", "index": "Love", "value": widget.loveAvg.toInt()},
+                        {"type": "Results", "index": "Free Time", "value": widget.freeAvg.toInt()},
+                        {"type": "Results", "index": "Work", "value": widget.workAvg.toInt()},
+                        {"type": "Results", "index": "Money", "value": widget.moneyAvg.toInt()},
                 ]),
                                         ));
                                   }, 
