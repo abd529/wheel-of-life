@@ -179,7 +179,15 @@ class _CoachFilterState extends State<CoachFilter> {
                       const SizedBox(height: 30,),
                         ElevatedButton(
                           onPressed: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => VerifyEmail(fileUrl:widget.fileUrl, imgUrl: widget.imgUrl,uid: widget.uid),));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => VerifyEmail(
+                              fileUrl:widget.fileUrl, 
+                              imgUrl: widget.imgUrl,
+                              uid: widget.uid,
+                              isCoach: true,
+                              coachBadge: selectedBadge,
+                              coachGen: selectedGender,
+                              coachLang: selectedLanguage,
+                              ),));
                           },
                           style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),

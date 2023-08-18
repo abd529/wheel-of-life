@@ -252,6 +252,7 @@ class _DetailPageState extends State<DetailPage> {
     }
     
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

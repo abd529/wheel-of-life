@@ -200,7 +200,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           onSuccess: (String token) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId),
+                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId, isCoach:false, coachBadge: "",coachGen: "",coachLang: ""),
                         ));
                         print("SUCCESS token:$token");
                       }, onCancel: () {

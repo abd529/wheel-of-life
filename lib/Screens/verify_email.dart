@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
@@ -11,7 +14,11 @@ class VerifyEmail extends StatefulWidget {
   final String fileUrl;
   final String imgUrl;
   final String uid;
-  const VerifyEmail({super.key, required this.fileUrl, required this.imgUrl, required this.uid});
+  final String coachLang;
+  final String coachBadge;
+  final String coachGen;
+  final bool isCoach; 
+  const VerifyEmail({super.key, required this.fileUrl, required this.imgUrl, required this.uid, required this.coachLang, required this.coachBadge, required this.coachGen, required this.isCoach});
 
   @override
   State<VerifyEmail> createState() => _VerifyEmailState();
@@ -25,6 +32,32 @@ class _VerifyEmailState extends State<VerifyEmail> {
   TextEditingController confirmEmail = TextEditingController();
   TextEditingController code = TextEditingController();
   bool sent = false;
+  String shortenedUrl = "";
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<String> shortenUrl(String longUrl) async {
+  final response = await http.post(
+    Uri.parse('https://api-ssl.bitly.com/v4/shorten'),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer 885789a550e82e100742f485c36ea732366bac76',
+    },
+    body: '{"long_url": "$longUrl"}',
+  );
+
+  if (response.statusCode == 200) {
+    final Map<String, dynamic> data = json.decode(response.body);
+    print(data);
+    return data['id'];
+  } else {
+    throw Exception('Failed to shorten URL');
+  }
+}
+
   
   void sendEmail(
     String recipientEmail, String messageMail, BuildContext context) async {
@@ -203,12 +236,32 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          sendEmail(email.text,
+                          if(widget.isCoach){
+                            sendEmail(email.text,
                            """
                            Dear ${name.text},\n
                            Congratulations on taking the first step towards uncovering your True North! Your commitment to 
                            self-discovery is truly commendable. To further assist and guide you on this transformative journey, 
-                           we recommend connecting with a professional coach. If you've chosen this path, rest assured thata skilled 
+                           we recommend connecting with a professional coach. If you've chosen this path, rest assured that a skilled 
+                           coach will be in touch with you shortly to provide valuable insights and support.\n
+                           A/An ${widget.coachLang} speaking ${widget.coachGen} coach with a ${widget.coachBadge} badge will approch you soon\n
+                           Thank you for placing your trust in us. We're here to help you every step of the way. Should you have 
+                           any questions or inquiries, please don't hesitate to reach out.\n
+                           You can find your report here: \n${widget.fileUrl}
+
+                           Wishing you all the best as you continue your quest to find your True North.
+                           Warm regards,
+                           The True North Team
+                           www.DrJDKropman.com 
+                           """,
+                            context);
+                          }else{
+                            sendEmail(email.text,
+                           """
+                           Dear ${name.text},\n
+                           Congratulations on taking the first step towards uncovering your True North! Your commitment to 
+                           self-discovery is truly commendable. To further assist and guide you on this transformative journey, 
+                           we recommend connecting with a professional coach. If you've chosen this path, rest assured that a skilled 
                            coach will be in touch with you shortly to provide valuable insights and support.\n
                            Thank you for placing your trust in us. We're here to help you every step of the way. Should you have 
                            any questions or inquiries, please don't hesitate to reach out.\n
@@ -219,6 +272,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                            www.DrJDKropman.com 
                            """,
                             context);
+                          }
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -235,9 +289,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     "You'll be contacted by a professional coach to give me my result of the Wheel of Life without any opbligation.",
                     textAlign: TextAlign.center,
                   ),
-                  // ElevatedButton(onPressed: (){
-                  //   dailogeBox();
-                  // }, child: const Text("testtt box"))
+                  ElevatedButton(onPressed: (){
+                    print("hehe");
+                    shortenUrl(widget.fileUrl);
+                  }, child: const Text("testtt box"))
                 ],
               ),
             ),
