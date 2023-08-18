@@ -26,6 +26,7 @@ class WheelOfLife extends StatefulWidget {
 class _WheelOfLifeState extends State<WheelOfLife> {
   final GlobalKey globalKey = GlobalKey();
   Map<String, dynamic>? paymentIntent;
+  String done = "";
 
   Future<String> captureWidget() async {
     final RenderRepaintBoundary boundary =
@@ -42,6 +43,9 @@ class _WheelOfLifeState extends State<WheelOfLife> {
     await ref.putData(Uint8List.fromList(pngBytes));
     String downloadUrl = await ref.getDownloadURL();
     print("linkkkkkkkkkk $downloadUrl");
+    setState(() {
+      done = "done";
+    });
     return downloadUrl;
   }
 
@@ -51,7 +55,9 @@ class _WheelOfLifeState extends State<WheelOfLife> {
 
     // Get the download URL for the file
     String downloadUrl = await fileRef.getDownloadURL();
-
+    setState(() {
+      done = "done";
+    });
     return downloadUrl;
   }
 
@@ -80,6 +86,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                   width: 400,
                   height: 300,
                   child: Card(
+                    color: Colors.white,
                     child:
                         // Image.asset(
                         //      "assets/dummy_graph.jpg",
@@ -89,81 +96,79 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                         //     ),
                         Stack(
                       children: [
-                        Blur(
-                          blur: 1,
-                          child: RepaintBoundary(
-                            key: globalKey,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(top: 10),
-                                  width: size.width - 30,
-                                  height: 300,
-                                  child: Chart(
-                                    data: widget.adjustData,
-                                    variables: {
-                                      'index': Variable(
-                                        accessor: (Map map) =>
-                                            map['index'].toString(),
-                                      ),
-                                      'type': Variable(
-                                        accessor: (Map map) =>
-                                            map['type'] as String,
-                                      ),
-                                      'value': Variable(
-                                        accessor: (Map map) =>
-                                            map['value'] as num,
-                                      ),
-                                    },
-                                    marks: [
-                                      LineMark(
-                                        position: Varset('index') *
-                                            Varset('value') /
-                                            Varset('type'),
-                                        shape: ShapeEncode(
-                                            value: BasicLineShape(loop: true)),
-                                        color: ColorEncode(
-                                            variable: 'type',
-                                            values: Defaults.colors10),
-                                      )
-                                    ],
-                                    coord: PolarCoord(),
-                                    axes: [
-                                      Defaults.circularAxis,
-                                      Defaults.radialAxis,
-                                    ],
-                                    selections: {
-                                      'touchMove': PointSelection(
-                                        on: {
-                                          GestureType.scaleUpdate,
-                                          GestureType.tapDown,
-                                          GestureType.longPressMoveUpdate
-                                        },
-                                        dim: Dim.x,
-                                        variable: 'index',
-                                      )
-                                    },
-                                    tooltip: TooltipGuide(
-                                      anchor: (_) => Offset.zero,
-                                      align: Alignment.bottomRight,
-                                      multiTuples: true,
-                                      variables: ['type', 'value'],
+                        RepaintBoundary(
+                          key: globalKey,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(top: 10),
+                                width: size.width - 30,
+                                height: 300,
+                                child: Chart(
+                                  data: widget.adjustData,
+                                  variables: {
+                                    'index': Variable(
+                                      accessor: (Map map) =>
+                                          map['index'].toString(),
                                     ),
-                                    crosshair: CrosshairGuide(
-                                        followPointer: [false, true]),
+                                    'type': Variable(
+                                      accessor: (Map map) =>
+                                          map['type'] as String,
+                                    ),
+                                    'value': Variable(
+                                      accessor: (Map map) =>
+                                          double.parse(map['value'].toStringAsFixed(1)),
+                                    ),
+                                  },
+                                  marks: [
+                                    LineMark(
+                                      position: Varset('index') *
+                                          Varset('value') /
+                                          Varset('type'),
+                                      shape: ShapeEncode(
+                                          value: BasicLineShape(loop: true,)),
+                                      color: ColorEncode(
+                                          variable: 'type',
+                                          values: Defaults.colors10),
+                                    )
+                                  ],
+                                  coord: PolarCoord(),
+                                  axes: [
+                                    Defaults.circularAxis,
+                                    //Defaults.radialAxis,
+                                  ],
+                                  selections: {
+                                    'touchMove': PointSelection(
+                                      // on: {
+                                      //   GestureType.scaleUpdate,
+                                      //   GestureType.tapDown,
+                                      //   GestureType.longPressMoveUpdate
+                                      // },
+                                      dim: Dim.x,
+                                      variable: 'index',
+                                    )
+                                  },
+                                  tooltip: TooltipGuide(
+                                   anchor: (_) => Offset.zero,
+                                   align: Alignment.bottomCenter,
+                                   multiTuples: true,
+                                    variables: ['type', 'value'],
                                   ),
+                                  crosshair: CrosshairGuide(
+                                      followPointer: [false, true]),
+
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        const Center(
-                            child: Text(
-                          "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
+                        // const Center(
+                        //     child: Text(
+                        //   "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
+                        //   textAlign: TextAlign.center,
+                        //   style: TextStyle(fontWeight: FontWeight.bold),
+                        // )),
                       ],
                     ),
                   ),
@@ -184,6 +189,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                     ),
                     onPressed: () async {
                       PopupLoader.show();
+                      
                       fileUrl = await fetchFileUrl(widget.userId);
                       imgUrl = await captureWidget();
                       print('URLzzz: $fileUrl $imgUrl');

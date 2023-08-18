@@ -74,7 +74,35 @@ class _VerifyEmailState extends State<VerifyEmail> {
       ..from = Address(userName2, "True North")
       ..recipients.add(recipientEmail)
       ..subject = "Next Steps on Your True North Journey"
-      ..text = messageMail;
+      ..text = messageMail
+      ..html = widget.isCoach? """
+<p> Dear ${name.text},<br><br>
+    Congratulations on taking the first step towards uncovering your True North! Your commitment to 
+    self-discovery is truly commendable. To further assist and guide you on this transformative journey, 
+    we recommend connecting with a professional coach. If you've chosen this path, rest assured that a skilled 
+    coach will be in touch with you shortly to provide valuable insights and support.<br><br>
+    A/An ${widget.coachLang} speaking ${widget.coachGen} coach with a ${widget.coachBadge} badge will approch you soon<br><br>
+    Thank you for placing your trust in us. We're here to help you every step of the way. Should you have 
+    any questions or inquiries, please don't hesitate to reach out.<br>
+    <a href="${widget.fileUrl}">You can find your report here</a></p>
+
+    Wishing you all the best as you continue your quest to find your True North.<br>
+    Warm regards,<br>
+    The True North Team<br>
+    www.DrJDKropman.com  """ : """
+<p> Dear ${name.text},<br><br>
+    Congratulations on taking the first step towards uncovering your True North! Your commitment to 
+    self-discovery is truly commendable. To further assist and guide you on this transformative journey, 
+    we recommend connecting with a professional coach. If you've chosen this path, rest assured that a skilled 
+    coach will be in touch with you shortly to provide valuable insights and support.<br><br>
+    Thank you for placing your trust in us. We're here to help you every step of the way. Should you have 
+    any questions or inquiries, please don't hesitate to reach out.<br>
+    <a href="${widget.fileUrl}">You can find your report here</a></p>
+
+    Wishing you all the best as you continue your quest to find your True North.<br>
+    Warm regards,<br>
+    The True North Team<br>
+    www.DrJDKropman.com  """;
     try {
       await send(message, smtpServer2);
       dailogeBox();
@@ -105,7 +133,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
       },
     );
      Future.delayed(const Duration(seconds: 5), () {
-      //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(uid: widget.uid) ,), (route) => false);
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(uid: widget.uid) ,), (route) => false);
     });
     setState(() {
       sent = false;
@@ -144,7 +172,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       )),
                   const Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Verify your email ")),
+                      child: Text("Verify your email to recieve report")),
                   Form(
                       key: _formKey,
                       child: Column(
@@ -247,7 +275,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                            A/An ${widget.coachLang} speaking ${widget.coachGen} coach with a ${widget.coachBadge} badge will approch you soon\n
                            Thank you for placing your trust in us. We're here to help you every step of the way. Should you have 
                            any questions or inquiries, please don't hesitate to reach out.\n
-                           You can find your report here: \n${widget.fileUrl}
+                           You can find your report here: \n
 
                            Wishing you all the best as you continue your quest to find your True North.
                            Warm regards,
@@ -286,13 +314,13 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     height: 30,
                   ),
                   const Text(
-                    "You'll be contacted by a professional coach to give me my result of the Wheel of Life without any opbligation.",
+                    "You'll be contacted by a professional coach to give you result of the Wheel of Life without any obligation.",
                     textAlign: TextAlign.center,
                   ),
-                  ElevatedButton(onPressed: (){
-                    print("hehe");
-                    shortenUrl(widget.fileUrl);
-                  }, child: const Text("testtt box"))
+                  // ElevatedButton(onPressed: (){
+                  //   print("hehe");
+                  //   shortenUrl(widget.fileUrl);
+                  // }, child: const Text("testtt box"))
                 ],
               ),
             ),

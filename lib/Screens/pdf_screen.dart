@@ -2090,8 +2090,16 @@ class _PDFScreenState extends State<PDFScreen> {
                             ],
                           ),
                           pdfWidgets.SizedBox(height: 20),
-                          pdfWidgets.Text("Your Wheel of Life"),
+                          pdfWidgets.SizedBox(height: 400),
+                          pdfWidgets.Text("Your Wheel of Life", style: pdfWidgets.TextStyle(fontSize: 20, fontWeight: pdfWidgets.FontWeight.bold)),
                           pdfWidgets.SizedBox(height: 5),
+                          pdfWidgets.Row(
+                            mainAxisAlignment: pdfWidgets.MainAxisAlignment.spaceEvenly,
+                            children: [
+                            pdfWidgets.Text("Blue is for Baseline"),
+                            pdfWidgets.Text("Green is for Results")
+                            ]
+                          ),
                           pdfWidgets.Image(
                                 pdfWidgets.MemoryImage(graphBytes),
                                 width: 400,
@@ -2919,72 +2927,86 @@ class _PDFScreenState extends State<PDFScreen> {
           padding: const EdgeInsets.all(05),
           child: SizedBox(
             width: 400,
-            height: 300,
-            child: RepaintBoundary(
-              key: _globalKey,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    width: size.width - 30,
-                    height: 300,
-                    child: Chart(
-                      data: adjustData,
-                      variables: {
-                        'index': Variable(
-                          accessor: (Map map) =>
-                              map['index'].toString(),
+                  height: 300,
+            child: Stack(
+              children: [
+                Blur(
+                  blur: 1,
+                  child: RepaintBoundary(
+                    key: _globalKey,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          width: size.width - 30,
+                          height: 300,
+                          color: Colors.white,
+                          child: Chart(
+                            data: adjustData,
+                            variables: {
+                              'index': Variable(
+                                accessor: (Map map) =>
+                                    map['index'].toString(),
+                              ),
+                              'type': Variable(
+                                accessor: (Map map) =>
+                                    map['type'] as String,
+                              ),
+                              'value': Variable(
+                                accessor: (Map map) =>
+                                    map['value'] as num,
+                              ),
+                            },
+                            marks: [
+                              LineMark(
+                                position: Varset('index') *
+                                    Varset('value') /
+                                    Varset('type'),
+                                shape: ShapeEncode(
+                                    value: BasicLineShape(loop: true)),
+                                color: ColorEncode(
+                                    variable: 'type',
+                                    values: Defaults.colors10),
+                              )
+                            ],
+                            coord: PolarCoord(),
+                            axes: [
+                              Defaults.circularAxis,
+                              //Defaults.radialAxis,
+                            ],
+                            selections: {
+                              'touchMove': PointSelection(
+                                on: {
+                                  GestureType.scaleUpdate,
+                                  GestureType.tapDown,
+                                  GestureType.longPressMoveUpdate
+                                },
+                                dim: Dim.x,
+                                variable: 'index',
+                              )
+                            },
+                            tooltip: TooltipGuide(
+                              anchor: (_) => Offset.zero,
+                              align: Alignment.bottomRight,
+                              multiTuples: true,
+                              variables: ['type', 'value'],
+                            ),
+                            crosshair: CrosshairGuide(
+                                followPointer: [false, true]),
+                          ),
                         ),
-                        'type': Variable(
-                          accessor: (Map map) =>
-                              map['type'] as String,
-                        ),
-                        'value': Variable(
-                          accessor: (Map map) =>
-                              map['value'] as num,
-                        ),
-                      },
-                      marks: [
-                        LineMark(
-                          position: Varset('index') *
-                              Varset('value') /
-                              Varset('type'),
-                          shape: ShapeEncode(
-                              value: BasicLineShape(loop: true)),
-                          color: ColorEncode(
-                              variable: 'type',
-                              values: Defaults.colors10),
-                        )
                       ],
-                      coord: PolarCoord(),
-                      axes: [
-                        Defaults.circularAxis,
-                        Defaults.radialAxis,
-                      ],
-                      selections: {
-                        'touchMove': PointSelection(
-                          on: {
-                            GestureType.scaleUpdate,
-                            GestureType.tapDown,
-                            GestureType.longPressMoveUpdate
-                          },
-                          dim: Dim.x,
-                          variable: 'index',
-                        )
-                      },
-                      tooltip: TooltipGuide(
-                        anchor: (_) => Offset.zero,
-                        align: Alignment.bottomRight,
-                        multiTuples: true,
-                        variables: ['type', 'value'],
-                      ),
-                      crosshair: CrosshairGuide(
-                          followPointer: [false, true]),
                     ),
                   ),
-                ],
-              ),
+                ),
+                const Center(
+                              child: Text(
+                            "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+              ],
             ),
           ),
         ),
