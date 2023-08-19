@@ -163,12 +163,16 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                             ],
                           ),
                         ),
-                        // const Center(
-                        //     child: Text(
-                        //   "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
-                        //   textAlign: TextAlign.center,
-                        //   style: TextStyle(fontWeight: FontWeight.bold),
-                        // )),
+                        Image.asset("assets/dummy_graph.jpg", height: 300,width: 400,),
+                        Container(
+                          color: Colors.grey.withOpacity(0.2),
+                          child: const Center(
+                              child: Text(
+                            "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                        ),
                       ],
                     ),
                   ),

@@ -3000,6 +3000,7 @@ class _PDFScreenState extends State<PDFScreen> {
                     ),
                   ),
                 ),
+                Image.asset("assets/dummy_graph.jpg", height: 300,width: 400,),
                 const Center(
                               child: Text(
                             "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
