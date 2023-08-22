@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages, use_build_context_synchronously
-import 'package:blur/blur.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:ui' as ui;
 import '../Models/stripservices.dart';
-import '../Screens/coach_filter.dart';
 import '../Screens/free_report.dart';
 import '../Screens/verify_email.dart';
 import 'package:flutter/material.dart';
@@ -68,240 +66,247 @@ class _WheelOfLifeState extends State<WheelOfLife> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(05),
-            child: Column(
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.yourReport,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                // ElevatedButton(onPressed: (){
-                //   captureWidget();
-                // }, child: const Text("post wheel")),
-                SizedBox(
-                  width: 400,
-                  height: 300,
-                  child: Card(
-                    color: Colors.white,
-                    child:
-                        // Image.asset(
-                        //      "assets/dummy_graph.jpg",
-                        //       width: size.width/1.8,
-                        //       height: size.height/8,
-                        //       //fit: BoxFit.cover,
-                        //     ),
-                        Stack(
-                      children: [
-                        RepaintBoundary(
-                          key: globalKey,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(top: 10),
-                                width: size.width - 30,
-                                height: 300,
-                                child: Chart(
-                                  data: widget.adjustData,
-                                  variables: {
-                                    'index': Variable(
-                                      accessor: (Map map) =>
-                                          map['index'].toString(),
-                                    ),
-                                    'type': Variable(
-                                      accessor: (Map map) =>
-                                          map['type'] as String,
-                                    ),
-                                    'value': Variable(
-                                      accessor: (Map map) =>
-                                          double.parse(map['value'].toStringAsFixed(1)),
-                                    ),
-                                  },
-                                  marks: [
-                                    LineMark(
-                                      position: Varset('index') *
-                                          Varset('value') /
-                                          Varset('type'),
-                                      shape: ShapeEncode(
-                                          value: BasicLineShape(loop: true,)),
-                                      color: ColorEncode(
-                                          variable: 'type',
-                                          values: Defaults.colors10),
-                                    )
-                                  ],
-                                  coord: PolarCoord(),
-                                  axes: [
-                                    Defaults.circularAxis,
-                                    //Defaults.radialAxis,
-                                  ],
-                                  selections: {
-                                    'touchMove': PointSelection(
-                                      // on: {
-                                      //   GestureType.scaleUpdate,
-                                      //   GestureType.tapDown,
-                                      //   GestureType.longPressMoveUpdate
-                                      // },
-                                      dim: Dim.x,
-                                      variable: 'index',
-                                    )
-                                  },
-                                  tooltip: TooltipGuide(
-                                   anchor: (_) => Offset.zero,
-                                   align: Alignment.bottomCenter,
-                                   multiTuples: true,
-                                    variables: ['type', 'value'],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(05),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.yourReport,
+                style: const TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              // ElevatedButton(onPressed: (){
+              //   captureWidget();
+              // }, child: const Text("post wheel")),
+              SizedBox(
+                width: 400,
+                height: 300,
+                child: Card(
+                  color: Colors.white,
+                  child:
+                      // Image.asset(
+                      //      "assets/dummy_graph.jpg",
+                      //       width: size.width/1.8,
+                      //       height: size.height/8,
+                      //       //fit: BoxFit.cover,
+                      //     ),
+                      Stack(
+                    children: [
+                      RepaintBoundary(
+                        key: globalKey,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              width: size.width - 30,
+                              height: 300,
+                              child: Chart(
+                                data: widget.adjustData,
+                                variables: {
+                                  'index': Variable(
+                                    accessor: (Map map) =>
+                                        map['index'].toString(),
                                   ),
-                                  crosshair: CrosshairGuide(
-                                      followPointer: [false, true]),
-
+                                  'type': Variable(
+                                    accessor: (Map map) =>
+                                        map['type'] as String,
+                                  ),
+                                  'value': Variable(
+                                    accessor: (Map map) =>
+                                        double.parse(map['value'].toStringAsFixed(1)),
+                                  ),
+                                },
+                                marks: [
+                                  LineMark(
+                                    position: Varset('index') *
+                                        Varset('value') /
+                                        Varset('type'),
+                                    shape: ShapeEncode(
+                                        value: BasicLineShape(loop: true,)),
+                                    color: ColorEncode(
+                                        variable: 'type',
+                                        values: Defaults.colors10),
+                                  )
+                                ],
+                                coord: PolarCoord(),
+                                axes: [
+                                  Defaults.circularAxis,
+                                  //Defaults.radialAxis,
+                                ],
+                                selections: {
+                                  'touchMove': PointSelection(
+                                    // on: {
+                                    //   GestureType.scaleUpdate,
+                                    //   GestureType.tapDown,
+                                    //   GestureType.longPressMoveUpdate
+                                    // },
+                                    dim: Dim.x,
+                                    variable: 'index',
+                                  )
+                                },
+                                tooltip: TooltipGuide(
+                                 anchor: (_) => Offset.zero,
+                                 align: Alignment.bottomCenter,
+                                 multiTuples: true,
+                                  variables: ['type', 'value'],
                                 ),
+                                crosshair: CrosshairGuide(
+                                    followPointer: [false, true]),
+
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Image.asset("assets/dummy_graph.jpg", height: 300,width: 400,),
-                        Container(
-                          color: Colors.grey.withOpacity(0.2),
-                          child: const Center(
-                              child: Text(
-                            "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          )),
-                        ),
-                      ],
-                    ),
+                      ),
+                      Image.asset("assets/dummy_graph.jpg", height: 300,width: 400,),
+                      Container(
+                        color: Colors.grey.withOpacity(0.2),
+                        child: const Center(
+                            child: Text(
+                          "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                      ),
+                    ],
                   ),
                 ),
-                Text(
-                  AppLocalizations.of(context)!.packageone,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.fromLTRB(size.width / 6,
-                          size.height / 40, size.width / 6, size.height / 40),
-                      shape: RoundedRectangleBorder(
-                          //to set border radius to button
-                          borderRadius: BorderRadius.circular(50)),
-                    ),
-                    onPressed: () async {
-                      PopupLoader.show();
-                      
-                      fileUrl = await fetchFileUrl(widget.userId);
-                      imgUrl = await captureWidget();
-                      print('URLzzz: $fileUrl $imgUrl');
-                      PopupLoader.hide();
-                      var items = [
-                        {
-                          "productPrice": 1.99,
-                          "productName": "1.99 Package",
-                          "qty": 1,
-                        },
-                      ];
-                      await StripeService.stripePaymentCheckout(
-                          items, 500, context, mounted,
-                          onSuccess: (String token) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId, isCoach:false, coachBadge: "",coachGen: "",coachLang: ""),
-                        ));
-                        print("SUCCESS token:$token");
-                      }, onCancel: () {
-                        print("CANCEL");
-                      }, onError: (e) {
-                        print("ERROR ${e.toString()}");
-                      });
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.packageOneButton,
-                      textAlign: TextAlign.center,
-                    )),
-                const SizedBox(height: 30),
-                Text(
-                  AppLocalizations.of(context)!.packagetwo,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.fromLTRB(size.width / 6,
-                          size.height / 40, size.width / 6, size.height / 40),
-                      shape: RoundedRectangleBorder(
-                          //to set border radius to button
-                          borderRadius: BorderRadius.circular(50)),
-                    ),
-                    onPressed: () async {
-                      PopupLoader.show();
-                      fileUrl = await fetchFileUrl(widget.userId);
-                      imgUrl = await captureWidget();
-                      print('URLzzz: $fileUrl $imgUrl');
-                      PopupLoader.hide();
-                      var items = [
-                        {
-                          "productPrice": 2.99,
-                          "productName": "2.99 Package",
-                          "qty": 1,
-                        },
-                      ];
-                      await StripeService.stripePaymentCheckout(
-                          items, 500, context, mounted,
-                          onSuccess: (String token) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              CoachFilter(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId),
-                        ));
-
-                        print("SUCCESS token:$token");
-                      }, onCancel: () {
-                        print("CANCEL");
-                      }, onError: (e) {
-                        print("ERROR ${e.toString()}");
-                      });
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.packageTwoButton,
-                      textAlign: TextAlign.center,
-                    )),
-                const SizedBox(height: 30),
-                Text(
-                  AppLocalizations.of(context)!.packagethree,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 18),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.fromLTRB(size.width / 6,
-                          size.height / 40, size.width / 6, size.height / 40),
-                      shape: RoundedRectangleBorder(
-                          //to set border radius to button
-                          borderRadius: BorderRadius.circular(50)),
-                    ),
-                    onPressed: () async {
-                      PopupLoader.show();
-                      fileUrl = await fetchFileUrl(widget.userId);
-                      imgUrl = await captureWidget();
-                      print('URLzzz: $fileUrl $imgUrl');
-                      PopupLoader.hide();
+              ),
+              Column(
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.packageone,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  const SizedBox(height: 10),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.fromLTRB(size.width / 6,
+                        size.height / 40, size.width / 6, size.height / 40),
+                    shape: RoundedRectangleBorder(
+                        //to set border radius to button
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
+                  onPressed: () async {
+                    PopupLoader.show();
+                    fileUrl = await fetchFileUrl(widget.userId);
+                    imgUrl = await captureWidget();
+                    print('URLzzz: $fileUrl $imgUrl');
+                    PopupLoader.hide();
+                    var items = [
+                      {
+                        "productPrice": 1.99,
+                        "productName": "1.99 Package",
+                        "qty": 1,
+                      },
+                    ];
+                    await StripeService.stripePaymentCheckout(
+                        items, 500, context, mounted,
+                        onSuccess: (String token) {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            FreeReport(fileUrl: fileUrl, imgUrl: imgUrl),
+                            VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId, isCoach:false, coachBadge: "",coachGen: "",coachLang: ""),
                       ));
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.packageThreeButton,
-                      textAlign: TextAlign.center,
-                    )),
-              ],
-            ),
+                      print("SUCCESS token:$token");
+                    }, onCancel: () {
+                      print("CANCEL");
+                    }, onError: (e) {
+                      print("ERROR ${e.toString()}");
+                    });
+                  },
+                  child: Text(
+                    AppLocalizations.of(context)!.packageOneButton,
+                    textAlign: TextAlign.center,
+                  )),
+                ],
+              ),
+              
+              // const SizedBox(height: 30),
+              // Text(
+              //   AppLocalizations.of(context)!.packagetwo,
+              //   textAlign: TextAlign.center,
+              //   style: const TextStyle(fontSize: 16),
+              // ),
+              // ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //       padding: EdgeInsets.fromLTRB(size.width / 6,
+              //           size.height / 40, size.width / 6, size.height / 40),
+              //       shape: RoundedRectangleBorder(
+              //           //to set border radius to button
+              //           borderRadius: BorderRadius.circular(50)),
+              //     ),
+              //     onPressed: () async {
+              //       PopupLoader.show();
+              //       fileUrl = await fetchFileUrl(widget.userId);
+              //       imgUrl = await captureWidget();
+              //       print('URLzzz: $fileUrl $imgUrl');
+              //       PopupLoader.hide();
+              //       var items = [
+              //         {
+              //           "productPrice": 2.99,
+              //           "productName": "2.99 Package",
+              //           "qty": 1,
+              //         },
+              //       ];
+              //       await StripeService.stripePaymentCheckout(
+              //           items, 500, context, mounted,
+              //           onSuccess: (String token) {
+              //         Navigator.of(context).push(MaterialPageRoute(
+              //           builder: (context) =>
+              //               CoachFilter(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId),
+              //         ));
+
+              //         print("SUCCESS token:$token");
+              //       }, onCancel: () {
+              //         print("CANCEL");
+              //       }, onError: (e) {
+              //         print("ERROR ${e.toString()}");
+              //       });
+              //     },
+              //     child: Text(
+              //       AppLocalizations.of(context)!.packageTwoButton,
+              //       textAlign: TextAlign.center,
+              //     )),
+              // const SizedBox(height: 30),
+              Column(
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.packagethree,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  const SizedBox(height: 10),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.fromLTRB(size.width / 6,
+                        size.height / 40, size.width / 6, size.height / 40),
+                    shape: RoundedRectangleBorder(
+                        //to set border radius to button
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
+                  onPressed: () async {
+                    PopupLoader.show();
+                    fileUrl = await fetchFileUrl(widget.userId);
+                    imgUrl = await captureWidget();
+                    print('URLzzz: $fileUrl $imgUrl');
+                    PopupLoader.hide();
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          FreeReport(fileUrl: fileUrl, imgUrl: imgUrl),
+                    ));
+                  },
+                  child: Text(
+                    AppLocalizations.of(context)!.packageThreeButton,
+                    textAlign: TextAlign.center,
+                  )),
+                ],
+              ),
+              const SizedBox(height: 20,)
+            ],
           ),
         ),
       ),

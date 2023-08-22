@@ -1,3 +1,4 @@
+import 'package:com.ezeelogix.truenorth/Screens/coach_screen.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:uuid/uuid.dart';
 

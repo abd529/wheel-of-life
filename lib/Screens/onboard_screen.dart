@@ -1,3 +1,4 @@
+import 'package:com.ezeelogix.truenorth/Authentication/login_screen.dart';
 import 'package:com.ezeelogix.truenorth/Screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -176,6 +177,9 @@ class _OnboardState extends State<Onboard> {
                             ),
                     ),
                   child: const Text("Next")),
+                  TextButton(onPressed: (){
+                    Navigator.of(context).pushNamed(LoginScreen.routeName);
+                  }, child: const Text("Go to Admin Panel"))
                   
               // Text("The current language is ${AppLocalizations.of(context)!.language}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               // const SizedBox(height: 80,),

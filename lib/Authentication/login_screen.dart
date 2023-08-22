@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:com.ezeelogix.truenorth/Screens/add_coach.dart';
+import 'package:com.ezeelogix.truenorth/Screens/coach_screen.dart';
 import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '/Authentication/forgot_password.dart';
@@ -54,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
               const Text("Sign in", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
               const SizedBox(height: 10,),
-              const Text("Welcome Back", style: TextStyle(color: Colors.grey),),
+              const Text("Welcome Back Admin", style: TextStyle(color: Colors.grey),),
               const SizedBox(height: 44,),
                   TextFormField(
                     controller: _emailController,
@@ -108,12 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   Text(errMsg, style: const TextStyle(color: Colors.red)),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: TextButton(child: Text("Forgot Password?"),onPressed: (){
-                      Navigator.of(context).pushNamed(ForgotPassword.routeName);
-                    }, )),
-                  const SizedBox(height: 16.0),
+                  // Align(
+                  //   alignment: Alignment.bottomRight,
+                  //   child: TextButton(child: Text("Forgot Password?"),onPressed: (){
+                  //     Navigator.of(context).pushNamed(ForgotPassword.routeName);
+                  //   }, )),
+                  // const SizedBox(height: 16.0),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                     child: ElevatedButton(
@@ -124,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                            bool isLoggedIn = await _loginVM.login(_emailController.text, _passwordController.text);
                            if(isLoggedIn){
-                             Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const SplashScreen()),(Route<dynamic> route) => false);
+                             Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => CoachesScreen()),(Route<dynamic> route) => false);
                            }else{
                            setState(() {
                           _isLoggingIn = false;  
@@ -144,15 +146,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 16.0),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignupScreen()),
-                      );
-                    },
-                    child: const Text('Don\'t have an account? Sign up here'),
-                  ),
+                  // TextButton(
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (context) => SignupScreen()),
+                  //     );
+                  //   },
+                  //   child: const Text('Don\'t have an account? Sign up here'),
+                  // ),
                 ],
               ),
             ),
