@@ -180,7 +180,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                   Text(
                     AppLocalizations.of(context)!.packageone,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(height: 10),
               ElevatedButton(
@@ -275,9 +275,9 @@ class _WheelOfLifeState extends State<WheelOfLife> {
               Column(
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.packagethree,
+                    "${AppLocalizations.of(context)!.packagethree}\n or get free report by using 'ab000'",
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(height: 10),
               ElevatedButton(
@@ -296,7 +296,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                     PopupLoader.hide();
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>
-                          FreeReport(fileUrl: fileUrl, imgUrl: imgUrl),
+                          FreeReport(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId),
                     ));
                   },
                   child: Text(

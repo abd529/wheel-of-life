@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:com.ezeelogix.truenorth/Screens/option_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,8 @@ class TranslatedVideo extends StatelessWidget {
                     ),
                     const SizedBox(height: 25,),
                     ElevatedButton(onPressed: (){
-                      Navigator.of(context).pushNamed(HomeScreen.routeName);
+                      //
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const OptionScreen(),));
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.fromLTRB(size.width/4, size.height/40, size.width/4, size.height/40),

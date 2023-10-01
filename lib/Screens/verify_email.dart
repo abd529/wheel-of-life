@@ -64,10 +64,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
     setState(() {
       sent = true;
     });
-    String userName2 = "gesconvsgar@ezeelogix.com";
+    String userName2 = "Team@MyTrueNorthPath.com";
     final smtpServer2 = SmtpServer("smtp.titan.email",
-        username: "gesconvsgar@ezeelogix.com",
-        password: "ges23@conv",
+        username: "Team@MyTrueNorthPath.com",
+        password: "P@ki15t@n!",
         port: 465,
         ssl: true);
     final message = Message()
@@ -89,7 +89,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
     Wishing you all the best as you continue your quest to find your True North.<br>
     Warm regards,<br>
     The True North Team<br>
-    www.DrJDKropman.com  """ : """
+    www.mytruenorthpath.com  """ : """
 <p> Dear ${name.text},<br><br>
     Congratulations on taking the first step towards uncovering your True North! Your commitment to 
     self-discovery is truly commendable. To further assist and guide you on this transformative journey, 
@@ -102,7 +102,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
     Wishing you all the best as you continue your quest to find your True North.<br>
     Warm regards,<br>
     The True North Team<br>
-    www.DrJDKropman.com  """;
+    www.mytruenorthpath.com  """;
     try {
       await send(message, smtpServer2);
       dailogeBox();

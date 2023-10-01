@@ -1,6 +1,8 @@
-import 'package:com.ezeelogix.truenorth/Models/coach_mode.dart';
+import 'package:com.ezeelogix.truenorth/Models/coach_model.dart';
 import 'package:com.ezeelogix.truenorth/Screens/add_coach.dart';
 import 'package:com.ezeelogix.truenorth/Screens/coach_detail.dart';
+import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -14,12 +16,12 @@ class CoachesScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Coaches List'),
         actions: [
-          IconButton(
-            onPressed: () {
-              coachesCollection.get().then((value) => value.docs);
-            },
-            icon: const Icon(Icons.refresh),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     coachesCollection.get().then((value) => value.docs);
+          //   },
+          //   icon: const Icon(Icons.refresh),
+          // ),
           IconButton(
             onPressed: () {
               Navigator.of(context)
@@ -29,56 +31,43 @@ class CoachesScreen extends StatelessWidget {
               });
             },
             icon: const Icon(Icons.add_box, size: 35),
-          )
+          ),
+          const SizedBox(width: 30,)
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        FirebaseAuth.instance.signOut();
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SplashScreen(),));
+      } , child: const Icon(Icons.logout_rounded),),
       body: StreamBuilder<QuerySnapshot>(
-        stream: coachesCollection.snapshots(),
+        stream: FirebaseFirestore.instance.collection('coaches').snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return const Center(child: Text("No Coaches"));
-          } else {
-            List<CoachModel> coachList = snapshot.data!.docs.map((doc) {
-              Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-
-              // Retrieve the "codes" field as a Map<String, bool>
-              Map<String, bool> codes = Map<String, bool>.from(data["codes"]);
-
-              return CoachModel(
-                name: data["name"],
-                email: data["email"],
-                codes: codes,
-                package: data["package"],
-              );
-            }).toList();
-            return ListView.builder(
-              itemCount: coachList.length,
-              itemBuilder: (context, index) {
-                CoachModel coach = coachList[index];
-                return Column(
-                  children: [
-                    ListTile(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => CoachDetailScreen(coach: coach),
-                        ));
-                      },
-                      title: Text(coach.name),
-                      subtitle: Text(coach.email),
-                      trailing: Text( coach.package == "50 Code Package"? "50 Codes":"100 Codes"),
-                    ),
-                    const Divider()
-                  ],
-                );
-              },
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           }
+          List<CoachModel> coaches = snapshot.data!.docs.map((doc) {
+            return CoachModel.fromSnapshot(doc);
+          }).toList();
+          return ListView.builder(
+            itemCount: coaches.length,
+            itemBuilder: (context, index) {
+              final coach = coaches[index];
+              return ListTile(
+                title: Text(coach.name),
+                subtitle: Text(coach.email),
+                onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => CoachDetailScreen(coach: coach)));
+                },
+                // Add more fields here as needed
+              );
+            },
+          );
         },
       ),
+
+      
     );
   }
 }

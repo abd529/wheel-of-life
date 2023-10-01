@@ -1,4 +1,5 @@
 import 'package:com.ezeelogix.truenorth/Authentication/login_screen.dart';
+import 'package:com.ezeelogix.truenorth/Screens/coach_panel.dart';
 import 'package:com.ezeelogix.truenorth/Screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -177,9 +178,20 @@ class _OnboardState extends State<Onboard> {
                             ),
                     ),
                   child: const Text("Next")),
-                  TextButton(onPressed: (){
-                    Navigator.of(context).pushNamed(LoginScreen.routeName);
-                  }, child: const Text("Go to Admin Panel"))
+                  const SizedBox(height:20),
+                  // ElevatedButton(
+                  //   style: ElevatedButton.styleFrom(
+                  //     padding: EdgeInsets.fromLTRB(size.width/6, size.height/40, size.width/6, size.height/40),
+                  //       shape: RoundedRectangleBorder( //to set border radius to button
+                  // borderRadius: BorderRadius.circular(50)
+                  //           ),
+                  //   ),
+                  //   onPressed: (){
+                      
+                  //   }, child: const Text("Coach Panel") ),
+                  // TextButton(onPressed: (){
+                    
+                  // }, child: const Text("Go to Admin Panel"))
                   
               // Text("The current language is ${AppLocalizations.of(context)!.language}", style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
               // const SizedBox(height: 80,),

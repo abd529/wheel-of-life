@@ -265,10 +265,10 @@
   "yourReport": "Your Report",
   "@yourReport": {},
 
-  "packageone": "Do you want us to email the result report to you for only $1.99 ?",
+  "packageone": "Unlock a personalized report for only $1.99",
   "@packageone": {},
 
-  "packageOneButton": "Get email for $1.99",
+  "packageOneButton": "Get Your Report Now in $1.99",
   "@packageOneButton": {},
 
   "packagetwo": "Do you want to the result report along with a certified coach ?",
@@ -277,10 +277,10 @@
   "packageTwoButton": "Get email and Certified Coach for $2.99",
   "@packageTwoButton": {},
 
-  "packagethree": "Do you want us to send your result report to you and your Coach for free?",
+  "packagethree": "Unlock your personalized report by coach code",
   "@packagethree": {},
 
-  "packageThreeButton": "Get your free report for your coach and yourself",
+  "packageThreeButton": "Get Your Report Now",
   "@packageThreeButton": {},
 
   "coachFilter": "Coach Filter",
@@ -301,7 +301,7 @@
   "email": "Email",
   "@email": {},
 
-  "freeReport": "FreeReport",
+  "freeReport": "Free Report",
   "@freeReport": {},
 
   "freeReportDescription": "A free report will be sent to you and your professional coach",

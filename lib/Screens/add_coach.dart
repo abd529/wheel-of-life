@@ -1,15 +1,18 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 class AddCoach extends StatefulWidget {
   const AddCoach({super.key});
 
-  @override
+  @override 
   State<AddCoach> createState() => _AddCoachState();
 }
 
@@ -19,10 +22,11 @@ class _AddCoachState extends State<AddCoach> {
   final _formKey = GlobalKey<FormState>();
   String selectedPackage = '50 Code Package';
   bool isHundred = false;
-  List<String> newCodes = [];
+  String code = "";
   bool isLoading = false;
+  int limit = 0;
 
-  Future<void> addCoachToFirestore(String name, String email, String package,List<String> codes) async {
+  Future<void> addCoachToFirestore(String name, String email, String package,String code) async {
   try {
     final firestoreInstance = FirebaseFirestore.instance;
     DocumentReference coachRef = firestoreInstance.collection("coaches").doc();
@@ -30,18 +34,16 @@ class _AddCoachState extends State<AddCoach> {
       "name": name,
       "email": email,
       "package": package,
-      "codes": { for (var code in codes) code : true },
+      "codeData": {"code":code,"limit":limit},
     };
     await coachRef.set(coachData);
-    String lastCode = codes.isNotEmpty ? codes.last : "ab0";
-    DocumentReference lastCodeRef = firestoreInstance.collection("last_code").doc("latest");
-    await lastCodeRef.set({"lastCode": lastCode});
-    print("Coach added to Firestore successfully!");
-    await sendEmail(email,"Hey, Welcome to True North Coach, Here are your codes\n$codes",context);
+   
+    await sendEmail(email,"Welcome to True North, Coach. Here is your code\n$code",context);
     setState(() {
       isLoading = false;
       _name.clear();
       _email.clear();
+      Fluttertoast.showToast(msg: "Email sent succesfully");
     });
   } catch (e) {
     print("Error adding coach to Firestore: $e");
@@ -53,10 +55,10 @@ class _AddCoachState extends State<AddCoach> {
 
 Future<void> sendEmail(
     String recipientEmail, String messageMail, BuildContext context) async {
-    String userName2 = "gesconvsgar@ezeelogix.com";
+    String userName2 = "Team@MyTrueNorthPath.com";
     final smtpServer2 = SmtpServer("smtp.titan.email",
-        username: "gesconvsgar@ezeelogix.com",
-        password: "ges23@conv",
+        username: "Team@MyTrueNorthPath.com",
+        password: "P@ki15t@n!",
         port: 465,
         ssl: true);
     final message = Message()
@@ -76,49 +78,45 @@ Future<void> sendEmail(
 
 
 
-Future<void> generateAndSaveCodes(bool generate100) async {
-  newCodes = [];
-  setState(() {
-    isLoading = true;
-  });
-  try {
-    final firestoreInstance = FirebaseFirestore.instance;
-    DocumentReference lastCodeRef = firestoreInstance.collection("last_code").doc("latest");
-    DocumentSnapshot lastCodeSnapshot = await lastCodeRef.get();
-    String lastCode = (lastCodeSnapshot.data() as Map<String, dynamic>)["lastCode"] ?? "ab0";
-    int lastCodeNumber = int.parse(lastCode.substring(2));
-    int codeRange = generate100 ? 100 : 50;
-    for (int i = lastCodeNumber + 1; i <= lastCodeNumber + codeRange; i++) {
-      String newCode = 'ab$i';
-      newCodes.add(newCode);
-    }
-    String latestCode = 'ab${lastCodeNumber + codeRange}';
-    await lastCodeRef.set({"code": latestCode});
-    print("Generated Codes: $newCodes");
-    addCoachToFirestore(_name.text, _email.text, selectedPackage, newCodes);
-  } catch (e) {
-    print("Error generating and saving codes: $e");
-    setState(() {
-      isLoading = false;
-    });
+String generateUniqueCode() {
+  final now = DateTime.now();
+  final year = now.year.toString();
+  final random = Random();
+  
+  final codeLength = 8; // Generates an 8-character code
+  final code = StringBuffer();
+  
+  // Add the last 2 digits of the current year to the code
+  code.write(year.substring(year.length - 2));
+  
+  // Add random alphabetic and numeric characters (remaining 6 digits) to complete the code
+  for (int i = 2; i < codeLength; i++) {
+    final characterSet = i % 2 == 0 ? 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' : '0123456789';
+    code.write(characterSet[random.nextInt(characterSet.length)]);
   }
+
+  return code.toString();
 }
+
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Add Coach"),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const Align(
-                alignment: Alignment.topLeft,
-                child: Text("Add Coach", style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold
-                ),),
-              ),
+              // const Align(
+              //   alignment: Alignment.topLeft,
+              //   child: Text("Add Coach", style: TextStyle(
+              //     fontSize: 20, fontWeight: FontWeight.bold
+              //   ),),
+              // ),
               Form(
               key: _formKey,  
               child: 
@@ -197,15 +195,26 @@ Future<void> generateAndSaveCodes(bool generate100) async {
             ],
           ),        
               ],) ),
+              const SizedBox(height: 20,),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20)
                 ),
                 onPressed: (){
                 if(_formKey.currentState!.validate()){
-                  generateAndSaveCodes(isHundred);
+                 String uniqueCode =  generateUniqueCode();
+                 setState(() {
+                   code = uniqueCode;
+                   if(selectedPackage == "50 Code Package"){
+                    limit = 50;
+                   }else{
+                    limit = 100;
+                   }
+                 });
+                 addCoachToFirestore(_name.text.trim(),_email.text.trim(),selectedPackage,code);
                 }
               }, child: isLoading? const CircularProgressIndicator() :const Text("Add Coach")),
+              const SizedBox(height: 20,),
               const Text("By adding the coach, codes will be generated, saved in backend and sent to the coach email"),
             ],
           ),

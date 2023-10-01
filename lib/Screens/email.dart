@@ -18,13 +18,13 @@ class EmailSend extends StatelessWidget {
       String recipientEmail, String messageMail, BuildContext context) async {
     //final user = await GoogleAuthApi.signIn();
    // String userName = "abdullahayaz529@gmail.com";
-    String userName2 = "gesconvsgar@ezeelogix.com";
+    String userName2 = "Team@MyTrueNorthPath.com";
     //String password = "lxivqayisxdamtfd";
-    // String password2 = "ges23@conv";
+    // String password2 = "P@ki15t@n!";
     // String token = "";
     final smtpServer2 = SmtpServer("smtp.titan.email",
-        username: "gesconvsgar@ezeelogix.com",
-        password: "ges23@conv",
+        username: "Team@MyTrueNorthPath.com",
+        password: "P@ki15t@n!",
         port: 465,
         ssl: true);
     //final smtpServer = gmailSaslXoauth2(userName, password);

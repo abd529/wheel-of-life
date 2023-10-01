@@ -1,7 +1,5 @@
-import 'package:com.ezeelogix.truenorth/Screens/coach_screen.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:uuid/uuid.dart';
-
 import './Authentication/signup_screen.dart';
 import './Screens/lanugage_screen.dart';
 import 'package:firebase_core/firebase_core.dart';

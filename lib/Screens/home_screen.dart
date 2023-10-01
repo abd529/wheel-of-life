@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '/Quiz%20Functionality/Quiz/baseline_quiz.dart';
 import '../Screens/lanugage_screen.dart';
@@ -112,6 +113,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).pushNamed(LanguageScreen.routeName);
                 },
               ),
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text(' Log out'),
+                onTap: () {
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const SplashScreen()), (route) => false);
+                },
+              ),
               // ListTile(
               //   leading: const Icon(Icons.logout),
               //   title: const Text('LogOut'),
@@ -199,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "${months[DateTime.now().month]} ${DateTime.now().day}, ${DateTime.now().year}",
+                              "${months[DateTime.now().month-1]} ${DateTime.now().day}, ${DateTime.now().year}",
                               textAlign: TextAlign.left,
                               style: TextStyle(fontSize: title - 9),
                             )),
@@ -270,7 +278,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(50)),
                   ),
                   child: Text(AppLocalizations.of(context)!.start)),
-            )
+            ),
+            const SizedBox(height: 80,)
           ],
         ),
       )),

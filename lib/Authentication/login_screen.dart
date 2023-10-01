@@ -1,11 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:com.ezeelogix.truenorth/Screens/add_coach.dart';
 import 'package:com.ezeelogix.truenorth/Screens/coach_screen.dart';
-import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import '/Authentication/forgot_password.dart';
-import '/Authentication/signup_screen.dart';
 
 import '../Models/login_VM.dart';
 
@@ -92,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   right:   BorderSide(width: 1.0, color: Colors.black),
                                 ),
                             ),
-                          child: Icon(Icons.lock_open_rounded)),
+                          child: const Icon(Icons.lock_open_rounded)),
                       ),
                       labelText: 'Password',
                       suffixIcon: IconButton(onPressed: (){
