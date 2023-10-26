@@ -1,12 +1,14 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
 
 import 'package:com.ezeelogix.truenorth/Screens/coach_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import '../Models/login_VM.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = "login";
+
+  const LoginScreen({super.key});
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -31,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -40,19 +43,23 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+                  const Align(
+                  alignment: Alignment.topLeft,
+                  child: BackButton(),
+                ),
                     Column(
                       children: [
                         Image.asset(
                          "assets/logo.png",
                           width: size.width/1.6,
                           height: size.height/5,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         ),
                       ],
                     ),
-              const Text("Sign in", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+              Text(AppLocalizations.of(context)!.signInToAdminPanel, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
               const SizedBox(height: 10,),
-              const Text("Welcome Back Admin", style: TextStyle(color: Colors.grey),),
+              Text(AppLocalizations.of(context)!.welcomeBackAdmin, style: const TextStyle(color: Colors.grey),),
               const SizedBox(height: 44,),
                   TextFormField(
                     controller: _emailController,
@@ -67,11 +74,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: const Icon(Icons.email_outlined)),
                       ),
-                      labelText: 'Email Address',
+                      labelText: AppLocalizations.of(context)!.email,
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter your email';
+                        return AppLocalizations.of(context)!.pleaseEnterEmail;
                       }
                       return null;
                     },
@@ -100,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: !obsCheck,
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter your password';
+                        return AppLocalizations.of(context)!.pleaseEnterPassword;
                       }
                       return null;
                     },
@@ -138,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),),
                       child: _isLoggingIn
                         ? const CircularProgressIndicator()
-                        : const Text('Sign In'),  
+                        : Text(AppLocalizations.of(context)!.signin),  
                     ),
                   ),
                   const SizedBox(height: 16.0),

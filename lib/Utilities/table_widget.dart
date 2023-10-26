@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 
 class CustomTable extends StatelessWidget {
@@ -11,7 +13,7 @@ class CustomTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 16.0, // Adjust this value as per your preference
-      columns: [
+      columns: const [
         DataColumn(
           label: Text(
             'Subject',

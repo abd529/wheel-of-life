@@ -1,12 +1,9 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages, use_build_context_synchronously
+// ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages, use_build_context_synchronously, avoid_print
 import 'package:firebase_storage/firebase_storage.dart';
-import 'dart:ui' as ui;
 import '../Models/stripservices.dart';
 import '../Screens/free_report.dart';
 import '../Screens/verify_email.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:graphic/graphic.dart';
 
@@ -26,26 +23,26 @@ class _WheelOfLifeState extends State<WheelOfLife> {
   Map<String, dynamic>? paymentIntent;
   String done = "";
 
-  Future<String> captureWidget() async {
-    final RenderRepaintBoundary boundary =
-        globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+  // Future<String> captureWidget() async {
+  //   final RenderRepaintBoundary boundary =
+  //       globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
-    final ui.Image image = await boundary.toImage();
+  //   final ui.Image image = await boundary.toImage();
 
-    final ByteData? byteData =
-        await image.toByteData(format: ui.ImageByteFormat.png);
+  //   final ByteData? byteData =
+  //       await image.toByteData(format: ui.ImageByteFormat.png);
 
-    final Uint8List pngBytes = byteData!.buffer.asUint8List();
+  //   final Uint8List pngBytes = byteData!.buffer.asUint8List();
 
-    final ref = FirebaseStorage.instance.ref().child("${widget.userId}image");
-    await ref.putData(Uint8List.fromList(pngBytes));
-    String downloadUrl = await ref.getDownloadURL();
-    print("linkkkkkkkkkk $downloadUrl");
-    setState(() {
-      done = "done";
-    });
-    return downloadUrl;
-  }
+  //   final ref = FirebaseStorage.instance.ref().child("${widget.userId}image");
+  //   await ref.putData(Uint8List.fromList(pngBytes));
+  //   String downloadUrl = await ref.getDownloadURL();
+  //   print("linkkkkkkkkkk $downloadUrl");
+  //   setState(() {
+  //     done = "done";
+  //   });
+  //   return downloadUrl;
+  // }
 
   Future<String> fetchFileUrl(String fileName) async {
     // Create a reference to the file
@@ -164,11 +161,11 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                       Image.asset("assets/dummy_graph.jpg", height: 300,width: 400,),
                       Container(
                         color: Colors.grey.withOpacity(0.2),
-                        child: const Center(
+                        child: Center(
                             child: Text(
-                          "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
+                          AppLocalizations.of(context)!.sampleWheelText,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         )),
                       ),
                     ],
@@ -194,7 +191,6 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                   onPressed: () async {
                     PopupLoader.show();
                     fileUrl = await fetchFileUrl(widget.userId);
-                    imgUrl = await captureWidget();
                     print('URLzzz: $fileUrl $imgUrl');
                     PopupLoader.hide();
                     var items = [
@@ -275,7 +271,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
               Column(
                 children: [
                   Text(
-                    "${AppLocalizations.of(context)!.packagethree}\n or get free report by using 'ab000'",
+                    "${AppLocalizations.of(context)!.packagethree}\n ${AppLocalizations.of(context)!.freeCodeText}",
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 15),
                   ),
@@ -291,7 +287,6 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                   onPressed: () async {
                     PopupLoader.show();
                     fileUrl = await fetchFileUrl(widget.userId);
-                    imgUrl = await captureWidget();
                     print('URLzzz: $fileUrl $imgUrl');
                     PopupLoader.hide();
                     Navigator.of(context).push(MaterialPageRoute(

@@ -2,7 +2,7 @@ import 'package:com.ezeelogix.truenorth/Authentication/login_screen.dart';
 import 'package:com.ezeelogix.truenorth/Screens/coach_panel.dart';
 import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 class OptionScreen extends StatelessWidget {
   const OptionScreen({super.key});
 
@@ -23,7 +23,7 @@ class OptionScreen extends StatelessWidget {
                              "assets/logo.png",
                               width: size.width/1.6,
                               height: size.height/5,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                             ),
             Column(
               children: [
@@ -34,7 +34,7 @@ class OptionScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50)
                                 ),
                         ),
-                  child: const Text("Home"),onPressed: (){
+                  child: Text(AppLocalizations.of(context)!.home),onPressed: (){
                   Navigator.of(context).pushNamed(HomeScreen.routeName);
                 },),
                 const SizedBox(height: 20,),
@@ -44,7 +44,7 @@ class OptionScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50)
                             ),),
-              child: const Text("Coach Panel"),onPressed: (){
+              child: Text(AppLocalizations.of(context)!.coachPanel),onPressed: (){
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CoachPanel(),));
             },),
             const SizedBox(height: 20,),
@@ -54,7 +54,7 @@ class OptionScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50)
                             ),),
-              child: const Text("Admin Panel"),onPressed: (){
+              child: Text(AppLocalizations.of(context)!.adminPanel),onPressed: (){
               Navigator.of(context).pushNamed(LoginScreen.routeName);
             },)
               ],

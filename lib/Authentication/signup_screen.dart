@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
@@ -9,6 +9,8 @@ import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = "sign-up";
+
+  const SignupScreen({super.key});
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }
@@ -209,7 +211,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 _passwordController.text.trim(), _fNameController.text.trim(), _lNameController.text.trim());
                           if (isRegistered) {
                             await FirebaseFirestore.instance.collection("UsersData").doc("userId").set({"First Name":_fNameController.text.trim(), "Last Name":_lNameController.text.trim(),"Email":_emailController.text.trim()});
-                            Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => SplashScreen()),
+                            Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (ctx) => const SplashScreen()),
                                 (Route<dynamic> route) => false);
                          }else{
                            setState(() {
@@ -233,7 +235,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
                     );
                   },
                   child: const Text('Already have an account? Login up here'),

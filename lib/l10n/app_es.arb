@@ -1,7 +1,7 @@
 {
   "@@locale": "es",
 
-  "languageName": "Inglés",
+  "languageName": "Spanish",
   "@languageName": {},
 
   "whatIsTrueNorth": "¿Qué es verdadero Norte?",
@@ -34,7 +34,7 @@
   "personalG": "crecimiento personal",
   "@personalG": {},
 
-  "home": "Hogar",
+  "home": "Inicio",
   "@home": {},
 
   "famFriends": "Amigos de la familia",
@@ -67,7 +67,7 @@
   "subject": "Sujeto",
   "@subject": {},
 
-  "previous": "Anterior",
+  "previous": "previo",
   "@previous": {},
 
   "skip": "Saltar",
@@ -262,7 +262,7 @@
   "sendEmail": "Enviar correo electrónico",
   "@sendEmail": {},
 
-  "yourReport": "Su informe",
+  "yourReport": " Tu informe",
   "@yourReport": {},
 
   "packageone": "¿Desea que le envíemos un correo electrónico por correo electrónico por solo $ 1.99?",
@@ -301,7 +301,7 @@
   "email": "Correo electrónico",
   "@email": {},
 
-  "freeReport": "Freereport",
+  "freeReport": "FreeReport",
   "@freeReport": {},
 
   "freeReportDescription": "Se le enviará un informe gratuito a usted y a su entrenador profesional.",
@@ -341,5 +341,160 @@
   "@splashThreeHeading": {},
 
   "splashThreeDescription": "Poténciate con True North. Establece objetivos realistas, desarrolla hábitos positivos y sigue tu progreso con recomendaciones personalizadas y abundantes recursos para una vida más feliz y plena",
-  "@splashThreeDescription": {}
+  "@splashThreeDescription": {},
+
+  "coachPanel": "Panel de Entrenador",
+"@coachPanel": {},
+
+"adminPanel": "Panel de Administrador",
+"@adminPanel": {},
+
+"sampleWheelText": "Ten en cuenta que esto es solo una muestra de la Rueda de la Vida. Para obtener la tuya real, completa la información y te enviaremos el informe con tu Rueda de la Vida real.",
+"@sampleWheelText": {},
+
+"freeCodeText": "o obtén un informe gratuito Código 'ab000'",
+"@freeCodeText": {},
+
+"freeReportText": "Desbloquea un informe personalizado para ti y tu entrenador de forma gratuita ingresando tu código de entrenador. Una vez enviado, te enviaremos a ambos un informe esclarecedor directamente a tu bandeja de entrada.",
+"@freeReportText": {},
+
+"getYourFreeReport": "Obtener Tu Informe Gratuito",
+"@getYourFreeReport": {},
+
+"dontHaveCode": "¿No tienes un código? Ingresa 'ab000' y un entrenador de nuestro equipo se pondrá en contacto contigo",
+"@dontHaveCode": {},
+
+"sendMeReport": "Enviar Informe",
+"@sendMeReport": {},
+
+"verifyEmailText": "Verifica tu correo electrónico para recibir el informe",
+"@verifyEmailText": {},
+
+"verifyEmailBottomText": "Un coach profesional se pondrá en contacto contigo para brindarte el resultado de la Rueda de la Vida sin ninguna obligación.",
+"@verifyEmailBottomText": {},
+
+"getDetailedReport": "Obtenga un informe detallado y la rueda de su vida en su correo electrónico",
+"@getDetailedReport":{},
+
+"signInToCoachPanel": "Iniciar sesión en el Panel del Entrenador",
+"@signInToCoachPanel": {},
+
+"welcomeBackCoach": "Bienvenido de nuevo, Entrenador",
+"@welcomeBackCoach": {},
+
+"enterCode": "Ingrese su código y contraseña",
+"@enterCode": {},
+
+"signInToAdminPanel": "Iniciar sesión en el Panel de Administración",
+"@signInToAdminPanel": {},
+
+"welcomeBackAdmin": "Bienvenido de nuevo, Administrador",
+"@welcomeBackAdmin": {},
+
+"coachDetails": "Detalles del Entrenador",
+"@coachDetails": {},
+
+"name": "Nombre",
+"@name": {},
+
+"sendToUser": "Envíe este código de entrenador a un usuario",
+"@sendToUser": {},
+
+"sendCode": "Enviar Código",
+"@sendCode": {},
+
+"basedOnAnswers": "Basado en las respuestas a la pregunta, esto es lo que usted cree que es su situación actual:",
+"comfortableWithHealth": "Me siento cómodo con mi salud física y mental.",
+"doneWithWhatIWant": "He terminado con lo que quería ser.",
+"liveWhereIWant": "Vivo en el lugar que deseo.",
+"familyAndFriendsFillLife": "Mi familia y amigos llenan mi vida.",
+"liveInHarmonyAndPeace": "Vivo en armonía y paz.",
+"takeFreeSpaces": "Aprovecho mis espacios libres.",
+"professionallySatisfied": "Estoy satisfecho/a profesionalmente.",
+"administerMoneyWell": "Administro bien el dinero que tengo.",
+"afterBaselineIntro": "Después de la línea de base, ha respondido a muchas preguntas en cada sección para ayudarle a determinar dónde se encuentra realmente en su vida. Estas respuestas, por sección, son presentadas en las páginas siguientes.",
+"question": "Pregunta",
+"answer": "Respuesta",
+"blueForBaseline": "El azul es para la Línea de Base",
+"greenForResults": "El verde es para los Resultados",
+"yourWheelOfLife": "Tu Rueda de la Vida",
+"mood": "Estado de ánimo",
+"psychologicalState": "Estado psicológico",
+"personalCare": "Cuidado personal",
+"physicalState": "Estado físico",
+"habits": "Hábitos",
+"measures": "Medidas",
+"society": "Sociedad",
+"currentProjects": "Proyectos actuales",
+"futureProjects": "Proyectos futuros",
+"spirituality": "Espiritualidad",
+"selfEsteem": "Autoestima",
+"attitudes": "Actitudes",
+"skills": "Habilidades",
+"studies": "Estudios",
+"country": "País",
+"city": "Ciudad",
+"district": "Distrito",
+"coexistence": "Convivencia",
+"homeCare": "Cuidado en el hogar",
+"provision": "Provisión",
+"mother": "Madre",
+"father": "Padre",
+"children": "Hijos",
+"closeRelatives": "Familiares cercanos",
+"friends": "Amigos",
+"known": "Conocidos",
+"abilityToLove": "Capacidad de amar",
+"numberOfRelationships": "Número de relaciones",
+"duration": "Duración",
+"communication": "Comunicación",
+"fidelity": "Fidelidad",
+"sexualPassion": "Pasión sexual",
+"emotionalPassion": "Pasión emocional",
+"leisure": "Tiempo libre",
+"qualityTime": "Tiempo de calidad",
+"fun": "Diversión",
+"variety": "Variedad",
+"tastes": "Gustos",
+"participatory": "Participativo",
+"workingCapacity": "Capacidad de trabajo",
+"functions": "Funciones",
+"company": "Empresa",
+"boss": "Jefe",
+"companions": "Compañeros",
+"collaborators": "Colaboradores",
+"recognition": "Reconocimiento",
+"remuneration": "Remuneración",
+"belongings": "Pertenencias",
+"guarantees": "Garantías",
+"income": "Ingresos",
+"futureIncome": "Ingresos futuros",
+"bills": "Facturas",
+"futureExpenses": "Gastos futuros",
+"debts": "Deudas",
+"saving": "Ahorro",
+"pleaseEnterCode": "Por favor, ingrese un código",
+"pleaseEnterPassword": "Por favor, ingrese la contraseña",
+"pleaseEnterEmail": "Por favor, ingrese su correo electrónico",
+"pleaseEnterName": "Por favor, ingrese su nombre",
+"pleaseEnterPhone": "Por favor, ingrese su número de teléfono",
+"pleaseConfirmcode": "Por favor, confirme su código",
+"emailSentSuccessfully": "Correo electrónico enviado con éxito",
+"takingYouBackHome": "Llevándote de vuelta a casa",
+"pleaseEnterUserName": "Por favor ingrese el nombre de usuario",
+"coachCodeNotExist": "Su Código de Entrenador o Contraseña no es correcta",
+"invalidCode": "Ha ingresado un código no válido. Por favor, ingrese un código correcto o use el código proporcionado 'ab000'",
+"welcomeCoach": "Bienvenido a True North, Coach",
+"nextSteps": "Siguientes Pasos en tu Viaje a True North",
+"report": "Informe",
+"coachCodeHere": "Tu código de coach está aquí",
+"signin": "Iniciar sesión",
+"package": "Paquete",
+"limit": "Límite",
+"coachesList": "Lista de Coaches",
+"addCoach": "Agregar Coach",
+"coachEmail": "Correo electrónico del Coach",
+"fiftyCode": "Código 50",
+"hundredCode": "Código 100",
+"addCoachText": "Al agregar al entrenador, se generará un código y una contraseña y se enviarán al entrenador."
 }

@@ -73,6 +73,7 @@ class _WelcomeState extends State<Welcome> {
                       ),
                       Text(
                         heading[i],
+                        textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 25,

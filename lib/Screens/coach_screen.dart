@@ -1,9 +1,12 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:com.ezeelogix.truenorth/Models/coach_model.dart';
 import 'package:com.ezeelogix.truenorth/Screens/add_coach.dart';
 import 'package:com.ezeelogix.truenorth/Screens/coach_detail.dart';
 import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CoachesScreen extends StatelessWidget {
@@ -14,7 +17,7 @@ class CoachesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Coaches List'),
+        title: Text(AppLocalizations.of(context)!.coachesList),
         actions: [
           // IconButton(
           //   onPressed: () {

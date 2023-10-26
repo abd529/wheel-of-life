@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:stripe_checkout/stripe_checkout.dart';
@@ -14,6 +16,7 @@ class StripeService {
     String lineItems = "";
     int index = 0;
 
+    // ignore: avoid_function_literals_in_foreach_calls
     productItems.forEach((val) {
       var productPrice = (val["productPrice"] * 100).round().toString();
       lineItems +=

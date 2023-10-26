@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, depend_on_referenced_packages, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
   late YoutubePlayerController _controller;
   late TextEditingController _idController;
   late TextEditingController _seekToController;
-  bool _isPlayerReady = false;
+  final bool _isPlayerReady = false;
   late String videoId;
 
   @override

@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -26,15 +26,6 @@ class _FamilyQuizState extends State<FamilyQuiz> {
   //   "Q7: Am I comfortable with the acquaintances I have?",
   //   "Family & Friend Questios are completed",
   // ];
-  List<String> topic = [
-    "Provision",
-    "Mother",
-    "Father",
-    "Children",
-    "Close Relatives",
-    "Friends",
-    "Known"
-  ];
   int index = 0;
   int _currentValue = 5;
   int ans1 = 0;
@@ -49,6 +40,18 @@ class _FamilyQuizState extends State<FamilyQuiz> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<String> topic = [
+    AppLocalizations.of(context)!.provision,
+    AppLocalizations.of(context)!.mother,
+    AppLocalizations.of(context)!.father,
+    AppLocalizations.of(context)!.children,
+    AppLocalizations.of(context)!.closeRelatives,
+    AppLocalizations.of(context)!.friends,
+    AppLocalizations.of(context)!.known
+  ];
+
+
     List<String> Questions = [
     (AppLocalizations.of(context)!.famQone),
     (AppLocalizations.of(context)!.famQtwo),
@@ -95,12 +98,12 @@ class _FamilyQuizState extends State<FamilyQuiz> {
                   children: [
                     Container(
                   color: Colors.deepPurple.withOpacity(0.3),
-                  child: const Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Section",
-                        style: TextStyle(fontSize: 18),
+                        AppLocalizations.of(context)!.section,
+                        style: const TextStyle(fontSize: 18),
                       )
                     ],
                   ),
@@ -108,7 +111,7 @@ class _FamilyQuizState extends State<FamilyQuiz> {
                 const SizedBox(height: 10),
                 Text(
                   AppLocalizations.of(context)!.famFriends,
-                  style:const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -116,9 +119,9 @@ class _FamilyQuizState extends State<FamilyQuiz> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Subject: ",
-                        style: TextStyle(fontSize: 18),
+                       Text(
+                        "${AppLocalizations.of(context)!.subject}: ",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       index <= 6
                           ? Text(

@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,16 +27,7 @@ class _PersonalQuizState extends State<PersonalQuiz> {
   //   "Q8: Am I satisfied with my professional training and I try to move forward?",
   //   "Personal Growth Questions are completed",
   // ];
-  List<String> topic = [
-    "Society",
-    "Current projects",
-    "Future projects",
-    "Spirituality",
-    "Self-esteem",
-    "Attitudes",
-    "Skills",
-    "Studies"
-  ];
+  
   int index = 0;
   int _currentValue = 5;
   int ans1 = 0;
@@ -51,6 +42,18 @@ class _PersonalQuizState extends State<PersonalQuiz> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<String> topic = [
+    AppLocalizations.of(context)!.society,
+    AppLocalizations.of(context)!.currentProjects,
+    AppLocalizations.of(context)!.futureProjects,
+    AppLocalizations.of(context)!.spirituality,
+    AppLocalizations.of(context)!.selfEsteem,
+    AppLocalizations.of(context)!.attitudes,
+    AppLocalizations.of(context)!.skills,
+    AppLocalizations.of(context)!.studies,
+  ];
+
     List<String> Questions = [
     (AppLocalizations.of(context)!.personalQone),
     (AppLocalizations.of(context)!.personalQtwo),
@@ -97,12 +100,12 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                 Column(children: [
                   Container(
                   color: Colors.deepPurple.withOpacity(0.3),
-                  child: const Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Section",
-                        style: TextStyle(fontSize: 18),
+                        AppLocalizations.of(context)!.section,
+                        style: const TextStyle(fontSize: 18),
                       )
                     ],
                   ),
@@ -118,9 +121,9 @@ class _PersonalQuizState extends State<PersonalQuiz> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Subject: ",
-                        style: TextStyle(fontSize: 18),
+                     Text(
+                        "${AppLocalizations.of(context)!.subject}: ",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       index <= 7
                           ? Text(

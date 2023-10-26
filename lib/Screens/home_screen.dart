@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '/Quiz%20Functionality/Quiz/baseline_quiz.dart';
 import '../Screens/lanugage_screen.dart';
@@ -84,6 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
       title = 24.0;
     }
     return Scaffold(
+      extendBodyBehindAppBar: true,
+     // appBar: AppBar(leading: const SizedBox(), backgroundColor: Colors.deepPurple.withOpacity(0.1),),
       key: _scaffoldKey,
        drawer: Drawer(
         child: SafeArea(
@@ -108,18 +109,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
               ListTile(
                 leading: const Icon(Icons.language),
-                title: const Text(' Language'),
+                title: Text(AppLocalizations.of(context)!.language),
                 onTap: () {
                   Navigator.of(context).pushNamed(LanguageScreen.routeName);
                 },
               ),
-              ListTile(
-                leading: const Icon(Icons.logout),
-                title: const Text(' Log out'),
-                onTap: () {
-                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const SplashScreen()), (route) => false);
-                },
-              ),
+              // ListTile(
+              //   leading: const Icon(Icons.logout),
+              //   title: const Text("logout"),
+              //   onTap: () {
+              //     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const SplashScreen()), (route) => false);
+              //   },
+              // ),
               // ListTile(
               //   leading: const Icon(Icons.logout),
               //   title: const Text('LogOut'),
@@ -155,134 +156,135 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
       ),
-      body: SafeArea(
-          child: SizedBox(
+      body: SizedBox(
         width: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: size.height / 3,
-              decoration: BoxDecoration(
-                color: Colors.deepPurple.withOpacity(0.1),
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(50.0),
-                    bottomRight: Radius.circular(50.0)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          height: size.height / 2.5,
+          decoration: BoxDecoration(
+            color: Colors.deepPurple.withOpacity(0.1),
+            borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(50.0),
+                bottomRight: Radius.circular(50.0)),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            _scaffoldKey.currentState!.openDrawer();
-                            //  print("height: ${MediaQuery.of(context).size.height}");
-                            //  print("weight: ${MediaQuery.of(context).size.width}");
-                          },
-                          icon: const Icon(
-                            Icons.menu,
-                            size: 35,
-                            color: Colors.deepPurple,
-                          ))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                         "assets/logo.png",
-                          width: size.width/1.8,
-                          height: size.height/8,
-                          //fit: BoxFit.cover,
-                        ),
-                    ],
-                  ),
-                  //SizedBox(height: size.height/10,),
+                  SafeArea(
+                    child: IconButton(
+                        onPressed: () {
+                          _scaffoldKey.currentState!.openDrawer();
+                          //  print("height: ${MediaQuery.of(context).size.height}");
+                          //  print("weight: ${MediaQuery.of(context).size.width}");
+                        },
+                        icon: const Icon(
+                          Icons.menu,
+                          size: 35,
+                          color: Colors.deepPurple,
+                        )),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                     "assets/logo-bg.png",
+                      width: size.width/1.8,
+                      height: size.height/8,
+                      //fit: BoxFit.cover,
+                    ),
+                ],
+              ),
+              //SizedBox(height: size.height/10,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "${months[DateTime.now().month-1]} ${DateTime.now().day}, ${DateTime.now().year}",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: title - 9),
+                        )),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "True North",
+                          style: TextStyle(
+                              fontSize: title,
+                              color: Colors.deepPurple,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.left,
+                        )),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        AppLocalizations.of(context)!.welcome ,
+                        style: TextStyle(fontSize: title - 9),
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height / 40,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  // const Text("True North", style: TextStyle(fontSize: 20),),
+                  //SizedBox(height: size.height/60,),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "${months[DateTime.now().month-1]} ${DateTime.now().day}, ${DateTime.now().year}",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(fontSize: title - 9),
-                            )),
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "True North",
-                              style: TextStyle(
-                                  fontSize: title,
-                                  color: Colors.deepPurple,
-                                  fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.left,
-                            )),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            AppLocalizations.of(context)!.welcome ,
-                            style: TextStyle(fontSize: title - 9),
-                          ),
-                        ),
-                        SizedBox(
-                          height: size.height / 40,
-                        ),
-                      ],
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      AppLocalizations.of(context)!.homeDescription,
+                      softWrap: true,
+                      style: TextStyle(fontSize: fontSize),
+                      textAlign: TextAlign.justify,
                     ),
                   ),
+                  // ElevatedButton(onPressed: (){
+                  
+                  //   print(widget.uid);
+                  // }, child: const Text("uid"))
+                  //SizedBox(height: size.height/30,),
                 ],
               ),
             ),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      // const Text("True North", style: TextStyle(fontSize: 20),),
-                      //SizedBox(height: size.height/60,),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          AppLocalizations.of(context)!.homeDescription,
-                          softWrap: true,
-                          style: TextStyle(fontSize: fontSize),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ),
-                      // ElevatedButton(onPressed: (){
-                      
-                      //   print(widget.uid);
-                      // }, child: const Text("uid"))
-                      //SizedBox(height: size.height/30,),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => BaseLineQuiz(userId: widget.uid),));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.fromLTRB(size.width / 4,
-                        size.height / 40, size.width / 4, size.height / 40),
-                    shape: RoundedRectangleBorder(
-                        //to set border radius to button
-                        borderRadius: BorderRadius.circular(50)),
-                  ),
-                  child: Text(AppLocalizations.of(context)!.start)),
-            ),
-            const SizedBox(height: 80,)
           ],
         ),
-      )),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => BaseLineQuiz(userId: widget.uid),));
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.fromLTRB(size.width / 4,
+                    size.height / 40, size.width / 4, size.height / 40),
+                shape: RoundedRectangleBorder(
+                    //to set border radius to button
+                    borderRadius: BorderRadius.circular(50)),
+              ),
+              child: Text(AppLocalizations.of(context)!.start)),
+        ),
+        const SizedBox(height: 80,)
+      ],
+        ),
+      ),
     );
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -17,8 +19,8 @@ class _StripeBalanceScreenState extends State<StripeBalanceScreen> {
   }
 
   Future<void> fetchBalance() async {
-    final apiKey = 'https://api.stripe.com/v1/payment_intents';
-    final url = 'https://api.stripe.com/v1/balance';
+    const apiKey = 'https://api.stripe.com/v1/payment_intents';
+    const url = 'https://api.stripe.com/v1/balance';
     final response = await http.get(
       Uri.parse(url),
       headers: {'Authorization': 'Bearer $apiKey'},

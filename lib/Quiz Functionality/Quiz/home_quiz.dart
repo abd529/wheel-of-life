@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -25,14 +25,6 @@ class _HomeQuizState extends State<HomeQuiz> {
   //   "Q6: How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
   //   "Home questions are completed",
   // ];
-  List<String> topic = [
-    "Country",
-    "City",
-    "District",
-    "Home",
-    "Coexistence",
-    "Home Care",
-  ];
   int index = 0;
   int _currentValue = 5;
   int ans1 = 0;
@@ -47,6 +39,16 @@ class _HomeQuizState extends State<HomeQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    
+    List<String> topic = [
+    AppLocalizations.of(context)!.country,
+    AppLocalizations.of(context)!.city,
+    AppLocalizations.of(context)!.district,
+    AppLocalizations.of(context)!.home,
+    AppLocalizations.of(context)!.coexistence,
+    AppLocalizations.of(context)!.homeCare,
+  ];
+
     List<String> Questions = [
     (AppLocalizations.of(context)!.homeQone),
     (AppLocalizations.of(context)!.homeQtwo),
@@ -91,12 +93,12 @@ class _HomeQuizState extends State<HomeQuiz> {
                 Column(children: [
                   Container(
                   color: Colors.deepPurple.withOpacity(0.3),
-                  child: const Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Section",
-                        style: TextStyle(fontSize: 18),
+                        AppLocalizations.of(context)!.section,
+                        style: const TextStyle(fontSize: 18),
                       )
                     ],
                   ),
@@ -112,9 +114,9 @@ class _HomeQuizState extends State<HomeQuiz> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Subject: ",
-                        style: TextStyle(fontSize: 18),
+                       Text(
+                        "${AppLocalizations.of(context)!.subject}: ",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       index <= 5
                           ? Text(

@@ -4,7 +4,6 @@ import './Authentication/signup_screen.dart';
 import './Screens/lanugage_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '/Authentication/forgot_password.dart';
 import '/Quiz%20Functionality/quiz_screen.dart';
@@ -34,9 +33,10 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   final String uid;
-  MyApp({super.key, required this.uid});
+  const MyApp({super.key, required this.uid});
 
   //@overriden
+  @override
   State<MyApp> createState() => _MyAppState();
   static void setLocale(BuildContext context, Locale locale) {
     _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
@@ -73,11 +73,11 @@ class _MyAppState extends State<MyApp> {
       ],
       routes: {
         logQuiz.routeName: (ctx) => const logQuiz(),
-        LoginScreen.routeName: (ctx) => LoginScreen(),
+        LoginScreen.routeName: (ctx) => const LoginScreen(),
         //VideoScreen.routeName: (ctx) => VideoScreen(),
         //DetailPage.routeName: (ctx) => const DetailPage(),
         // BaseLineQuiz.routeName: (ctx) => const BaseLineQuiz(),
-        ForgotPassword.routeName: (ctx) => ForgotPassword(),
+        ForgotPassword.routeName: (ctx) => const ForgotPassword(),
         EmailSend.routeName: (ctx) => EmailSend(),
         // StripePayment.routeName: (ctx) => const StripePayment(),
         Onboard.routeName: (ctx) => const Onboard(),
@@ -93,7 +93,7 @@ class _MyAppState extends State<MyApp> {
               uid: widget.uid,
             ),
         LanguageScreen.routeName: (ctx) => const LanguageScreen(),
-        SignupScreen.routeName: (ctx) => SignupScreen(),
+        SignupScreen.routeName: (ctx) => const SignupScreen(),
       },
     );
   }

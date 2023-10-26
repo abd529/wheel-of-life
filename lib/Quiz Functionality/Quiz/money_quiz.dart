@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,16 +27,7 @@ class _MoneyQuizState extends State<MoneyQuiz> {
   //   "Q8: I keep some money for bad times, and I'm happy with my savings?",
   //   "Money questions are completed ",
   // ];
-  List<String> topic = [
-    "Belongings",
-    "Guarantees",
-    "Income",
-    "Future income",
-    "Bills",
-    "Future expenses",
-    "Debts",
-    "Saving"
-  ];
+  
   int index = 0;
   int _currentValue = 5;
   int ans1 = 0;
@@ -51,6 +42,19 @@ class _MoneyQuizState extends State<MoneyQuiz> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<String> topic = [
+    AppLocalizations.of(context)!.belongings,
+    AppLocalizations.of(context)!.guarantees,
+    AppLocalizations.of(context)!.income,
+    AppLocalizations.of(context)!.futureIncome,
+    AppLocalizations.of(context)!.bills,
+    AppLocalizations.of(context)!.futureExpenses,
+    AppLocalizations.of(context)!.debts,
+    AppLocalizations.of(context)!.saving
+  ];
+
+
     List<String> Questions = [
     (AppLocalizations.of(context)!.moneyQone),
     (AppLocalizations.of(context)!.moneyQtwo),
@@ -97,12 +101,12 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                 Column(children: [
                   Container(
                   color: Colors.deepPurple.withOpacity(0.3),
-                  child: const Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Section",
-                        style: TextStyle(fontSize: 18),
+                        AppLocalizations.of(context)!.section,
+                        style: const TextStyle(fontSize: 18),
                       )
                     ],
                   ),
@@ -118,9 +122,9 @@ class _MoneyQuizState extends State<MoneyQuiz> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Subject: ",
-                        style: TextStyle(fontSize: 18),
+                       Text(
+                        "${AppLocalizations.of(context)!.subject}: ",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       index <= 7
                           ? Text(

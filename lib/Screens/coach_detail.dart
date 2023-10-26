@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:com.ezeelogix.truenorth/Models/coach_model.dart';
 import 'package:com.ezeelogix.truenorth/Screens/splash_screen.dart';
 import 'package:flutter/foundation.dart';
@@ -5,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 
 class CoachDetailScreen extends StatefulWidget {
   final CoachModel coach;
@@ -28,8 +32,78 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
       setState(() {
         isLoading = true;
       });
-    String userName2 = "Team@MyTrueNorthPath.com";
-    final smtpServer2 = SmtpServer("smtp.titan.email",
+      if(AppLocalizations.of(context)!.languageName == "Spanish"){
+        String userName2 = "Team@MyTrueNorthPath.com";
+        final smtpServer2 = SmtpServer("smtp.titan.email",
+        username: "Team@MyTrueNorthPath.com",
+        password: "P@ki15t@n!",
+        port: 465,
+        ssl: true);
+        final message = Message()
+      ..from = Address(userName2, "True North")
+      ..recipients.add(recipientEmail)
+      ..subject = AppLocalizations.of(context)!.coachCodeHere
+      ..html = 
+      """ 
+      <p> Estimado ${nameController.text},<br>
+    Espero que este mensaje te encuentre bien. Valoramos tu compromiso con el crecimiento<br>
+    personal y el desarrollo, por eso estamos emocionados de invitarte a completar una<br>
+    evaluación de tu Verdadero Norte. Esta valiosa evaluación allanará el camino para una<br>
+    discusión significativa con tu coach, ${widget.coach.name}, mientras exploramos los detalles<br>
+    de tu viaje hacia el autodescubrimiento.<br><br>
+    
+    Para comenzar, simplemente sigue estos sencillos pasos:<br><br>
+    
+    Haz clic en el enlace proporcionado a continuación para acceder a la evaluación de True North:<br>
+    <a href="https://www.mytruenorthpath.com">MyTrueNorthPath.com</a><br>
+    Descarga la aplicación (Apple) o (Google), según tu dispositivo.<br>
+    Sigue las instrucciones en pantalla para completar la evaluación.<br>
+    Cuando se te solicite, utiliza el siguiente código: <b>${widget.coach.code["code"]}</b><br><br>
+    
+    Al utilizar este código, obtendrás acceso gratuito a la evaluación, y tu coach<br>
+    recibirá una copia de tus resultados para facilitar una discusión más informada y productiva.<br><br>
+    
+    Apreciamos sinceramente tu confianza en nosotros mientras trabajamos juntos para descubrir<br>
+    tus deseos más profundos y desbloquear tu verdadero potencial. Tu viaje hacia el autodescubrimiento<br>
+    es realmente notable, y tenemos el privilegio de ser parte de él.<br><br>
+    
+    Si tienes alguna pregunta o necesitas asistencia en el camino, por favor no dudes<br>
+    en ponerte en contacto con nosotros. Estamos aquí para apoyarte en cada paso del camino.<br><br>
+    
+    Gracias por tu dedicación al crecimiento personal, y esperamos embarcarnos en este iluminador<br>
+    viaje contigo.<br><br>
+    
+    Saludos cordiales,<br>
+    El Equipo de My True North App<br>
+    <a href="https://www.mytruenorthpath.com">MyTrueNorthPath.com</a>
+</p>
+
+      """;
+      try {
+      await send(message, smtpServer2);
+      setState(() {
+        isLoading = false;
+      });
+      Fluttertoast.showToast(msg: AppLocalizations.of(context)!.emailSentSuccessfully);
+                  nameController.clear();
+                  emailController.clear();
+                  emailConfirmController.clear();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+        setState(() {
+        isLoading = false;
+      });
+      }else{
+        setState(() {
+        isLoading = false;
+      });
+      }
+    }
+      }
+      else{
+        String userName2 = "Team@MyTrueNorthPath.com";
+        final smtpServer2 = SmtpServer("smtp.titan.email",
         username: "Team@MyTrueNorthPath.com",
         password: "P@ki15t@n!",
         port: 465,
@@ -37,7 +111,7 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
     final message = Message()
       ..from = Address(userName2, "True North")
       ..recipients.add(recipientEmail)
-      ..subject = "Your coach code is here"
+      ..subject = AppLocalizations.of(context)!.coachCodeHere
       ..html = """
                Dear ${nameController.text},<br>
                I hope this message finds you well. We value your commitment to personal growth<br>
@@ -79,6 +153,10 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
       setState(() {
         isLoading = false;
       });
+      Fluttertoast.showToast(msg: AppLocalizations.of(context)!.emailSentSuccessfully);
+                  nameController.clear();
+                  emailController.clear();
+                  emailConfirmController.clear();
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
@@ -91,6 +169,7 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
       });
       }
     }
+      }
   }
 
   @override
@@ -101,7 +180,7 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const SplashScreen(),), (route) => false);
       }, child: const Icon(Icons.logout)),
       appBar: AppBar(
-        title: const Text('Coach Details'),
+        title: Text(AppLocalizations.of(context)!.coachDetails),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -112,9 +191,9 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Name: ',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    '${AppLocalizations.of(context)!.name}: ',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.coach.name,
@@ -129,9 +208,9 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Email:',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    '${AppLocalizations.of(context)!.email}:',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.coach.email,
@@ -145,9 +224,9 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Package: ',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    '${AppLocalizations.of(context)!.package}: ',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.coach.package,
@@ -160,9 +239,9 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  const Text(
-                    'Code: ',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    '${AppLocalizations.of(context)!.code}: ',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.coach.code["code"],
@@ -175,9 +254,9 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  const Text(
-                    'limit: ',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                   Text(
+                    '${AppLocalizations.of(context)!.code}: ',
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     widget.coach.limit.toString(),
@@ -186,9 +265,9 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("Send this coach code to a user", style: TextStyle(fontWeight: FontWeight.bold),),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(AppLocalizations.of(context)!.sendToUser, style:const TextStyle(fontWeight: FontWeight.bold),),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -200,7 +279,7 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
                       controller: nameController,
                       validator: (value){
                         if(value!.isEmpty){
-                          return"Please enter user's name";
+                          return AppLocalizations.of(context)!.pleaseEnterUserName ;
                         }else{ return null;}
                       },
                       decoration:  InputDecoration(
@@ -214,17 +293,17 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
                                       ),
                                     child: const Icon(Icons.person)),
                                 ),
-                                labelText: 'Name',
+                                labelText: AppLocalizations.of(context)!.name,
                               ),
                       ),
                     TextFormField(
                       controller: emailController,
                       validator: (value){
                         if(value!.isEmpty){
-                          return"Please enter an email";
+                          return AppLocalizations.of(context)!.pleaseEnterEmail;
                         }
                         else if(!value.contains("@")){
-                          return "Please enter a valid email";
+                          return AppLocalizations.of(context)!.pleaseEnterEmail;
                         }else{ return null;}
                       },
                       decoration:  InputDecoration(
@@ -238,19 +317,19 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
                                       ),
                                     child: const Icon(Icons.email)),
                                 ),
-                                labelText: 'Email',
+                                labelText: AppLocalizations.of(context)!.email,
                               ),
                       ),
                       TextFormField(
                       controller: emailConfirmController,
                       validator: (value){
                         if(value!.isEmpty){
-                          return"Please enter your email";
+                          return AppLocalizations.of(context)!.pleaseEnterEmail;
                         }
                         else if(!value.contains("@")){
-                          return "Please enter a valid email";
+                          return AppLocalizations.of(context)!.pleaseEnterEmail ;
                         }else if(value != emailController.text){
-                          return "Please confirm your email";
+                          return AppLocalizations.of(context)!.pleaseEnterEmail;
                         }
                         else{ return null;}
                       },
@@ -265,7 +344,7 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
                                       ),
                                     child: const Icon(Icons.email)),
                                 ),
-                                labelText: 'Confirm Email',
+                                labelText: AppLocalizations.of(context)!.confirmEmail,
                               ),
                       ),
                   ],
@@ -283,12 +362,8 @@ class _CoachDetailScreenState extends State<CoachDetailScreen> {
                 onPressed: ()async{
                 if(_formKey.currentState!.validate()){
                   await sendEmail(emailController.text.trim(),"",context);
-                  Fluttertoast.showToast(msg: "Email Sent");
-                  nameController.clear();
-                  emailController.clear();
-                  emailConfirmController.clear();
                 }
-              }, child: isLoading? const CircularProgressIndicator() : const Text("Send Code")),
+              }, child: isLoading? const CircularProgressIndicator() : Text(AppLocalizations.of(context)!.sendCode, textAlign: TextAlign.center,)),
             )
           ],
         ),

@@ -8,7 +8,7 @@ import '/Models/forgot_password_VM.dart';
 class ForgotPassword extends StatefulWidget {
   static const routeName = "forgot-password";
 
-   ForgotPassword({super.key});
+   const ForgotPassword({super.key});
 
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
@@ -17,7 +17,7 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   final _formKey = GlobalKey<FormState>();
   ForgotPasswordViewModel forgotVM = ForgotPasswordViewModel();
-  TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   bool _emailSent = false;
 
@@ -33,7 +33,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          BackButton(),
+                          const BackButton(),
                           Image.asset(
                          "assets/logo.png",
                           width: size.width/1.6,

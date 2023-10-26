@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, depend_on_referenced_packages, use_build_context_synchronously, avoid_unnecessary_containers
+// ignore_for_file: must_be_immutable, depend_on_referenced_packages, use_build_context_synchronously, avoid_unnecessary_containers, library_prefixes, avoid_print
 
 import 'dart:ui';
 
@@ -97,7 +97,7 @@ class PDFScreen extends StatefulWidget {
   final int moneyQ7 ;
   final int moneyQ8 ;
   final double moneyAvg;
-  PDFScreen({super.key, required this.userId, required this.baseQ1, required this.baseQ2, required this.baseQ3, required this.baseQ4, required this.baseQ5, required this.baseQ6, required this.baseQ7, required this.baseQ8, required this.healthQ1, required this.healthQ2, required this.healthQ3, required this.healthQ4, required this.healthQ5, required this.healthQ6, required this.personalQ1, required this.personalQ2, required this.personalQ3, required this.personalQ4, required this.personalQ5, required this.personalQ6, required this.personalQ7, required this.personalQ8, required this.homeQ1, required this.homeQ2, required this.homeQ3, required this.homeQ4, required this.homeQ5, required this.homeQ6, required this.famQ1, required this.famQ2, required this.famQ3, required this.famQ4, required this.famQ5, required this.famQ6, required this.famQ7, required this.loveQ1, required this.loveQ2, required this.loveQ3, required this.loveQ4, required this.loveQ5, required this.loveQ6, required this.loveQ7, required this.loveQ8, required this.freeQ1, required this.freeQ2, required this.freeQ3, required this.freeQ4, required this.freeQ5, required this.freeQ6, required this.workQ1, required this.workQ2, required this.workQ3, required this.workQ4, required this.workQ5, required this.workQ6, required this.workQ7, required this.workQ8, required this.moneyQ1, required this.moneyQ2, required this.moneyQ3, required this.moneyQ4, required this.moneyQ5, required this.moneyQ6, required this.moneyQ7, required this.moneyQ8, required this.healthAvg, required this.personalAvg, required this.homeAvg, required this.famAvg, required this.loveAvg, required this.freeAvg, required this.workAvg, required this.moneyAvg});
+  const PDFScreen({super.key, required this.userId, required this.baseQ1, required this.baseQ2, required this.baseQ3, required this.baseQ4, required this.baseQ5, required this.baseQ6, required this.baseQ7, required this.baseQ8, required this.healthQ1, required this.healthQ2, required this.healthQ3, required this.healthQ4, required this.healthQ5, required this.healthQ6, required this.personalQ1, required this.personalQ2, required this.personalQ3, required this.personalQ4, required this.personalQ5, required this.personalQ6, required this.personalQ7, required this.personalQ8, required this.homeQ1, required this.homeQ2, required this.homeQ3, required this.homeQ4, required this.homeQ5, required this.homeQ6, required this.famQ1, required this.famQ2, required this.famQ3, required this.famQ4, required this.famQ5, required this.famQ6, required this.famQ7, required this.loveQ1, required this.loveQ2, required this.loveQ3, required this.loveQ4, required this.loveQ5, required this.loveQ6, required this.loveQ7, required this.loveQ8, required this.freeQ1, required this.freeQ2, required this.freeQ3, required this.freeQ4, required this.freeQ5, required this.freeQ6, required this.workQ1, required this.workQ2, required this.workQ3, required this.workQ4, required this.workQ5, required this.workQ6, required this.workQ7, required this.workQ8, required this.moneyQ1, required this.moneyQ2, required this.moneyQ3, required this.moneyQ4, required this.moneyQ5, required this.moneyQ6, required this.moneyQ7, required this.moneyQ8, required this.healthAvg, required this.personalAvg, required this.homeAvg, required this.famAvg, required this.loveAvg, required this.freeAvg, required this.workAvg, required this.moneyAvg});
   
   @override
   State<PDFScreen> createState() => _PDFScreenState();
@@ -133,7 +133,7 @@ class _PDFScreenState extends State<PDFScreen> {
   }
 }
 
-  Future<void> createPdf(String uid,BuildContext context) async {
+  Future<void> createPdf(String uid,BuildContext ctx) async {
     Uint8List logoBytes = await getImageBytesFromAsset("assets/logo.png");
     Uint8List graphBytes = await getImageBytesFromRepaintBoundary(_globalKey);
     PopupLoader.show();
@@ -227,7 +227,8 @@ class _PDFScreenState extends State<PDFScreen> {
                             height: 20,
                           ),
                           pdfWidgets.Text(
-                              "Based on the answers to the question, this is what you believe your current situation is:"),
+                            AppLocalizations.of(ctx)!.basedOnAnswers,
+                          ),
                           pdfWidgets.SizedBox(
                             height: 30,
                           ),
@@ -238,13 +239,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "I am comfortable with my physical and mental health.",
+                                      AppLocalizations.of(ctx)!.comfortableWithHealth,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ1.toString()),
                               )
                             ],
                           ),
@@ -256,13 +257,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "I live in the place I want.",
+                                      AppLocalizations.of(ctx)!.doneWithWhatIWant,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ2.toString(),),
                               )
                             ],
                           ),
@@ -274,13 +275,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "My family and friends fill my life.",
+                                      AppLocalizations.of(ctx)!.liveWhereIWant,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ3.toString(),),
                               )
                             ],
                           ),
@@ -292,13 +293,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "I live in harmony and peace.",
+                                      AppLocalizations.of(ctx)!.familyAndFriendsFillLife,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ4.toString(),),
                               )
                             ],
                           ),
@@ -310,13 +311,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "I take my free spaces.",
+                                      AppLocalizations.of(ctx)!.liveInHarmonyAndPeace,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ5.toString(),),
                               )
                             ],
                           ),
@@ -328,13 +329,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "I am professionally satisfied.",
+                                      AppLocalizations.of(ctx)!.takeFreeSpaces,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ6.toString(),),
                               )
                             ],
                           ),
@@ -346,13 +347,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "Administer well the money I have.",
+                                      AppLocalizations.of(ctx)!.takeFreeSpaces,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ7.toString(),),
                               )
                             ],
                           ),
@@ -364,13 +365,13 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.SizedBox(
                                   width: size.width - 50,
                                   child: pdfWidgets.Text(
-                                      "I am comfortable with my physical and mental health.",
+                                      AppLocalizations.of(ctx)!.administerMoneyWell,
                                       softWrap: true,
                                       style: pdfWidgets.TextStyle(
                                           fontWeight:
                                               pdfWidgets.FontWeight.bold))),
                               pdfWidgets.Container(
-                                child: pdfWidgets.Text("5"),
+                                child: pdfWidgets.Text(widget.baseQ8.toString(),),
                               )
                             ],
                           ),
@@ -379,12 +380,13 @@ class _PDFScreenState extends State<PDFScreen> {
                           ),
                           pdfWidgets.Container(
                               child: pdfWidgets.Text(
-                                  "After the baseline, you have answered many questions in each section to help you determine where you actually are in your life. These are the answers, by section, are shown in the following pages.")),
+                                  AppLocalizations.of(ctx)!.liveWhereIWant,
+                                   )),
                           pdfWidgets.SizedBox(
                             height: 20,
                           ),
                           pdfWidgets.Text(
-                            "Health",
+                            AppLocalizations.of(ctx)!.health,
                             style: pdfWidgets.TextStyle(
                                 fontWeight: pdfWidgets.FontWeight.bold,
                                 fontSize: 20),
@@ -396,18 +398,18 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
                               pdfWidgets.Text(
-                                "Section",
+                                AppLocalizations.of(ctx)!.question,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                               pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
+                                AppLocalizations.of(ctx)!.answer,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
@@ -417,13 +419,13 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.Text(
-                                "Mood",
-                                style: const pdfWidgets.TextStyle(),
-                              ),
+                              // pdfWidgets.Text(
+                              //   "Mood",
+                              //   style: const pdfWidgets.TextStyle(),
+                              // ),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                "Is there anything that alters my psychological state?",
+                                AppLocalizations.of(ctx)!.healthQone,
                                 style: const pdfWidgets.TextStyle(),
                                 softWrap: true,
                                 textAlign: pdfWidgets.TextAlign.center,
@@ -431,7 +433,7 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "1",
+                                  widget.healthQ1.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -442,22 +444,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Psychological state",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Psychological state",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I carry out activities that move me away from a state of tension, nerves, stress, etc.?",
+                                    AppLocalizations.of(ctx)!.healthQtwo,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.healthQ2.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -468,22 +470,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Personal care",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Personal care",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
+                                    AppLocalizations.of(ctx)!.healthQthree,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.healthQ3.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -494,22 +496,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Physical state",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Physical state",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I have any disease that affects my physical state?",
+                                    AppLocalizations.of(ctx)!.healthQfour,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.healthQ4.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -520,22 +522,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Habits",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Habits",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "The resting time, food, sport and more, are they adequate?",
+                                    AppLocalizations.of(ctx)!.healthQfive,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.healthQ5.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -547,22 +549,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Measures",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Measures",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
+                                    AppLocalizations.of(ctx)!.healthQsix,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.healthQ6.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -572,7 +574,7 @@ class _PDFScreenState extends State<PDFScreen> {
                             height: 50,
                           ),
                           pdfWidgets.Text(
-                            "Personal Growth",
+                            AppLocalizations.of(ctx)!.personalG,
                             style: pdfWidgets.TextStyle(
                                 fontWeight: pdfWidgets.FontWeight.bold,
                                 fontSize: 20),
@@ -584,18 +586,18 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
                               pdfWidgets.Text(
-                                "Section",
+                                AppLocalizations.of(ctx)!.question,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                               pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
+                                AppLocalizations.of(ctx)!.answer,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
@@ -605,13 +607,13 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.Text(
-                                "Society",
-                                style: const pdfWidgets.TextStyle(),
-                              ),
+                              // pdfWidgets.Text(
+                              //   "Society",
+                              //   style: const pdfWidgets.TextStyle(),
+                              // ),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                "Do I feel useful to society, do I contribute to the development of my society?",
+                                    AppLocalizations.of(ctx)!.personalQone,
                                 style: const pdfWidgets.TextStyle(),
                                 softWrap: true,
                                 textAlign: pdfWidgets.TextAlign.center,
@@ -619,7 +621,7 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "1",
+                                  widget.personalQ1.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -630,22 +632,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Current Projects",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Current Projects",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I comfortable with my personal growth plans and projects?",
+                                    AppLocalizations.of(ctx)!.personalQtwo,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.personalQ2.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -656,22 +658,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Future projects",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Future projects",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do my projects to futures satisfy the perspectives I have to grow?",
+                                    AppLocalizations.of(ctx)!.personalQthree,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.personalQ3.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -682,22 +684,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Spirituality",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Spirituality",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I feel good with my spirituality and cultivation constantly?",
+                                    AppLocalizations.of(ctx)!.personalQfour,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.personalQ4.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -708,22 +710,448 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Self-esteem",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Self-esteem",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I give true value to my life and my affections?",
+                                    AppLocalizations.of(ctx)!.personalQfive,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.personalQ5.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Attitudes",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.personalQsix,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.personalQ6.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Skills",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.personalQseven,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.personalQ7.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Studies",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.personalQeight,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.personalQ8.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(
+                            height: 50,
+                          ),
+                          pdfWidgets.Text(
+                            AppLocalizations.of(ctx)!.home,
+                            style: pdfWidgets.TextStyle(
+                                fontWeight: pdfWidgets.FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                          pdfWidgets.SizedBox(
+                            height: 10,
+                          ),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
+                              pdfWidgets.Text(
+                                AppLocalizations.of(ctx)!.question,
+                                style: pdfWidgets.TextStyle(
+                                    fontWeight: pdfWidgets.FontWeight.bold),
+                              ),
+                              pdfWidgets.Text(
+                                AppLocalizations.of(ctx)!.answer,
+                                style: pdfWidgets.TextStyle(
+                                    fontWeight: pdfWidgets.FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.Text(
+                              //   "Country",
+                              //   style: const pdfWidgets.TextStyle(),
+                              // ),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.homeQone,
+                                style: const pdfWidgets.TextStyle(),
+                                softWrap: true,
+                                textAlign: pdfWidgets.TextAlign.center,
+                              )),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.homeQ1.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "City",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.homeQtwo,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.homeQ2.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "District",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.homeQthree,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  AppLocalizations.of(ctx)!.homeQtwo,
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Home",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.homeQthree,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.homeQ3.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Coexistence",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.homeQfour,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  AppLocalizations.of(ctx)!.homeQtwo,
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Home care",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.homeQfive,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.homeQ5.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(
+                            height: 50,
+                          ),
+                          pdfWidgets.Text(
+                            AppLocalizations.of(ctx)!.famFriends,
+                            style: pdfWidgets.TextStyle(
+                                fontWeight: pdfWidgets.FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                          pdfWidgets.SizedBox(
+                            height: 10,
+                          ),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
+                              pdfWidgets.Text(
+                                AppLocalizations.of(ctx)!.question,
+                                style: pdfWidgets.TextStyle(
+                                    fontWeight: pdfWidgets.FontWeight.bold),
+                              ),
+                              pdfWidgets.Text(
+                                AppLocalizations.of(ctx)!.answer,
+                                style: pdfWidgets.TextStyle(
+                                    fontWeight: pdfWidgets.FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.Text(
+                              //   "Provision",
+                              //   style: const pdfWidgets.TextStyle(),
+                              // ),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.famQone,
+                                style: const pdfWidgets.TextStyle(),
+                                softWrap: true,
+                                textAlign: pdfWidgets.TextAlign.center,
+                              )),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.famQ1.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Mother",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.famQtwo,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.famQ2.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Father",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.famQthree,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.famQ3.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Children",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.famQfour,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.famQ4.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Close Relatives",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.famQfive,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.famQ5.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -735,22 +1163,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Attitudes",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Friends",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I face life in a planned, applied manner and have a will to improve?",
+                                    AppLocalizations.of(ctx)!.famQsix,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.famQ6.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -761,48 +1189,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Skills",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Known",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "How many skills can I say that I have to do everything that I propose?",
+                                    AppLocalizations.of(ctx)!.famQseven,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Studies",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Am I satisfied with my professional training and I try to move forward?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
+                                  widget.famQ7.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -812,7 +1214,7 @@ class _PDFScreenState extends State<PDFScreen> {
                             height: 50,
                           ),
                           pdfWidgets.Text(
-                            "Home",
+                            AppLocalizations.of(ctx)!.love,
                             style: pdfWidgets.TextStyle(
                                 fontWeight: pdfWidgets.FontWeight.bold,
                                 fontSize: 20),
@@ -824,18 +1226,18 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
                               pdfWidgets.Text(
-                                "Section",
+                                AppLocalizations.of(ctx)!.question,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                               pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
+                                AppLocalizations.of(ctx)!.answer,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
@@ -845,13 +1247,13 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.Text(
-                                "Country",
-                                style: const pdfWidgets.TextStyle(),
-                              ),
+                              // pdfWidgets.Text(
+                              //   "Ability to love",
+                              //   style: const pdfWidgets.TextStyle(),
+                              // ),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                "Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
+                                AppLocalizations.of(ctx)!.loveQone,
                                 style: const pdfWidgets.TextStyle(),
                                 softWrap: true,
                                 textAlign: pdfWidgets.TextAlign.center,
@@ -859,7 +1261,7 @@ class _PDFScreenState extends State<PDFScreen> {
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "1",
+                                  widget.loveQ1.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -870,22 +1272,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "City",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Number of relationships",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I feel comfortable in the city in which I live and agree with the services it offers?",
+                                    AppLocalizations.of(ctx)!.loveQtwo,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.loveQ2.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -896,22 +1298,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "District",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Duration",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I like my neighbors and their culture of coexistence?",
+                                    AppLocalizations.of(ctx)!.loveQthree,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.loveQ3.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -922,22 +1324,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Home",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Communication",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "The house where I live satisfies me, has enough space and comfort that I need?",
+                                    AppLocalizations.of(ctx)!.loveQfour,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.loveQ4.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -948,22 +1350,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Coexistence",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Coexistence",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I comfortable with the people with whom I share my home?",
+                                      AppLocalizations.of(ctx)!.loveQfive,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.loveQ5.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -974,22 +1376,74 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Home care",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Fidelity",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
+                                    AppLocalizations.of(ctx)!.loveQsix,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.loveQ6.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Sexual passion",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.loveQseven,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.loveQ7.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Emotional Passion",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.loveQeight,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.loveQ8.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -999,7 +1453,7 @@ class _PDFScreenState extends State<PDFScreen> {
                             height: 50,
                           ),
                           pdfWidgets.Text(
-                            "Family & Friends",
+                            AppLocalizations.of(ctx)!.freeTime,
                             style: pdfWidgets.TextStyle(
                                 fontWeight: pdfWidgets.FontWeight.bold,
                                 fontSize: 20),
@@ -1011,42 +1465,44 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
                               pdfWidgets.Text(
-                                "Section",
+                                AppLocalizations.of(ctx)!.question,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                               pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
+                                AppLocalizations.of(ctx)!.answer,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                             ],
                           ),
+                          pdfWidgets.SizedBox(height: 10),
                           pdfWidgets.Row(
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.Text(
-                                "Provision",
-                                style: const pdfWidgets.TextStyle(),
-                              ),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Leisure",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                "Do I feel satisfied with the ability I have to find and communicate with new friends or family?",
-                                style: const pdfWidgets.TextStyle(),
-                                softWrap: true,
-                                textAlign: pdfWidgets.TextAlign.center,
-                              )),
+                                    AppLocalizations.of(ctx)!.freeQone,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "1",
+                                  widget.freeQ1.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1057,22 +1513,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Mother",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Quality Time",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I satisfied with the relationship I have with my mother?",
+                                    AppLocalizations.of(ctx)!.freeQtwo,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.freeQ2.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1083,74 +1539,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Father",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Fun",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I satisfied with the relationship I have with my father?",
+                                    AppLocalizations.of(ctx)!.freeQthree,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Children",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Am I satisfied with the relationship I have with my children? If I don't have them and I love them, do I do actions to have them?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Close Relatives",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "How do I feel in my relationships with close relatives: brothers, grandparents, cousins, uncles, etc.?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
+                                  widget.freeQ3.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1162,22 +1566,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Friends",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Variety",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "I feel satisfied with the friends I have, do I really have them when I need them and support me?",
+                                    AppLocalizations.of(ctx)!.freeQfour,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.loveQ4.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1188,32 +1592,55 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Known",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Tastes",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I comfortable with the acquaintances I have?",
+                                    AppLocalizations.of(ctx)!.freeQfive,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.freeQ5.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
                             ],
                           ),
-                          pdfWidgets.SizedBox(
-                            height: 50,
+                          pdfWidgets.SizedBox(height: 10),
+                          pdfWidgets.Row(
+                            mainAxisAlignment:
+                                pdfWidgets.MainAxisAlignment.spaceBetween,
+                            children: [
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Participatory",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
+                              pdfWidgets.Expanded(
+                                  child: pdfWidgets.Text(
+                                    AppLocalizations.of(ctx)!.freeQsix,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
+                              pdfWidgets.Padding(
+                                padding: const pdfWidgets.EdgeInsets.all(4.0),
+                                child: pdfWidgets.Text(
+                                  widget.freeQ6.toString(),
+                                  style: const pdfWidgets.TextStyle(),
+                                ),
+                              ),
+                            ],
                           ),
                           pdfWidgets.Text(
-                            "Love",
+                            AppLocalizations.of(ctx)!.work,
                             style: pdfWidgets.TextStyle(
                                 fontWeight: pdfWidgets.FontWeight.bold,
                                 fontSize: 20),
@@ -1225,42 +1652,44 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
                               pdfWidgets.Text(
-                                "Section",
+                                AppLocalizations.of(ctx)!.question,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                               pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
+                                AppLocalizations.of(ctx)!.answer,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                             ],
                           ),
+                          pdfWidgets.SizedBox(height: 10),
                           pdfWidgets.Row(
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.Text(
-                                "Ability to love",
-                                style: const pdfWidgets.TextStyle(),
-                              ),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Working Capacity",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                "May I give myself to my relationships?",
-                                style: const pdfWidgets.TextStyle(),
-                                softWrap: true,
-                                textAlign: pdfWidgets.TextAlign.center,
-                              )),
+                                    AppLocalizations.of(ctx)!.workQone,
+                                      style: const pdfWidgets.TextStyle(),
+                                      softWrap: true,
+                                      textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "1",
+                                  widget.workQ1.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1271,22 +1700,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Number of relationships",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Functions",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
+                                    AppLocalizations.of(ctx)!.workQtwo,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.workQ2.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1297,22 +1726,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Duration",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Company",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
+                                    AppLocalizations.of(ctx)!.workQthree,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.workQ3.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1323,22 +1752,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Communication",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Boss",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
+                                    AppLocalizations.of(ctx)!.workQfour,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.workQ4.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1349,49 +1778,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Coexistence",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Companions",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do we distribute home tasks?",
+                                    AppLocalizations.of(ctx)!.workQfive,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Fidelity",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Am I faithful in my relationships, and I have the confidence that my partner is the same?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
+                                  widget.workQ5.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1402,22 +1804,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Sexual passion",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Collabrators",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I have sexual relations with my partner and it attracts me physically?",
+                                    AppLocalizations.of(ctx)!.workQsix,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.workQ6.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1428,32 +1830,29 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Emotional Passion",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Recognition",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I feel really loved and positively value all the mental and emotional part of my partner?",
+                                    AppLocalizations.of(ctx)!.workQseven,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.workQ7.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
                             ],
-                          ),
-                          pdfWidgets.SizedBox(
-                            height: 50,
                           ),
                           pdfWidgets.Text(
-                            "Free Time",
+                            AppLocalizations.of(ctx)!.money,
                             style: pdfWidgets.TextStyle(
                                 fontWeight: pdfWidgets.FontWeight.bold,
                                 fontSize: 20),
@@ -1465,205 +1864,18 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
+                              // pdfWidgets.Text(
+                              //   "Section",
+                              //   style: pdfWidgets.TextStyle(
+                              //       fontWeight: pdfWidgets.FontWeight.bold),
+                              // ),
                               pdfWidgets.Text(
-                                "Section",
+                                AppLocalizations.of(ctx)!.question,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
                               pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Leisure",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Do I have enough leisure time, or do I think it should have more?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Quality Time",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Do I feel that I take advantage of the time I have and take advantage of my leisure?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Fun",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Variety",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Tastes",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Participatory",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.Text(
-                            "Work",
-                            style: pdfWidgets.TextStyle(
-                                fontWeight: pdfWidgets.FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                          pdfWidgets.SizedBox(
-                            height: 10,
-                          ),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.Text(
-                                "Section",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
+                                AppLocalizations.of(ctx)!.answer,
                                 style: pdfWidgets.TextStyle(
                                     fontWeight: pdfWidgets.FontWeight.bold),
                               ),
@@ -1674,22 +1886,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Working Capacity",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Belongings",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "I feel satisfied with my performance in the work environment and I really want to work on what I do?",
+                                    AppLocalizations.of(ctx)!.moneyQone,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ1.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1700,22 +1912,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Functions",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Gurantees",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
+                                    AppLocalizations.of(ctx)!.moneyQtwo,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ2.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1726,22 +1938,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Company",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Income",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I feel comfortable in my company and she respects my values?",
+                                    AppLocalizations.of(ctx)!.moneyQthree,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ3.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1752,22 +1964,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Boss",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Future Income",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I satisfied with my boss or me in my role as a boss?",
+                                    AppLocalizations.of(ctx)!.moneyQfour,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ4.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1778,22 +1990,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Companions",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Bills",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I feel that we form a good team with my teammates?",
+                                    AppLocalizations.of(ctx)!.moneyQfive,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ5.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1804,22 +2016,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Collabrators",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Future expenses",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I feel satisfied with the work of my collaborators and we form a good team?",
+                                    AppLocalizations.of(ctx)!.moneyQsix,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ6.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1830,78 +2042,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Recognition",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Debts",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Am I recognized in my work, I feel that the work I do is valued?",
+                                    AppLocalizations.of(ctx)!.moneyQseven,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.Text(
-                            "Money",
-                            style: pdfWidgets.TextStyle(
-                                fontWeight: pdfWidgets.FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                          pdfWidgets.SizedBox(
-                            height: 10,
-                          ),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.Text(
-                                "Section",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Question",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                              pdfWidgets.Text(
-                                "Answere",
-                                style: pdfWidgets.TextStyle(
-                                    fontWeight: pdfWidgets.FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Belongings",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "How do I feel about the belongings I have? Can I satisfy everything I have?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ7.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -1912,178 +2068,22 @@ class _PDFScreenState extends State<PDFScreen> {
                             mainAxisAlignment:
                                 pdfWidgets.MainAxisAlignment.spaceBetween,
                             children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Gurantees",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
+                              // pdfWidgets.SizedBox(
+                              //     width: 100,
+                              //     child: pdfWidgets.Text(
+                              //       "Saving",
+                              //       style: const pdfWidgets.TextStyle(),
+                              //     )),
                               pdfWidgets.Expanded(
                                   child: pdfWidgets.Text(
-                                      "Do I have guarantees that support me financially and I feel sufficient guarantees?",
+                                    AppLocalizations.of(ctx)!.moneyQeight,
                                       style: const pdfWidgets.TextStyle(),
                                       softWrap: true,
                                       textAlign: pdfWidgets.TextAlign.center)),
                               pdfWidgets.Padding(
                                 padding: const pdfWidgets.EdgeInsets.all(4.0),
                                 child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Income",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Am I satisfied with the income I have today and are enough to have the standard of living?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Future Income",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Bills",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "How do I feel about the level of expenses I have. Expenditure above my possibilities?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Future expenses",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Debts",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
-                                  style: const pdfWidgets.TextStyle(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          pdfWidgets.SizedBox(height: 10),
-                          pdfWidgets.Row(
-                            mainAxisAlignment:
-                                pdfWidgets.MainAxisAlignment.spaceBetween,
-                            children: [
-                              pdfWidgets.SizedBox(
-                                  width: 100,
-                                  child: pdfWidgets.Text(
-                                    "Saving",
-                                    style: const pdfWidgets.TextStyle(),
-                                  )),
-                              pdfWidgets.Expanded(
-                                  child: pdfWidgets.Text(
-                                      "Keep some money for bad times, and I'm happy with my savings?",
-                                      style: const pdfWidgets.TextStyle(),
-                                      softWrap: true,
-                                      textAlign: pdfWidgets.TextAlign.center)),
-                              pdfWidgets.Padding(
-                                padding: const pdfWidgets.EdgeInsets.all(4.0),
-                                child: pdfWidgets.Text(
-                                  "2",
+                                  widget.moneyQ8.toString(),
                                   style: const pdfWidgets.TextStyle(),
                                 ),
                               ),
@@ -2091,13 +2091,13 @@ class _PDFScreenState extends State<PDFScreen> {
                           ),
                           pdfWidgets.SizedBox(height: 20),
                           pdfWidgets.SizedBox(height: 400),
-                          pdfWidgets.Text("Your Wheel of Life", style: pdfWidgets.TextStyle(fontSize: 20, fontWeight: pdfWidgets.FontWeight.bold)),
+                          pdfWidgets.Text(AppLocalizations.of(ctx)!.yourWheelOfLife, style: pdfWidgets.TextStyle(fontSize: 20, fontWeight: pdfWidgets.FontWeight.bold)),
                           pdfWidgets.SizedBox(height: 5),
                           pdfWidgets.Row(
                             mainAxisAlignment: pdfWidgets.MainAxisAlignment.spaceEvenly,
                             children: [
-                            pdfWidgets.Text("Blue is for Baseline"),
-                            pdfWidgets.Text("Green is for Results")
+                            pdfWidgets.Text(AppLocalizations.of(ctx)!.blueForBaseline),
+                            pdfWidgets.Text(AppLocalizations.of(ctx)!.greenForResults)
                             ]
                           ),
                           pdfWidgets.Image(
@@ -2111,7 +2111,7 @@ class _PDFScreenState extends State<PDFScreen> {
     final pdfBytes = await pdf.save();
     uploadPdfToFirebaseStorage(uid, pdfBytes);
     // Save pdfBytes to Firebase Cloud Storage
-    PopupLoader.hide();
+    
   }
 
   Future<void> uploadPdfToFirebaseStorage(
@@ -2119,7 +2119,8 @@ class _PDFScreenState extends State<PDFScreen> {
     final ref = FirebaseStorage.instance.ref().child(fileName);
     await ref.putData(Uint8List.fromList(pdfBytes));
     String downloadUrl = await ref.getDownloadURL();
-    print("linkkkkkkkkkk $downloadUrl");
+    print("linkkk $downloadUrl");
+    PopupLoader.hide();
   }
 
   @override
@@ -2233,8 +2234,8 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                    "Based on the answers to the question, this is what you believe your current situation is:"),
+                Text(
+                    AppLocalizations.of(context)!.basedOnAnswers),
                 const SizedBox(
                   height: 30,
                 ),
@@ -2244,10 +2245,10 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text(
-                            "I am comfortable with my physical and mental health.",
+                        child: Text(
+                            AppLocalizations.of(context)!.comfortableWithHealth ,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Text(widget.baseQ1.toString())
                   ],
                 ),
@@ -2257,9 +2258,9 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text("I live in the place I want.",
+                        child: Text(AppLocalizations.of(context)!.doneWithWhatIWant,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Container(
                       child: Text(widget.baseQ2.toString())
                     )
@@ -2271,9 +2272,9 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text("My family and friends fill my life.",
+                        child: Text( AppLocalizations.of(context)!.liveWhereIWant ,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Container(
                       child: Text(widget.baseQ3.toString())
                     )
@@ -2285,9 +2286,9 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text("I live in harmony and peace.",
+                        child:  Text(AppLocalizations.of(context)!.familyAndFriendsFillLife,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Container(
                       child: Text(widget.baseQ4.toString())
                     )
@@ -2299,9 +2300,9 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text("I take my free spaces.",
+                        child: Text(AppLocalizations.of(context)!.liveInHarmonyAndPeace,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Container(
                       child: Text(widget.baseQ5.toString())
                     )
@@ -2313,9 +2314,9 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text("I am professionally satisfied.",
+                        child: Text(AppLocalizations.of(context)!.takeFreeSpaces,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Container(
                       child: Text(widget.baseQ6.toString())
                     )
@@ -2327,9 +2328,9 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text("Administer well the money I have.",
+                        child: Text(AppLocalizations.of(context)!.professionallySatisfied,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Container(
                       child: Text(widget.baseQ7.toString())
                     )
@@ -2341,10 +2342,9 @@ class _PDFScreenState extends State<PDFScreen> {
                   children: [
                     SizedBox(
                         width: size.width - 60,
-                        child: const Text(
-                            "I am comfortable with my physical and mental health.",
+                        child: Text(AppLocalizations.of(context)!.administerMoneyWell,
                             softWrap: true,
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                            style: const TextStyle(fontWeight: FontWeight.bold))),
                     Container(
                       child: Text(widget.baseQ8.toString())
                     )
@@ -2354,21 +2354,21 @@ class _PDFScreenState extends State<PDFScreen> {
                   height: 20,
                 ),
                 Container(
-                    child: const Text(
-                        "After the baseline, you have answered many questions in each section to help you determine where you actually are in your life. These are the answers, by section, are shown in the following pages.")),
+                    child: Text(
+                        AppLocalizations.of(context)!.afterBaselineIntro)),
                 const SizedBox(
                   height: 20,
                 ),
                 Column(
                   children: [
-                    const Text(
-                  "Health",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    Text(
+                  AppLocalizations.of(context)!.health,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2376,49 +2376,49 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Mood",
-                  "Is there anything that alters my psychological state?",
+                  AppLocalizations.of(context)!.healthQone,
                   widget.healthQ1.toString()
                   ),
                 tableRow(context,
                   "Psychological state",
-                  "Do I carry out activities that move me away from a state of tension, nerves, stress, etc.?",
+                  AppLocalizations.of(context)!.healthQtwo,
                   widget.healthQ2.toString()
                   ),
                 tableRow(context,
                   "Personal care",
-                  "When I am discouraged, I adopt measures that allow me to recover it adequately and quickly?",
+                  AppLocalizations.of(context)!.healthQthree,
                   widget.healthQ3.toString()
                   ),
                 tableRow(context,
                   "Physical state",
-                  "Do I have any disease that affects my physical state?",
+                  AppLocalizations.of(context)!.healthQfour,
                   widget.healthQ4.toString()
                   ),
                 tableRow(context,
                   "Habits",
-                  "The resting time, food, sport and more, are they adequate?",
+                  AppLocalizations.of(context)!.healthQfive,
                   widget.healthQ5.toString()
                   ),
                 tableRow(context,
                   "Measures",
-                  "If I lose my physical condition, do I adopt measures that allow me to recover it satisfactorily?",
+                  AppLocalizations.of(context)!.healthQsix,
                   widget.healthQ6.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.healthAvg.toStringAsFixed(1)
                   ),
                   ],
@@ -2426,14 +2426,14 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(height: 30,),
                 Column(
                   children: [
-                    const Text(
-                  "Personal Growth",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    Text(
+                  AppLocalizations.of(context)!.personalG,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2441,59 +2441,59 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Society",
-                  "Do I feel useful to society, do I contribute to the development of my society?",
+                  AppLocalizations.of(context)!.personalQone,
                   widget.personalQ1.toString()
                   ),
                 tableRow(context,
                   "Current projects",
-                  "Am I comfortable with my personal growth plans and projects?",
+                  AppLocalizations.of(context)!.personalQtwo,
                   widget.personalQ2.toString()
                   ),
                 tableRow(context,
                   "Future projects",
-                  "Do my projects to futures satisfy the perspectives I have to grow?",
+                  AppLocalizations.of(context)!.personalQthree,
                   widget.personalQ3.toString()
                   ),
                 tableRow(context,
                   "Spirituality",
-                  "Do I feel good with my spirituality and cultivation constantly?",
+                  AppLocalizations.of(context)!.personalQfour,
                   widget.personalQ4.toString()
                   ),
                 tableRow(context,
                   "Self-esteem",
-                  "Do I give true value to my life and my affections?",
+                  AppLocalizations.of(context)!.personalQfive,
                   widget.personalQ5.toString()
                   ),
                 tableRow(context,
                   "Attitudes",
-                  "Do I face life in a planned, applied manner and have a will to improve?",
+                  AppLocalizations.of(context)!.personalQsix,
                   widget.personalQ6.toString()
                   ),
                   tableRow(context,
                   "Skills",
-                  "How many skills can I say that I have to do everything that I propose?",
+                  AppLocalizations.of(context)!.personalQseven,
                   widget.personalQ7.toString()
                   ), 
                   tableRow(context,
                   "Studies",
-                  "Am I satisfied with my professional training and I try to move forward?",
+                  AppLocalizations.of(context)!.personalQeight,
                   widget.personalQ8.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.personalAvg.toStringAsFixed(1)
                   ),
                   ],
@@ -2501,14 +2501,14 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(height: 30,),
                 Column(
                   children: [
-                    const Text(
-                  "Home",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    Text(
+                  AppLocalizations.of(context)!.home,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2516,49 +2516,49 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Country",
-                  "Am I satisfied in the country in which I live, according to the current policy, social and cultural environment where I live?",
+                  AppLocalizations.of(context)!.homeQone,
                   widget.homeQ1.toString()
                   ),
                 tableRow(context,
                   "City",
-                  "Do I feel comfortable in the city in which I live and agree with the services it offers?",
+                  AppLocalizations.of(context)!.homeQtwo,
                   widget.homeQ2.toString()
                   ),
                 tableRow(context,
                   "District",
-                  "Do I like my neighbors and their culture of coexistence?",
+                  AppLocalizations.of(context)!.homeQthree,
                   widget.homeQ3.toString()
                   ),
                 tableRow(context,
                   "Home",
-                  "The house where I live satisfies me, has enough space and comfort that I need?",
+                  AppLocalizations.of(context)!.homeQfour,
                   widget.homeQ4.toString()
                   ),
                 tableRow(context,
                   "Coexistence",
-                  "Am I comfortable with the people with whom I share my home?",
+                  AppLocalizations.of(context)!.homeQfive,
                   widget.homeQ5.toString()
                   ),
                 tableRow(context,
                   "Home care",
-                  "How satisfied am I with the degree of comfort, cleanliness and care that I believe in my home?",
+                  AppLocalizations.of(context)!.homeQsix,
                   widget.homeQ6.toString()
                   ), 
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.homeAvg.toStringAsFixed(1)
                   ),
                   ],
@@ -2566,14 +2566,14 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(height: 30,),
                 Column(
                   children: [
-                    const Text(
-                  "Family & Friends",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    Text(
+                  AppLocalizations.of(context)!.famFriends,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2581,54 +2581,54 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Provision",
-                  "Do I feel satisfied with the ability I have to find and communicate with new friends or family?",
+                  AppLocalizations.of(context)!.famQone,
                   widget.famQ1.toString()
                   ),
                 tableRow(context,
                   "Mother",
-                  "Am I satisfied with the relationship I have with my mother?",
+                  AppLocalizations.of(context)!.famQtwo,
                   widget.famQ2.toString()
                   ),
                 tableRow(context,
                   "Father",
-                  "Am I satisfied with the relationship I have with my father?",
+                  AppLocalizations.of(context)!.famQthree,
                   widget.famQ3.toString()
                   ),
                 tableRow(context,
                   "Children",
-                  "Am I satisfied with the relationship I have with my children? If I don't have them and I love them, do I do actions to have them?",
+                  AppLocalizations.of(context)!.famQfour,
                   widget.famQ4.toString()
                   ),
                 tableRow(context,
                   "Close relatives",
-                  "How do I feel in my relationships with close relatives: brothers, grandparents, cousins, uncles, etc.?",
+                  AppLocalizations.of(context)!.famQfive,
                   widget.famQ5.toString()
                   ),
                 tableRow(context,
                   "Friends",
-                  "I feel satisfied with the friends I have, do I really have them when I need them and support me?",
+                  AppLocalizations.of(context)!.famQsix,
                   widget.famQ6.toString()
                   ),
                   tableRow(context,
                   "Known",
-                  "Am I comfortable with the acquaintances I have?",
+                  AppLocalizations.of(context)!.famQseven,
                   widget.famQ7.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.famAvg.toStringAsFixed(1)
                   ),
                   ],
@@ -2636,14 +2636,14 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(height: 30,),
                 Column(
                   children: [
-                    const Text(
-                  "Love",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    Text(
+                  AppLocalizations.of(context)!.love,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2651,59 +2651,59 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Ability \nto love",
-                  "May I give myself to my relationships?",
+                  AppLocalizations.of(context)!.loveQone,
                   widget.loveQ1.toString()
                   ),
                 tableRow(context,
                   "Number \nof \nrelationships",
-                  "Am I satisfied with the number of sentimental relationships that I have, or I would like to have other additional relationships?",
+                  AppLocalizations.of(context)!.loveQtwo,
                   widget.loveQ2.toString()
                   ),
                 tableRow(context,
                   "Duration",
-                  "Am I happy with the time that my relationships last, I do things to keep my partner and give it stability?",
+                  AppLocalizations.of(context)!.loveQthree,
                   widget.loveQ3.toString()
                   ),
                 tableRow(context,
                   "Communication",
-                  "Do I understand my partner well, and I am satisfied with the communication and coexistence I have?",
+                  AppLocalizations.of(context)!.loveQfour,
                   widget.loveQ4.toString()
                   ),
                 tableRow(context,
                   "Coexistence",
-                  "Do we distribute home tasks?",
+                  AppLocalizations.of(context)!.loveQfive,
                   widget.loveQ5.toString()
                   ),
                 tableRow(context,
                   "Fidelity",
-                  "Am I faithful in my relationships, and I have the confidence that my partner is the same?",
+                  AppLocalizations.of(context)!.loveQsix,
                   widget.loveQ6.toString()
                   ),
                   tableRow(context,
                   "Sexual passion",
-                  "Do I have sexual relations with my partner and it attracts me physically?",
+                  AppLocalizations.of(context)!.loveQseven,
                   widget.loveQ7.toString()
                   ), 
                   tableRow(context,
                   "Emotional Passion",
-                  "Do I feel really loved and positively value all the mental and emotional part of my partner?",
+                  AppLocalizations.of(context)!.loveQeight,
                   widget.loveQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.loveAvg.toStringAsFixed(1)
                   ),
                   ],
@@ -2711,14 +2711,14 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(height: 30,),
                 Column(
                   children: [
-                    const Text(
-                  "Free Time",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  Text(
+                  AppLocalizations.of(context)!.freeTime,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2726,49 +2726,49 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Leisure",
-                  "Do I have enough leisure time, or do I think it should have more?",
+                  AppLocalizations.of(context)!.freeQone,
                   widget.freeQ1.toString()
                   ),
                 tableRow(context,
                   "Quality time",
-                  "Do I feel that I take advantage of the time I have and take advantage of my leisure?",
+                  AppLocalizations.of(context)!.freeQtwo,
                   widget.freeQ2.toString()
                   ),
                 tableRow(context,
                   "Fun",
-                  "May I have enough in my leisure times or do I feel bored, and I don't enjoy it?",
+                  AppLocalizations.of(context)!.freeQthree,
                   widget.freeQ3.toString()
                   ),
                 tableRow(context,
                   "Variety",
-                  "What other activities do, such as reading, cinema, TV, shows, see photos, study, etc.?",
+                  AppLocalizations.of(context)!.freeQfour,
                   widget.freeQ4.toString()
                   ),
                 tableRow(context,
                   "Tastes",
-                  "Am I satisfied doing a sport, practicing a hobby such as playing video games, etc.?",
+                  AppLocalizations.of(context)!.freeQfive,
                   widget.freeQ5.toString()
                   ),
                 tableRow(context,
                   "Participatory",
-                  "How do I value the leisure in which I participate with other people, such as a meeting with friends, family, games, etc.?",
+                  AppLocalizations.of(context)!.freeQsix,
                   widget.freeQ6.toString()
                   ),
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.freeAvg.toStringAsFixed(1),
                   ),
                   ],
@@ -2776,14 +2776,14 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(height: 30,),
                 Column(
                   children: [
-                    const Text(
-                  "Work",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    Text(
+                  AppLocalizations.of(context)!.work,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2791,59 +2791,59 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Working capacity",
-                  "I feel satisfied with my performance in the work environment and I really want to work on what I do?",
+                  AppLocalizations.of(context)!.workQone,
                   widget.workQ1.toString()
                   ),
                 tableRow(context,
                   "Functions",
-                  "Am I satisfied with the functions I perform, and I am developing tasks that generate value in the company?",
+                  AppLocalizations.of(context)!.workQtwo,
                   widget.workQ2.toString()
                   ),
                 tableRow(context,
                   "Company",
-                  "Do I feel comfortable in my company and she respects my values?",
+                  AppLocalizations.of(context)!.workQthree,
                   widget.workQ3.toString()
                   ),
                 tableRow(context,
                   "Boss",
-                  "Am I satisfied with my boss or me in my role as a boss?",
+                  AppLocalizations.of(context)!.workQfour,
                   widget.workQ4.toString()
                   ),
                 tableRow(context,
                   "Companions",
-                  "Do I feel that we form a good team with my teammates?",
+                  AppLocalizations.of(context)!.workQfive,
                   widget.workQ5.toString()
                   ),
                 tableRow(context,
                   "Collaborators",
-                  "Do I feel satisfied with the work of my collaborators and we form a good team?",
+                  AppLocalizations.of(context)!.workQsix,
                   widget.workQ6.toString()
                   ),
                   tableRow(context,
                   "Recognition",
-                  "Am I recognized in my work, I feel that the work I do is valued?",
+                  AppLocalizations.of(context)!.workQseven,
                   widget.workQ7.toString()
                   ), 
                   tableRow(context,
                   "Remuneration",
-                  "Do I feel satisfied with the economic income and other remuneration that my work gives me?",
+                  AppLocalizations.of(context)!.workQeight,
                   widget.workQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.workAvg.toStringAsFixed(1)
                   ),
                   ],
@@ -2851,14 +2851,14 @@ class _PDFScreenState extends State<PDFScreen> {
                 const SizedBox(height: 30,),
                 Column(
                   children: [
-                    const Text(
-                  "Money",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  Text(
+                  AppLocalizations.of(context)!.money,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Text(
@@ -2866,59 +2866,59 @@ class _PDFScreenState extends State<PDFScreen> {
                     //   style: TextStyle(fontWeight: FontWeight.bold),
                     // ),
                     Text(
-                      "Question",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      AppLocalizations.of(context)!.question,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Answere",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                     AppLocalizations.of(context)!.answer,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
                 tableRow(context,
                   "Belongings",
-                  "How do I feel about the belongings I have? Can I satisfy everything I have?",
+                  AppLocalizations.of(context)!.moneyQone,
                   widget.moneyQ1.toString()
                   ),
                 tableRow(context,
                   "Guarantees",
-                  "Do I have guarantees that support me financially and I feel sufficient guarantees?",
+                  AppLocalizations.of(context)!.moneyQtwo,
                   widget.moneyQ2.toString()
                   ),
                 tableRow(context,
                   "Income",
-                  "Am I satisfied with the income I have today and are enough to have the standard of living?",
+                  AppLocalizations.of(context)!.moneyQthree,
                   widget.moneyQ3.toString()
                   ),
                 tableRow(context,
                   "Future income",
-                  "Am I satisfied with the income I will have in the future, and my perspective of economic growth is promising?",
+                  AppLocalizations.of(context)!.moneyQfour,
                   widget.moneyQ4.toString()
                   ),
                 tableRow(context,
                   "Bills",
-                  "How do I feel about the level of expenses I have. Expenditure above my possibilities?",
+                  AppLocalizations.of(context)!.moneyQfive,
                   widget.moneyQ5.toString()
                   ),
                 tableRow(context,
                   "Future expenses",
-                  "Do I anticipate many expenses in the future and I feel that I will not be able to cover my future accounts?",
+                  AppLocalizations.of(context)!.moneyQsix,
                   widget.moneyQ6.toString()
                   ),
                   tableRow(context,
                   "Debts",
-                  "Am I satisfied with the level of debts I have? Or do I feel very overwhelmed with economic commitments?",
+                  AppLocalizations.of(context)!.moneyQseven,
                   widget.moneyQ7.toString()
                   ), 
                   tableRow(context,
                   "Saving",
-                  "I keep some money for bad times, and I'm happy with my savings?",
+                  AppLocalizations.of(context)!.moneyQeight,
                   widget.moneyQ8.toString()
                   ),  
                   const SizedBox(height: 10),
                 tableRow(context,
                   "Average",
-                  "",
+                  AppLocalizations.of(context)!.avg,
                   widget.moneyAvg.toStringAsFixed(1)
                   ),
                   ],
@@ -3001,11 +3001,11 @@ class _PDFScreenState extends State<PDFScreen> {
                   ),
                 ),
                 Image.asset("assets/dummy_graph.jpg", height: 300,width: 400,),
-                const Center(
+                Center(
                               child: Text(
-                            "Please know that this is only a sample of the Wheel of Life. To get your actual one, complete the information and we will send you the report with your actual Wheel of Life.",
+                            AppLocalizations.of(context)!.sampleWheelText,
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           )),
               ],
             ),
@@ -3046,9 +3046,9 @@ class _PDFScreenState extends State<PDFScreen> {
                           shape: RoundedRectangleBorder( //to set border radius to button
                     borderRadius: BorderRadius.circular(50)
                               ),),
-                                  child: Text(AppLocalizations.of(context)!.sendEmail)),
+                                  child: Text(AppLocalizations.of(context)!.sendEmail, textAlign: TextAlign.center,)),
               ),
-              const Text("Get detailed report and wheel of your life on your email", textAlign: TextAlign.center,style:TextStyle(fontWeight: FontWeight.bold))
+              Text(AppLocalizations.of(context)!.getDetailedReport, textAlign: TextAlign.center,style:const TextStyle(fontWeight: FontWeight.bold))
                 //     CustomTable(
                 // // Replace with your topic names
                 // // Replace with your answers

@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,16 +27,6 @@ class _LoveQuizState extends State<LoveQuiz> {
   //   "Q8: Do I feel really loved and positively value all the mental and emotional part of my partner?",
   //   "Love Questions are completed",
   // ];
-  List<String> topic = [
-    "Ability to love",
-    "Number of relationships",
-    "Duration",
-    "Communication",
-    "Coexistence",
-    "Fidelity",
-    "Sexual Passion",
-    "Emotional Passion"
-  ];
   int index = 0;
   int _currentValue = 5;
   int ans1 = 0;
@@ -51,6 +41,19 @@ class _LoveQuizState extends State<LoveQuiz> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<String> topic = [
+    AppLocalizations.of(context)!.abilityToLove,
+    AppLocalizations.of(context)!.numberOfRelationships,
+    AppLocalizations.of(context)!.duration,
+    AppLocalizations.of(context)!.communication,
+    AppLocalizations.of(context)!.coexistence,
+    AppLocalizations.of(context)!.fidelity,
+    AppLocalizations.of(context)!.sexualPassion,
+    AppLocalizations.of(context)!.emotionalPassion
+  ];
+
+
     List<String> Questions = [
     (AppLocalizations.of(context)!.loveQone),
     (AppLocalizations.of(context)!.loveQtwo),
@@ -97,12 +100,12 @@ class _LoveQuizState extends State<LoveQuiz> {
                 Column(children: [
                   Container(
                   color: Colors.deepPurple.withOpacity(0.3),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Section",
-                        style: TextStyle(fontSize: 18),
+                        AppLocalizations.of(context)!.section,
+                        style: const TextStyle(fontSize: 18),
                       )
                     ],
                   ),
@@ -118,9 +121,9 @@ class _LoveQuizState extends State<LoveQuiz> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Subject: ",
-                        style: TextStyle(fontSize: 18),
+                      Text(
+                        "${AppLocalizations.of(context)!.subject}: ",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       index <= 7
                           ? Text(

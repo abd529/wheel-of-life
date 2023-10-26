@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -16,14 +16,6 @@ class HealthQuiz extends StatefulWidget {
 }
 
 class _HealthQuizState extends State<HealthQuiz> {
-  List<String> topic = [
-    "Mood",
-    "Psychological State",
-    "Personal Care",
-    "Physical State",
-    "Habits",
-    "Measures",
-  ];
   int index = 0;
   int _currentValue = 5;
   int ans1 = 0;
@@ -38,6 +30,15 @@ class _HealthQuizState extends State<HealthQuiz> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> topic = [
+    AppLocalizations.of(context)!.mood,
+    AppLocalizations.of(context)!.psychologicalState,
+    AppLocalizations.of(context)!.personalCare,
+    AppLocalizations.of(context)!.physicalState,
+    AppLocalizations.of(context)!.habits,
+    AppLocalizations.of(context)!.measures,
+  ];
+
     List<String> Questions = [
     (AppLocalizations.of(context)!.healthQone),
     (AppLocalizations.of(context)!.healthQtwo),
@@ -84,12 +85,12 @@ class _HealthQuizState extends State<HealthQuiz> {
                   children: [
                     Container(
                   color: Colors.deepPurple.withOpacity(0.3),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Section",
-                        style: TextStyle(fontSize: 18),
+                        AppLocalizations.of(context)!.section,
+                        style: const TextStyle(fontSize: 18),
                       )
                     ],
                   ),
@@ -97,7 +98,7 @@ class _HealthQuizState extends State<HealthQuiz> {
                 const SizedBox(height: 10),
                 Text(
                   AppLocalizations.of(context)!.health,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Container(
@@ -105,9 +106,9 @@ class _HealthQuizState extends State<HealthQuiz> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Subject: ",
-                        style: TextStyle(fontSize: 18),
+                      Text(
+                        "${AppLocalizations.of(context)!.subject}: ",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       if (index <= 5) Text(
                               topic[index],

@@ -1,5 +1,6 @@
-import 'package:com.ezeelogix.truenorth/Authentication/login_screen.dart';
-import 'package:com.ezeelogix.truenorth/Screens/coach_panel.dart';
+
+// ignore_for_file: avoid_print
+
 import 'package:com.ezeelogix.truenorth/Screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 

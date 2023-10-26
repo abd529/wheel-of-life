@@ -2,7 +2,6 @@
 
 import 'package:com.ezeelogix.truenorth/Screens/option_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -29,9 +28,9 @@ class TranslatedVideo extends StatelessWidget {
           Text(AppLocalizations.of(context)!.whatIsTrueNorth, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
                 const SizedBox(height: 50,),
           Container(
-                      color: Colors.lightBlue[200],
+                      color: Theme.of(context).primaryColor ,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: YoutubePlayer(
                           controller: controller,
                           showVideoProgressIndicator: true,

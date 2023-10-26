@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
@@ -82,8 +82,17 @@ class _FreeReportState extends State<FreeReport> {
   
   Future<void> sendEmail(
       String recipientEmail, String messageMail, bool isCoach ,BuildContext context) async {
-    String userName2 = "Team@MyTrueNorthPath.com";
-    //String password2 = "P@ki15t@n!";
+      String recipient;
+    
+    if (code.text == "CH0001") {
+      recipient = "CoacHeart@MyTrueNorthPath.com";
+    } else if (code.text == "BO0001") {
+      recipient = "maritedealoisio@gmail.com";
+    } else {
+      recipient = isCoach ? (code.text != "ab000" ? recipientEmail : "reports@drjdkropman.com") : recipientEmail;
+    }
+    if(AppLocalizations.of(context)!.languageName == "Spanish"){
+      String userName2 = "Team@MyTrueNorthPath.com";
     final smtpServer2 = SmtpServer("smtp.titan.email",
         username: "Team@MyTrueNorthPath.com",
         password: "P@ki15t@n!",
@@ -91,33 +100,35 @@ class _FreeReportState extends State<FreeReport> {
         ssl: true);
     final message = Message()
       ..from = Address(userName2, "True North")
-      ..recipients.add( isCoach? code.text !="ab000"?  recipientEmail : "reports@drjdkropman.com" : recipientEmail)
-      ..subject = "Report"
+      ..recipients.add(recipient)
+      ..subject = AppLocalizations.of(context)!.report
       ..text = messageMail
       ..html = isCoach? """
-    <p> Dear $coachName,<br><br>
-    We trust this email finds you well. We wanted to inform you that our client, 
-    ${name.text}, has recently completed the Wheel of Life questionnaire, and you can access 
-    the report using the following link: <a href="${widget.fileUrl}">Report</a><br><br>
-    We have also sent an email to ${name.text}, letting them know that you will be reaching
-    out to them at your earliest convenience. They have been advised to contact you directly 
-    should they have any questions or require further assistance.<br></p>
+    <p> Estimado $coachName,<br><br>
+    Esperamos que este correo electrónico te encuentre bien. Queríamos informarte que nuestro cliente, 
+    ${name.text}, ha completado recientemente el cuestionario Rueda de la Vida, y puedes acceder al 
+    informe utilizando el siguiente enlace: <a href="${widget.fileUrl}">Informe</a><br><br>
+    También hemos enviado un correo electrónico a ${name.text}, informándoles que te pondrás en contacto 
+    con ellos a la mayor brevedad posible. Se les ha aconsejado que te contacten directamente si tienen alguna pregunta 
+    o necesitan asistencia adicional.<br></p>
 
-    Thank you for choosing True North. We look forward to the opportunity to continue serving 
-    you and your clients in the future.<br>
-    Sincerely,<br>
-    The True North Team<br>
-    www.mytruenorthpath.com """: """
-<p> Dear ${name.text},<br><br>
-    We sincerely appreciate your trust in True North to guide you in discovering your deep desires.<br><br>
-    As per your Access Code, we've forwarded your report to your dedicated coach ${code.text!="ab000"? coachName:""}. 
-    Expect to hear from them shortly. If you have any questions or need immediate assistance, 
-    please feel free to reach out to your coach directly.<br><br>
+    Gracias por elegir True North. Esperamos tener la oportunidad de seguir sirviéndote a ti y a tus clientes en el futuro.<br>
+    Sinceramente,<br>
+    El Equipo de True North<br>
+    <a href="https://www.mytruenorthpath.com">MyTrueNorthPath.com</a>
+        """: """
+<p> Estimado ${name.text},<br><br>
+    Apreciamos sinceramente tu confianza en True North para guiarte en el descubrimiento de tus deseos más profundos.<br><br>
+    Según tu Código de Acceso, hemos enviado tu informe a tu coach dedicado ${code.text!="ab000"? coachName:""}. 
+    Espera noticias de ellos en breve. Si tienes alguna pregunta o necesitas asistencia inmediata, 
+    no dudes en ponerte en contacto con tu coach directamente.<br><br>
 
-    Thank you once again for choosing True North. We're here to support you on your journey.<br>
-    Warm regards,<br>
-    The True North Team<br>
-    www.mytruenorthpath.com """;
+    Gracias una vez más por elegir True North. Estamos aquí para apoyarte en tu camino.<br>
+    Saludos cordiales,<br>
+    El Equipo de True North<br>
+    <a href="https://www.mytruenorthpath.com">MyTrueNorthPath.com</a>
+</p>
+ """;
     try {
       await send(message, smtpServer2);
       setState(() {
@@ -134,22 +145,75 @@ class _FreeReportState extends State<FreeReport> {
   //   isLoading = false;
   // });
     }
+    }
+    else{
+      String userName2 = "Team@MyTrueNorthPath.com";
+    final smtpServer2 = SmtpServer("smtp.titan.email",
+        username: "Team@MyTrueNorthPath.com",
+        password: "P@ki15t@n!",
+        port: 465,
+        ssl: true);
+    final message = Message()
+      ..from = Address(userName2, "True North")
+      ..recipients.add(recipient)
+      ..subject = AppLocalizations.of(context)!.report
+      ..text = messageMail
+      ..html = isCoach? """
+    <p> Dear $coachName,<br><br>
+    We trust this email finds you well. We wanted to inform you that our client, 
+    ${name.text}, has recently completed the Wheel of Life questionnaire, and you can access 
+    the report using the following link: <a href="${widget.fileUrl}">Report</a><br><br>
+    We have also sent an email to ${name.text}, letting them know that you will be reaching
+    out to them at your earliest convenience. They have been advised to contact you directly 
+    should they have any questions or require further assistance.<br></p>
+
+    Thank you for choosing True North. We look forward to the opportunity to continue serving 
+    you and your clients in the future.<br>
+    Sincerely,<br>
+    The True North Team<br>
+    <a href="https://www.mytruenorthpath.com">MyTrueNorthPath.com</a> """: """
+<p> Dear ${name.text},<br><br>
+    We sincerely appreciate your trust in True North to guide you in discovering your deep desires.<br><br>
+    As per your Access Code, we've forwarded your report to your dedicated coach ${code.text!="ab000"? coachName:""}. 
+    Expect to hear from them shortly. If you have any questions or need immediate assistance, 
+    please feel free to reach out to your coach directly.<br><br>
+
+    Thank you once again for choosing True North. We're here to support you on your journey.<br>
+    Warm regards,<br>
+    The True North Team<br>
+    <a href="https://www.mytruenorthpath.com">MyTrueNorthPath.com</a> """;
+    try {
+      await send(message, smtpServer2);
+      setState(() {
+    isLoading = false;
+    print("email is sent to $recipientEmail");
+  });
+    dailogeBox();
+  
+    } catch (e) {
+      if (kDebugMode) {
+        print("email error: $e");
+      }
+  //     setState(() {
+  //   isLoading = false;
+  // });
+    }
+    }
   }
 
   void dailogeBox(){
-  
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return const AlertDialog(
-          title: Text('Email Sent Successfully', style: TextStyle(fontSize: 18),),
-          content: SizedBox(
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.emailSentSuccessfully, textAlign: TextAlign.center ,style: const TextStyle(fontSize: 18),),
+          content:  SizedBox(
             height: 100,
             child: Column(
               children: [
-                 Text('Taking you back to home'),
-                 SizedBox(height: 30,),
-                 CircularProgressIndicator(),
+                 Text(AppLocalizations.of(context)!.takingYouBackHome, textAlign: TextAlign.center),
+                const SizedBox(height: 30,),
+                const CircularProgressIndicator(),
               ],
             ),
           ),
@@ -158,7 +222,7 @@ class _FreeReportState extends State<FreeReport> {
     );
   }
 
-Future<void> useCoachCode(String code) async {
+  Future<void> useCoachCode(String code) async {
   final FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
   final CollectionReference coachesCollection = firestoreInstance.collection("coaches");
 
@@ -198,9 +262,9 @@ Future<void> useCoachCode(String code) async {
       builder: (BuildContext context) {
         return  AlertDialog(
           title: const Text('Inavlid Code', style: TextStyle(fontSize: 18),),
-          content: const SizedBox(
+          content: SizedBox(
             height: 100,
-            child: Text("You entered an invalid code. Please entered a correct code or use the given code 'ab000'")
+            child: Text(AppLocalizations.of(context)!.invalidCode)
           ),
           actions: [
             TextButton(onPressed: (){
@@ -216,9 +280,9 @@ Future<void> useCoachCode(String code) async {
       builder: (BuildContext context) {
         return  AlertDialog(
           title: const Text('Inavlid Code', style: TextStyle(fontSize: 18),),
-          content: const SizedBox(
+          content: SizedBox(
             height: 100,
-            child: Text("You entered an invalid code. Please entered a correct code or use the given code 'ab000'.")
+            child: Text(AppLocalizations.of(context)!.invalidCode)
           ),
           actions: [
             TextButton(onPressed: (){
@@ -252,9 +316,10 @@ Future<void> useCoachCode(String code) async {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(AppLocalizations.of(context)!.freeReport, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)),
-                    const Align(
+                    Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Unlock a personalized report for you and your coach for free by entering your coach code. Once submitted, we'll send you both an insightful report straight to your inbox.")),
+                      child: Text(AppLocalizations.of(context)!.freeReportText)),
+                      const SizedBox(height: 10,),
                       Form(
                         key: _formKey,
                         child: Column(
@@ -263,7 +328,7 @@ Future<void> useCoachCode(String code) async {
                               controller: name,
                               validator:(value) {
                         if (value!.isEmpty) {
-                          return 'Please enter your name';
+                          return AppLocalizations.of(context)!.pleaseEnterName;
                         }
                         return null;
                       },
@@ -283,7 +348,7 @@ Future<void> useCoachCode(String code) async {
                               controller: phone,
                               validator:(value) {
                         if (value!.isEmpty) {
-                          return 'Please enter your phone';
+                          return AppLocalizations.of(context)!.pleaseEnterPhone;
                         }
                         return null;
                       },
@@ -303,7 +368,7 @@ Future<void> useCoachCode(String code) async {
                               controller: email,
                               validator:(value) {
                         if (value!.isEmpty) {
-                          return 'Please enter your email';
+                          return AppLocalizations.of(context)!.pleaseEnterEmail;
                         }
                         return null;
                       },
@@ -323,7 +388,7 @@ Future<void> useCoachCode(String code) async {
                               controller: confirmEmail,
                               validator:(value) {
                         if (value!.isEmpty) {
-                          return 'Please confirm your email';
+                          return AppLocalizations.of(context)!.pleaseEnterEmail;
                         }
                         return null;
                       },
@@ -343,7 +408,7 @@ Future<void> useCoachCode(String code) async {
                               controller: code,
                               validator:(value) {
                         if (value!.isEmpty) {
-                          return 'Please enter a code';
+                          return AppLocalizations.of(context)!.pleaseEnterCode;
                         }
                         return null;
                       },
@@ -363,10 +428,10 @@ Future<void> useCoachCode(String code) async {
                               controller: codeConfirm,
                               validator:(value) {
                         if(value!.isEmpty){
-                          return "Please enter a value";
+                          return AppLocalizations.of(context)!.pleaseEnterCode;
                         }
                         else if (value != code.text) {
-                          return 'Please confirm your code';
+                          return AppLocalizations.of(context)!.pleaseConfirmcode;
                         }
                         return null;
                       },
@@ -403,20 +468,22 @@ Future<void> useCoachCode(String code) async {
                         ElevatedButton(
                           onPressed: ()async{
                             if(_formKey.currentState!.validate()){
-                              if(code.text != "ab000"){
-                                //await markCodeAsFalse(code.text);
+                              if(code.text != "ab000" || code.text != "CH0001" || code.text != "BO0001"){
                                await  useCoachCode(code.text);
                               }
                               if(limitOk){
                               await sendEmail(email.text, "", false,context);
                               await sendEmail(coachEmail, "", true,context);
-                              }else if(code.text == "ab000"){
-                              await sendEmail(email.text, "", false,context);
-                              await sendEmail(coachEmail, "", true,context);
-                              }
                               Future.delayed(const Duration(seconds: 7), () {
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(uid: widget.uid) ,), (route) => false);
     });
+                              }else if(code.text == "ab000" || code.text == "CH0001" || code.text == "BO0001"){
+                              await sendEmail(email.text, "", false,context);
+                              await sendEmail(coachEmail, "", true,context);
+                              Future.delayed(const Duration(seconds: 7), () {
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen(uid: widget.uid) ,), (route) => false);
+    });
+                              }
                             }
                           }, 
                           style: ElevatedButton.styleFrom(
@@ -425,13 +492,14 @@ Future<void> useCoachCode(String code) async {
                       borderRadius: BorderRadius.circular(50)
                                 ),
                         ),
-                          child: isLoading? const CircularProgressIndicator() : const Text("Get your free results") ),
+                          child: isLoading? const CircularProgressIndicator() : 
+                          Text(AppLocalizations.of(context)!.getFreeReport, textAlign: TextAlign.center,) ),
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text("Don't have a code? Enter 'ab000' and a coach from our team will contact you", textAlign: TextAlign.center,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(AppLocalizations.of(context)!.dontHaveCode , textAlign: TextAlign.center,),
               ),
               // ElevatedButton(onPressed: (){
               //  markCodeAsFalse("ab1");

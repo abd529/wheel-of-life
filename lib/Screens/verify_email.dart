@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:com.ezeelogix.truenorth/Screens/home_screen.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
@@ -32,40 +30,20 @@ class _VerifyEmailState extends State<VerifyEmail> {
   TextEditingController confirmEmail = TextEditingController();
   TextEditingController code = TextEditingController();
   bool sent = false;
-  String shortenedUrl = "";
 
   @override
   void initState() {
     super.initState();
   }
-
-  Future<String> shortenUrl(String longUrl) async {
-  final response = await http.post(
-    Uri.parse('https://api-ssl.bitly.com/v4/shorten'),
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer 885789a550e82e100742f485c36ea732366bac76',
-    },
-    body: '{"long_url": "$longUrl"}',
-  );
-
-  if (response.statusCode == 200) {
-    final Map<String, dynamic> data = json.decode(response.body);
-    print(data);
-    return data['id'];
-  } else {
-    throw Exception('Failed to shorten URL');
-  }
-}
-
   
   void sendEmail(
     String recipientEmail, String messageMail, BuildContext context) async {
     setState(() {
       sent = true;
     });
-    String userName2 = "Team@MyTrueNorthPath.com";
-    final smtpServer2 = SmtpServer("smtp.titan.email",
+    if(AppLocalizations.of(context)!.languageName == "Spanish"){
+      String userName2 = "Team@MyTrueNorthPath.com";
+      final smtpServer2 = SmtpServer("smtp.titan.email",
         username: "Team@MyTrueNorthPath.com",
         password: "P@ki15t@n!",
         port: 465,
@@ -73,7 +51,41 @@ class _VerifyEmailState extends State<VerifyEmail> {
     final message = Message()
       ..from = Address(userName2, "True North")
       ..recipients.add(recipientEmail)
-      ..subject = "Next Steps on Your True North Journey"
+      ..subject = AppLocalizations.of(context)!.nextSteps
+      ..html = """
+      <p> Estimado ${name.text},<br><br>
+    ¡Felicitaciones por dar el primer paso hacia el descubrimiento de tu Verdadero Norte! Tu compromiso con la autodescubrimiento es realmente encomiable. Para ayudarte aún más y guiarte en este viaje transformador, te recomendamos conectarte con un coach profesional. Si has elegido este camino, ten la seguridad de que un coach experto se pondrá en contacto contigo en breve para proporcionarte conocimientos valiosos y apoyo.<br><br>
+    Gracias por depositar tu confianza en nosotros. Estamos aquí para ayudarte en cada paso del camino. Si tienes alguna pregunta o consulta, no dudes en ponerte en contacto.<br>
+    <a href="${widget.fileUrl}">Puedes encontrar tu informe aquí</a></p>
+
+    Te deseamos todo lo mejor mientras continúas tu búsqueda para encontrar tu Verdadero Norte.<br>
+    Saludos cordiales,<br>
+    El Equipo de True North<br>
+    www.mytruenorthpath.com
+
+
+      """;
+      try {
+      await send(message, smtpServer2);
+      dailogeBox();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
+     
+    }
+    else{
+      String userName2 = "Team@MyTrueNorthPath.com";
+      final smtpServer2 = SmtpServer("smtp.titan.email",
+        username: "Team@MyTrueNorthPath.com",
+        password: "P@ki15t@n!",
+        port: 465,
+        ssl: true);
+    final message = Message()
+      ..from = Address(userName2, "True North")
+      ..recipients.add(recipientEmail)
+      ..subject = AppLocalizations.of(context)!.nextSteps
       ..text = messageMail
       ..html = widget.isCoach? """
 <p> Dear ${name.text},<br><br>
@@ -111,21 +123,22 @@ class _VerifyEmailState extends State<VerifyEmail> {
         print(e.toString());
       }
     }
+    }
   }
 
   void dailogeBox(){
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return const AlertDialog(
-          title: Text('Email Sent Successfully', style: TextStyle(fontSize: 18),),
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.emailSentSuccessfully, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18),),
           content: SizedBox(
             height: 100,
             child: Column(
               children: [
-                 Text('Taking you back to home'),
-                 SizedBox(height: 30,),
-                 CircularProgressIndicator(),
+                 Text(AppLocalizations.of(context)!.takingYouBackHome, textAlign: TextAlign.center),
+                 const SizedBox(height: 30,),
+                 const CircularProgressIndicator(),
               ],
             ),
           ),
@@ -170,9 +183,9 @@ class _VerifyEmailState extends State<VerifyEmail> {
                         style: const TextStyle(
                             fontSize: 22, fontWeight: FontWeight.bold),
                       )),
-                  const Align(
+                  Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("Verify your email to recieve report")),
+                      child: Text(AppLocalizations.of(context)!.verifyEmailText)),
                   Form(
                       key: _formKey,
                       child: Column(
@@ -184,7 +197,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                             controller: name,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter your name';
+                                return AppLocalizations.of(context)!.pleaseEnterName;
                               }
                               return null;
                             },
@@ -210,7 +223,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                             controller: phone,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter your phone';
+                                return AppLocalizations.of(context)!.pleaseEnterPhone;
                               }
                               return null;
                             },
@@ -235,7 +248,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                             controller: email,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter your email';
+                                return AppLocalizations.of(context)!.pleaseEnterEmail;
                               }
                               return null;
                             },
@@ -251,7 +264,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                                       ),
                                       child: const Icon(Icons.mail)),
                                 ),
-                                hintText: " Your ${AppLocalizations.of(context)!.email}"),
+                                hintText: AppLocalizations.of(context)!.email),
                           ),
                           const SizedBox(
                             height: 10,
@@ -309,12 +322,13 @@ class _VerifyEmailState extends State<VerifyEmail> {
                             //to set border radius to button
                             borderRadius: BorderRadius.circular(50)),
                       ),
-                      child:  sent? const CircularProgressIndicator(color: Colors.purple,) : const Text("Send Me Report")),
+                      child:  sent? const CircularProgressIndicator(color: Colors.purple,) : 
+                      Text(AppLocalizations.of(context)!.sendMeReport)),
                   const SizedBox(
                     height: 30,
                   ),
-                  const Text(
-                    "You'll be contacted by a professional coach to give you result of the Wheel of Life without any obligation.",
+                  Text(
+                    AppLocalizations.of(context)!.verifyEmailBottomText,
                     textAlign: TextAlign.center,
                   ),
                   // ElevatedButton(onPressed: (){

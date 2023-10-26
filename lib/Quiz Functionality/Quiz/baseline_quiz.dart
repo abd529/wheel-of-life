@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
@@ -231,9 +231,26 @@ class _BaseLineQuizState extends State<BaseLineQuiz> {
                   ],
                 ),
               ),
-              // ElevatedButton(onPressed: (){
-              //   print(widget.userId);
-              // }, child: Text("uid") )
+              index <= 7
+                      ? ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              setState(() {
+                                index++;
+                                _currentValue = 5;
+                              });
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.deepPurple.withOpacity(0.3),
+                              padding:EdgeInsets.fromLTRB(size.width/8, size.height/40, size.width/8, size.height/40),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50))),
+                          child: Text(
+                            AppLocalizations.of(context)!.skip,
+                            style:const TextStyle(color: Colors.white),
+                          ),
+                        ): const SizedBox()
                 ],
               )
               

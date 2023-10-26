@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,16 +27,6 @@ class _WorkQuizState extends State<WorkQuiz> {
   //   "Q8: Do I feel satisfied with the economic income and other remuneration that my work gives me?",
   //   "Work questions are completed",
   // ];
-  List<String> topic = [
-    "Working capacity",
-    "Functions",
-    "Company",
-    "Boss",
-    "Companions",
-    "Collaborators",
-    "Recognition",
-    "Remuneration"
-  ];
   int index = 0;
   int _currentValue = 5;
   int ans1 = 0;
@@ -51,6 +41,19 @@ class _WorkQuizState extends State<WorkQuiz> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<String> topic = [
+    AppLocalizations.of(context)!.workingCapacity,
+    AppLocalizations.of(context)!.functions,
+    AppLocalizations.of(context)!.company,
+    AppLocalizations.of(context)!.boss,
+    AppLocalizations.of(context)!.companions,
+    AppLocalizations.of(context)!.collaborators,
+    AppLocalizations.of(context)!.recognition,
+    AppLocalizations.of(context)!.remuneration,
+  ];
+
+
     List<String> Questions = [
     (AppLocalizations.of(context)!.workQone),
     (AppLocalizations.of(context)!.workQtwo),
@@ -96,12 +99,12 @@ class _WorkQuizState extends State<WorkQuiz> {
                   children: [
                     Container(
                   color: Colors.deepPurple.withOpacity(0.3),
-                  child: const Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Section",
-                        style: TextStyle(fontSize: 18),
+                        AppLocalizations.of(context)!.section,
+                        style: const TextStyle(fontSize: 18),
                       )
                     ],
                   ),
@@ -117,9 +120,9 @@ class _WorkQuizState extends State<WorkQuiz> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        "Subject: ",
-                        style: TextStyle(fontSize: 18),
+                       Text(
+                        "${AppLocalizations.of(context)!.subject}: ",
+                        style: const TextStyle(fontSize: 18),
                       ),
                       index <= 7
                           ? Text(
