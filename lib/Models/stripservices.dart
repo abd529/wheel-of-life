@@ -5,10 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:stripe_checkout/stripe_checkout.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-
 class StripeService {
   static String? secretKey = dotenv.env['STRIPE_SECRET'];
-  static String? publishKey =dotenv.env['STRIPE_SECRET'];
+  static String? publishKey = dotenv.env['STRIPE_PUB'];
 
   static Future<dynamic> createCheckoutSession(
       List<dynamic> productItems, totalAmount) async {
