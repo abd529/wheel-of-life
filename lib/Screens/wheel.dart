@@ -71,15 +71,15 @@ class _WheelOfLifeState extends State<WheelOfLife> {
             children: [
               Text(
                 AppLocalizations.of(context)!.yourReport,
-                style: const TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               // ElevatedButton(onPressed: (){
               //   captureWidget();
               // }, child: const Text("post wheel")),
               SizedBox(
-                width: 400,
-                height: 300,
+                width: size.width - 10,
+                height: size.height / 3,
                 child: Card(
                   color: Colors.white,
                   child:
@@ -99,7 +99,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                             Container(
                               margin: const EdgeInsets.only(top: 10),
                               width: size.width - 30,
-                              height: 300,
+                              height: size.height / 3.3,
                               child: Chart(
                                 data: widget.adjustData,
                                 variables: {
@@ -112,8 +112,8 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                                         map['type'] as String,
                                   ),
                                   'value': Variable(
-                                    accessor: (Map map) =>
-                                        double.parse(map['value'].toStringAsFixed(1)),
+                                    accessor: (Map map) => double.parse(
+                                        map['value'].toStringAsFixed(1)),
                                   ),
                                 },
                                 marks: [
@@ -122,7 +122,9 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                                         Varset('value') /
                                         Varset('type'),
                                     shape: ShapeEncode(
-                                        value: BasicLineShape(loop: true,)),
+                                        value: BasicLineShape(
+                                      loop: true,
+                                    )),
                                     color: ColorEncode(
                                         variable: 'type',
                                         values: Defaults.colors10),
@@ -145,20 +147,23 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                                   )
                                 },
                                 tooltip: TooltipGuide(
-                                 anchor: (_) => Offset.zero,
-                                 align: Alignment.bottomCenter,
-                                 multiTuples: true,
+                                  anchor: (_) => Offset.zero,
+                                  align: Alignment.bottomCenter,
+                                  multiTuples: true,
                                   variables: ['type', 'value'],
                                 ),
                                 crosshair: CrosshairGuide(
                                     followPointer: [false, true]),
-
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Image.asset("assets/dummy_graph.jpg", height: 300,width: 400,),
+                      Image.asset(
+                        "assets/dummy_graph.jpg",
+                        height: size.height / 3,
+                        width: size.width - 10,
+                      ),
                       Container(
                         color: Colors.grey.withOpacity(0.2),
                         child: Center(
@@ -180,47 +185,53 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                     style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(height: 10),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.fromLTRB(size.width / 6,
-                        size.height / 40, size.width / 6, size.height / 40),
-                    shape: RoundedRectangleBorder(
-                        //to set border radius to button
-                        borderRadius: BorderRadius.circular(50)),
-                  ),
-                  onPressed: () async {
-                    PopupLoader.show();
-                    fileUrl = await fetchFileUrl(widget.userId);
-                    print('URLzzz: $fileUrl $imgUrl');
-                    PopupLoader.hide();
-                    var items = [
-                      {
-                        "productPrice": 1.99,
-                        "productName": "1.99 Package",
-                        "qty": 1,
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.fromLTRB(size.width / 6,
+                            size.height / 40, size.width / 6, size.height / 40),
+                        shape: RoundedRectangleBorder(
+                            //to set border radius to button
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                      onPressed: () async {
+                        PopupLoader.show();
+                        fileUrl = await fetchFileUrl(widget.userId);
+                        print('URLzzz: $fileUrl $imgUrl');
+                        PopupLoader.hide();
+                        var items = [
+                          {
+                            "productPrice": 1.99,
+                            "productName": "1.99 Package",
+                            "qty": 1,
+                          },
+                        ];
+                        await StripeService.stripePaymentCheckout(
+                            items, 500, context, mounted,
+                            onSuccess: (String token) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => VerifyEmail(
+                                fileUrl: fileUrl,
+                                imgUrl: imgUrl,
+                                uid: widget.userId,
+                                isCoach: false,
+                                coachBadge: "",
+                                coachGen: "",
+                                coachLang: ""),
+                          ));
+                          print("SUCCESS token:$token");
+                        }, onCancel: () {
+                          print("CANCEL");
+                        }, onError: (e) {
+                          print("ERROR ${e.toString()}");
+                        });
                       },
-                    ];
-                    await StripeService.stripePaymentCheckout(
-                        items, 500, context, mounted,
-                        onSuccess: (String token) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            VerifyEmail(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId, isCoach:false, coachBadge: "",coachGen: "",coachLang: ""),
-                      ));
-                      print("SUCCESS token:$token");
-                    }, onCancel: () {
-                      print("CANCEL");
-                    }, onError: (e) {
-                      print("ERROR ${e.toString()}");
-                    });
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.packageOneButton,
-                    textAlign: TextAlign.center,
-                  )),
+                      child: Text(
+                        AppLocalizations.of(context)!.packageOneButton,
+                        textAlign: TextAlign.center,
+                      )),
                 ],
               ),
-              
+
               // const SizedBox(height: 30),
               // Text(
               //   AppLocalizations.of(context)!.packagetwo,
@@ -276,31 +287,35 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                     style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(height: 10),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.fromLTRB(size.width / 6,
-                        size.height / 40, size.width / 6, size.height / 40),
-                    shape: RoundedRectangleBorder(
-                        //to set border radius to button
-                        borderRadius: BorderRadius.circular(50)),
-                  ),
-                  onPressed: () async {
-                    PopupLoader.show();
-                    fileUrl = await fetchFileUrl(widget.userId);
-                    print('URLzzz: $fileUrl $imgUrl');
-                    PopupLoader.hide();
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          FreeReport(fileUrl: fileUrl, imgUrl: imgUrl, uid: widget.userId),
-                    ));
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.packageThreeButton,
-                    textAlign: TextAlign.center,
-                  )),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.fromLTRB(size.width / 6,
+                            size.height / 40, size.width / 6, size.height / 40),
+                        shape: RoundedRectangleBorder(
+                            //to set border radius to button
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                      onPressed: () async {
+                        PopupLoader.show();
+                        fileUrl = await fetchFileUrl(widget.userId);
+                        print('URLzzz: $fileUrl $imgUrl');
+                        PopupLoader.hide();
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => FreeReport(
+                              fileUrl: fileUrl,
+                              imgUrl: imgUrl,
+                              uid: widget.userId),
+                        ));
+                      },
+                      child: Text(
+                        AppLocalizations.of(context)!.packageThreeButton,
+                        textAlign: TextAlign.center,
+                      )),
                 ],
               ),
-              const SizedBox(height: 20,)
+              const SizedBox(
+                height: 20,
+              )
             ],
           ),
         ),
@@ -310,7 +325,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
 
   Future<void> makePayment(String price) async {
     try {
-    //  paymentIntent = await createPaymentIntent(price, 'USD');
+      //  paymentIntent = await createPaymentIntent(price, 'USD');
 
       //STEP 2: Initialize Payment Sheet
       // await Stripe.instance
@@ -330,78 +345,78 @@ class _WheelOfLifeState extends State<WheelOfLife> {
   }
 
   displayPaymentSheet() async {
-   // try {
-      // await Stripe.instance.presentPaymentSheet().then((value) {
-      //   showDialog(
-      //       context: context,
-      //       builder: (_) => AlertDialog(
-      //             content: Column(
-      //               mainAxisSize: MainAxisSize.min,
-      //               children: [
-      //                 Icon(
-      //                   Icons.check_circle,
-      //                   color: Colors.green,
-      //                   size: 100.0,
-      //                 ),
-      //                 SizedBox(height: 10.0),
-      //                 Text("Payment Successful!"),
-      //               ],
-      //             ),
-      //           ));
+    // try {
+    // await Stripe.instance.presentPaymentSheet().then((value) {
+    //   showDialog(
+    //       context: context,
+    //       builder: (_) => AlertDialog(
+    //             content: Column(
+    //               mainAxisSize: MainAxisSize.min,
+    //               children: [
+    //                 Icon(
+    //                   Icons.check_circle,
+    //                   color: Colors.green,
+    //                   size: 100.0,
+    //                 ),
+    //                 SizedBox(height: 10.0),
+    //                 Text("Payment Successful!"),
+    //               ],
+    //             ),
+    //           ));
 
-  //       paymentIntent = null;
-  //     }).onError((error, stackTrace) {
-  //       throw Exception(error);
-  //     });
-  //   } on StripeException catch (e) {
-  //     print('Error is:---> $e');
-  //     AlertDialog(
-  //       content: Column(
-  //         mainAxisSize: MainAxisSize.min,
-  //         children: [
-  //           Row(
-  //             children: const [
-  //               Icon(
-  //                 Icons.cancel,
-  //                 color: Colors.red,
-  //               ),
-  //               Text("Payment Failed"),
-  //             ],
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     print('$e');
-  //   }
-  // }
+    //       paymentIntent = null;
+    //     }).onError((error, stackTrace) {
+    //       throw Exception(error);
+    //     });
+    //   } on StripeException catch (e) {
+    //     print('Error is:---> $e');
+    //     AlertDialog(
+    //       content: Column(
+    //         mainAxisSize: MainAxisSize.min,
+    //         children: [
+    //           Row(
+    //             children: const [
+    //               Icon(
+    //                 Icons.cancel,
+    //                 color: Colors.red,
+    //               ),
+    //               Text("Payment Failed"),
+    //             ],
+    //           ),
+    //         ],
+    //       ),
+    //     );
+    //   } catch (e) {
+    //     print('$e');
+    //   }
+    // }
 
- // createPaymentIntent(String amount, String currency) async {
-  //   try {
-  //     //Request body
-  //     Map<String, dynamic> body = {
-  //       'amount': calculateAmount(amount),
-  //       'currency': currency,
-  //     };
+    // createPaymentIntent(String amount, String currency) async {
+    //   try {
+    //     //Request body
+    //     Map<String, dynamic> body = {
+    //       'amount': calculateAmount(amount),
+    //       'currency': currency,
+    //     };
 
-  //     //Make post request to Stripe
-  //     var response = await http.post(
-  //       Uri.parse('https://api.stripe.com/v1/payment_intents'),
-  //       headers: {
-  //         'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
-  //         'Content-Type': 'application/x-www-form-urlencoded'
-  //       },
-  //       body: body,
-  //     );
-  //     return json.decode(response.body);
-  //   } catch (err) {
-  //     throw Exception(err.toString());
-  //   }
-  // }
+    //     //Make post request to Stripe
+    //     var response = await http.post(
+    //       Uri.parse('https://api.stripe.com/v1/payment_intents'),
+    //       headers: {
+    //         'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
+    //         'Content-Type': 'application/x-www-form-urlencoded'
+    //       },
+    //       body: body,
+    //     );
+    //     return json.decode(response.body);
+    //   } catch (err) {
+    //     throw Exception(err.toString());
+    //   }
+    // }
 
-  // calculateAmount(String amount) {
-  //   final calculatedAmout = (int.parse(amount)) * 100;
-  //   return calculatedAmout.toString();
-  // }}}}
+    // calculateAmount(String amount) {
+    //   final calculatedAmout = (int.parse(amount)) * 100;
+    //   return calculatedAmout.toString();
+    // }}}}
   }
-  }
+}

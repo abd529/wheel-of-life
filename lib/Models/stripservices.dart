@@ -6,9 +6,9 @@ import 'package:stripe_checkout/stripe_checkout.dart';
 
 class StripeService {
   static String secretKey =
-      "sk_test_51NPmvUD8msN6pqnywL01TNhBZWvV5ru0q4fYKYfq5JbZDMHcUwYt4l9yR5dlTj0ETWlWyZH0gkoQ57znSk7i6jtD006FtuWwGJ";
+      "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";
   static String publishKey =
-      "pk_test_51NPmvUD8msN6pqny40WsTbZCH8dJgXWoAkLEsYsVKHPhyl9WodTbqW38fYWGfdiDa9OzzkIJ6knmcqGPbbBJycI000p5MvSbO0";
+      "pk_live_51IPZIqK66jUbxaJOBd4PPi8aT1MCF5pC5lSlderhOXekSLwmE9pT1i5EW4FBG9kww4HOtzmQAEFQE2r4djWwRNhH00Is46VhUo";
 
   static Future<dynamic> createCheckoutSession(
       List<dynamic> productItems, totalAmount) async {
