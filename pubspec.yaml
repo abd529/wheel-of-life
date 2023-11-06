@@ -64,6 +64,7 @@ dependencies:
   flutter_easyloading: ^3.0.5
   html: ^0.15.4
   fluttertoast: ^8.2.2
+  purchases_flutter: ^6.2.0
 
 dev_dependencies:
   flutter_test:
