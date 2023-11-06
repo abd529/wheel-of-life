@@ -3,12 +3,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:stripe_checkout/stripe_checkout.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 class StripeService {
-  static String secretKey =
-      "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";
-  static String publishKey =
-      "pk_live_51IPZIqK66jUbxaJOBd4PPi8aT1MCF5pC5lSlderhOXekSLwmE9pT1i5EW4FBG9kww4HOtzmQAEFQE2r4djWwRNhH00Is46VhUo";
+  static String? secretKey = dotenv.env['STRIPE_SECRET'];
+  static String? publishKey =dotenv.env['STRIPE_SECRET'];
 
   static Future<dynamic> createCheckoutSession(
       List<dynamic> productItems, totalAmount) async {
@@ -47,7 +47,7 @@ class StripeService {
     final result = await redirectToCheckout(
         context: context,
         sessionId: sessionId,
-        publishableKey: publishKey,
+        publishableKey: publishKey.toString(),
         successUrl: "https://checkout.stripe.dev/success",
         canceledUrl: "https://checkout.stripe.dev/cancel");
     if (mounted) {

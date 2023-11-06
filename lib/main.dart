@@ -16,6 +16,8 @@ import 'Screens/splash_screen.dart';
 import 'firebase_options.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +28,7 @@ void main() async {
   );
  // await dotenv.load(fileName: "assets/.env");
   var uid = const Uuid().v4();
+  await dotenv.load(fileName: "assets/.env");
   runApp(MyApp(
     uid: uid,
   ));
