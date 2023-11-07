@@ -17,7 +17,7 @@ import 'firebase_options.dart';
 import 'l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
+import 'package:purchases_flutter/purchases_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,9 +26,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
- // await dotenv.load(fileName: "assets/.env");
+  // await dotenv.load(fileName: "assets/.env");
   var uid = const Uuid().v4();
+
   await dotenv.load(fileName: "assets/.env");
+  final key = dotenv.env['RCAT_KEY'];
+  final _configurations = PurchasesConfiguration(key.toString());
+  await Purchases.configure(_configurations);
   runApp(MyApp(
     uid: uid,
   ));

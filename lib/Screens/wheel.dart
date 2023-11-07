@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, depend_on_referenced_packages, use_build_context_synchronously, avoid_print
+import 'dart:io';
+
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import '../Models/stripservices.dart';
 import '../Screens/free_report.dart';
 import '../Screens/verify_email.dart';
@@ -205,25 +208,35 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                             "qty": 1,
                           },
                         ];
-                        await StripeService.stripePaymentCheckout(
-                            items, 500, context, mounted,
-                            onSuccess: (String token) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => VerifyEmail(
-                                fileUrl: fileUrl,
-                                imgUrl: imgUrl,
-                                uid: widget.userId,
-                                isCoach: false,
-                                coachBadge: "",
-                                coachGen: "",
-                                coachLang: ""),
-                          ));
-                          print("SUCCESS token:$token");
-                        }, onCancel: () {
-                          print("CANCEL");
-                        }, onError: (e) {
-                          print("ERROR ${e.toString()}");
-                        });
+                        if (Platform.isIOS) {
+                          await Purchases.purchaseStoreProduct(const StoreProduct(
+                              "truenorth_1_report",
+                              "Buy this package to get detailed report in email",
+                              "Get Report In Email",
+                              1.99,
+                              "1.99",
+                              "USD"));
+                        } else {
+                          await StripeService.stripePaymentCheckout(
+                              items, 500, context, mounted,
+                              onSuccess: (String token) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => VerifyEmail(
+                                  fileUrl: fileUrl,
+                                  imgUrl: imgUrl,
+                                  uid: widget.userId,
+                                  isCoach: false,
+                                  coachBadge: "",
+                                  coachGen: "",
+                                  coachLang: ""),
+                            ));
+                            print("SUCCESS token:$token");
+                          }, onCancel: () {
+                            print("CANCEL");
+                          }, onError: (e) {
+                            print("ERROR ${e.toString()}");
+                          });
+                        }
                       },
                       child: Text(
                         AppLocalizations.of(context)!.packageOneButton,
