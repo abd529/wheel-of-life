@@ -209,13 +209,27 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           },
                         ];
                         if (Platform.isIOS) {
-                          await Purchases.purchaseStoreProduct(const StoreProduct(
-                              "truenorth_1_report",
-                              "Buy this package to get detailed report in email",
-                              "Get Report In Email",
-                              1.99,
-                              "1.99",
-                              "USD"));
+                          try {
+                          //CustomerInfo  jj =
+                           await Purchases.purchaseStoreProduct(const StoreProduct(
+                                "truenorth_1_report",
+                                "Buy this package to get detailed report in email",
+                                "Get Report In Email",
+                                1.99,
+                                "1.99",
+                                "USD"));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => VerifyEmail(
+                                    fileUrl: fileUrl,
+                                    imgUrl: imgUrl,
+                                    uid: widget.userId,
+                                    isCoach: false,
+                                    coachBadge: "",
+                                    coachGen: "",
+                                    coachLang: "")));
+                          } catch (e) {
+                            debugPrint(e.toString());
+                          }
                         } else {
                           await StripeService.stripePaymentCheckout(
                               items, 500, context, mounted,
