@@ -66,11 +66,7 @@ class _WheelOfLifeState extends State<WheelOfLife> {
       var errorCode = e.toString();
       if (errorCode != PurchasesErrorCode.purchaseCancelledError) {}
       PopupLoader.hide();
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => WheelOfLife(
-                userId: widget.userId,
-                adjustData: widget.adjustData,
-              )));
+      Navigator.of(context).pop();
       print(e);
       isWaiting.value = false;
     }
