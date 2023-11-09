@@ -25,6 +25,58 @@ class _WheelOfLifeState extends State<WheelOfLife> {
   final GlobalKey globalKey = GlobalKey();
   Map<String, dynamic>? paymentIntent;
   String done = "";
+  bool hasCompletedPurchase = false;
+
+  Future<void> makePurchases(StoreProduct? package,
+      ValueNotifier<bool> isWaiting, BuildContext context) async {
+    try {
+      isWaiting.value = true;
+      CustomerInfo purchaserInfo =
+          await Purchases.purchaseStoreProduct(package!);
+      await Purchases.syncPurchases();
+      if (purchaserInfo.entitlements.all["truenorth_1_report"]!.isActive) {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => VerifyEmail(
+            fileUrl: fileUrl,
+            imgUrl: imgUrl,
+            uid: widget.userId,
+            isCoach: false,
+            coachBadge: "",
+            coachGen: "",
+            coachLang: "",
+          ),
+        ));
+      }
+      print(purchaserInfo.activeSubscriptions);
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => VerifyEmail(
+          fileUrl: fileUrl,
+          imgUrl: imgUrl,
+          uid: widget.userId,
+          isCoach: false,
+          coachBadge: "",
+          coachGen: "",
+          coachLang: "",
+        ),
+      ));
+
+      PopupLoader.hide();
+      isWaiting.value = false;
+    } catch (e) {
+      var errorCode = e.toString();
+      if (errorCode != PurchasesErrorCode.purchaseCancelledError) {}
+      PopupLoader.hide();
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => WheelOfLife(
+                userId: widget.userId,
+                adjustData: widget.adjustData,
+              )));
+      print(e);
+      isWaiting.value = false;
+    }
+    isWaiting.value = false;
+    return null;
+  }
 
   // Future<String> captureWidget() async {
   //   final RenderRepaintBoundary boundary =
@@ -197,10 +249,14 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                             borderRadius: BorderRadius.circular(50)),
                       ),
                       onPressed: () async {
+                        if (hasCompletedPurchase) {
+                          // If the purchase has already been completed, prevent further attempts
+                          return;
+                        }
                         PopupLoader.show();
                         fileUrl = await fetchFileUrl(widget.userId);
                         print('URLzzz: $fileUrl $imgUrl');
-                        PopupLoader.hide();
+
                         var items = [
                           {
                             "productPrice": 1.99,
@@ -209,28 +265,29 @@ class _WheelOfLifeState extends State<WheelOfLife> {
                           },
                         ];
                         if (Platform.isIOS) {
-                          try {
-                          //CustomerInfo  jj =
-                           await Purchases.purchaseStoreProduct(const StoreProduct(
-                                "truenorth_1_report",
-                                "Buy this package to get detailed report in email",
-                                "Get Report In Email",
-                                1.99,
-                                "1.99",
-                                "USD"));
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VerifyEmail(
-                                    fileUrl: fileUrl,
-                                    imgUrl: imgUrl,
-                                    uid: widget.userId,
-                                    isCoach: false,
-                                    coachBadge: "",
-                                    coachGen: "",
-                                    coachLang: "")));
-                          } catch (e) {
-                            debugPrint(e.toString());
-                          }
+                          StoreProduct p = StoreProduct(
+                              "truenorth_1_report",
+                              "Buy this package to get detailed report in email",
+                              "Get Report In Email",
+                              1.99,
+                              "1.99",
+                              "USD");
+                          ValueNotifier<bool> val = ValueNotifier(true);
+
+                          makePurchases(p, val, context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => VerifyEmail(
+                              fileUrl: fileUrl,
+                              imgUrl: imgUrl,
+                              uid: widget.userId,
+                              isCoach: false,
+                              coachBadge: "",
+                              coachGen: "",
+                              coachLang: "",
+                            ),
+                          ));
                         } else {
+                          PopupLoader.hide();
                           await StripeService.stripePaymentCheckout(
                               items, 500, context, mounted,
                               onSuccess: (String token) {
